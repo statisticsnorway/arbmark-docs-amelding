@@ -2,6 +2,10 @@ project:
   type: book
   output-dir: ../docs
 
+# So CNAME-file for custom domain doesnt get deleted when re-rendering
+resources:
+  - CNAME
+
 format:
   html:
     theme:
