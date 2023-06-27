@@ -1,0 +1,62 @@
+# Knytning mellom lønns- og arbeidsforhold
+
+I [inndata ligger informasjon om arbeids- og lønnsforhold i ulike
+tabeller (kapittel 6)](Inndata.html). I dette kapittelet beskrives hvordan arbeids-
+og lønnsforhold knyttes sammen.
+
+Alle lønnsforhold i en måned skal knyttes til ett arbeidsforhold i samme
+måned, og disse arbeidsforholdene vil framkomme på én av tre mulige
+måter, i denne rekkefølge:
+
+-   Arbeidsforholdet er rapportert denne måned (variabelen ARB_KILDE =
+    a-melding t)
+
+-   Arbeidsforholdet etableres ved søk mot forrige periode (ARB_KILDE =
+    a-melding t-1)
+
+-   Fiktive arbeidsforhold etableres (ARB_KILDE = fiktivt)
+
+Dersom det ikke er mulig å knytte et lønnsforhold til et arbeidsforhold
+hverken for statistikkmåneden (måned t) eller måneden før (måned t-1)
+etableres det et *fiktivt* *arbeidsforhold* slik at det etableres en
+teknisk knytning. Dette må gjøres fordi modellen og videre klargjøring
+av data krever at alle lønnsforhold er knyttet til et arbeidsforhold.
+Det legges på et merke som viser at arbeidsforholdet er fiktivt.
+Kjennemerker som start- og stoppdato på arbeidsforholdet, yrke, avtalt
+stillingsprosent, m.m. vil være uoppgitt for de fiktive
+arbeidsforholdene.
+
+**Inntektsmottaker med arbeidsforhold og uten lønn**
+
+Det kan være flere årsaker til at denne situasjonen oppstår:
+
+-   Inntektsmottaker har ikke mottatt lønn i arbeidsforholdet denne
+    måned, f.eks. ekstrahjelper
+
+-   Arbeidsforholdet har startet i perioden, men det har ikke vært
+    utbetalt lønn
+
+-   Arbeidsgivere melder inn arbeidsforhold som ikke er aktive av
+    praktiske hensyn. Det kan f.eks. være vikarbyråer som melder inn
+    hele vikarlisten eller sesongarbeidere står med aktive
+    arbeidsforhold hele året
+
+-   For gruppen frilansere, oppdragstakere m.m. er det kun plikt til å
+    melde inn arbeidsforholdet når det er utbetalt en inntekt. Men det
+    kan tenkes at arbeidsgivere velger å rapportere arbeidsforholdet
+    selv om det ikke har vært utbetalt lønn, f.eks. ved at
+    styremedlemmer blir meldt inn fra dag 1
+
+-   Det er rapportert permisjon (uten lønn) -- alle permisjoner over 14
+    dager skal rapporteres i a-ordningen. Se mer informasjon om
+    [permisjoner i
+    veiledningen for a-ordningen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/permisjon/) 
+
+-   Personen mottar ytelser som erstatter lønn (fra NAV)
+
+**Inntektsmottaker uten arbeidsforhold og med lønn**
+
+Denne situasjonen vil oppstå ved f.eks. manglende rapportering av
+arbeidsforhold eller ved etterbetaling av lønn knyttet til avsluttede
+arbeidsforhold. I tillegg kan man forvente å mangle arbeidsforhold for
+enkelte typer lønnsforhold, f.eks. styrehonorar.

@@ -1,0 +1,97 @@
+# Referanser {.unnumbered}
+
+Aukrust, Aurdal, Bråthen, Køber (2010). [Registerbasert
+sysselsettingsstatistikk. Dokumentasjon. Notater
+8/2010](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/registerbasert-sysselsettingsstatistikk).
+SSB
+
+Berge, Christoffer (2017). Hva viser de ulike sysselsettingsstatistikkene? Hentet fra
+<https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/hva-viser-deulike-sysselsettingsstatistikkene>
+
+Berge, Christoffer (2018). Ulike tall om lønnstakere. Hentet fra
+<https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/ulike-tall-om-lonnstakere>
+
+Berge, Christoffer (2020). Metode for bedring av informasjon om arbeidstid. Hentet
+fra
+<https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/ny-metode-gir-bedre-informasjon-om-arbeidstid>
+
+Berge, Fedoryshyn, Køber, Nordby, Næsheim (2018). [Statistikk over
+ansatte i staten. Kartlegging av brukerbehov og muligheter. Notater
+2018/36](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/statistikk-over-ansatte-i-staten).
+SSB
+
+Berge, Johansen, Nordby, Villund (2021). [Permisjons- og
+permitteringsopplysninger i a-ordningen. Undersøkelse av
+datakvaliteten](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/permisjons-og-permitteringsopplysninger-i-a-ordningen).
+Notater 2021/44. SSB
+
+Beyrer, Svetlana, Bråthen, Remy, Kristoffersen, Sigrun og Tyholt, Inger
+Lise (2009). Lønnsstatistikk 2009. Etablering av populasjon og utvalg.
+Dokumentasjonsnotat, Interne dokumenter 2009/20, Statistisk sentralbyrå.
+Hentet fra <http://www.byranettet.ssb.no/publikasjoner/1257849320.47>
+
+Bye, Smogeli, Lunde (2011). [Lønnsstatistikk og årslønn. Dokumentasjon
+av beregningsopplegget for årslønn. Notater
+12/2011](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/lonnsstatistikk-og+aarslonn).
+SSB
+
+Grini, Knut Håkon (2003). Dokumentasjon av utvalg og beregning av vekter. Lønnsstatistikk privat sektor 1997-2001, Notater 2003/74. Hentet fra
+<https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/l%C3%B8nnsstatistikk-privat-sektor-1997-2001>
+
+Grini, Knut Håkon (2007). Quality report on the Norwegian structure of
+Earnings Survey 2002, Reports 2007/14. Hentet fra:
+<https://www.ssb.no/en/arbeid-og-lonn/artikler-og-publikasjoner/quality-report-on-the-norwegian-structure-of-earnings-survey-2002>
+
+Fedoryshyn, Nadiya (2020). [Dokumentasjon av SFP. Notater
+2020/28](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/system-for-persondata)
+
+International Labour Organisation (ILO). ILO-konvensjonen og
+ILO-resolusjonen hentet:
+
+> <https://www.ilo.org/dyn/normlex/en/f?p=NORMLEXPUB:12100:::NO:12100:P12100_ILO_CODE:C160:NO>
+
+og
+
+> <http://www.ilo.ch/wcmsp5/groups/public/---dgreports/---stat/documents/normativeinstrument/wcms_230304.pdf>
+
+og
+
+> <https://www.ilo.org/wcmsp5/groups/public/---dgreports/---stat/documents/publication/wcms_099576.pdf>
+
+Johnsen, Magnus Berglund, Konci, Ervis, Røv, Vilde (2022). [Nye variable
+i a-ordningen: ansettelsesform og årsak til sluttdato. Undersøkelse av
+datakvaliteten](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/nye-variabler-i-a-ordningen-ansettelsesform-og-arsak-til-sluttdato).
+Notater 2022/5
+
+Kristoffersen, Sigrun, Næss, Eirik Håskoll, Solstad, Magnus (2006).
+Dokumentasjonsnotat Lønnsstatistikk 2006, etablering av populasjon og
+utvalg. Notater 2006/63. Hentet fra
+<https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/lonnsstatistikk-2006-etablering-av-populasjon-og-utvalg>
+
+Kristoffersen, Sigrun (2011). En generell beskrivelse av innsamling og
+revisjon av datagrunnlaget Lønnsstatistikk - kontroll og
+kvalitetssikring, Notater 2011/19 Hentet fra:
+<https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/lonnsstatistikk-kontroll-og-kvalitetssikring>
+
+Köber, Tonje (2004). Registerbasert sysselsettingsstatistikk for helse-
+og sosialpersonell. Notater 2004/2. Hentet fra:
+<https://www.ssb.no/a/publikasjoner/pdf/notat_200402/notat_200402.pdf>
+
+Lien, Håvard Hungnes, Beyrer, Svetlana, Lunde, Harald (2009). Quality
+report on the Norwegian structure of Earnings Survey 2006,
+Reports 2009/20. Hentet fra
+<https://www.ssb.no/en/arbeid-og-lonn/artikler-og-publikasjoner/quality-report-on-the-norwegian-structure-of-earnings-survey-2006>
+
+Næsheim, Helge og Johansen, Ingvild (2018). [Kartlegging av
+arbeidsforhold som oppdragstaker i a-ordningen. Notater
+2018/10](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/kartlegging-av-arbeidsforhold-som-oppdragstaker-i-a-ordningen).
+SSB
+
+Rådsforordning (EU) nr. 0530/1999 av 9. mars 1999 om strukturstatistikk
+for lønn og arbeidskraftkostnader. Hentet fra nettsiden:
+<https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:31999R0530:EN:HTML>
+
+Solheim, Leiv (2001): Kvartalsvis lønnsindeks -- definisjon av
+parametere, beregning av parametere og overvåking av kvaliteten, Notater
+2001/53, Statistisk sentralbyrå
+<http://www.ssb.no/emner/00/90/notat_200153/notat_200153.pdf>

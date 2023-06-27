@@ -1,0 +1,78 @@
+# Datavarehus
+
+Alle datakildene som benyttes av lønn- og sysselsettingsstatistikkene
+lastes inn og tilrettelegges i et datavarehus (DVH). Løsningen er bygget
+rundt en felles Enterprise Data Varehusmodell for mikrodata.
+
+Kildene til datavarehuset vil være reviderte statistikk-klare data.
+Datakildene lastes inn på lavest mulig detaljeringsnivå og de skal være
+integrerte, dvs. koblet sammen. Noen av kildene er forløpsorganisert
+(f.eks. NUDB, VoF, FREG og Matrikkelen). Det innebærer en
+hendelsesorientert lagring av data. Dersom en variabel endrer seg, lages
+det en ny rad med dato. På den måten kan situasjonen på hvilket som
+helst tidspunkt gjenskapes. Andre kilder i datavarehuset vil være
+organisert som tverrsnitt (f.eks. data fra a-meldingen).
+
+I DVH er alle kildene lagret i ulike tabeller som er koblet sammen.
+
+Det må gjøres noe kvalitetsforbedrende tiltak for å kunne koble kildene
+sammen i datavarehuset. Det gjelder f.eks. dubletter, ugyldige
+identifikatorer eller annen inkonsistens som gjør at man ikke kan koble
+med andre kilder i datavarehuset.
+
+Kilder som lastes inn i datavarehuset:
+
+-   A-meldingsdata fra inndata
+
+-   Oppdrags- og arbeidsforholdsregisteret (OAR)
+
+-   Situasjonsuttak fra Virksomhets- og foretaksregisteret (VoF)
+
+-   Situasjonsuttak fra SSBs statistiske kopi av folkeregisteret (FREG)
+
+-   Folkemengde per 1.1. (bosattefil)
+
+-   Innvandrere og norskfødte med innvandrer foreldre
+
+-   Norsk utdanningsdatabase (NUDB)
+
+-   ARENA-registeret
+
+-   Innvandrere etter innvandringsgrunn
+
+-   Førstegangstjeneste og befalsskole
+
+-   Lærlinger
+
+Kilder sammenkoblet i DVH:
+
+-   Månedlig
+
+    -   A-meldingsdata fra inndata
+
+    -   Oppdrags- og arbeidsforholdsregisteret
+
+    -   Situasjonsuttak fra Virksomhets- og foretaksregisteret (VoF)
+
+    -   Situasjonsuttak fra SSBs statistiske kopi av folkeregisteret
+        (FREG)
+
+    -   Matrikkelen
+
+    -   ARENA-registeret
+
+    -   Førstegangstjeneste og befalsskole
+
+    -   Innvandrere og norskfødte med innvandrer foreldre (fil fra FREG)
+
+
+-   Årlig
+
+    -   Norsk utdanningsdatabase (NUDB)
+
+    -   Innvandrere etter innvandringsgrunn (fil fra FREG. Tidligere
+        omtalt som «fødelandsfilen».)
+
+    -   Lærlinger
+
+[Datakildene er beskrevet i kapittel 3](Datakilder.html).

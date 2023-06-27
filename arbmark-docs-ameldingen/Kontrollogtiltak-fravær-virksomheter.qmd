@@ -1,0 +1,39 @@
+# Kontroll og tiltak på fravær mellom virksomheter
+
+I dette kapittelet beskrives tiltak som gjennomføres hvis det er en dag
+overlapp ved jobbskifter mellom virksomheter innenfor referanseuka.
+Tiltaket gjennomføres fordi slike overlapp i forbindelse med jobbskifter
+mellom virksomheter trolig skyldes misforståelser knyttet til
+veiledningen og forståelsen av til-og-med-dato for utmelding av
+arbeidsforhold.
+
+Tiltaket gjennomføres altså hvis det er en-dags overlapp mellom
+arbeidsforhold som starter i en virksomhet i referanseuka og
+arbeidsforhold som slutter i andre virksomheter innenfor referanseuka. I
+slike tilfeller justeres sluttdatoen (ikke startdato), dvs. vi setter
+sluttdato en dag tidligere for å fjerne alle tilfeller av en dag
+overlapp.
+
+Dersom overlappen er på første dag i referanseuka (dvs. at et
+arbeidsforhold starter og et annet slutter på mandagen), vil
+arbeidsforholdet med sluttdato ikke lenger inngå i referanseuka og
+heller ikke i datagrunnlaget. Dette vil ikke kunne skje på ukas øvrige
+dager siden det alltid er sluttdato som justeres en dag tilbake ved en
+dags overlapp (f.eks. hvis overlappen var på søndagen i referanseuka,
+blir sluttdatoen justert til lørdag).
+
+I tilfeller med en-dags overlapp mellom en jobb med startdato og flere
+jobber med sluttdato, justeres sluttdato på alle jobbene som har
+sluttdato.
+
+Denne justeringen har først og fremst betydning ved at noen
+arbeidsforhold justeres slik at de faller utenfor referanseuka og dermed
+ikke lenger inngår i datagrunnlaget. Dette påvirker kun antall jobber,
+ikke antall sysselsatte personer.
+
+Vi gjøre bare tiltak ved en dag overlapp fordi det er grunn til å tro at
+slik overlapp skyldes misforståelse av veiledningen om rapportering av
+sluttdato arbeidsforhold. Ved lenger overlapp enn én dag, kan dette
+skyldes feilaktig forsinket utmelding, men det kan også være reelt at
+personen har flere arbeidsforhold i en overgangsfase. Det korrigeres
+derfor bare tilfeller med en dag overlapp.

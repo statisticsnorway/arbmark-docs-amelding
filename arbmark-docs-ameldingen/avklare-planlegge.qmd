@@ -1,0 +1,3 @@
+# Del 1. Avklare behov og planlegge
+
+Del 1 omfatter noen sentrale [definisjoner omtalt i kapittel 2](definisjoner.html) og [beskrivelse av datakildene i kapittel 3](Datakilder.html). 

@@ -1,0 +1,63 @@
+# Imputering av arbeidsforhold fra perioden før
+
+Opplysningspliktige rapporterer status hver måned i a-meldingen. For å
+unngå at uteglemmelser i rapporteringen eller forsinket rapportering
+påvirker sysselsettingstallene, imputeres alle arbeidsforhold fra
+måneden før (måned t-1) hvis hele foretaket mangler i statistikkmåneden
+(måned t).
+
+Imputeringen skjer altså hvis det verken er rapportert arbeidsforhold
+eller lønnsforhold i statistikkmåneden, men hvor vi på grunnlag av
+rapporteringen i forrige måned (t-1) har grunn til å tro at det skulle
+vært rapportert arbeidsforhold også i statistikkmåneden.
+
+Det er flere kriterier som må oppfylles for at arbeidsforhold blir
+imputert fra måneden før:
+
+-   Det er manglende rapportering av **hele** foretaket i
+    statistikkmåneden. Dersom det bare mangler ett eller flere
+    enkeltarbeidsforhold, er det som regel manglende eller forsinket
+    rapportering av sluttdato som er problemet.
+
+-   Arbeidsforholdet må være uten stoppdato forrige måned og
+    arbeidsforholdet er ikke rapportert i statistikkmåneden
+
+-   Var regnet som sysselsatt forrige måned, unntatt hvis:
+
+    -   [Arbeidsforhold som ikke har lønn (dvs. arb_syss= 3b) jf.
+        kapittel 19](Klassifisering-arbfogsyss.html)
+
+    -   [Arbeidsforhold som er fiktive (se kapittel 9](Knytning-mellom-lønns-og-arbeidsforhold.html))
+
+    -   Arbeidsforholdet som var imputert i forrige måned t-1 (dvs.
+        arbeidsforhold var periode t-2)
+
+    -   Personer forrige periode med arb_kilde «SFU uten lønn»
+
+-   Imputerer ikke arbeidsforhold til personer som står registrert med
+    dødsdato i SSBs statistiske kopi av folkeregisteret (FREG) før
+    referanseuka i statistikkmåneden
+
+-   Imputerer ikke arbeidsforhold hvis man er helt ledig i
+    Arena-registeret og har en startdato før referanseuka i
+    statistikkmåneden
+
+-   Vernepliktige blir ikke imputert fra måneden før
+
+-   Imputerer ikke arbeidsforhold dersom foretak er markert som opphørt
+    i SSBs Virksomhets- og foretaksregister (VoF):
+
+    -   Dersom foretaket i måned t er meldt konkurs/opphørt (markert via
+        variablene OPPL, KONK, OPFU, SKFR, TVUK, TVRE, TVRR, TVOV, TVST,
+        OPFI, SKRR, TVKA, TVOP, KLFR, TVDL, OSEV, med tilhørende
+        datofelt), settes arb_slutt lik dato for konkurs/opphør.
+
+    -   Dersom flere av statusvariablene er markert, brukes tidligste
+        dato
+
+Med «samme foretak», menes her nivå rett over virksomhet ifølge
+situasjonen i VoF.
+
+Det er svært få arbeidsforhold som imputeres fra måned før fordi hele
+foretaket mangler i statistikkmåneden. Antallet imputerte arbeidsforhold
+varierer stort sett mellom 50 og 300 per måned.

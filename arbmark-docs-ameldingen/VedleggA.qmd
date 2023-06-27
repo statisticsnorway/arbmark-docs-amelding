@@ -1,0 +1,1376 @@
+# Vedlegg A: Variabel- og kodeoversikt {.unnumbered} 
+
+Dette vedlegget gir oversikt over variabler, definisjoner og koder.
+
+Det benyttes følgende prefiks:
+
+ARB\_ = informasjon knyttet til arbeidsforholdet (jobben)
+
+PERS\_ = informasjon er knyttet til personen
+
+LONN\_ = lønnsinformasjon
+
+VIRK\_ = informasjon knyttet til virksomheten (underenheten)
+
+FRTK\_ = informasjon knyttet til foretaket (nivået over virksomhet)
+
+I variabellisten til [microdata.no](https://www.microdata.no/) har
+variablene fra statistikken *antall arbeidsforhold og lønn* prefiks
+«ARBLONN». Variabel fra *den registerbaserte sysselsettingsstatistikken*
+har prefiks «REGSYS».
+
+**Innhold variabelliste:**
+
+[Arbeidsforholdsopplysninger](#arbeidsforholdsopplysninger)
+
+[Foretaksopplysninger](#foretaksopplysninger)
+
+[Nivå under toppnivå i VoF](#nivå-under-toppnivå-i-vof)
+
+[Toppnivå i VoF](#toppnivå-i-vof)
+
+[Opplysninger om lønn](#opplysninger-om-lønn)
+
+[Personopplysninger](#personopplysninger)
+
+[Virksomhetsopplysninger](#virksomhetsopplysninger)
+
+## Arbeidsforholdsopplysninger {#arbeidsforholdsopplysninger .list-paragraph}
+
+**ARB_ARBEIDSTID -- Avtalt arbeidstid per uke**
+
+Variabelen viser avtalt arbeidstid per uke. Avtalt arbeidstid per uke er
+utledet fra variablene \'Stillingsprosent\' (ARB_STILLINGSPST) og
+\'Antall timer per uke som full stilling tilsvarer\'
+(ARB_TIMEANT_FULLTID).  
+
+Avtalt arbeidstid = ARB_TIMEANT_FULLTID *\**(ARB_STILLINGSPST /100)
+
+Timetallet avrundes til to desimaler.
+
+**ARB_TIMEANT_FULLTID_L2 -- Innrapportert antall timer som full stilling
+tilsvarer**
+
+Variabelen viser antall timer per uke som en full stilling tilsvarer.
+Variabelen viser det som er innrapportert, men det er gjennomført noen
+automatiske kontroller og korreksjoner ved å benytte informasjon om
+bl.a. arbeidstidsordning (skift- og turnusordningen).
+
+Se mer informasjon om [innrapportert antall
+timer fulltid i veiledningen for a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/antall-timer-per-uke-som-en-full-stilling-tilsvarer/).
+
+**ARB_TIMEANT_FULLTID -- Antall timer som full stilling tilsvarer**
+
+Variabelen viser antall timer per uke som en full stilling tilsvarer.
+Det er gjennomført noen automatiske kontroller og korreksjoner.
+Arbeidsforhold med ulogisk lavt eller høyt timeantall korrigert, som vil
+si antall timer fulltid høyere enn 45 eller mindre enn 25 timer. Disse
+får en ny verdi basert på innrapportert arbeidstidsordning (skift- og
+turnusordninger, se kapittel 8.2). De aller fleste får 37,5 timer (som
+er normal fulltid i Norge). Rutinen som korrigerer lønnssatsen kan også
+medføre at vi henter inn antall timer som utgjør fulltid fra neste
+periode dersom det er ekstremverdier i inneværende periode. Se kapittel
+21 for mer informasjon.
+
+**ARB_STILLINGSPST_INNRAPP -- Innrapportert avtalt stillingsprosent**
+
+Variabelen viser innrapportert avtalt stillingsprosent. Hvis det er
+innrapportert flere arbeidsforhold i samme virksomhet for samme person
+blir avtalt stillingsprosenten summert. F.eks. vil innrapportert avtalt
+stillingsprosent være 200 hvis det er rapportert to arbeidsforhold med
+100 i avtalt stillingsprosent for én person i samme virksomhet. 
+
+Se mer informasjon om [innrapportert avtalt
+stillingsprosent i veiledningen for a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/stillingsprosent/).
+
+**ARB_STILLINGSPST -- Avtalt stillingsprosent**
+
+Variabelen viser avtalt stillingsprosent. Avtalt stillingsprosent er det
+man har avtalt å arbeide ifølge arbeidskontrakten. Arbeidsgiver skal ved
+rapportering ikke ta hensyn til merarbeid, overtid eller ulike typer
+fravær eller om timene er betalt eller ikke. Informasjon om avtalt
+stillingsprosent er basert på det som er rapportert i a-meldingen, men
+har gjennomgått en metode som gir bedre datagrunnlag for arbeidstid til
+statistikkproduksjon, se omtale i kapittel 21.
+
+Der det i dette notatet står «stillingsprosent» menes det «avtalt
+stillingsprosent» dersom ikke annet er spesifisert.
+
+**ARB_DATO_STILLINGSPST -- Dato for endring av avtalt stillingsprosent**
+
+Variabelen viser datoen for når den avtalte stillingsprosenten ble sist
+endret. Første gang arbeidsforholdet blir rapportert, skal startdato for
+arbeidsforholdet være lik dato for endring av avtalt stillingsprosent.
+
+Se mer informasjon om [dato for endring av avtalt
+stillingsprosent i veiledningen for a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/siste-dato-for-endring-av-stillingsprosent/).
+
+**ARB_HELDELTID -- Avtalt heltid eller deltid**
+
+Variabelen viser om arbeidsforholdet regnes som en hel- eller
+deltidsjobb. Heltidsansatte er ansatte med avtalt stillingsprosent
+(ARB_STILLINGSPST) større eller lik 100. Alle med avtalt
+stillingsprosent lavere enn 100 regnes som deltidsansatte. 
+
+*Kodeliste:*
+
+    1 = heltid
+
+    2 = deltid
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/149>
+
+**ARB_AARSVERK -- avtalte årsverk**
+
+Avtalte årsverk utledes ved hjelp av avtalt stillingsprosent på følgende
+måte:
+
+*ARB_AARSVERK = ARB_STILLINGSPST / 100*
+
+Eksempelvis vil 100 prosent stilling bli regnet som 1 avtalt årsverk,
+mens 60 % stilling blir 0,6 årsverk, osv.
+
+**ARB_STILLINGSPST_KILDE -- Kilde til avtalt stillingsprosent**
+
+Variabelen viser hva som er kilden til den avtalte stillingsprosenten
+(ARB_STILLINGSPST). Kodene er satt ut fra ulike tiltak beskrevet i
+kapittel 21.
+
+*Kodeliste*
+
+Se vedlegg B og i SSBs kodeverkssystem (KLASS) <https://www.ssb.no/klass/klassifikasjoner/560>
+
+**ARB_ANT_AGGR -- Antall arbeidsforhold i samme virksomhet som er
+aggregert**
+
+Variabelen viser antall arbeidsforhold i samme virksomhet som er
+aggregert, slik at person og virksomhet er unikt indentifiserende for
+hver observasjon. Dersom egenskapene til arbeidsforholdene er ulike
+(slik som f.eks. yrke) velges verdien fra arbeidsforholdet med høyest
+avtalt arbeidstid. Informasjon om bl.a. avtalt stillingsprosent, avtalt
+arbeidstid og lønn summeres.
+
+**ARB_KOMM_NR -- Arbeidsstedskommune**
+
+Variabelen viser arbeidsstedskommune. Variabelen hentes fra SSBs
+Virksomhets- og foretaksregister (se omtale i kapittel 3.3) og angir
+hvilken kommune virksomheten som en person arbeider i er lokalisert. For
+blant annet sjøfolk, ansatte i forsvaret og vernepliktige settes
+arbeidssted lik bostedskommune, se mer informasjon i kapittel 22.2 og
+vedlegg D.  
+
+Se artikkel med informasjon om [endringer i de regionale inndelingene](https://www.ssb.no/offentlig-sektor/kommunekatalog/endringer-i-de-regionale-inndelingene).
+
+*Kodelister i SSBs kodeverkssystem (KLASS):*
+
+Standard for kommuneinndeling:
+<https://www.ssb.no/klass/klassifikasjoner/131>
+
+Standard for regionale spesialkoder:
+<https://www.ssb.no/klass/klassifikasjoner/4>
+
+**ARB_GRKRETS -- Arbeidsstedsgrunnkrets**
+
+Variabelen viser arbeidsstedsgrunnkrets. Variabelen hentes fra SSBs
+Virksomhets- og foretaksregister (se omtale i kapittel 3.3) og angir
+hvilken grunnkrets virksomheten som en person arbeider i er lokalisert.
+Se mer informasjon i kapittel 22.3.
+
+*Kodelister i SSBs kodeverkssystem (KLASS):*
+
+Standard for delområde- og grunnkretsinndeling:
+<https://www.ssb.no/klass/klassifikasjoner/1>
+
+**ARB_ARBMARK_STATUS - Arbeidsmarkedsstatus**
+
+Variabelen viser status på arbeidsmarkedet i referanseuken.
+
+*Kodeliste:*
+
+    0 = utenfor arbeidsstyrken (kun på filen for registerbasert
+        sysselsettingsstatistikk)
+
+    1 = Lønnstakere
+
+    2 = Selvstendige (kun på filen for registerbasert
+        sysselsettingsstatistikk, se nedenfor)
+
+    3 = Helt ledige
+
+    4 = Ikke lønnstakere
+
+    9 = ikke-relevante arbeidsforhold
+
+**Lønnstakere** -- personer/arbeidsforhold som inngår i sysselsetting.
+
+**Selvstendig næringsdrivende** er ikke med på den klargjorte filen for
+arbeidsmarked og lønn (se omtale i kapittel 23), men er med på filen for
+registerbasert sysselsettingsstatistikk som lages årlig med november som
+referansetidspunkt (se omtale i del 4).
+
+**Helt ledige** er registrerte ledige fra NAVs Arena-register.
+Sistnevnte vil kunne gi avvik til arbeidsledighetstallene fra NAV av tre
+grunner: 1) a-ordningen teller kun i referanseuka hver måned (som nesten
+alltid er 3. uka i måneden), mens NAV teller (i hovedsak) en dag mot
+slutten av måneden, og 2) personer som er både lønnstakere og ledige i
+referanseuka regnes som lønnstakere, og 3) helt permitterte under 90
+dager regnes også som lønnstakere, mens NAV regnes disse som helt
+ledige. Siste punkt har først og fremst betydning i 2020 og 2021.
+
+**Ikke lønnstakere** er bosatte personer som er 15 år og eldre i slutten
+av statistikkmåneden, som hverken er lønnstakere eller helt ledige.
+Dette er personer som er utenfor arbeidsmarkedet, f.eks. studenter,
+uføre, pensjonister, osv. som ikke utfører noe arbeid.
+
+**Ikke relevante arbeidsforhold** er arbeidsforhold som er vurdert til å
+være ikke aktive i statistikkperioden. Dette vil kunne gjelde
+sesongarbeidere som ikke har utført arbeid i referansemåneden (og derfor
+ikke har fått lønn), der det (feilaktig) ikke er meldt sluttdato på
+opphørte arbeidsforhold, og tilfeller der personer feilaktig har blitt
+rapportert med aktivt arbeidsforhold (f.eks. personer på vikarlister som
+ikke har utført arbeid i perioden).
+
+Se mer informasjon i kapittel 19 om klassifisering av sysselsetting, og
+kapittel 22 hvor variabelen utledes.
+
+***Kodeliste:***
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/161>
+
+**ARB_GRUPPE -- avlønningstype\
+**Variabelen sier hvordan månedslønn er beregnet, basert på om time-
+eller fastlønnen er størst i statistikkmåneden. Se mer informasjon i
+kapittel 21.
+
+**ARB_HOVEDARBEID -- Hoved- eller biarbeidsforhold**
+
+Variabelen viser om arbeidsforholdet er hoved- eller biarbeidsforhold
+eller person uten jobb. Personer med flere arbeidsforhold i referanseuka
+vil få ett merket som hovedarbeidsforhold, mens øvrige blir
+biarbeidsforhold.
+
+Dersom arbeidsforholdet ikke er klassifisert som sysselsetting (se
+kapittel 19) settes arb_hovedarbeid=0 (dvs. ingen arbeidsforhold).
+
+Se mer informasjon i kapittel 21.5.
+
+*Kodeliste:*
+
+    0 = Ingen arbeidsforhold
+
+    1 = Hovedarbeidsforhold
+
+    2 = Biarbeidsforhold
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/164>
+
+**ARB_KILDE -- Kilde for arbeidsforholdet**
+
+Variabelen viser kilde for arbeidsforholdet i a-meldingen. Denne
+variabelen forteller om arbeidsforholdet er innrapportert gjennom
+a-meldingen, imputert fra forrige måned, hentet fra Oppdrags- og
+arbeidsforholdsregisteret (OAR) eller Vernepliktsregisteret eller om det
+kun er innrapportert lønn (dvs. «fiktivt» arbeidsforhold). 
+
+*Kodesliste:*
+
+  ------------------------------------------------------------------------
+  -1                  =          Ugyldig kode
+  
+  -2                  =          Uoppgitt kode
+
+  SFU med lonn        =          SFU, med lønn i a-melding
+
+  a-melding t         =          a-meldingen t
+
+  a-melding t og sfu  =          a-melding i t og finnes i SFU
+
+  a-melding t-1       =          a-melding t-1 og lønn i a-melding t
+
+  a-melding t-1 og    =          a-melding i t-1 og lønn i a-melding t og
+  sfu                            finnes i SFU
+
+  fiktivt             =          fiktivt, kun lønn i a-melding
+
+  sfu uten lonn       =          SFU, uten lønn i a-melding
+
+  stat-enhet t-1      =          basis statistikkenhet imputert fra t-1
+
+  vernepl             =          Vernepliktsregisteret
+  ------------------------------------------------------------------------
+
+SFU=sentralskattekontoret for utenlandssaker = gammelt navn. Nå heter
+det Oppdrags- og arbeidsforholdsregisteret (OAR).
+
+«a-melding t» betyr f.eks. det er rapportert arbeidsforhold (jobb) og
+lønn i statistikkmåneden.
+
+«a-melding t-1» betyr at det er rapportert lønn i statistikkmåneden
+(måned t), men ikke noe arbeidsforhold i måned t, og arbeidsforholdet er
+hentet fra måneden før (måned t-1).
+
+Se bl.a. kapittel 9 (Knytting mellom lønns- og arbeidsforhold) og 10.1
+(Oppdrags- og arbeidsforholdsregisteret (OAR)).
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/173>
+
+**ARB_START -- Startdato for arbeidsforholdet**
+
+Variabelen viser startdato for arbeidsforholdet. Startdato er datoen
+arbeidsforholdet starter ifølge arbeidsavtalen.  
+
+Se mer informasjon om
+[startdato i veiledningen for a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/startdato-pa-arbeidsforhold/).
+
+**ARB_SLUTT -- Sluttdato for arbeidsforholdet**
+
+Variabelen viser sluttdato for arbeidsforholdet. Sluttdato er datoen
+arbeidsforholdet og arbeidsplikten opphører. 
+
+Se mer informasjon om
+[sluttdato i veiledningen for a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/sluttdato-pa-arbeidsforhold/).
+
+Det er noen justeringer av stoppdato for arbeidsforholdet, se mer
+informasjon i kapittel 11.1.
+
+**ARB_SYSS -- Grunnlag for sysselsettingsklassifikasjon**
+
+Variabelen viser om arbeidsforholdet skal regnes som sysselsetting eller
+ikke. Denne variabelen danner grunnlaget for variabelen
+ARB_ARBMARK_STATUS. 
+
+*Kodeliste:*
+
+  ------------------------------------------------------------------------
+  1a       =        M/lønn, ikke-fiktive
+  
+  1b       =        M/lønn, fiktive
+
+  2a       =        U/lønn, NAV-ytelser
+
+  2b       =        U/lønn, permittert \< 90d
+
+  2c       =        U/lønn, permisjon \< 90d
+
+  3a       =        U/lønn, ny startdato og lønn i t+1
+
+  3b       =        Kun lønn t-1 og t+1
+
+  4a       =        U/lønn og fravær, ordinært
+
+  4b       =        U/lønn og fravær, frilanser
+
+  5        =        Annet
+
+  5b       =        Annet, ikke sysselsetting (nedjustert til avtalt
+                    stillingsprosent = 0 etter arbeidstidsopplegget)
+  ------------------------------------------------------------------------
+
+Se mer informasjon i kapittel 19 (Klassifisering av arbeidsforhold og
+sysselsatte).
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/165>
+
+**ARB_TID_ORDNING -- Arbeidstidsordning**
+
+Variabelen viser arbeidstidsordning (skift- og turnusordning) som er en
+avtale om når på døgnet arbeidet skal skje og eventuelt variasjoner i
+denne over en periode.
+
+*Kodeliste:*
+
+  --------------------------------------------------------------------------
+  -1            =          Ugyldig kode
+  
+  -2            =          Uoppgitt kode
+
+  dogn355       =          Døgnkontinuerlig skiftarbeid og turnusarbeid -
+                           35,5 t/u
+
+  helkont336    =          Helkontinuerlig skiftarbeid og andre ordninger
+                           med 33,6 t/u
+
+  offshore336   =          Arbeid offshore - 33,6 t/u
+
+  skift365      =          Skiftarbeid - 36,5 t/u
+
+  andre_skift   =          Andre skift
+
+  ikke_skift    =          Ikke skift
+  --------------------------------------------------------------------------
+
+Se mer informasjon om
+[arbeidstidsordning i veiledningen for a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/arbeidstidsordning/).
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/185>
+
+**ARB_TYPE -- Type arbeidsforhold i a-meldingen**
+
+Variabelen viser type arbeidsforhold i a-meldingen. Det er fire typer
+arbeidsforhold i a-meldingen som blant annet påvirker hvilke
+opplysninger som skal rapporteres.
+
+*Kodeliste:*
+
+  ----------------------------------------------------------------------------
+  -1                =          Ugyldig kode
+  
+  -2                =          Uoppgitt kode
+
+  forenklet_oppgj   =          Forenklet oppgjørsordning
+
+  ikke_ansettelse   =          Pensjoner og andre typer ytelser, uten
+                               ansettelsesforhold
+
+  maritim           =          Maritimt arbeidsforhold
+
+  normal            =          Ordinært arbeidsforhold
+
+  oppdrag           =          Frilansere/oppdragstakere og honorarpersoner
+  ----------------------------------------------------------------------------
+
+Se mer informasjon om [arbeidsforholdstype i
+veiledningen for a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/arbeidstidsordning/) under arbeidsforhold -- type arbeidsforhold.
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/180>
+
+**ARB_YRKE -- Innrapportert yrkeskode (STYRK98)**
+
+Variabelen viser yrkeskode som bestemmes av arbeidstakerens konkrete
+arbeidsoppgaver, ikke utdanningsnivå eller stillingstype. Det er opp til
+arbeidsgiver å vurdere hvilken yrkeskode som er riktig. Det er yrkeskode
+basert på STYRK98 som rapporteres.
+
+STYRK98 er en 7-siffret kode, se kodeliste i KLASS:
+<https://www.ssb.no/klass/klassifikasjoner/145>
+
+Mer informasjon om
+[yrkeskode i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/yrkeskode/).
+
+**ARB_YRKE_STYRK08 -- Innrapportert yrkeskode omkodet til STYRK08**
+
+Dette er innrapportert yrkeskode basert på STYRK98 omkodet til en nyere
+standard fra 2008, STYRK08.
+
+STYRK08 er en 4-siffret kode, se kodeliste i SSBs kodeverkssystem (KLASS):
+<https://www.ssb.no/klass/klassifikasjoner/7/>
+
+**ARB_LONNSANSIENNITET -- Lønnsansiennitet**
+
+Dato for lønnsansiennitet for ansatte i stat og kommune som er underlagt
+hovedtariffavtalen.
+
+Det er usikker kvalitet på denne variabelen og den må benyttes med
+forsiktighet.
+
+Se informasjon om
+[lønnsansiennitet i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/lonnsansiennitet/).
+
+**ARB_LONNSENDRINGSDATO -- Dato for sist lønnsendring**
+
+Dato for sist lønnsendring. Variabelen angir faste lønnsendringer etter
+sentrale avtaler, lokale avtaler eller personlige lønnsendringer.
+
+Det er usikker kvalitet på denne variabelen og den må benyttes med
+forsiktighet.
+
+Se informasjon om [siste
+lønnsendringsdato i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/siste-lonnsendringsdato/).
+
+**ARB_LONNSTRINN - Lønnstrinn**
+
+Lønnstrinn for ansatte med avtalt lønn etter lønnstrinn.
+
+Kvaliteten for staten anses som rimelig god. For andre områder anses
+kvaliteten som mer usikker og må vurderes nøye før anvendelse.
+
+Se informasjon om
+[lønnstrinn i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/lonnstrinn/).
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/192>
+
+**ARB_ANSETTELSESFORM - Ansettelsesform**
+
+Ansettelsesform angir om man er fast eller midlertidig ansatt.
+
+Fast ansatt vil si at arbeidsforholdet er løpende og
+tidsubegrenset. Midlertidig ansatt vil si at arbeidsforholdet er avtalt
+for en bestemt tidsperiode eller for et bestemt arbeid, og skal være
+avtalt i kontrakten.
+
+*Kodeliste:*
+
+    Fast = fast ansettelse
+
+    Midlertidig = midlertidig ansettelse
+
+Se informasjon om
+[ansettelsesform i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/ansettelsesform/).
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/568>
+
+Informasjon om kvalitet på variabelen i notatet [nye variable i
+a-ordningen: Ansettelsesform og årsak til
+sluttdato](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/nye-variabler-i-a-ordningen-ansettelsesform-og-arsak-til-sluttdato)
+(notater 2022/5).
+
+Dette er ny variabel fra og med januar 2021.
+
+**ARB_SLUTTAARSAK -- Årsak til sluttdato**
+
+Angir årsak til at arbeidsforholdet er avsluttet. Årsak til sluttdato
+skal oppgis når det settes en sluttdato for arbeidsforholdet.
+
+*Kodeliste:*
+
+  -----------------------------------------------------------------------------------
+  arbfor_feilrapp             =        Arbeidsforholdet skulle aldri vært    
+                                       rapportert                            
+  
+  arbgiv_sagt_opp_arbtak      =        Arbeidsgiver har sagt opp             
+                                       arbeidstaker                          
+
+  arbtak_selv_sagt_opp        =        Arbeidstaker har sagt opp selv        
+
+  bytt_lonnssyst_regnskap     =        Byttet lønnssystem eller              
+                                       regnskapsfører                        
+
+  endr_org_strukt_int_bytte   =        Endring i organisasjonsstruktur       
+                                       eller byttet jobb internt             
+
+  utlopt_kontr_engasj_vikar   =        Kontrakt, engasjement eller           
+                                       vikariat er utløpt                    
+  -----------------------------------------------------------------------------------
+
+Se informasjon om [årsak til
+sluttdato i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/arsak-til-sluttdato/).
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/569>
+
+Informasjon om kvalitet på variabelen i notatet [nye variable i
+a-ordningen: Ansettelsesform og årsak til
+sluttdato](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/nye-variabler-i-a-ordningen-ansettelsesform-og-arsak-til-sluttdato)
+(notater 2022/5).
+
+Dette er ny variabel fra og med januar 2021.
+
+## Foretaksopplysninger {#foretaksopplysninger .list-paragraph}
+
+**FRTK_ANT_ANSATTE -- Antall ansatte fra sist situasjonsuttak i VoF**
+
+Antall ansatte i foretaket fra måneden før. Opplysningen er hentet fra
+SSBs Virksomhets- og foretaksregister (VoF) som igjen har fått tallet
+fra den klargjorte filen for arbeidsmarked og lønn.
+
+**FRTK_ANT_INNTMOT -- Antall innrapporterte inntektsmottakere i
+foretaket**
+
+Variabelen viser antall innrapporterte inntektsmottakere (personer) i
+foretaket.
+
+**FRTK_KOMM_NR -- Foretakets kommunenummer**
+
+Variabelen angir hvilken kommune foretaket ligger i og er en del av
+foretaks
+[forretningsadresse](https://www.ssb.no/a/metadata/conceptvariable/vardok/1485/nb).
+Opplysningen er hentet fra SSBs Virksomhets- og foretaksregister (VoF).
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/131>
+
+**FRTK_ID_SSB -- Organisasjonsnummer foretak**
+
+Variabelen viser
+[organisasjonsnummer](https://www.ssb.no/a/metadata/conceptvariable/vardok/1350/nb)
+foretak (nivået over virksomhet/underenhet) eller S-nummer
+(statistikknummer). Variabelen angir foretaket som personen er knyttet
+til gjennom arbeidsforholdet.
+
+Privatpersoner som rapporterer a-melding skal bruke fødselsnummer for å
+identifisere opplysningspliktig/foretak. Fødselsnummer blir erstattet av
+s-nummer (statistikknummer) i produksjonssystemet i SSB.
+
+Variabelen erstattes av et løpenummer ved utlevering av data til
+forskere.
+
+**FRTK_ID_TYPE_SSB -- Type identifikator**
+
+Variabelen angir hvilken type identifikator og regel brukt for
+FRTK_ID_SSB.
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/166>
+
+**FRTK_NACE1_SN07 -- Foretaks hovednæring**
+
+Variabelen angir foretaks hovednæring. Opplysningen er hentet fra SSBs
+Virksomhets- og foretaksregister (VoF).
+
+Næring er en beskrivelse av en enhets aktivitet og tildeles på grunnlag
+av den virksomhet/art/bransje enheten i hovedsak tilhører. Næring
+fastsettes etter gjeldende Standard for næringsgruppering versjon brukt
+fra 2009.
+
+Næring er kodet etter standard for næringsgruppering (SN), se kodeliste
+i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/6>
+
+(se tidligere versjoner under arkfanen «Alle versjoner»).
+
+SN2007 er betegnelsen på standard for næringsgruppering som gjelder fra
+1.1.2008.
+
+**FRTK_ORG_FORM -- Foretaks organisasjonsform**
+
+Foretakets organisasjonsform. Opplysningen er hentet fra SSBs
+Virksomhets- og foretaksregister (VoF).
+
+Organisasjonsform er den offisielle betegnelsen på hvordan virksomheten
+er organisert og hvilke bestemmelser overfor ansvar, risiko, skatt,
+rettigheter og plikter som er gjeldende. Organisasjonsform fastsettes
+ved registrering av ny enhet, og angir organisasjonsform for juridiske
+enheter. En enhet kan som hovedregel ikke endre organisasjonsform uten å
+gå veien om sletting og ny stiftelse.
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/35>
+
+**FRTK_REG_TYPE -- Foretakets registerenhetstype**
+
+Registerenhetstype benyttes blant annet for å skille mellom
+envirksomhets- og flervirksomhetsforetak og mellom forskjellige typer
+foretak og virksomheter (underenheter). Opplysningen er hentet fra SSBs
+Virksomhets- og foretaksregister (VoF).
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/322>
+
+**FRTK_SEKTOR_2014 -- Foretakets sektorkode**
+
+Variabelen angir foretakets institusjonelle sektorkode. Institusjonell
+sektorgruppering er en statistisk klassifikasjon. Økonomien deles inn i
+sektorer på basis av en gruppering av ensartede institusjonelle enheter.
+Institusjonelle enheter er definert som økonomiske beslutningssentra som
+enten kan være en juridisk enhet eller en husholdning. Denne
+sektorgrupperingen er basert på systemer utviklet av FN (System of
+National Accounts-SNA93) og EU (European System of National
+Accounts-ESA95).
+
+I statistikkbanktabellene benyttes ofte følgende inndeling:
+
+1.  **Statlig forvaltning (statsforvaltningen)**: omfatter stats- og
+    trygdeforvaltningen. Helseforetakene er inkludert. *Sektorkode
+    6100.*
+
+2.  **Kommunal- og fylkeskommunal forvaltning (kommuneforvaltningen)**:
+    omfatter kommunal- og fylkeskommunal forvaltning. Består av
+    virksomheter som ikke er næringsrettet, dvs. vei, skole, kultur mv.
+    *Sektorkode 6500.*
+
+3.  **Privat sektor:** omfatter det som ikke er med i stats- eller
+    kommuneforvaltningen, dvs. privat næringsvirksomhet unntatt
+    offentlig kontrollerte foretak.
+
+4.  **Offentlig foretak**: omfatter foretak som ikke er med i stats-
+    eller kommuneforvaltningen, men som er offentlig kontrollerte
+    foretak. Det gjelder statens forretningsdrift samt foretak hvor det
+    offentlige kontrollerer mer enn 50 prosent av aksjekapitalen.
+    Eksempler på slike foretak per mars 2020: statens forretningsdrift
+    (statens kartverk, de regionale sykehusapotekene, mv.), statlige
+    eide aksjeselskaper mv (Equinor, Statnett, Statkraft, Mesta,
+    Vinmonopolet, Telenor, mv), kommunale foretak med ubegrenset ansvar
+    (inkluderer kommunale foretak (KS) og interkommunale foretak (IKF)),
+    kommunalt eide aksjeselskap mv., Norges Bank, statlige
+    låneinstitusjoner mv.
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/39>
+
+**FRTK_STATUS -- Foretakets statuskode**
+
+Status er en kode som angir om enheten er slettet eller ikke. Juridiske
+enheter i privat sektor slettes ved at de selv melder om sletting til
+Brønnøysundregistrene. Enheter innen offentlig sektor slettes av SSB
+etter melding fra/ kontakt med enheten. Bedrifter/virksomheter slettes
+av Enhetsregisteret, NAV Aa-registeret og SSB. Opplysningen er hentet
+fra SSBs Virksomhets- og foretaksregister (VoF).
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/325>
+
+**FRTK_UNDERSEKTOR_2014 -- Foretakets undersektor**
+
+Foretakets undersektor. Opplysningen er hentet fra SSBs Virksomhets- og
+foretaksregister (VoF).
+
+Denne variabelen må benyttes for å f.eks. kunne skille kommunal- fra
+fylkeskommunal forvaltning. Kommunal forvaltning = sektorkode 6500 og
+undersektor 006. Fylkeskommunal forvaltning = sektorkode 6500 og
+undersektor 007.
+
+**FRTK_KILDESYSTEM -- Leveransekildesystem**
+
+Angir type kildesystem/tjeneste (lønns- og personalsystem, direkte
+registrering i Altinn (A01/A10) eller forenklet a-melding (A04/A05)) som er
+benyttet for å rapportere a-meldingen.
+
+Hvis flere kilesystem er benyttet i samme måned velges et tilfeldig som
+ikke er direkte registrering i Altinn (A01).
+
+Variabelen benyttes kun til kontrollformål.
+
+
+**FRTK_ANT_KILDESYSTEM -- Antall leveransekildesystem**
+
+Variabelen angir antall kildesystem som er benyttet i et foretak.
+
+Variabelen benyttes kun til kontrollformål.
+
+## Nivå under toppnivå i VoF {#nivå-under-toppnivå-i-vof .list-paragraph}
+
+Se mer informasjon i kapittel 16.
+
+**NUTOPP_ID_SSB -- Organisasjonsnummer for nest øverste
+organisasjonsledd**
+
+Variabelen angir øverste organisasjonsledd ved flerleddet struktur i VoF
+i offentlig forvaltning, som personen er knyttet til gjennom
+arbeidsforholdet.
+
+**NUTOPP_ORG_FORM -- Organisasjonsform for nest øverste
+organisasjonsledd**
+
+Variabelen viser organisasjonsform for nest øverste organisasjonsledd.
+
+Kodeliste i KLASS: <https://www.ssb.no/klass/klassifikasjoner/35>
+
+## Toppnivå i VoF {#toppnivå-i-vof .list-paragraph}
+
+Se mer informasjon i kapittel 16.
+
+**TOPP_ID_SSB --Organisasjonsnummer for øverste organisasjonsledd**
+
+Variabelen angir øverste nivå i VoF i offentlig forvaltning, som
+personen er knyttet til gjennom arbeidsforholdet.
+
+**TOPP_ORG_FORM -- Organisasjonsform øverste organisasjonsledd**
+
+Variabelen viser organisasjonsform for øverste organisasjonsledd.
+
+Kodeliste i KLASS: <https://www.ssb.no/klass/klassifikasjoner/35>
+
+## Opplysninger om lønn {#opplysninger-om-lønn .list-paragraph}
+
+Alle lønnsbegrepene er før skatt, dvs. bruttolønn. På SSBs
+statistikkfiler benyttes postfiks «L2» på en del variable. I
+variabellista til
+[microdata.no](https://microdata.no/discovery/datastore/?datastore=no.ssb.fdb&search=arblonn)
+benyttes postfiks «INNRAPP» istedenfor «L2». Variablene som er
+tilgjengelig i microdata.no fra statistikken *antall arbeidsforhold og
+lønn* har i tillegg prefiks «ARBLONN».
+
+For lønnsvariablene kan vi skille mellom to typer variabler med ulik
+grad av bearbeiding:
+
+1.  Variabler med opplysninger om innrapporterte/utbetalte størrelser
+
+2.  Variabler til statistikkformål som er beregnet fra innrapporterte
+    størrelser
+
+**Variabler knyttet til innrapporterte opplysninger om lønn:**
+
+**LONN_FAST_L2 -- Innrapportert fastlønn**
+
+Variabelen viser innrapportert avtalt fastlønn utbetalt i
+statistikkmåneden. Innrapportert honorar, akkord-, prosent- og
+provisjonslønn inngår også. Variabelen har kun gjennomgått noen
+automatiske kontroller og korreksjoner. 
+
+Mer informasjon om
+[fastlønn i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/fastlonn/).
+
+Mer informasjon om [honorar, akkord, prosent og
+provisjonslønn i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/honorar-akkord-prosent-eller-provisjonslonn/).
+
+**LONN_FAST -- Fastlønn**
+
+Variabelen viser avtalt fastlønn utbetalt i statistikkmåneden. Honorar,
+akkord-, prosent- og provisjonslønn inngår også. Variabelen
+har gjennomgått vårt produksjonsløp og kan derfor være forskjellig
+fra innrapportert verdi (LONN_FAST_L2). I tillegg til automatiske
+kontroller og korreksjoner er beløpet blant annet korrigert for
+etterbetalinger (se kapittel 21.3).
+
+**LONN_FAST_TILLEGG_L2 -- Innrapporterte faste tillegg**
+
+Variabelen viser innrapportert faste tillegg som
+kvalifikasjonstillegg/kompetansetillegg og andre faste personlige
+tillegg. Dette gjelder bl.a. b-tillegg, stabiliseringstillegg, selektivt
+tillegg for sykepleiere, tillegg for ansvarsvakter, fagansvar og
+lederansvar og kvalifikasjons-/kompetansetillegg.
+
+Variabelen har kun gjennomgått noen automatiske kontroller og
+korreksjoner. 
+
+Mer informasjon om [faste
+tillegg i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/faste-tillegg/).
+
+**LONN_FAST_TILLEGG -- Faste tillegg**
+
+Variabelen viser faste tillegg som
+kvalifikasjonstillegg/kompetansetillegg og andre faste personlige
+tillegg. Dette gjelder bl.a. b-tillegg, stabiliseringstillegg, selektivt
+tillegg for sykepleiere, tillegg for ansvarsvakter, fagansvar og
+lederansvar og kvalifikasjons-/kompetansetillegg.
+
+Denne variabelen har gjennomgått vårt produksjonsløp og kan derfor være
+forskjellig fra innrapportert verdi (LONN_FAST_TILLEGG_L2). Blant annet
+pga. korrigering for etterbetalinger (se kapittel 21.3).
+
+**LONN_TIME_L2 -- Innrapportert timelønn**
+
+Variabelen viser innrapportert timelønn, og omfatter lønn for ansatte
+med avtalt timelønnssats. Variabelen har kun gjennomgått noen
+automatiske kontroller og korreksjoner.
+
+Mer informasjon om
+[timelønn i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/timelonn/).
+
+
+**LONN_TIME -- Timelønn**
+
+Variabelen viser timelønn, og omfatter lønn for ansatte med avtalt
+timelønnssats. Denne variabelen har gjennomgått vårt produksjonsløp og
+kan derfor være forskjellig fra innrapportert verdi (LONN_TIME_L2). I
+tillegg til automatiske kontroller og korreksjoner er beløpet blant
+annet korrigert for etterbetalinger (se kapittel 21.3).
+
+**LONN_TIME_ANTALL_L2 -- Innrapportert timeantall for timelønn**
+
+Variabelen viser innrapportert timeantall for timelønn og omfatter
+antall timer som ligger til grunn for utbetalt timelønn
+(LONN_TIME_L2). Variabelen har kun gjennomgått noen automatiske
+kontroller og korreksjoner.
+
+**LONN_TIME_ANTALL -- Timeantall for timelønn**
+
+Variabelen viser timeantall for timelønn og omfatter antall timer som
+ligger til grunn for utbetalt timelønn (LONN_TIME). Denne variabelen har
+gjennomgått vårt produksjonsløp og kan derfor være forskjellig fra
+innrapportert verdi (LONN_TIME_ANTALL_L2). I tillegg til automatiske
+kontroller og korreksjoner kan verdien blant annet være korrigert pga.
+ekstremverdier.
+
+**LONN_BONUS -- Innrapportert bonus**
+
+Variabelen viser innrapportert bonus utbetalt i statistikkmåneden. Bonus
+omfatter kontante ytelser som ofte ikke er knyttet til bestemte
+arbeidsoppgaver, og utbetalingene kommer ujevnt med hensyn til perioden
+de er opptjent i eller gjelder for. Variabelen har kun gjennomgått noen
+automatiske kontroller og korreksjoner. 
+
+Mer informasjon om
+[bonus i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/bonus/).
+
+**LONN_BONUS_HIA -- Samlet innrapportert bonus hittil i år**
+
+Variabelen viser summen av innrapportert bonus (LONN_BONUS) for
+perioden 1. januar til tellingstidspunktet.
+
+**LONN_UREGTIL_ARBEIDET -- Innrapportert uregelmessige tillegg for
+arbeidet tid**
+
+Variabelen viser innrapportert uregelmessige tillegg for arbeidet tid,
+som omfatter tillegg som er uregelmessige og knyttet til stilling, yrke,
+arbeidsmengde, arbeidstid eller arbeidssted, som skifttillegg og
+turnustillegg. Det regnes som arbeidet tid så lenge den ansatte må
+oppholde seg på arbeidsstedet. Dette gjelder selv om det ikke er utført
+noen arbeidsoppgaver. Variabelen har kun gjennomgått noen automatiske
+kontroller og korreksjoner.
+
+Mer informasjon om [uregelmessige tillegg knyttet til arbeidet
+tid i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/uregelmessige-tillegg-knyttet-til-arbeidet-tid/).
+
+**LONN_UREGTIL_UARBEIDET -- Innrapportert uregelmessige tillegg for ikke
+arbeidet tid**
+
+Variabelen viser innrapportert uregelmessige tillegg for ikke-arbeidet
+tid, som omfatter tillegg som er uregelmessige og der den ansatte ikke
+er tilstede på arbeidsplassen, som vakttillegg og
+utkallingstillegg. Variabelen har kun gjennomgått noen automatiske
+kontroller og korreksjoner.
+
+Mer informasjon om [uregelmessige tillegg knyttet til ikke-arbeidet
+tid i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/uregelmessige-tillegg-knyttet-til-ikke-arbeidet-tid/).
+
+**LONN_HELLIGDAGSTILLEGG -- Innrapportert helligdagstillegg**
+
+Variabelen viser innrapportert helligdagstillegg som omfatter tillegg
+utover normal lønn for arbeid på faste og bevegelige
+helligdager. Variabelen har kun gjennomgått noen automatiske kontroller
+og korreksjoner.
+
+Mer informasjon om
+[helligdagstillegg i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/helligdagstillegg/).
+
+**LONN_UREGTIL -- Samlet innrapportert uregelmessige tillegg**
+
+Variabelen viser summen av innrapportert uregelmessige tillegg for
+arbeidet tid (LONN_UREGTIL_ARBEIDET) og ikke-arbeidet tid
+(LONN_UREGTIL_UARBEIDET), samt helligdagstillegg
+(LONN_HELLIGDAGSTILLEGG).
+
+**LONN_UREGTIL_HIA -- Samlet innrapportert uregelmessige tillegg hittil
+i år**
+
+Variabelen viser summen av innrapportert uregelmessige tillegg
+(LONN_UREGTIL) for perioden 1. januar til tellingstidspunktet.
+
+**LONN_OVERTID -- Innrapportert overtidsgodtgjørelse**
+
+Variabelen viser innrapportert overtidsgodtgjørelse som omfatter kontant
+godtgjørelse for arbeid utover alminnelig arbeidstid etter
+arbeidsmiljøloven, eller for arbeid innenfor rammene for overtid i
+tariffavtale eller arbeidsavtale. Denne lønnsarten er ikke inkludert i
+månedslønn (LONN_EKV_IALT_PUB). Variabelen har kun gjennomgått noen
+automatiske kontroller og korreksjoner.
+
+Mer informasjon om
+[overtidsgodtgjørelse i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/overtidsgodtgjorelse/).
+
+**LONN_OVERTID_HIA -- Samlet innrapportert overtidsgodtgjørelse hittil i
+år**
+
+Variabelen viser summen av innrapportert overtidsgodtgjørelse
+(LONN_OVERTID) for perioden 1. januar til tellingstidspunktet.
+
+**LONN_OVERTID_TIMER -- Innrapportert timeantall for
+overtidsgodtgjørelse**
+
+Variabelen viser innrapportert timeantall for overtidsgodtgjørelse
+(LONN_OVERTID). Overtidstimer omfatter kun de timene som det er betalt
+godtgjørelse for, ikke timer som går til avspasering. I enkelte næringer
+er det ikke uvanlig at overtidstimer blir godtgjort med både betaling og
+tid til avspasering. I slike tilfeller rapporteres alle timene og den
+kontante ytelsen rapporteres under overtidsgodtgjørelse. Variabelen har
+kun gjennomgått noen automatiske kontroller og korreksjoner.
+
+**LONN_FERIE -- Innrapportert feriepenger**
+
+Variabelen viser innrapportert feriepenger som omfatter alle kontante
+ytelser for ferie, uavhengig om beregningen er basert på prosentsats
+eller som et ferietillegg til ordinær fastlønn. Variabelen har kun
+gjennomgått noen automatiske kontroller og korreksjoner.
+
+Mer informasjon om
+[feriepenger i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/feriepenger/).
+
+**LONN_FERIE_TREKK -- Innrapportert trekk i lønn for ferie**
+
+Variabelen viser innrapportert trekk i lønn for ferie. Variabelen har
+kun gjennomgått noen automatiske kontroller og korreksjoner. 
+
+Mer informasjon om [trekk i lønn for
+ferie i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/trekk-i-lonn-for-ferie/).
+
+**LONN_SLUTTVEDERLAG -- Innrapportert sluttvederlag**
+
+Variabelen viser innrapportert sluttvederlag og omfatter kontantytelser
+som gir økonomisk kompensasjon til arbeidstakere som ufrivillig mister
+jobben ved avskjed, oppsigelse eller avtale med arbeidsgiver. Variabelen
+har kun gjennomgått noen automatiske kontroller og korreksjoner.
+
+Mer informasjon om
+[sluttvederlag veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/sluttvederlag/).
+
+**LONN_ANNEN_BET -- Innrapportert annen betaling**
+
+Variabelen viser innrapportert annen lønn og kontante ytelser som ikke
+hører hjemme under øvrige lønnsarter. Variabelen har kun gjennomgått
+noen automatiske kontroller og korreksjoner.
+
+Mer informasjon om [andre kontante
+lønnsytelser i veiledningen til a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/andre-lonnsytelser/).
+
+**LONN_KONTANT -- Innrapportert kontantlønn**
+
+Variabelen viser innrapportert kontantlønn som omfatter alle kontante
+ytelser fra arbeidsgiver. Herunder utbetalt avtalt månedslønn i form av
+fastlønn (LONN_FAST_L2) og/eller timelønn (LONN_TIME_L2), faste tillegg
+(LONN_FAST_TILLEGG_L2), uregelmessige tillegg (LONN_UREGTIL), bonus
+(LONN_BONUS), overtidsgodtgjørelse (LONN_OVERTID), sluttvederlag
+(LONN_SLUTTVEDERLAG) og andre kontante ytelser ikke spesifisert her
+(LONN_ANNEN_BET). Variabelen har kun gjennomgått noen automatiske
+kontroller og korreksjoner.
+
+**LONN_NATURAL -- Innrapportert naturallønn (SKD)**
+
+Variabelen viser naturallønn som omfatter skatte- og avgiftspliktige
+naturalytelser arbeidstaker mottar i arbeidsforhold. Variabelen omfatter
+kun rapporteringspliktige beløp. Variabelen har kun gjennomgått noen
+automatiske kontroller og korreksjoner.
+
+**LONN_GODTGJORELSE -- Innrapportert utgiftsgodtgjørelse (SKD)**
+
+Variabelen viser innrapportert utgiftsgodtgjørelse (SKD) som omfatter
+godtgjørelser til dekning av utgifter mottakeren har under utføring av
+arbeid, oppdrag eller verv. F.eks. utgiftsgodtgjørelser til overnatting,
+kost og bil. Variabelen har kun gjennomgått noen automatiske kontroller
+og korreksjoner.
+
+**LONN_SYSS_L2 -- Lønn som indikerer sysselsetting**
+
+Dette er en summering av innrapporterte lønnsvariabler som indikerer
+sysselsetting.
+
+Lønn som indikerer sysselsetting omfatter følgende lønnsbeskrivelser:
+
+-   timelønn
+
+-   fastlønn
+
+-   honorar, akkord, prosent og provisjon *(fra januar 2018)*
+
+-   lønn til privatpersoner for arbeid i hjemmet
+
+-   lønn for barnepass i barnets hjem
+
+-   bonus
+
+-   ikke-skattepliktig lønn fra utenlandsk diplomatisk el. konsulær
+    stasjon
+
+-   styrehonorar og godtgjørelse i forbindelse med verv
+
+-   kommunal omsorgslønn og fosterhjemsgodtgjørelse
+
+-   kontantlønn utbetalt av veldedig eller allmennyttig institusjon
+    eller organisasjon
+
+-   lønn til utenlandsk artist
+
+-   annet («annet» er det som ikke naturlig hører hjemme i noen av de
+    andre lønnsytelsene, se [veiledningen for
+    a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/) 
+    for full oversikt over lønn og andre ytelser)
+
+Se mer informasjon i kapittel 19 om klassifisering av sysselsetting. 
+<br>
+<br>
+
+
+**Beregnede variabler knyttet til lønn:**
+
+**LONN_EKV_VEKT -- Ekvivalentvekt**
+
+Variabelen viser ekvivalentvekt (månedsverk) som brukes til å beregne
+gjennomsnittslønn per heltidsekvivalent. Lages slik:
+ARB_STILLINGSPST/100.
+
+**LONN_EKV -- Ekvivalentfaktor**
+
+Variabelen viser ekvivalentfaktor som brukes til å omregne lønn for
+deltidsansatte til heltidsekvivalent lønn. Beregnes ved den inverse av
+den avtalte stillingsprosenten: 100/ARB_STILLINGSPST.
+
+Se mer informasjon i kapittel 21.11
+
+**LONN_FMLONN -- Avtalt månedslønn før imputering**
+
+Variabelen viser beregnet avtalt månedslønn før imputering for ikke
+godkjente verdier. Avtalt månedslønn omfatter utbetalt avtalt lønn i
+form av fastlønn (LONN_FAST) eller timelønn (LONN_TIME) og faste
+personlige tillegg (LONN_FAST_TILLEGG). For jobber med utbetalt bonus,
+men uten fast- eller timelønn beregnes avtalt månedslønn fra utbetalt
+bonus i den aktuelle måneden (LONN_BONUS).
+
+Se mer informasjon i kapittel 21.11
+
+**LONN_EKV_FMLONN_PUB -- Heltidsekvivalent avtalt månedslønn**
+
+Variabelen viser beregnet avtalt månedslønn per heltidsekvivalent etter
+imputering for ikke godkjente verdier. Avtalt månedslønn omfatter
+utbetalt avtalt lønn i form av fastlønn (LONN_FAST) eller timelønn
+(LONN_TIME) og faste personlige tillegg (LONN_FAST_TILLEGG). For å kunne
+sammenligne lønn mellom hel- og deltidsansatte omregnes lønnen til de
+deltidsansatte til hva den ville vært hvis de jobbet heltid
+(heltidsekvivalent). Dette gjøres ved å benytte den avtalte
+stillingsprosenten til hver enkelt deltidsansatt som omregningsfaktor
+(LONN_EKV). LONN_IMP_STATUS identifiserer hvilke arbeidsforhold som har
+fått imputert avtalt månedslønn per heltidsekvivalent. 
+
+Se mer informasjon i kapittel 21.11 - 21.13.
+
+**LONN_EKV_IALT_PUB -- Heltidsekvivalent månedslønn (i alt)**
+
+Variabelen viser beregnet månedslønn (i alt) per heltidsekvivalent.
+Månedslønn omfatter avtalt månedslønn (LONN_EKV_FMLONN_PUB),
+uregelmessige tillegg (LONN_EKV_UREGTIL_PUB) og bonuser
+(LONN_EKV_BONUS_PUB). Overtidsgodtgjørelser (LONN_OVERTID) er ikke
+medregnet i månedslønn. For å kunne sammenligne lønn mellom hel- og
+deltidsansatte omregnes lønna til de deltidsansatte til hva den ville
+vært hvis de jobbet heltid (heltidsekvivalent). Dette gjøres ved å
+benytte den avtalte stillingsprosenten til hver enkelt deltidsansatt som
+omregningsfaktor (LONN_EKV).
+
+Se mer informasjon i kapittel 21.11 - 21.13.
+
+**LONN_EKV_BONUS_PUB -- Heltidsekvivalent bonus**
+
+Variabelen viser bonus per heltidsekvivalent. Det er et beregnet
+gjennomsnitt av innrapportert bonus per måned for perioden 1. januar til
+tellingstidspunktet (LONN_BONUS_HIA), der kun de månedene
+arbeidsforholdet er aktivt inngår (LONN_ANT_MND_HIA). For å kunne
+sammenligne beløp mellom hel- og deltidsansatte omregnes beløpet til de
+deltidsansatte til hva det ville vært hvis de jobbet heltid
+(heltidsekvivalent). Dette gjøres ved å benytte den avtalte
+stillingsprosenten til hver enkelt deltidsansatt som omregningsfaktor
+(LONN_EKV).
+
+Se mer informasjon i kapittel 21.11.
+
+**LONN_EKV_UREGTIL_PUB -- Heltidsekvivalent uregelmessige tillegg**
+
+Variabelen viser uregelmessige tillegg per heltidsekvivalent. Det er et
+beregnet gjennomsnitt av innrapportert uregelmessige tillegg per måned
+for perioden 1. januar til tellingstidspunktet (LONN_UREGTIL_HIA), der
+kun de månedene arbeidsforholdet er aktivt inngår
+(LONN_ANT_MND_HIA). For å kunne sammenligne beløp mellom hel- og
+deltidsansatte omregnes beløpet til de deltidsansatte til hva det ville
+vært hvis de jobbet heltid (heltidsekvivalent). Dette gjøres ved å
+benytte den avtalte stillingsprosenten til hver enkelt deltidsansatt som
+omregningsfaktor (LONN_EKV).
+
+Se mer informasjon i kapittel 21.11.
+
+**LONN_OVERTID_PUB -- Overtidsgodtgjørelse**
+
+Variabelen viser overtidsgodtgjørelse. Det er et beregnet gjennomsnitt
+av innrapportert overtidsgodtgjørelse (LONN_OVERTID_HIA) per måned over
+perioden 1. januar til tellingstidspunktet, der kun de månedene
+arbeidsforholdet er aktivt inngår (LONN_ANT_MND_HIA). Denne lønnsarten
+er ikke inkludert i beregnet månedslønn (LONN_EKV_IALT_PUB).
+
+Se mer informasjon i kapittel 21.11
+
+**LONN_KONTANT_PUB -- Kontantlønn etter imputering**
+
+Variabelen viser kontantlønn etter imputering for ikke godkjente verdier
+av avtalt månedslønn. Variabelen omfatter samme typer kontante
+godtgjørelser som innrapportert kontantlønn (LONN_KONTANT).
+LONN_IMP_STATUS identifiserer hvilke arbeidsforhold som har fått
+imputert kontantlønn. 
+
+**LONN_IMP_STATUS -- Imputeringsstatus for lønn**
+
+Variabelen viser om arbeidsforhold har lønn som er godkjent eller ikke.
+Koder ulik 0 har fått imputert avtalt månedslønn per heltidsekvivalent
+(LONN_EKV_FMLONN_PUB) og kontantlønn (LONN_KONTANT_PUB). 
+
+*Kodeliste:*
+
+    0 = Godkjent avtalt månedslønn
+
+    1 = Ikke-godkjent høy avtalt månedslønn (kvartilmetoden)
+
+    20 = Ikke-godkjent lav avtalt månedslønn (nedre grense)
+
+Se mer informasjon i kapittel 21.12
+
+
+## Personopplysninger {#personopplysninger .list-paragraph}
+
+**PERS_ALDER -- Alder per 16. i statistikkmåneden**
+
+Variabelen viser personens alder per 16. i statistikkmåneden.
+
+**PERS_SUM_ARBTID -- Samlet avtalt arbeidstid per uke for personen**
+
+Variabelen viser samlet avtalt arbeidstid per uke for personen i alle
+arbeidsforhold, dvs. summerer variabelen ARB_ARBEIDSTID. For en person
+som kun har ett arbeidsforhold vil PERS_SUM_ARBEIDSTID være lik
+ARB_ARBEIDSTID. 
+
+**PERS_SUM_STILLINGSPST -- Samlet avtalt stillingsprosent for personen**
+
+Variabelen viser samlet avtalt stillingsprosent for personen i alle
+arbeidsforhold, dvs. summerer variabelen ARB_STILLINGSPST. For en person
+som kun har ett arbeidsforhold vil PERS_SUM_STILLINGSPST være lik
+ARB_STILLINGSPST.
+
+**PERS_BOSETT_STATUS -- Bosettingsstatus**
+
+Variabelen viser hvem som regnes som bosatt i Norge i
+Folkeregisteret siste dag i statistikkmåneden. Hvem som regnes som
+bosatt og hvor i Norge en person skal regnes som bosatt, er fastlagt i
+lov om folkeregistrering av 9. desember 2016. 
+
+*Kodeliste:*
+
+    0 = Ikke-bosatt
+
+    1 = Bosatt
+
+Ikke-bosatte omfatter personer med et midlertidig personnummer (d-nummer) eller som er registerert som utvandret i Folkeregisteret, men jobber i Norge.
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/213>
+
+**PERS_BOTID_FORST -- Antall år siden første gang bosatt**
+
+Variabelen viser botid i hele år per 16. i statistikkmåneden, fra første
+oppholdsdato i landet. For personer som har flyttet til landet flere
+ganger vil tidspunkt for første gang personen innvandret være det
+samme. 
+
+**PERS_BOTID_SISTE -- Antall år siden siste gang bosatt**
+
+Variabelen viser botid i hele år per 16. i statistikkmåneden, siden
+siste registrerte bosettingsdato i Norge. 
+
+**PERS_DNR -- Merke for d-nummer**
+
+Variabelen viser om personen har d-nummer eller ikke.
+
+*Kodeliste:*
+
+    0 = Ikke d-nummer
+
+    1 = D-nummer
+
+**PERS_KJOENN -- Kjønn**
+
+Variabelen viser personens kjønn.
+
+*Kodeliste:*
+
+    1 = Mann
+
+    2 = Kvinne
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/2/>
+
+**PERS_KOMMNR -- Bostedskommune**
+
+Variabelen viser personens bostedskommune ifølge folkeregisteret i
+slutten av statistikkmåneden. Ikke-bosatte personer skal tildeles
+bostedskommune lik 2599 Utlandet, uspesifisert. 
+
+**PERS_KILDE_KOMMNR -- Kilde for bostedskommune**
+
+Variabelen viser kilde for bostedskommune.
+
+*Kodeliste:*
+
+    0 = Kilden er Folkeregisteret
+
+    1 = Imputert (ikke-bosatte personer har fått tildelt bostedskommune =
+        2599, Utlandet)
+
+**PERS_PERSONTYPE -- Persontype**
+
+Type person etter alder og bosettingsstatus per dato 16. Utledes på
+grunnlag av PERS_BOSETT_STATUS og PERS_ALDER.
+
+*Kodeliste:*
+
+    01 = Ikke-bosatt, under 15 år
+
+    02 = Ikke-bosatt, 15-74 år
+
+    03 = Ikke-bosatt, over 75 år
+
+    11 = Bosatt, under 15 år
+
+    12 = Bosatt, 15-74 år
+
+    13 = Bosatt, over 75 år
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/213>
+
+## Virksomhetsopplysninger {#virksomhetsopplysninger .list-paragraph}
+
+**VIRK_ANS_ANSATTE -- Antall ansatte i virksomheten fra periode t-1**
+
+Antall ansatte i virksomheten fra VoF, dvs. bearbeidede ansatte-tall fra
+t-1. Kilden er a-ordningen.
+
+**VIRK_ANT_INNTMOT -- Antall inntektsmottakere (personer) i
+virksomheten**
+
+Antall innrapporterte inntektsmottakere (personer) i virksomheten,
+basert på antall innrapporterte arbeidsforhold (inkludert ikke-reelle
+arbeidsforhold).
+
+Se beskrivelse av ARB_ARMBARK_STATUS for informasjon om ikke-reelle
+arbeidsforhold.
+
+**VIRK_KOMM_NR -- Virksomhetens kommunenummer**
+
+Variabelen angir hvilken kommune virksomheten (underenheten) ligger i.
+Opplysningen er hentet fra SSBs Virksomhets- og foretaksregister (VoF).
+
+Kodeliste i KLASS: <https://www.ssb.no/klass/klassifikasjoner/131>
+
+**VIRK_ID_SSB -- Virksomhetens organisasjonsnummer**
+
+Variabelen viser organisasjonsnummer virksomhet (underenhet) eller
+S-nummer (statistikknummer). Variabelen angir virksomheten som personen
+er knyttet til gjennom arbeidsforholdet.
+
+Variabelen erstattes av et løpenummer ved utlevering av data til
+forskere.
+
+**VIRK_ID_TYPE_SSB -- Type identifikator**
+
+Variabelen angir hvilken type identifikator og regel brukt for
+VIRK_ID_SSB.
+
+Kodeliste i KLASS: <https://www.ssb.no/klass/klassifikasjoner/172>
+
+**VIRK_NACE1_SN07 -- Virksomhetens hovednæring**
+
+Variabelen angir virksomhetens (underenhetens) hovednæring. Opplysningen
+er hentet fra SSBs Virksomhets- og foretaksregister (VoF).
+
+Næring er en beskrivelse av en enhets aktivitet og tildeles på grunnlag
+av den virksomhet/art/bransje enheten i hovedsak tilhører. Næring
+fastsettes etter gjeldende Standard for næringsgruppering versjon brukt
+fra 2009.
+
+Næring er kodet etter standard for næringsgruppering (SN), se kodeliste
+i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/6>
+
+(se tidligere versjoner under arkfanen «Alle versjoner»).
+
+SN2007 er betegnelsen på standard for næringsgruppering som gjelder fra
+1.1.2008.
+
+**VIRK_ORG_FORM -- Virksomhetens organisasjonsform**
+
+Virksomhetens (underenhetens) organisasjonsform. Opplysningen er hentet
+fra SSBs Virksomhets- og foretaksregister (VoF).
+
+Organisasjonsform er den offisielle betegnelsen på hvordan virksomheten
+er organisert og hvilke bestemmelser overfor ansvar, risiko, skatt,
+rettigheter og plikter som er gjeldende. Organisasjonsform fastsettes
+ved registrering av ny enhet, og angir organisasjonsform for juridiske
+enheter. En enhet kan som hovedregel ikke endre organisasjonsform uten å
+gå veien om sletting og ny stiftelse.
+
+De fleste virksomheter (bedrifter/underenheter) har organisasjonsform
+«BEDR» (bedrift).
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/35>
+
+**VIRK_REG_TYPE -- Virksomhetens registreringstype**
+
+Registerenhetstype benyttes blant annet for å skille mellom
+envirksomhets- og flervirksomhetsforetak og mellom forskjellige typer
+foretak og virksomheter (underenheter). Opplysningen er hentet fra SSBs
+Virksomhets- og foretaksregister (VoF).
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/322>
+
+**VIRK_STATUS -- Virksomhetens statuskode**
+
+Status er en kode som angir om enheten er slettet eller ikke. Juridiske
+enheter i privat sektor slettes ved at de selv melder om sletting til
+Brønnøysundregistrene. Enheter innen offentlig sektor slettes av SSB
+etter melding fra/ kontakt med enheten. Bedrifter slettes av
+Enhetsregisteret, NAV Aa-registeret og SSB. Opplysningen er hentet fra
+SSBs Virksomhets- og foretaksregister (VoF).
+
+Kodeliste i SSBs kodeverkssystem (KLASS): <https://www.ssb.no/klass/klassifikasjoner/325>

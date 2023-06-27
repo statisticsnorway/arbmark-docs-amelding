@@ -1,0 +1,277 @@
+# Selvstendig næringsdrivende
+
+Hovedkilden for informasjon om selvstendig næringsdrivende er
+selvangivelsesregisteret (skattemeldingen).
+
+Selvangivelsesregisteret/skattemeldingen eies av Skattedirektoratet.
+Registeret omfatter alle over 13 år, og består av utvalgte opplysninger
+fra selvangivelsene. De viktigste kjennemerkene som hentes herfra er
+næringsinntekt og -underskudd fra selvstendigvirksomhet i henholdsvis
+primærnæringen og andre næringer. Denne informasjonen ligger til grunn
+for definering av selvstendig næringsdrivende.
+
+Det er imidlertid en rekke egenskaper ved registeret som begrenser hva
+som er mulig å få ut av datamaterialet:
+
+-   Ingen dateringer. Selvangivelsesregisteret har kalenderåret som
+    referansedato. Det er altså kun mulig å finne ut om en person hadde
+    inntekt som selvstendig en eller annen gang i løpet av året. Ved
+    konsistensbehandling med andre registre, kan vi i enkelte tilfeller
+    forbedre dateringen noe.
+
+-   Kun data for personer. Ingen opplysninger om den enkeltes jobb. Det
+    er for eksempel ikke mulig å knytte inntekt til arbeidsforhold.
+
+-   Svært lang produksjonstid. Registeret er klart i underkant av ett år
+    etter utløpet av referanseåret.
+
+På grunn av produksjonstiden på registeret benyttes data for året før i
+den registerbaserte sysselsettingsstatistikken.
+
+## Definisjon av bruttopopulasjonen av selvstendig næringsdrivende
+
+Selvstendig næringsdrivende identifiseres ved hjelp av opplysninger om
+næringsinntekt i Selvangivelsesregisteret. Bruttopopulasjonen omfatter
+alle som er på selvstendigfilen og som har næringsinntekt eller
+underskudd i år t-1. For disse personene forsøkes næringsvirksomheten
+knyttes til et bestemt foretak. Til slutt konstrueres foretaksrelaterte
+variabler som næring og arbeidsstedskommune for de personene hvor det
+ikke har lykkes å identifisere virksomheten.
+
+Bruttopopulasjonen består av personer registrert med inntekt under en
+eller flere av følgende poster i selvangivelsesregisteret:
+
+  --------------- ----- --------------------------------------------------
+  BEL16_3         =     1.6.3 Sykepenger, fiske og familieb
+
+  BEL16_4         =     1.6.4 Sykepenger, annen næring
+
+  BEL21_3         =     2.1.3 Næringsinntekt fra familiebh,inkl.
+                        sykepenger
+
+  BEL27_1         =     2.7.1 Næringsinntekt jordbruk
+
+  BEL27_2         =     2.7.2 Næringsinntekt skogbruk
+
+  BEL27_3         =     2.7.3 Næringsinntekt fiske
+
+  BEL27_4         =     2.7.4 Næringsinntekt reindrift
+
+  BEL27_5         =     2.7.5 Næringsinntekt skiferbrudd
+
+  BEL27_6         =     2.7.6 Næringsinntekt annen næring
+
+  BEL27_7         =     2.7.7 Næringsinntekt ANS/KS fiske og fangst
+
+  BEL27_8         =     2.7.8 Næringsinntekt ANS/KS annen næring
+
+  BEL3219_AN      =     3.2.19 Næringsunderskudd, annen næring inkl.
+                        Svalbard
+
+  BEL3219_JO      =     3.2.19 Næringsunderskudd, Jordbruk
+
+  BEL3219_SKOG    =     3.2.19 Næringsunderskudd, skog
+
+  BEL3219_barn    =     3.2.19 Næringsunderskudd, barnepass
+
+  BEL3219_fisk    =     3.2.19 Næringsunderskudd, fiske og fangst
+
+  BEL3219_rein    =     3.2.19 Næringsunderskudd, reindrift
+
+  BEL3219_skif    =     3.2.19 Næringsunderskudd, skifer
+
+  BEL32_16        =     3.2.16 Særskilt fradrag i reindrift
+
+  BEL32_17        =     3.2.17 Særskilt fradrag i skiferprod
+
+  BEL17_3         =     1.7.3 Godtgjørelse for deltakerlignet, fiske og
+                        famb.hage
+
+  BEL17_6         =     1.7.6 Godtgjørelse for deltakerlignet i annen nær
+  --------------- ----- --------------------------------------------------
+
+Det beregnes en variabel for total næringsinntekt (SELV_INNT_TOT) som er
+summen av alle postene i listen over.
+
+Merk at det kan være endringer i selvangivelsene fra ett år til annet,
+både når det gjelder hvordan inntektene er oppsplittet og hvilke numre
+som benyttes på de ulike postene. Oversikten nedenfor er relatert til
+selvangivelsesfilen for 2020.
+
+Tallene i underskuddspostene er gitt som positive verdier. Det er kun de
+med total næringsinntekt over null som blir med videre (noen tusen blir
+borte pga. dette kravet).
+
+## Innhenting av informasjon om næringsvirksomheten
+
+Næringsvirksomheten til populasjonen definert ovenfor forsøkes å knyttes
+til et foretak. Ved først å koble sammen en rollefil fra rollebasen til
+Enhetsregisteret, med en fullstendig fil fra Enhetsregisteret, benyttes
+informasjon om roller og organisasjonsform i Enhetsregisteret.
+
+Kun de foretak som oppfyller følgende kriterier blir identifisert:
+
+-   Personer med rolletype innehaver (INNH), deltaker med solidarisk
+    ansvar (DTSO), deltaker med proratisk ansvar (DTPR), i foretak med
+    organisasjonsform enkeltmannsforetak (ENK), ansvarlig selskap (ANS),
+    delt ansvar (DA).
+
+Denne koblingen har tre mulige utfall:
+
+1.  Personer med inntekt/underskudd fra næringsvirksomhet kan knyttes
+    til ett foretak i enhetsregisteret. For disse kontrolleres det om
+    inntekt/underskudd ifølge Selvangivelsesregisteret stammer fra samme
+    næring som foretaket oppgitt i Enhetsregisteret. For de hvor det er
+    inkonsistens mellom de to, merkes dette.
+
+2.  Personer med inntekt/underskudd fra næringsvirksomhet kan knyttes
+    til flere foretak i Enhetsregisteret. Foretaksopplysninger for denne
+    gruppen av mulige selvstendige, velges etter følgende prioritering.
+
+    a.  Personer med fastlegeavtale vil prioriteres til virksomheter i
+        næring 86.211
+
+    b.  Personer med fastlegeavtale vil prioriteres til virksomheter i
+        næring 86
+
+    c.  Hvis foretak med lønnstakere i den klargjorte filen for
+        arbeidsmarked og lønn og organisasjonsform = ENK knyttes til
+        foretaket med flest ansatte
+
+    d.  Hvis foretak med lønnstakere i den klargjorte filen for
+        arbeidsmarked og lønn og organisasjonsform = ANS/DA knyttes til
+        foretaket med flest ansatte
+
+    e.  Hvis foretak i momsregisteret med terminbetaling og
+        organisasjonsform = ENK knyttes til foretaket med høyeste
+        momsbeløp
+
+    f.  Hvis foretak i momsregisteret med terminbetaling og
+        organisasjonsform = ANS/DA knyttes til foretaket med høyeste
+        momsbeløp
+
+    g.  Hvis foretak i momsregisteret med årlig betaling knyttes til
+        foretaket med høyeste momsbeløp
+
+    h.  Hvis foretaket er et ENK, knyttes til foretaket med nyeste
+        etablering
+
+    i.  Hvis foretaket er et ANS/DA knyttes til foretaket med nyeste
+        etablering
+
+## Justering av dateringer
+
+Informasjonen om næringsinntekt er ikke datert. Det vil si at vi ikke
+vet når i det aktuelle året den er inntjent. Produksjonstiden for
+registeret er også så lang at det i produksjonssystemet benyttes
+opplysninger fra år t-1. Dvs. at i publiseringen for 2022 benyttes
+selvangivelsesregisteret for 2021. Opplysningene dateres med en
+startdato lik 01.01 år t og en stoppdato lik 31.12 år t. Er personen
+registrert med et tiltaks- eller ledighetsforhold i ARENA stoppes
+selvstendigforholdet samme dag som ARENA-forholdet starter. Personer som
+er definert som helt ledige (eller ikke finnes på den klargjorte filen
+for arbeidsmarked og lønn per november) fjernes. Omtrent 7 300 ble
+fjernet i 2021.
+
+## Valg av viktigste selvstendigforhold som er aktivt i referanseuken
+
+Selvangivelsesregisteret har bare en rad per person, men en person kan
+være aktiv i primær- og andre næringer samtidig (ha beløp både i
+næringsinntekt for primær- og andre næringer). Det er størrelsen på
+næringsinntekten som bestemmer prioriteringen mellom primærnæring og
+andre næringer. Selvangivelsesregisteret splittes derfor i to filer og
+samme person kan bare forekomme i en av filene.
+
+## Definering av viktigste arbeidsforhold 
+
+Én person kan ha både et (eller flere) lønnstakerforhold og et (eller
+flere) selvstendigforhold.
+
+For de som har både et lønnstaker- og selvstendigforhold velges et
+viktigste arbeidsforhold etter følgende prioriteringer:
+
+1.  Hvis det viktigste lønnstakerforholdet er et verneplikts- eller
+    siviltjenesteforhold velges dette som viktigste arbeidsforhold
+
+2.  Hvis avtalt stillingsprosent tilsvarer en heltidsstilling velges
+    lønnstakerforholdet som viktigste arbeidsforhold (heltidsstilling er
+    definert som avtalt stillingsprosent \>= 100)
+
+3.  Hvis avtalt stillingsprosent er lavere enn det som tilsvarer heltid
+    (avtalt stillingsprosent \< 100), men sum kontantlønn \> sum
+    næringsinntekt, velges lønnstakerforholdet som viktigste
+    arbeidsforhold
+
+4.  For andre kombinasjoner av lønnstaker- og selvstendigforhold, velges
+    selvstendigforholdet som viktigste arbeidsforhold
+
+Det er samlet avtalt stillingsprosent for personen som benyttes i
+prosedyren ovenfor. I punkt 3 er det kontantlønn i november (fra
+arbeidsmarkeds- og lønnsfilen) som sammenlignes med næringsinntekt/12.
+
+Personer som både har et lønnstaker- og selvstendigforhold får
+selvstendigforholdet som biarbeidsforhold hvis lønnstakerforholdet blir
+valgt til hovedarbeidsforholdet.
+
+## Imputering av avtalt arbeidstid for selvstendig næringsdrivende
+
+Vi har ikke opplysninger om avtalt arbeidstid for selvstendig
+næringsdrivende. Avtalt arbeidstid for denne gruppen imputeres ved hjelp
+av arbeidstidsopplysninger i Arbeidskraftundersøkelsen (AKU).
+
+**Bakgrunn og formål**
+
+Det mangler arbeidstidsopplysninger for selvstendig næringsdrivende i
+den registerbaserte statistikken, fordi dette blir ikke rapportert til
+de registrene som inngår. For lønnstakere derimot finnes data om avtalt
+antall timer/uke, antall timer/uke som utgjør heltid, og avtalt
+stillingsandel i prosent, som rapporteres på a-meldingen.
+
+Formålet med metoden er å lage mikrodata for alle selvstendig
+næringsdrivende, med avtalt antall timer/uke, antall timer/uke som
+utgjør heltid, og avtalt stillingsandel i prosent. Hensikten er først og
+fremst å forbedre statistikk for årsverk fra helse- og sosialpersonell,
+kommunesektor, mv., og videre også noen fordelinger av avtalt arbeidstid
+blant sysselsatte i alt samt innvandrere.
+
+**Løsning**
+
+Det er utviklet en metode som bruker en kombinasjon av registerdata og
+utvalgsdata. Denne metoden utnytter flere typer informasjon som ligger i
+hver datakilde, samtidig som den tar høyde for enkelte svakheter i
+inndata.
+
+Statistikkdata for lønn- og arbeidsmarked bygger på data fra:
+
+-   Skatteetaten: skattemeldinger med næringsinntekt.
+
+-   Enhetsregisteret: foretaksopplysninger som økonomisk aktivitet
+    (næring).
+
+-   Folkeregisteret: personopplysninger, her brukes alder og kjønn.
+
+Utvalgsdata fra Arbeidskraftundersøkelsen (AKU):
+
+-   For selvstendig næringsdrivende finnes data om vanlig arbeidstid,
+    målt i antall timer per uke, samt om arbeidstiden regnes som heltid
+    eller deltid.
+
+-   Opplysningene er gitt i telefonintervju med den sysselsatte selv.
+
+-   Noen opplysninger er koblet fra registerdata, for å slippe å spørre
+    om det (f.eks. alder og kjønn).
+
+Metoden bygger på at arbeidstiden varierer med inntekt, næring, alder,
+og kjønn. Data for selvstendig næringsdrivende blir i begge datakildene
+gruppert etter næring, alder, og kjønn. Innenfor hver av disse gruppene
+blir utvalgsdata rangert etter arbeidstid, mens registerdata blir
+rangert etter næringsinntekt. Deretter blir arbeidstiden kopiert fra
+utvalgsdata til registerdata for hver gruppe, og etter rangeringen innen
+hver gruppe. Det betyr at hver jobb i registerdata først matches til
+jobber i utvalgsdata som har mye til felles. Deretter forbedres
+matchingen ved at de med lave inntekter får kortere arbeidstid, de med
+høyere inntekter får lengre arbeidstid, innen hver gruppe altså blant
+lignende jobber. Tilslutt beregnes avtalt stillingsandel ved antall
+timer per uke dividert med fulltidstimetallet. Fulltidstimetallet blir
+fordelt etter vanligste timetall i de arbeidstidsordninger som er igjen
+er vanligst innen de ulike næringene.

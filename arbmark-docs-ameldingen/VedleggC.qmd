@@ -1,0 +1,42 @@
+# Vedlegg C: Data til forskere {.unnumbered}
+
+Det er mulig å få tilgang til data om arbeidsmarked og lønn til bruk i
+forskning. To muligheter:
+
+1.  Tilgang til (låne) mikrodata
+
+2.  microdata.no
+
+**Tilgang til (låne) mikrodata**
+
+SSB kan gi tilgang til mikrodata til forskere. Informasjon om hvordan
+man søker og hva man kan få tilgang til på [nettsidene til SSB](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere).
+
+Det er tre inngangssider med variabellister for:
+
+-   [Arbeid og
+    lønn:](https://www.ssb.no/omssb/tjenester-og-verktoy/data-til-forskning/arbeid-og-lonn)
+    Månedsfiler basert på klargjort fil for arbeidsmarked og lønn,
+    omtales her som «a-ordningen» (2015 - )
+
+-   [Arbeidsmarked:](https://www.ssb.no/omssb/tjenester-og-verktoy/data-til-forskning/arbeid)
+    Filer basert på:
+
+    -   Registerbasert sysselsettingsstatistikk (2000 - ). Inkluderer
+        SFP-variable
+
+    -   Historiske data om sysselsetting (tilbake til 1983)
+
+-   [Lønn:](https://www.ssb.no/omssb/tjenester-og-verktoy/data-til-forskning/lonn)
+    Årsfiler basert på:
+
+    -   Register/utvalg (1997-2014)
+
+    -   Klargjort fil for arbeidsmarked og lønn (2015 - )
+
+**Microdata.no**
+
+Microdata.no gir rask og enkel tilgang til detaljerte og koblingsklare mikrodata uten noen form for søknad, bl.a.
+registerinformasjon fra *den registerbaserte sysselsettingsstatistikken*
+(variablene har prefiks «regsys») og *antall arbeidsforhold og lønn*
+(variablene har prefiks «arblonn»). Mer informasjon på [nettsiden mikrodata.no (microdata.no)](https://microdata.no/).

@@ -1,0 +1,203 @@
+# Utledning, beregning og påkobling av kjennetegn
+
+I dette kapittel beskrives utledninger, beregninger og påkobling av
+ulike kjennetegn. [Se vedlegg A for beskrivelse av øvrige variable](VedleggA.html).
+[Utledning av hoved- og bijobb er beskrevet i kapittel 21.5](#utledning-av-hoved--og-biarbeidsforhold)
+
+## Arbeidsmarkedsstatus
+
+Det etableres en variabel som angir arbeidsmarkedsstatus
+(ARB_ARBMARK_STATUS) i referanseuken basert på [prosessene beskrevet i
+kapittel 19](Klassifisering-arbfogsyss.html) og [kapittel 20](Koblepå-heltarbl-utenfor-arbstyrken.html).
+
+I kapittel 19 beskrives klassifisering av sysselsetting, det vil si
+bestemmer hvilke arbeidsforhold som skal regnes som aktive eller
+ikke-aktive. Det etableres en variabel som angir grunnlaget for
+sysselsettingsklassifikasjon (ARB_SYSS) og denne benyttes på følgende
+måte for å utlede arbeidsmarkedsstatus:
+
+Hvis ARB_SYSS har kodene 1a, 1b, 2a, 2b, 2c, 3a,3b settes
+ARB_ARBMARK_STATUS = '1'
+
+Hvis ARB_SYSS har kodene 4a, 4b eller 5 settes ARB_ARBMARK_STATUS = '9'
+
+I kapittel 20 beskrives påkobling av helt ledige og bosatte personer 15
+år eldre, og følgende koder etableres basert på dette:
+
+-   Hvis helt ledig i [Arena-registeret, jf. 20.1](#helt-ledige-fra-arena-registeret): ARB_ARBMARK_STATUS =
+    '3' (helt ledig)
+
+-   Hvis påkoblet fra SSBs statistiske kopi av [folkeregisteret (FREG),
+    jf. 20.2](#bosatte-personer-15-år-eller-eldre): ARB_ARBMARK_STATUS = '4' (ikke-lønnstaker)
+
+Kodelisten blir dermed som følger:\
+1=Lønnstaker\
+2=Selvstendig (kun årlig)\
+3=Helt ledig\
+4=Ikke-lønnstaker\
+9=Ikke-relevante arbeidsforhold 
+
+Selvstendige har vi kun informasjon om på [filen for den registerbaserte
+sysselsettingsstatistikken](Del4-klargjoringavdata-regsys.html).
+
+[Se mer informasjon om arbeidsmarkedsstatus i vedlegg A](VedleggA.html).
+
+## Utledning av arbeidssteds- og bostedskommune
+
+**Bostedskommune**
+
+Bostedskommune for bosatte personer hentes fra SSBs statistiske kopi av
+folkeregisteret (FREG). Ikke-bosatte personer får imputert bosted «2599
+Utlandet».
+
+Kildevariabelen PERS_KOMM_NR_KILDE opprettes med følgende kodeliste:
+
+0 = Ingen imputering. Kilde FREG (gjelder bosatte)
+
+1 = Imputert (kun ikke-bosatte)
+
+For [arbeidsforhold som imputeres fra måneden før, se beskrivelse i kapittel 15](Imputering-fra-perioden-før.html),
+hentes bostedskommune på nytt for statistikkmåneden.
+
+**Arbeidsstedskommune**
+
+En persons arbeidssted bestemmes av beliggenhetsadressen til
+virksomheten hvor personen arbeider. Arbeidsstedskommune (ARB_KOMM_NR)
+settes lik kommune (forretningsadresse) fra VoF (VIRK_KOMM_NR).
+
+Det finnes noen unntak fra at virksomhetens adresse bestemmer
+arbeidsstedskommunen. Noen grupper lønnstakere får bostedskommune
+(PERS_KOMM_NR) registrert i felt for arbeidsstedskommune. Dette gjelder:
+
+-   Sjøfolk
+
+    -   hvis [næring](https://www.ssb.no/klass/klassifikasjoner/6) = 50
+        (sjøfart) eller 78.2 (utleie av arbeidskraft) og
+        arbeidsforholdstype = maritim settes arbeidsstedskommune lik
+        bostedskommune.
+
+-   Ansatte i forsvaret
+
+    -   Alle ansatte i forsvaret blir rapport på én virksomhet
+        (istedenfor på det reelle arbeidsstedet) og arbeidsstedskommune
+        settes lik bostedskommune.
+
+-   Ansatte på utenriksstasjoner i Utenriksdepartementet settes til
+    kommune 2511 (norske ambassader i utlandet)
+
+-   Enkelte foretak som har alle ansatte meldt inn på samme foretak i én
+    kommune, men leier ut folk i hele landet, og hvor dette har stor
+    betydning for statistikken.
+
+    -   Arbeidsstedskommune for personene som jobber i disse foretakene
+        gjenspeiler ikke korrekt arbeidssted og det benyttes
+        bostedskommune. Dette gjelder kun noen få foretak
+
+-   For selvstendig næringsdrivende som ikke er registrert med
+    organisasjonsnummer anvender man også bostedskommune. Selvstendig
+    næringsdrivende rapporteres ikke i a-meldingen, men kobles på i
+    prosessen som danner den [klargjorte filen for ulike registerbaserte
+    sysselsettingsstatistikker, beskrevet i del 4](Del4-klargjoringavdata-regsys.html).
+
+I tillegg til overnevnte gjøres følgende:
+
+-   Maritime ikke-bosatte
+
+    -   *Arbeidsstedskommune* settes lik 2699 (Havområder, uspesifisert)
+
+-   Vernepliktige:
+
+    -   *Arbeidsstedskommune* settes lik bostedskommune
+
+-   Imputerte foretak fra forrige måned:
+
+    -   *Arbeidsstedskommune* beholdes fra forrige måned (måned t-1)
+
+-   Oppdrags- og arbeidsforholdsregisteret (OAR) som eneste kilde (dvs.
+    kun rapportert arbeidsforhold i OAR og ingen lønn i a-meldingen):
+
+    -   *Arbeidsstedskommune* hentes fra variabelen arbeidsstedskommune
+        (KOMM_ID_ARBEID) fra oppdrags- og arbeidsforholdsregisteret
+        (OAR)
+
+-   OAR som eneste kilde (dvs. kun rapportert arbeidsforhold i OAR og
+    lønn i a-meldingen):
+
+    -   *Arbeidsstedskommune* hentes fra variabelen arbeidsstedskommune
+        (KOMM_ID_ARBEID) fra oppdrags- og arbeidsforholdsregisteret (OAR) hvis
+        arbeidsstedskommune er uoppgitt
+
+-   Helt ledige (personer med ARB_ARBMARK_STATUS=3 -- helt ledige):
+
+    -   *Arbeidsstedskommune* settes lik blank ettersom dette ikke er
+        aktuelt (gjelder både bosatte og ikke-bosatte)
+
+-   Bosatte utenfor arbeidsstyrken (PERS_BOSETT_STATUS=1 og
+    ARB_ARBMARK_STATUS=4):
+
+    -   *Arbeidsstedskommune* settes til blank
+
+Etter disse prosessene imputeres lønnstakere med uoppgitt
+arbeidsstedskommune:
+
+-   Hvis personens bostedskommune (PERS_KOMM_NR) *ikke* er blank eller
+    har koder for uoppgitt skal arbeidsstedskommune (ARB_KOMM_NR) settes
+    lik bostedskommune
+
+-   Ellers settes arbeidsstedskommune (ARB_KOMM_NR) lik kommunens
+    forretningsadresse fra VoF (til virksomheten; VIRK_KOMM_NR), og til
+    slutt lik kommunens forretningsadresse (til foretaket;
+    FRTK_KOMM_NR).
+
+## Utledning av arbeidsstedsgrunnkrets
+
+Arbeidsstedsgrunnkrets skal være mest mulig lik arbeidsstedskommune for
+å unngå at kommune og grunnkrets ikke stemmer overens pga. [tiltakene som
+gjøres på arbeidsstedskommune, se kapittel 22.2](#utledning-av-arbeidssteds--og-bostedskommune). Derfor gjøres følgende:
+
+-   Dersom de fire første sifrene i arbeidsstedsgrunnkrets er ulik
+    arbeidsstedskommune (ARB_KOMM_NR) setter arbeidsstedsgrunnkrets lik
+    arbeidsstedskommune (ARB_KOMM_NR) + 9999
+
+-   Dersom arbeidsstedskommune (ARB_KOMM_NR) er uoppgitt (blank, -1, -2)
+    settes arbeidsstedsgrunnkrets lik 99999999 (dvs. uoppgitt)
+
+## Imputering av innvandringskategori og landbakgrunn 
+
+For personer vi ikke har informasjon om landbakgrunn eller
+innvandrerkategori (innvandringsbakgrunn) imputeres det verdier basert
+på opplysninger om statsborgerskap fra Folkeregisteret (FREG).
+
+Vi har kun årlig informasjon om landbakgrunn og innvandrerkategori
+(innvandringsbakgrunn). Dermed vil vi mangle denne informasjonen om nye
+personer som har innvandret gjennom året. Imputeringen skjer på følgende
+måte:
+
+-   Hvis personen er bosatt, innvandringskategori er blank og
+    statsborgerskap er ulikt norsk, settes innvandringskategori
+    (innvandringsbakgrunn) til B (det vil si innvandrere), og
+    landbakgrunn settes likt statsborgerskap.
+
+-   Hvis personen er bosatt, innvandringskategori er blank og
+    statsborgerskap er norsk, settes innvandringskategori
+    (innvandringsbakgrunn) til A (det vil si født i Norge med to
+    norskfødte foreldre), og landbakgrunn settes likt statsborgerskap.
+
+Merk at vi i utgangspunktet kun har informasjon om landbakgrunn og
+innvandrerkategori for bosatte personer. Ikke-bosatte omfatter personer
+med d-nummer og personer med fødselsnummer registrert som utvandret i
+Folkeregisteret, men med jobb i Norge. For ikke-bosatte med
+fødselsnummer har vi opplysninger om landbakgrunn og innvandrerkategori,
+mens vi mangler disse opplysningene for ikke-bosatte med d-nummer. For
+sistnevnte gruppe bruker vi opplysninger om statsborgerskap:
+
+-   Hvis personen er ikke-bosatt og har d-nummer settes landbakgrunn
+    likt statsborgerskap.
+
+##  Imputering av næringskode og sektor 
+
+I noen få tilfeller kan virksomhet være en person og det er rapportert
+forenklet oppgjørsordning. I de tilfellene tildeles virksomheten og
+foretaket næring 97.000 (lønnet arbeid i private husholdninger) og
+sektorkode 8500 (lønnstakere, pensjonister, trygdede, studenter, o.a.).
+

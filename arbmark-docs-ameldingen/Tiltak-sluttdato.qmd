@@ -1,0 +1,131 @@
+# Tiltak på sluttdato for arbeidsforhold
+
+Basert på informasjon i Arena-registeret og SSBs statistiske kopi av
+folkeregisteret (FREG) gjøres det i noen tilfeller justeringer på
+sluttdato for arbeidsforhold (ARB_SLUTT).
+
+## Kobling mot Arena-registeret
+Basert på kobling mot helt ledige i Arena-registeret, skal det skje en
+automatisk kontroll og editering av om arbeidstakerforhold skulle vært
+utmeldt (sette inn eller korrigere sluttdato arbeidsforhold). Dette for
+å avdekke og rette der det enten er manglende sluttdato arbeidsforhold,
+eller det er innrapportert en sluttdato på arbeidsforholdet som er
+senere enn status som helt ledig i Arena-registeret.
+
+Det er kun helt ledige som ikke er permittert under 90 dager som kobles
+på i denne prosessen. Permitterte under 90 dager regnes som sysselsatte,
+[jf. sysselsettingsdefinisjonen i kapittel 2.2](#ilo-definisjon-sysselsetting), mens de regnes som helt
+ledige i Arena-registeret.
+
+Datoen for når personen ble registrert helt ledig i Arena-registeret
+utledes ved at man for personer med arbeidssøkerstatus helt ledig i
+Arena-registeret, beregner startdato for helt ledighet som antall dager
+i denne arbeidssøkerstatusen sett i forhold til referansetidspunktet for
+Arena som er en dag i slutten av måneden. Hvis f.eks.
+referansetidspunktet for Arena er lik 30. januar, og antall dager i
+arbeidssøkerstatusen er lik 5, skal startdato for helt ledighet i Arena
+beregnes til 25. januar.
+
+Begrunnelsen for at vi stoler mer på tidspunktet for status som helt
+ledig i Arena er først og fremst at det er lite motivasjon for å
+rapportere startdato ledighet hvis man er i jobb (faren for straff),
+samt at det er fare for et visst omfang av manglende eller forsinket
+utmelding av arbeidsforhold i a-meldingen ved overgang fra arbeid til
+ledighet.
+
+**Tiltak på sluttdato arbeidsforhold**
+
+Hvis startdato for helt ledighet er lik eller ferskere enn startdato
+arbeidsforhold, og stoppdato arbeidsforhold mangler eller lik/ferskere
+enn startdato for helt ledighet, settes sluttdato arbeidsforhold lik
+startdato helt ledighet. Dette skal gjøres uavhengig av om personen
+mottok lønn eller ikke den måneden, fordi lønn som oftest utbetales
+etterskuddsvis.
+
+Denne automatiske editeringen skal iverksettes på alle arbeidsforhold,
+uansett om det er hentet fra a-meldingen eller OAR eller
+vernepliktsregisteret. [Dette tiltaket gjøres før uttrekk av
+arbeidsforhold aktive i referanseuken (beskrevet i kapittel 12](Referanseuke.html)). Grunnen
+til at det gjøres på hele måneden, er at det kan medføre endring av
+dateringen av arbeidsforholdene, som i neste omgang skal brukes til
+uttrekk av referanseuke.
+
+I november 2021 ble det gjennomført snaut 26 000 korrigeringer av
+sluttdato basert på kobling mot Arena-registeret.
+
+Opplysninger fra Arena-registeret brukes altså til å justere sluttdato
+på arbeidsforholdene, men det er permitteringsopplysningene rapportert i
+a-meldingen som benyttes for å avgjøre om man er permittert under 90
+dager og dermed skal regnes som sysselsatt (se [mer informasjon i
+kapittel 19 om klassifisering av sysselsatte](#klassifisering-av-arbeidsforhold-og-sysselsatte)).
+
+**Betydning for kvalitet at referansedato for Arena-registeret varierer**
+
+Varierende referansedato i Arena-registeret vil ha liten betydning for
+kvaliteten på denne prosessen. I de fleste måneder har Arena
+referansedato på en dag i slutten av måneden, men i noen måneder så
+tidlig som i midten av måneden (måneder med jul, påske o.l.). Startdato
+ledighet beregnes i denne prosessen med utgangspunkt i hhv.
+referansedato oppgitt i Arena-registeret og antall dager i status
+oppgitt i Arena. Slik sett blir startdato ledighet riktig beregnet, og
+brukes til å justere sluttdatoen på arbeidsforholdet. Det vi ikke får
+med i denne «vaskingen» hvis referansedato i Arena-registeret er før
+referanseuka for sysselsetting, er særlig de personene som ble helt
+ledig etter referansedato i Arena og før referanseuka for sysselsetting
+(i verste fall snakk om noen dager), men det vil være relativt få
+personer, og av disse igjen relativt få som har feil på sluttdato
+arbeidsforhold.
+
+**Hva hvis både arbeidsforhold og ledighetsforhold i referanseuken?**
+
+Selv etter å ha gjort denne automatiske editeringen av sluttdato
+arbeidsforhold basert på kobling mot ledighet i Arena-registeret, vil
+det være tilfeller av personer som både har aktivt arbeidsforhold og er
+helt ledig i referanseuken. F.eks. hvis arbeidsforholdet sluttet på
+onsdag i referanseuken og helt ledighet startet torsdag. I en senere 
+prosess, før endelig klassifisering av sysselsetting,
+må det derfor tas stilling til hvilken status som velges. Da skal alltid
+sysselsetting prioriteres foran ledighet, i tråd med
+sysselsettingsdefinisjonen.
+
+Informasjon om man er sysselsatte eller heltid ledig gis i den avledede
+variabelen [arbeidsmarkedsstatus (ARB_ARBMARK_STATUS) som beskrives
+nærmere i kapittel 22.1](#arbeidsmarkedsstatus).
+
+**Sammenheng mellom helt ledige i klargjort fil og helt ledige hos NAV**
+
+Antall registrerte arbeidsledige i den klargjorte filen for
+arbeidsmarked og lønn er noe lavere enn i statistikken over registrerte
+ledige hos NAV. Noen registrerte ledige vil i den klargjorte filen være
+omklassifisert til sysselsatte basert på data om lønnstakere fra
+a-meldingen. Som omtalt over vil dette gjelde tilfeller der man er både
+lønnstaker og helt ledig i samme uke samt helt ledige permitterte under
+90 dager. I tillegg brukes ulike måleperioder i datagrunnlaget for
+registrerte ledige (i NAVs ARENA-register) og i den klargjorte filen. I
+den klargjorte filen telles lønnstakere per 3.uke i referansemåneden,
+mens NAVs tall i hovedsak gjelder en dag i slutten av måneden.
+
+## Kobling mot Folkeregisteret (FREG)
+
+Det gjøres også en korreksjon på stoppdato arbeidsforhold hvis dødsdato
+er oppgitt i SSBs statistiske kopi av folkeregisteret (FREG):
+
+-   Hvis dødsdato finnes i FREG og sluttdato arbeidsforhold er blank
+    eller senere dødsdato, skal sluttdato arbeidsforhold settes lik
+    dødsdato.
+
+Denne automatiske editeringen skal gjøres på alle arbeidsforhold,
+uansett om det er hentet fra a-meldingen eller OAR eller
+vernepliktsregisteret.
+
+Det er svært få personer som får justert stoppdato på arbeidsforholdet
+etter denne koblingen mot FREG.
+
+## Sammenheng mellom ulike sluttdatoer
+
+Hvis det er oppgitt sluttdato i a-meldingen og det er imputert sluttdato
+ved kobling mot Arena-registeret eller FREG, som beskrevet over, kan man
+potensielt ha tre sluttdatoer. Da er det alltid den tidligste
+sluttdatoen som velges.
+
+

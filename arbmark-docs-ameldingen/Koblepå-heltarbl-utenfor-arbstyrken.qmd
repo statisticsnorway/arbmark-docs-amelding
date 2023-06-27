@@ -1,0 +1,45 @@
+# Koble på helt arbeidsledige og bosatte utenfor arbeidsstyrken
+
+I tillegg til personer/arbeidsforhold som regnes som sysselsatte
+(lønnstakere), [jf. kapittel 19 om klasssifisering av sysselsatte](Klassifisering-arbfogsyss.html), omfatter datagrunnlaget også registrerte
+helt arbeidsledige personer fra NAVs Arena-register og øvrig bosatte
+personer 15 år eller eldre. [Påkobling av helt ledige omtales i kapittel
+20.1](#helt-ledige-fra-arena-registeret), mens [påkobling av bosatte personer omtales i kapittel 20.2](#bosatte-personer-15-år-eller-eldre).
+
+## Helt ledige fra Arena-registeret
+
+Personer registrert som helt ledige i Arena-registeret kobles på
+datagrunnlaget. Det er to betingelser for å bli tatt med:
+
+-   [Personen regnes ikke som sysselsatt (lønnstakere) basert på
+    opplegget i kapittel 19](Klassifisering-arbfogsyss.html)
+
+-   Personen er helt ledig, målt ved start- og stoppdatoer for
+    ledighetsforholdet, i referanseuka
+
+Det hentes både bosatte og ikke-bosatte helt ledige fra
+Arena-registeret. [Som nevnt i kapittel 11.1](#sammenheng-mellom-helt-ledige-i-klargjort-fil-og-helt-ledige-hos-nav) vil tallet på helt ledige i
+den klargjorte filen for arbeidsmarked og lønn kunne avvike fra
+statistikken over registrerte ledige som baseres på NAV sine tall.
+
+## Bosatte personer 15 år eller eldre
+
+Personer som var registrert som bosatt i Norge ved slutten av
+statistikkmåneden i Folkeregisteret (FREG), og 15 år eller eldre i
+referanseuka, kobles på datagrunnlaget. Det er kun bosatte som verken er
+lønnstakere eller er helt ledige i referanseuken som kobles på.
+
+I praksis kan de to gruppene identifiseres ved å ta utgangspunkt i unike
+statistikknummer (s-nummer) i FREG med:
+
+-   Lønnstakere: arb_syss førstesiffer lik 1 -- 3 (dvs. lønnstakere), og
+
+-   Personer som har arbeidssøker status helt ledige: dvs. helt ledig i
+    Arena-registeret og regnes ikke som aktiv /sysselsatt (arb_syss
+    førstesiffer ulik 1 -- 3) og startdato for helt ledighet er innenfor
+    eller forut for referanseuken.
+
+Merk at det ikke finnes noen populasjon av ikke-bosatte 15 år og eldre.
+Datagrunnlaget omfatter kun ikke-bosatte som [enten er lønnstakere (jf.
+kapittel 19](Klassifisering-arbfogsyss.html)) eller [helt ledige (jf. kapittel
+20.1](#helt-ledige-fra-arena-registeret)).

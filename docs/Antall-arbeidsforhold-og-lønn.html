@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen - 26&nbsp; Antall arbeidsforhold og lønn</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Referanser.html" rel="next">
+<link href="./Omtale-av-noen-statistikker.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Ingen resultater",
+    "search-matching-documents-text": "treff",
+    "search-copy-link-title": "Kopier link til søk",
+    "search-hide-matches-text": "Skjul flere treff",
+    "search-more-match-text": "flere treff i dokumentet",
+    "search-more-matches-text": "flere treff i dokumentet",
+    "search-clear-button-title": "Nullstill",
+    "search-detached-cancel-button-title": "Avbryt",
+    "search-submit-button-title": "Send"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="https://www.ssb.no/" class="navbar-brand navbar-brand-logo">
+    <img src="./media/SSB_logo_black.png" alt="SSB sin logo" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="https://www.ssb.no/">
+    <span class="navbar-title">Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/statisticsnorway/arbmark-docs-aordningen" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub-repo for boken">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Del4-klargjoringavdata-regsys.html">Del 4. Klargjøring av data - fil for registerbaserte sysselsettingsstatistikker</a></li><li class="breadcrumb-item"><a href="./Antall-arbeidsforhold-og-lønn.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Antall arbeidsforhold og lønn</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Forord</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Formål</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./avklare-planlegge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 1. Avklare behov og planlegge</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./definisjoner.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Definisjoner</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Datakilder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datakilder</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Del2og3-Samleinn-klargjore.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 2 og 3. Samle inn og klargjøre</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Del2-Samleinn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 2. Samle inn</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Kildedata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Kildedata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Prosessen-fra-kildedata-til-inndata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Prosessen fra kildedata til inndata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Inndata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Inndata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Datavarehus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Datavarehus</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Kontroller-og-tiltak.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Kontroller og tiltak</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Del3-Klargjøring-av-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 3. Klargjøring av data - fil for arbeidsmarked og lønn</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Knytning-mellom-lønns-og-arbeidsforhold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Knytning mellom lønns- og arbeidsforhold</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Påkobling-arbf-andre-kilder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Påkobling av arbeidsforhold fra andre kilder</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Tiltak-sluttdato.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Tiltak på sluttdato for arbeidsforhold</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Referanseuke.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Referanseuke</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Avgrensning-aggregering-arbf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Avgrensning og aggregering av arbeidsforhold</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Permisjoner-permitteringer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Permisjoner og permitteringer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Imputering-fra-perioden-før.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Imputering av arbeidsforhold fra perioden før</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Koblepå-kjennetegn-vof.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Koble på kjennetegn for forvirksomhet og foretak i VoF</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Kontrollogtiltak-fravær-virksomheter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Kontroll og tiltak på fravær mellom virksomheter</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Påkobling-ytelser-ameldingen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Påkobling av ytelser fra a-meldingen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Klassifisering-arbfogsyss.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Klassifisering av arbeidsforhold og sysselsatte</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Koblepå-heltarbl-utenfor-arbstyrken.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Koble på helt arbeidsledige og bosatte utenfor arbeidsstyrken</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Håndtering-lønn-avtaltarbtid.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Håndtering av lønn og avtalt arbeidstid</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Utledning-beregning-påkobling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Utledning, beregning og påkobling av kjennetegn</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Klargjortfil-arbm-og-lønnsstat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Klargjort fil for arbeidsmarkeds- og lønnsstatistikk</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Del4-klargjoringavdata-regsys.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 4. Klargjøring av data - fil for registerbaserte sysselsettingsstatistikker</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Selvstendige.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Selvstendig næringsdrivende</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Omtale-av-noen-statistikker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Omtale av noen statistikker</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Antall-arbeidsforhold-og-lønn.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Antall arbeidsforhold og lønn</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Referanser.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referanser</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg A: Variabel- og kodeoversikt</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg B: Kodeliste kilde for avtalt stillingsprosent</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg C: Data til forskere</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg D: Noen sentrale variable</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg D: Noen sentrale variable</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Innhold</h2>
+   
+  <ul>
+  <li><a href="#formål-populasjoner-og-definisjoner" id="toc-formål-populasjoner-og-definisjoner" class="nav-link active" data-scroll-target="#formål-populasjoner-og-definisjoner"><span class="header-section-number">26.1</span> Formål, populasjoner og definisjoner</a></li>
+  <li><a href="#samle-inn-og-klargjøre" id="toc-samle-inn-og-klargjøre" class="nav-link" data-scroll-target="#samle-inn-og-klargjøre"><span class="header-section-number">26.2</span> Samle inn og klargjøre</a></li>
+  <li><a href="#sammenheng-med-årlig-lønnsstatistikk" id="toc-sammenheng-med-årlig-lønnsstatistikk" class="nav-link" data-scroll-target="#sammenheng-med-årlig-lønnsstatistikk"><span class="header-section-number">26.3</span> Sammenheng med årlig lønnsstatistikk</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Antall arbeidsforhold og lønn</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>I dette kapittelet beskrives statistikken <em>antall arbeidsforhold og lønn</em>. Først omtales formål, populasjon samt jobb- og arbeidskraftsstrømmer (kapittel 26.1). I kapittel 26.2 beskrives forskjellen mellom foreløpige og endelige tall samt sesongjustering. Sammenheng med årlig lønnsstatistikk omtales i kapittel 26.3.</p>
+<section id="formål-populasjoner-og-definisjoner" class="level2" data-number="26.1">
+<h2 data-number="26.1" class="anchored" data-anchor-id="formål-populasjoner-og-definisjoner"><span class="header-section-number">26.1</span> Formål, populasjoner og definisjoner</h2>
+<p>En av de samfunnsøkonomiske gevinstene ved opprettelsen av a-ordningen var hyppigere statistikk om endringer i antall jobber (arbeidsforhold), lønnstakere og lønn, samt gi tabeller over utviklingen på regionalt nivå (kommuner og fylker) som vi ikke har i arbeidskraftundersøkelsen (AKU) eller kvartalsvis nasjonalregnskap (KNR). Statistikken <a href="https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/antall-arbeidsforhold-og-lonn"><em>antall arbeidsforhold og lønn</em></a> viser utviklingen i disse størrelsene både månedlig og kvartalsvis. Formålet med den kvartalsvise statistikken er å vise endringer i antall jobber (arbeidsforhold), antall lønnstakere og lønnsnivå for hvert kvartal sammenlignet med samme kvartal året før. Formålet med den månedlige statistikken er å belyse konjunkturutviklingen i Norge, målt ved endringer i antall jobber (arbeidsforhold), antall lønnstakere og kontantlønn.</p>
+<p>Statistikken baserer seg på <a href="Klargjortfil-arbm-og-lønnsstat.html">den klargjorte filen for arbeidsmarked og lønn</a>, og dekker alle lønnstakere, jobber og lønn. Statistikken ble første gang publisert i januar 2018, med tall tilbake til 1. kvartal 2016. Tall for lønn tilbake til 1. kvartal 2016 ble inkludert i statistikken ved publiseringen av 2. kvartal 2018. Fra og med desember 2020 ble statistikken utvidet med månedstall. Formålet med månedlig statistikk er å gi et raskt bilde av konjunkturutviklingen i Norge, målt ved endringer i antall lønnstakere (personer), antall jobber (arbeidsforhold) og kontantlønn. Tabellene inneholder både foreløpige og endelige månedstall, see omtale i kapittel 23.1 og 26.2.</p>
+<p><strong>Populasjon</strong></p>
+<p>Statistikken omfatter bosatte og ikke-bosatte lønnstakere i alle aldersgrupper som jobber i virksomheter hjemmehørende i Norge. Da statistikken er basert på registerdata, gjøres beregningene av antall ved å telle opp antall lønnstakere og jobber (arbeidsforhold) innenfor bestemte grupper. Nivåtallene for lønn er gitt som&nbsp;gjennomsnitt, og det er brutto lønn før skatt som inngår i lønnsbegrepene.</p>
+<p>For avtalt månedslønn og månedslønn er det kun jobber (arbeidsforhold) med utbetalt lønn innenfor lønnsbegrepet i lønnsstatistikken på tellingstidspunktet&nbsp;som inngår i beregningene av lønn. Alle jobber (arbeidsforhold) har ikke utbetalt slik lønn hver måned, og kan dermed inngå i opptellinger av jobber og som lønnstakere uten å være med i beregningen av gjennomsnittslønn. Kontantlønn omfatter derimot alle kontante ytelser fra arbeidsgiver som betyr at det omfatter mer enn lønnsbegrepet avtalt månedslønn og månedslønn. Bak gjennomsnittet for kontantlønn vil det derfor inngå flere arbeidsforhold enn for avtalt månedslønn og månedslønn.</p>
+<p><strong>Definisjoner</strong></p>
+<p>I statistikken kan vi grovt skille mellom jobbrelaterte-, arbeidsgiverrelaterte-, personrelaterte- og lønnsrelaterte variabler, samt definisjoner som omhandler jobb- og arbeidskraftsstrømmer. Se kapittel 2 for definisjoner av viktige begreper og vedlegg A.</p>
+<p>Lønnsbegrepene i statistikken er begrenset til å omfatte kontante godtgjørelser fra arbeidsgiver til arbeidstaker for avtalt arbeidstid. Statistikken omfatter følgelig ikke naturalytelser, forsikringer og heller ikke trekkfrie utgiftsgodtgjørelser, feriepenger og lignende. Det er brutto lønn før skatt som inngår i lønnsbegrepene.</p>
+<p>Det er de samme begrepene/definisjonen som benyttes i statistikkene <em>antall arbeidsforhold og lønn</em> som i den årlige <em>lønnsstatistikken</em>. Men noen begreper, som <em>månedslønn</em> og <em>jobber (arbeidsforhold),</em> har noe ulike betydning i statistikkene. Dette er omtalt i kapittel 26.3.</p>
+<p><strong>Kontantlønn</strong></p>
+<p><em>Kontantlønn</em>&nbsp;omfatter alle kontante ytelser, og er ikke knyttet til avtalt arbeidstid, fra arbeidsgiver herunder avtalt månedslønn, faste og uregelmessige tillegg, bonus, overtidsgodtgjørelse, sluttvederlag og andre kontante ytelser, før skatt. Kontantlønn publiseres som gjennomsnitt per jobb (og ikke som heltidsekvivalent).</p>
+<p>Kontantlønn omfatter utbetalte beløp, og tar ikke hensyn til arbeidstiden. Det er dermed ikke det samme som månedslønn som viser lønn for avtalt arbeidstid.</p>
+<p>I statistikken&nbsp;<a href="https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/antall-arbeidsforhold-og-lonn"><em>antall arbeidsforhold og lønn</em></a>&nbsp;publiseres månedlige tall på gjennomsnittlig kontantlønn per jobb, både med og uten sesongjustering (se omtale av sesongjustering i kapittel 26.2). Endringer i gjennomsnittlig kontantlønn kan blant annet skyldes:</p>
+<ol type="1">
+<li><p>Endringer i arbeidstid, fordi i denne statistikken deles kontantlønn på antall jobber og ikke arbeidstiden</p></li>
+<li><p>Endring i lønnsnivået (lønnssats) i hver enkelt jobb</p></li>
+<li><p>Endringer i sammensetningen av jobber med ulikt lønnsnivå. Rett i etterkant av koronautbruddet var det for eksempel en merkbar&nbsp;<a href="https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/jobbfall-pa-over-4-prosent">økning i gjennomsnittlig kontantlønn på grunn av bortfall av mange jobber med lavt lønnsnivå, deriblant mange deltidsjobber</a></p></li>
+<li><p>I et normalt år varierer kontantlønnen etter et nokså regelmessig sesongmønster. For å sammenligne kontantlønn påfølgende måneder bruker vi sesongjusterte tall som prøver å ta hensyn til sesongvariasjoner, som for eksempel:</p>
+<ol type="a">
+<li><p>Utbetaling av bonuser øker kontantlønnen i perioden februar til april</p></li>
+<li><p>Utbetaling av feriepenger øker kontantlønnen, hovedsakelig i juni</p></li>
+<li><p>Sommerjobber med lavere lønnsnivå i perioden juni til august trekker ned kontantlønnen per jobb</p></li>
+<li><p>Etterbetalinger i forbindelse med lønnsoppgjør øker kontantlønnen i måneden de utbetales. Dersom etterbetalingene kommer på de samme tidspunktene hvert år, vil de delvis kunne fanges opp av sesongjusteringen. I mange næringer er omfanget av etterbetalinger størst i perioden september til desember.</p></li>
+<li><p>Økt aktivitet i en næring, eksempelvis i varehandelen i desember med flere jobber og mange som jobber mer enn normalt.</p></li>
+</ol></li>
+</ol>
+<p><strong>Jobbstrømmer og arbeidskraftsstrømmer</strong></p>
+<p>Antall jobber som er skapt i løpet av et år, viser bare en liten del av endringene som faktisk har skjedd på arbeidsmarkedet. Det finnes mer informasjon om strømningstall i artikkelen: <a href="https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/de-store-bevegelsene-i-arbeidsmarkedet"><em>Strømningstall viser bevegelsene av jobber og arbeidskraft som ligger bak nettoendringene</em></a> og i et <a href="https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/mobilitet-i-arbeidsmarkedet">notat som beskriver mobiliteten i arbeidsmarkedet og måter å beskrive strømmer i arbeidsmarkedet</a>.</p>
+<p>La oss si at det i løpet av et år er blitt 60 000 flere jobber i Norge, og at antallet jobber har økt fra 2 940 000 til 3 000 000. I løpet av dette året vil det være virksomheter som har fått flere arbeidsplasser totalt, mens andre vil ha fått færre. Tabellene over <em>jobbstrømmer</em> viser omfanget av disse endringene. Bak en nettoendring på 60 000 kan jobbstrømmene for eksempel vise at virksomheter i vekst til sammen hadde en økning på 310 000 jobber mens andre virksomheter til sammen hadde en nedgang på 250 000 jobber.</p>
+<p>I en tabell over <em>jobbstrømmer</em> vil en virksomhet som har fått 6 flere ansatte siste år bidra med 6 i den delen av tabellen som viser jobboppgang. Tilsvarende vil en virksomhet som har redusert arbeidsstokken sin med 10 bidra med 10 i den delen som viser jobbnedgang siste år. Alt i alt viser slike tabeller dermed summene av henholdsvis virksomhetenes jobboppganger og virksomhetenes jobbnedganger siste år. Slike tall kalles <em>jobbstrømmer</em> og de viser i hvilken grad ulike nærings- og sektorgrupper opplever jobboppgang og jobbnedgang.</p>
+<p><strong>Figur 26.1. Jobbstrømmer</strong></p>
+<p><img src="./media/image11.png" style="width:6.29861in;height:4.99306in" alt="Skisse over jobbstrømmer"></p>
+<p>Men, bak <em>jobbstrømmene</em> ligger enda større <em>arbeidskraftsstrømmer</em>. Hvis vi ser for oss en virksomhet med jobboppgang på 6 jobber det siste året, kan dette komme av at virksomheten ansatte 14 nye lønnstakere mens 8 lønnstakere sluttet. Det er her&nbsp;<em>arbeidskraftsstrømmene</em>&nbsp;kommer inn; mens <em>jobbstrømmen</em> i dette tilfellet er en jobboppgang på 6, består <em>arbeidskraftsstrømmene</em> her av 14 nye ansettelser og 8 avsluttede ansettelser. Tabeller over <em>arbeidskraftsstrømmer</em> viser det totale omfanget av slike nye ansettelser og avsluttede ansettelser. Bak en nettoendring på 60&nbsp;000 flere jobber det siste året kan det for eksempel ligge 760&nbsp;000 nye ansettelser og 700&nbsp;000 avsluttede ansettelser.</p>
+<p><strong>Figur 26.2. Arbeidskraftsstrømmer</strong></p>
+<p><img src="./media/image12.png" style="width:6.29861in;height:4.50139in" alt="Skisse over arbeidskraftstrømmer"></p>
+<p><strong>Jobbstrømmer: Jobboppgang og jobbnedgang i virksomheter</strong></p>
+<p><em>Jobbstrømmer</em> dreier seg om jobboppgang og jobbnedgang i virksomheter. Det tas utgangspunkt i om antall jobber (arbeidsforhold) i en virksomhet har økt eller minket i løpet av det siste året for et gitt kvartal. Hvis det har vært flere jobber som har startet opp enn som er avsluttet i en virksomhet, sier vi at det har vært en jobboppgang. Hvis det i virksomheten har vært flere avsluttede jobber enn nyoppstartede jobber omtales det som jobbnedgang. Differansen mellom jobboppgang for virksomheter i alt og jobbnedgang for virksomheter i alt er nettoendringen fra samme kvartal ett år tidligere.</p>
+<p>I tabellene er det summen av virksomhetenes jobboppganger og jobbnedganger i en gitt næring eller sektor som vises. Disse kan fordeles etter om de skyldes nyetablering eller nedlegging av virksomheter eller nedgang/vekst i eksisterende virksomheter mellom de to tidspunktene. Eksisterende virksomheter vil si at de hadde ansatte på begge tidspunkt. Nyetablering er definert som at virksomheten ikke var etablert eller var etablert men uten ansatte på starttidspunktet. Nedlagte virksomheter hadde ansatte på starttidspunktet, men var opphørt eller uten ansatte på sluttidspunktet.</p>
+<p>Fordelt på næring, vil jobboppganger og jobbnedganger også komme som følge av at eksisterende virksomheter skifter næring mellom måletidspunktene. Alle jobber i en virksomhet som endrer næring vil telle som jobbnedgang i næringen de forlater og jobboppgang i næringen de kommer til. Virksomheten kan ha like mange jobber på begge måletidspunkt, men man vil likevel ende med jobboppgang i en næring og jobbnedgang i en annen. I tabellen i statistikkbanken gis det egne tall for jobboppgang og jobbnedgang som skyldes at eksisterende virksomheter skifter næring. Tilsvarende skjer når man fordeler jobboppgang og jobbnedgang etter sektor. Siden man kan bytte næring uten å bytte sektor og omvendt, blir antallet jobbnedganger og jobboppganger forskjellig i tabellene fordelt etter henholdsvis næring og sektor, men differansen mellom dem vil være den samme.</p>
+<p><strong>Arbeidskraftsstrømmer: Nyansettelser og avsluttede ansettelser</strong></p>
+<p>Arbeidskraftsstrømmer omhandler nyansettelser og avsluttede ansettelser, eller, som også nevnt ovenfor, bevegelser og mobilitet i arbeidsmarkedet det siste året. Nyansettelser er jobber (arbeidsforhold) som er del av statistikken inneværende kvartal, men som ikke eksisterte samme kvartal året før. Avsluttede ansettelser er jobbene som eksisterte foregående år, men som ikke dekkes av statistikken inneværende år.</p>
+<p>Arbeidskraftsstrømmer oppstår ved at lønnstakerne i virksomhetene skiftes ut. Noen kommer til, noen slutter å være lønnstakere og noen bytter jobb. Tabellene i statistikkbanken fordeler arbeidskraftsstrømmene mellom de som bytter jobb, og de som går inn og ut av arbeidsmarkedet. Siden jobber måles per virksomhet vil de som skifter jobb mellom virksomheter i samme foretak også inngå i arbeidskraftsstrømmene. Statistikken ser kun på jobber på måletidspunktene. Kortvarige jobber mellom måletidspunktene inngår ikke i arbeidskraftsstrømmene.</p>
+<p>Samlet sett vil summen av nyansettelser og avsluttede ansettelser (arbeidskraftsstrømmer) vise samme endring i antall jobber som jobboppgang og jobbnedgang i virksomhetene (jobbstrømmer). Nettoendringen fra ett år tilbake vil være differansen mellom nyansettelser og avsluttede ansettelser, eller differansen mellom virksomhetenes jobboppgang og jobbnedgang.</p>
+</section>
+<section id="samle-inn-og-klargjøre" class="level2" data-number="26.2">
+<h2 data-number="26.2" class="anchored" data-anchor-id="samle-inn-og-klargjøre"><span class="header-section-number">26.2</span> Samle inn og klargjøre</h2>
+<p>Når <a href="Klargjortfil-arbm-og-lønnsstat.html">de klargjorte filene for arbeidsmarked og lønn er ferdige</a>, starter vi med forberedelser til måneds- og kvartalspubliseringer. Populasjonen i denne statistikken er alle lønnstakere med aktive jobber i referanseuken i virksomheter hjemmehørende i Norge.</p>
+<p><strong>Statistikk per kvartal</strong></p>
+<p>Statistikken omfatter alle som er registrert som lønnstakere i <a href="Klargjortfil-arbm-og-lønnsstat.html">den klargjorte filen for arbeidsmarked og lønn</a>, men omfatter ikke utenlandske husholdninger (dvs. de med sektorkode 9000). Populasjonen til statistikken selekteres dermed på følgende måte:</p>
+<p>ARB_ARBMARK_STATUS = 1 og FRTK_SEKTOR_2014 ulik 9000.</p>
+<p>For kodelister se: <a href="VedleggA.html#arbeidsforholdsopplysninger">Arbeidsforholdsopplysninger</a> og <a href="VedleggA.html#foretaksopplysninger">Foretaksopplysninger</a>.</p>
+<p>Utenlandske husholdninger (sektorkode 9000) omfatter enhver person som har fast bopel utenfor Norge (uansett statsborgerskap). Som utenlandsk regnes og diplomater og militær representasjon i Norge, ansatte ved ambassader uten fast bopel i Norge og utenlandske turister.</p>
+<p>Det er endelig versjon (versjon 2) av den klargjorte filen for arbeidsmarked og lønn som benyttes i kvartalstallene, se forskjellen på foreløpig og endelige tall nedenfor.</p>
+<p><strong>Statistikk per måned</strong></p>
+<p>For foreløpig versjon (versjon 1) begrenses dataene til denne populasjonen:</p>
+<p>ARB_SYSS in (1a, 1b, 2a, 2b, 2c) og FRTK_SEKTOR_2014 ulik 9000.</p>
+<p>For kodelister se: <a href="VedleggA.html#arbeidsforholdsopplysninger">Arbeidsforholdsopplysninger</a> og <a href="VedleggA.html#foretaksopplysninger">Foretaksopplysninger</a>. Alle med negativ kontantlønn får denne justert til 0 kroner.</p>
+<p>For endelig versjon (versjon 2) begrenses dataene til denne populasjonen:</p>
+<p>ARB_SYSS in (1a, 1b, 2a, 2b, 2c, 3a, 3b) og FRTK_SEKTOR_2014 ulik 9000.</p>
+<p>Kapittel 19 beskriver klassifisering av sysselsatte og det etableres en variabel som viser hvilken av reglene som har slått til (ARB_SYSS).</p>
+<p>For kodelister se: <a href="VedleggA.html#arbeidsforholdsopplysninger">Arbeidsforholdsopplysninger</a> og <a href="VedleggA.html#foretaksopplysninger">Foretaksopplysninger</a>. Alle med negativ kontantlønn får denne justert til 0 kroner.</p>
+<p>For kontantlønn fjerner vi noen få ekstreme observasjoner. Det er snakk om arbeidsforhold som har en kontantlønn på over 2 millioner kroner, og der dette beløpet utgjør mer enn 3 prosent av kontantlønnen for hele næringsgruppen den tilhører (2-siffer næring).</p>
+<p><strong>Foreløpige og endelige tall</strong></p>
+<p>SSB får overført data fra Skatteetaten den 10. hver måned. For detaljer om datamottaket se kapitlene under Del 2. Samle inn. Basert på disse dataene lages det <a href="Klargjortfil-arbm-og-lønnsstat.html#ulike-versjoner-av-filene">to ulike månedsversjoner, se også beskrivelse i kapittel 23.1</a>: En første versjon av måneden som kan publiseres raskt etter månedens utløp, og en andre versjon av måneden før. I <em>antall arbeidsforhold og lønn</em> publiserer vi tall basert på både første og andre versjon. Månedstabellene inneholder tall fra første versjon, som omtales som foreløpige tall, i tillegg til tall fra andre versjon som omtales som endelige tall. I de kvartalsvise tabellene brukes kun tall fra andre versjon.</p>
+<p>I de foreløpige tallene er det enkelte jobber/lønnstakere vi ikke fanger opp på grunn av tidsforsinkelser i rapporteringen til a-ordningen, men som vil inngå i endelige tall. Foreløpige tall vil derfor være mer usikre enn endelige tall, og endringstall og nivåtall i vil være forskjellige fra endringstall og nivåtall vi får i endelige tall.</p>
+<p>Lønnstakere/jobber vi ikke fanger opp som følge av at vi benytter første versjon er forsinkede meldinger, erstatningsmeldinger for tidligere måneder samt arbeidsforhold med ulike tidsforsinkelser. Dette siste omfatter a) arbeidsforhold med fersk startdato uten lønn i statistikkmåneden, men med utbetalt lønn i måneden etter, samt b) arbeidsforhold uten lønn i statistikkmåneden, men med utbetalt i lønn både i måneden før og etter. Dette er arbeidsforhold med ARB_SYSS = 3a eller 3b, se kapittel 19.</p>
+<p>Gruppen vi ikke fanger opp i de foreløpige tallene varierer fra om lag 25&nbsp;000 til 100&nbsp;000 jobber, altså rundt 1-3 prosent av alle jobber. At antallet man ikke fanger opp varierer såpass mye fra måned til måned betyr at både endringstall og nivåtall i den foreløpige versjonen av tallene vil være forskjellig fra de endringstall og nivåtall man får ved å benytte endelig versjon.</p>
+<p>Usikkerheten knyttet til endringstall fra en måned til den etterfølgende er høyere enn for endringstall fra samme måned året før på grunn av sesongmønstre i ovennevnte arbeidsforhold (jobber). Tallene blir derfor sesongjustert slik at man kan sammenligne etterfølgende måneder.</p>
+<p><strong><em>Sesongjustering</em></strong></p>
+<p>I juli 2021 ble sesongjusterte månedstall publisert for første gang. Følgende månedsvise tidsserier sesongjusteres separat for 17 næringsgrupper og for foreløpige og endelige tall:</p>
+<ul>
+<li><p>antall jobber</p></li>
+<li><p>lønnstakere</p></li>
+<li><p>gjennomsnittlig kontantlønn</p></li>
+</ul>
+<p>Totalene for alle næringene blir litt ulikt behandlet i de ulike tidsseriene. For kontantlønn sesongjusteres totalen direkte, mens de to andre tidsseriene er laget indirekte ved at de underliggende sesongjusterte seriene aggregeres opp til en total.</p>
+<p><strong>Generelt om sesongjustering</strong></p>
+<p>For måneds- og kvartalstall er det ofte betydelige sesongvariasjoner som vanskeliggjør en direkte tolkning av utviklingen fra periode til periode. For å lette tolkningen av slike tidsserier, sesongjusteres mange tallserier ved bruk av X-13ARIMA-SEATS eller andre sesongjusteringsverktøy.</p>
+<p>For mer generell informasjon om sesongjustering og begrepene knyttet til det, se <a href="https://www.ssb.no/a/publikasjoner/pdf/notat_200927/notat_200927.pdf">dokumentasjon av sesongjustering i SSB</a>.</p>
+<p><strong>Hvorfor sesongjusteres denne statistikken?</strong></p>
+<p>I mange næringer ser vi variasjoner i tallene som dukker opp med en viss regelmessighet hvert år. Et godt eksempel på dette finner vi innen jordbruk, skogbruk og fiske, der antall jobber øker kraftig i august og desember, med tilsvarende fall i november og januar. For å kunne følge denne underliggende utviklingen fra måned til måned uten påvirkning fra slike faste variasjoner, sesongjusteres tallene.</p>
+<p><strong>Serier som sesongjusteres</strong></p>
+<p>Følgende månedsvise tidsserier sesongjusteres separat for 17 næringsgrupper og for foreløpige og endelige tall:</p>
+<ul>
+<li><p>antall jobber</p></li>
+<li><p>lønnstakere</p></li>
+<li><p>gjennomsnittlig kontantlønn</p></li>
+</ul>
+<p>Totalene for alle næringene blir litt ulikt behandlet i de ulike tidsseriene. For kontantlønn sesongjusteres totalen direkte, mens de to andre tidsseriene er laget indirekte ved at de underliggende sesongjusterte seriene aggregeres opp til en total.</p>
+<p>Vi finner sesongmønster i de fleste næringer. Serier hvor det ikke identifiseres et sesongmønster sesongjusteres ikke. Alle statistikkvariabler vurderes samlet for hver næring, både foreløpige og endelige tall. I noen tilfeller vil det være tydelige sesongmønster i én versjon og mer usikre sesongmønster i en annen versjon. Det gjøres da en helhetsvurdering hvor enten alle eller ingen av seriene sesongjusteres. De eneste seriene som ikke sesongjusteres er næringen&nbsp;<em>Bergverksdrift og utvinning</em>&nbsp;samt uoppgitt næring, og disse justeres derfor ikke i noen av seriene.</p>
+<p><strong>Prekorrigering</strong></p>
+<p>Før sesongjusteringen kan gjennomføres må seriene prekorrigeres for blant annet ekstreme verdier. Her følger vi&nbsp;<a href="https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/-/KS-GQ-15-001">European Statistical System (ESS) retningslinjer (ec.europa.eu)</a> så langt det lar seg gjøre. Dersom det foreligger en klar tolkning av årsaken til de ekstreme verdiene, så blir de inkludert som forklaringsvariabel (regressor) i modellen. I vurderingen av ekstreme verdier er det gjort sammenligninger av både foreløpige og endelige tall. Dersom ekstremverdier er korrigert i endelig versjon er det bestemt å inkludere dem i foreløpig versjon.</p>
+<p>Når det gjelder håndteringen av koronakrisen i sesongjusteringen følger vi&nbsp;<a href="https://github.com/statisticsnorway/SeasonalAdjustmentCorona">Eurostat sine retningslinjer (github.com)</a>, som sier at effekten av koronakrisen ikke skal inngå i grunnlaget for sesongmønsteret. Det innebærer at vi inntil videre antar at sesongmønsteret er uendret etter februar 2020, og at vi korrigerer for den systematiske sesongvariasjon beregnet på data før koronakrisen.</p>
+<p><em>Behandling av ekstreme verdier</em></p>
+<p>Seriene kontrolleres for ekstreme verdier. Identifiserte ekstremer blir forklart/modellert med bruk av all tilgjengelig informasjon. Når det foreligger en klar tolkning av årsaken til de ekstreme verdiene blir de inkludert som regressor i modellen.</p>
+<p><em>Kalenderjustering</em></p>
+<p>Modellen kontrollerer for kalenderdager.</p>
+<p><em>Metode for justering for virkedager</em></p>
+<p>Modellen kontrollerer for virkedager.</p>
+<p><em>Justering for bevegelige helligdager</em></p>
+<p>Det kontrolleres for bevegelige helligdager.</p>
+<p><em>Justering for skuddår</em></p>
+<p>Det kontrolleres for skuddårseffekter.</p>
+<p><em>Valg av modell</em></p>
+<p>For å prekorrigere er det nødvendig å velge en ARIMA-modell, samt avgjøre om data bør log-transformeres eller ikke.</p>
+<ul>
+<li>Alle serier er log-transformerte.</li>
+</ul>
+<p><em>Dekomponeringsrutiner</em></p>
+<p>Dekomponeringsrutinen spesifiserer hvordan trend-, sesong og irregulær komponent blir dekomponert. De mest vanlige dekomponeringene er additiv, multiplikativ og log additiv.</p>
+<p>Multiplikativ dekomponering benyttes i denne modellen. Årsaken til at kun multiplikativ dekomponering benyttes er at koronakrisen til tider kan gi store absolutte endringer på nivået i en serie, og en additiv dekomponering kan gi urealistiske utslag i visse tilfeller. Siden en multiplikativ dekomponering gir en prosentvis justering av serien, er dette valgt i alle seriene.</p>
+<p>Optimale sesongfilter- og filterlengder velges automatisk av Jdemetra+.</p>
+<p><strong>Valg av sesongjusteringsmetode</strong></p>
+<p><a href="https://jdemetradocumentation.github.io/JDemetra-documentation/pages/theory/SA_X11.html">X12-ARIMA (github.io)</a></p>
+<p><em>Konsistens mellom rådata</em></p>
+<p>I enkelte serier er det ønskelig at for eksempel sum (gjennomsnitt) månedsvise sesongjusterte tall for et år skal være identisk med sum (gjennomsnitt) månedsvise tall i den opprinnelige råserien.</p>
+<p>Ingen konsistensbetingelser pålegges.</p>
+<p><em>Konsistens mellom aggregat/definisjoner for sesongjusterte tall</em></p>
+<p>I enkelte serier pålegges det konsistens mellom sesongjusterte totaler og underaggregater. I tillegg er det for enkelte tidsserier et forhold mellom de ulike seriene, for eksempel bruttoprodukt som er lik produksjon minus produktinnsats.</p>
+<p>Ingen konsistensbetingelser pålegges.</p>
+<p><em>Direkte eller indirekte metode</em></p>
+<p>En direkte metode er anvendt dersom tidsserier for en total og tilhørende underaggregater alle er sesongjustert hver for seg. En indirekte metode er anvendt for total dersom tidsserier for de tilhørende underaggregater er sesongjustert direkte og det deretter er foretatt en aggregering til totalnivå.</p>
+<p>Statistikkvariabelen&nbsp;<em>kontantlønn</em>&nbsp;anvender en direkte metode, der total og tilhørende underaggregater sesongjusteres hver for seg. Indirekte metode anvendes for statistikkvariablene&nbsp;<em>lønnstakere</em>&nbsp;og&nbsp;<em>arbeidsforhold</em>, der komponentene sesongjusteres direkte med samme tilnærming og programvare. Totalene blir beregnet ved å aggregere de sesongjusterte komponentene.</p>
+<p><em>Tidshorisont for estimering av modell og beregning av korrigeringsfaktorer</em></p>
+<p>Hele tidsserien brukes for å beregne modell og korrigeringsfaktorer. På grunn av anbefalt praksis rundt håndtering av koronakrisen i sesongjusteringen, så benyttes kun data fra januar 2016 tom. februar 2020.</p>
+<p><strong>Revisjonsrutiner i bruk</strong></p>
+<p>I henhold til anbefalinger fra ESS vil modellene som ligger bak de sesongjusterte tallene være gjenstand for en grundig gjennomgang en gang i året. Da søkes det blant annet etter nye sesongmønstre eller endringer i gamle. Resten av året holdes deler av modellene fast, såkalt&nbsp;<em>delvis løpende korrigering</em>. Det vil også kjøres automatisk søk etter signifikante ekstremverdier (alle typer) ved årlige gjennomganger eller spesielle behov.</p>
+<p><em>Løpende eller faste valg i sesongjusteringen</em></p>
+<p>Delvis løpende korrigering, der modellene inkludert evt. log-transformering, sesong- og trendfiltre, kalender-variable og ekstremverdier kun identifiseres årlig, mens respektive regresjonsparametere og faktorer re-estimeres løpende hver gang nye eller reviderte rådata er tilgjengelige.</p>
+<p><em>Tidshorisont for publisering av reviderte tall</em></p>
+<p>Hele serien blir revidert når sesongfaktorene reestimeres.</p>
+<p><strong>Spesielle tilfeller</strong></p>
+<p><em>Sesongjustering av korte tidsserier</em></p>
+<p>Alle seriene er korte, og vil følgelig bli studert nøye videre.</p>
+<p><em>Håndtering av koronakrisen</em></p>
+<p>Koronakrisen påvirker statistikken på flere måter som er viktig å ta hensyn til når tallene skal tolkes. I de sesongjusterte tallene har vi fulgt Eurostat sine retningslinjer som sier at effekten av koronakrisen ikke skal inngå i grunnlaget for sesongmønsteret. Det innebærer at vi inntil videre antar at sesongmønsteret er uendret, og at vi korrigerer for den systematiske sesongvariasjon beregnet på data før koronakrisen.</p>
+<p><strong>Tilgjengelighet</strong></p>
+<p>Både rådata og sesongjusterte serier er tilgjengelige.</p>
+</section>
+<section id="sammenheng-med-årlig-lønnsstatistikk" class="level2" data-number="26.3">
+<h2 data-number="26.3" class="anchored" data-anchor-id="sammenheng-med-årlig-lønnsstatistikk"><span class="header-section-number">26.3</span> Sammenheng med årlig lønnsstatistikk</h2>
+<p>Tallene for lønn i statistikken er nært knyttet til den årlige lønnsstatistikken Statistikkene inkluderer flere felles kjennetegn og lønnsbegrepene har samme navn i de to statistikkene. Avtalt månedslønn er utledet likt, og er sammenlignbar i statistikkene. Månedslønn har noe ulik betydning og er ikke direkte sammenlignbar i de to statistikkene. I <em>antall arbeidsforhold og lønn</em> er det kun utbetalinger av uregelmessige tillegg og bonuser på tellingstidspunktet som inngår fordi den skal vise situasjonen i midtmåneden i kvartalet. I årlig lønnsstatistikk omfatter månedslønn utbetalinger av uregelmessige tillegg og bonus frem til og med november som er tellingsmåneden. Innrapporterte lønnsopplysninger gjennomgår samme kontroller og editeringer i de to statistikkene.</p>
+<p>Begrepet jobber/arbeidsforhold brukes også i de to statistikkene, men er ikke definert likt. Det er <em>antall arbeidsforhold og lønn</em> som gir fullstendig tall på antall jobber. Hovedforskjellen mellom antall jobber med lønn i&nbsp;<a href="http://www.ssb.no/arbeid-og-lonn/statistikker/lonnansatt"><em>lønnsstatistikken</em></a>&nbsp;og antall jobber i statistikken&nbsp;<a href="https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/antall-arbeidsforhold-og-lonn/"><em>antall arbeidsforhold og lønn</em></a>, er at sistnevnte også omfatter jobber hvor det er utbetalt andre lønnstyper enn det som inngår i lønnsstatistikken (f.eks. honorar) samt noen grupper som ikke har mottatt lønn i statistikkmåneden. Sistnevnte gruppe omfatter bl.a. personer som mottar ytelser fra NAV som erstatter lønn (sykepenger, foreldrepenger og svangerskapspenger) samt ulønnede permisjoner og permitteringer med en forventet varighet på under 90 dager (se mer informasjon om dette i kapittel 19 om klassifisering av sysselsetting). I den årlige lønnsstatistikken er det kun aktive arbeidsforhold med lønn i tellingsmåneden som inngår. Statistikken avgrenser populasjonen med formål om å måle lønn, ikke antall jobber. Derfor omfatter lønnsstatistikken kun jobber hvor det er utbetalt lønn etter lønnsstatistikkens lønnsbegrep, dvs. har utbetalt fastlønn, timelønn, faste tillegg, uregelmessige tillegg, og/eller bonus. Antallene som oppgis i lønnsstatistikken er derfor ikke et mål på antall jobber i de ulike yrkesgrupper, næringer, sektorer, osv.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Omtale-av-noen-statistikker.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Omtale av noen statistikker</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Referanser.html" class="pagination-link">
+        <span class="nav-page-text">Referanser</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ NOTATER 2023/32
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

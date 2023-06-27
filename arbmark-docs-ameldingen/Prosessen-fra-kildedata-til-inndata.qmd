@@ -1,0 +1,80 @@
+# Prosessen fra kildedata til inndata
+
+Prosessen fra kildedata til inndata omfatter følgende steg:
+
+-   Data transformeres fra XML-format til Oracle databaseformat
+
+-   Tekniske kontroller. Formål å avdekke om vi mottar det vi skal. To
+    typer kontroller: a) kontroller på meldingsproduksjonsinformasjonen
+    (sjekk av filene vi mottar fra Skatteetaten) og b)
+    avstemming/opptelling mellom Skatteetaten og etatene
+
+-   Mapping av variabelnavn. Gjør om lange variabelnavn til mer
+    hensiktsmessige navn. I navngivningen benyttes ulike prefiks, f.eks.
+    arb\_ for arbeidsforhold (jobber) og lonn\_ for lønn.
+
+-   Påkobling av SSB-identifikatorer på opplysningspliktig, foretak
+    (nivået over virksomhet), virksomhet og inntektsmottaker.
+
+## Håndtering av forsinkede meldinger og erstatningsmeldinger
+
+Som nevnt i kapittel 3.1.1 vil dataleveransen fra Skatteetaten inneholde
+ordinære meldinger for måned t, forsinkede ordinære meldinger for måned
+t-1 ... t-n og erstatningsmeldinger for måned t-1 ... t-n.
+Erstatningsmeldinger kan komme inntil 10 år etter.
+
+### Korrigeringer i a-meldingen
+
+Når en opplysningspliktig oppdager feil eller avvik i en a-melding som
+er sendt inn via lønnssystem, kan dette rettes ved å a) sende en ny
+melding eller b) sende en erstatningsmelding. Hvis opplysningene er
+sendt inn via [direkte registering i
+Altinn (altinn.no)](https://www.altinn.no/nn/skjemaoversikt/a-ordningen/a-melding/),
+kan retting kun skje ved at det sendes en erstatningsmelding.
+
+En ny melding til Skatteetaten betyr at det som sendes inn skal summeres
+opp av Skatteetaten med det som tidligere er sendt inn. Hvis det f.eks.
+er rapportert inn et for høyt beløp, kan det sendes en ny melding med
+negativt beløp som erstatter den tidligere innsendte meldingen.
+
+En erstatningsmelding til Skatteetaten betyr at det sendes inn en ny,
+fullstendig melding som erstatter den tidligere innsendte meldingen.
+
+Kravet om å rette opplysninger tilbake i tid gjelder informasjon om
+beløp og ytelser (f.eks. lønn), forskuddstrekk og arbeidsgiveravgift.
+Korreksjonskravet krever at hvis det er feil mellom utbetalt og rapport
+beløp skal det øyeblikkelig sendes en erstatningsmelding.
+
+Arbeidsforholdsopplysninger er det ikke nødvendig å korrigere tilbake i
+tid. Det vil si at korrekt opplysninger sendes på neste a-melding. For
+SSB vil dette se ut som en endring og som vi ikke kan se nøyaktig når
+skjedde. Det eneste vi vil vite er at endringen skjedde en gang mellom
+periode t og t-1. Selv om det ikke er noe krav er det likevel mange som
+korrigerer arbeidsforholdsopplysninger tilbake i tid.
+
+Mer informasjon om hvordan man korrigerer i
+[veiledningen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/) 
+til a-meldingen.
+
+### Behandling av forsinkede meldinger og erstatningsmeldinger
+
+Forsinkede meldinger og erstatningsmeldinger om siste måned som kommer
+inn til Skatteetaten mellom rapporteringsfristen og tidspunktet for
+oversending av data til SSB, skal bli sammenstilt av Skatteetaten før
+oversending, slik at SSB kun mottar siste gjeldende oppsummering. Det
+betyr at hvis det kommer en ny melding eller en erstatningsmelding for
+måned t før måned t er overført til SSB, vil SSB kun få den oppsummerte
+informasjonen. Hver månedlig leveranse fra Skatteetaten vil derfor i
+praksis omfatte kun ordinære meldinger om siste måned, mens forsinkede
+meldinger og erstatningsmeldinger vil gjelde tidligere måneder. 
+
+Erstatningsmeldinger skal erstatte eksisterende data på alle dokumenter
+som omfattes av erstatningsmeldinger. Dette gjøres ved at eksisterende
+data i inndata erstattes med data fra erstatningsmeldingen.
+
+Inndata vil dermed kun inneholde nyeste versjon av hvert
+månedstversnitt. Når erstatningsmeldinger eller forsinkede meldinger om
+tidligere måneder kommer inn til SSB, blir inndata altså automatisk
+oppdatert og kun nyeste versjon av måneden beholdes. Det gir mindre
+datamengder i inndata, forenkler uttrekk fra inndata, og SSB vil slik
+alltid forholde seg til det sist innrapporterte som gjeldende inndata.

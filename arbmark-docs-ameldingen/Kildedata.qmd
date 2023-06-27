@@ -1,0 +1,14 @@
+# Kildedata
+
+Kildedata er data slik vi mottar det fra Skatteetaten, bare dekryptert
+og pakket ut. Dataene har såkalt XML-format. Antall XML-filer varierer
+en del fra måned til måned, men ligger som regel mellom 145 -- 180
+filer.
+
+Kildedata fra Skatteetaten overføres via en SFTP-linje og mottas av
+Felles datamottak (FDM) i SSB. Både SFTP-linjen og dataene er kryptert
+
+Alle mottatte data, uansett kalendermåned, blir lastet inn til
+inndatamodellen i SSBs produksjonsmiljø. Kildedata blir ikke arkivert
+utover at vi tar vare på siste to år med leveranser. Det er ikke krav
+til lagring jf. SSBs strategi om datatilstander og lagring.

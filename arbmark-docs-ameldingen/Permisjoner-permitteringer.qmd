@@ -1,0 +1,90 @@
+# Permisjoner og permitteringer
+
+Opplysninger om permisjoner og permitteringer benyttes til
+klassifisering av sysselsetting, se [kapittel 19](Klassifisering-arbfogsyss.html). Personer som har
+permisjon eller er permittert fra jobben regnes som sysselsatte dersom
+den forventede varigheten på fraværet er under 90 dager. Hvis den
+forventede varigheten er 90 dager eller mer regnes man altså ikke som
+sysselsatt. Dette følger anbefalingene fra den internasjonale
+arbeidsorganisasjonen ILO.
+
+Det gjøres følgende konsistensbehandling mellom start- og sluttdato på
+arbeidsforholdet og start- og sluttdato på permisjoner og
+permitteringer:
+
+1.  Det kontrolleres for at permisjons- og permitteringsperioden er
+    innenfor arbeidsforholdets varighet. Det kontrolleres for start- og
+    sluttdato for permisjon/permitteringen mot start- og sluttdato for
+    arbeidsforhold, og følgende korrigering gjøres:
+
+    -   Dersom sluttdato permisjon/permittering er etter sluttdato
+        arbeidsforholdet, justeres sluttdato for
+        permisjonen/permitteringen slik at den blir lik sluttdato
+        arbeidsforholdet
+
+    -   Dersom startdato for permisjon/permitteringen er før startdato
+        for arbeidsforholdet justeres startdato for
+        permisjon/permittering slik at den blir lik startdato for
+        arbeidsforholdet
+
+    -   Dersom sluttdato permisjon/permittering er før startdato
+        arbeidsforholdet, justeres sluttdato permisjon/permittering slik
+        at den blir lik startdato arbeidsforholdet
+
+    -   Dersom startdato permisjon/permittering er etter sluttdato
+        arbeidsforholdet, justeres startdato permisjon/permittering slik
+        at den blir lik sluttdato arbeidsforholdet
+
+2.  Permisjon- og permitteringsdata som tas med videre må ha startdato
+    permisjon/permittering senest fredag i referanseuken.
+
+3.  Kun permisjoner hvor differansen mellom start- og sluttdato
+    permisjon er 14 dager eller mer, selekteres.
+
+Lengden på fraværet beregnes ved bruk av start- og stoppdatoer på
+permisjonen/permitteringen. Dersom forventet sluttdato ikke er oppgitt
+måles lengden på permisjonen/permitteringen i antall dager fra
+innrapportert startdato og fram til starten av referanseuka, som er uka
+med den 16. i. Dersom det er flere permisjoner/permitteringer knyttet
+til én jobb velges den med tidligst startdato.
+
+Følgende variabler beregnes og benyttes i klassifiseringen av
+sysselsatte (omtalt i [kapittel 19](Klassifisering-arbfogsyss.html)):
+
+-   Permisjoner:
+
+    -   perm_ant_dager: den totale lengden på permisjonen målt i antall
+        dager fra permisjonens start til og med første dag i
+        referanseuken
+
+    -   perm_dager_forv: forventet lengde på permisjon basert på start
+        og stoppdato permisjon og at man har en 100 prosent permisjon,
+        midlertidig variabel
+
+```{=html}
+<!-- -->
+```
+-   Permitteringer:
+
+    -   perm_permitt_ant_dager: den totale lengden på permitteringen
+        målt i antall dager fra permitteringens start til og med første
+        dag i referanseuken
+
+    -   perm_permitt_dager_forv: forventet lengde på permittering basert
+        på start og stoppdato permittering og at man er 100 prosent
+        permittert, midlertidig variabel
+
+I tilfeller med flere arbeidsforhold (jobber) innad i samme virksomhet
+blir variablene perm_ant_dager og perm_permitt_ant_dager aggregert, [se informasjon om aggregering i
+kapittel 13.2](#aggregering-hvis-flere-jobber-per-person-i-samme-virksomhet).
+
+Når det gjelder variablene perm_dager_forv og perm_permitt_dager_forv,
+velges den største verdien dersom flere, dvs. den med lengst varighet.
+
+**Permisjon og permitteringer i arbeidskraftundersøkelsen (AKU)**
+
+Det finnes også informasjon om permisjon/permitteringer i den
+personbaserte intervjuundersøkelsen AKU. AKU og a-meldingen fanger opp
+permitteringer og endringer i permitteringer på litt ulik måte. I AKU blir de som har vært helt permittert i inntil tre måneder eller forventer å være permittert i mindre enn tre måneder regnet som sysselsatte med midlertidig fravær. De som har vært, eller forventer å være, permittert i mer enn tre måneder blir enten regnet som arbeidsledige eller for å være utenfor arbeidsstyrken avhengig av hva de svarer på spørsmålene om de søker arbeid og om de er tilgjengelige for arbeid. Permitterte som oppgir i AKU at de likevel utførte noen oppgaver i forbindelse med jobben i referansuka (dvs. uka de intervjues om) blir klassifisert som sysselsatte. Permisjoner/permitterte med en forventet varighet på
+permisjonen/permitteringen på under 90 dager blir regnet som
+lønnstakere i [den klargjorte filen for arbeidsmarked og lønn](Klargjortfil-arbm-og-lønnsstat.html). Når forventet lengde på permitteringen går over tre sammenhengende måneder blir personen regnet som ikke sysselsatt. 

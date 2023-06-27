@@ -1,0 +1,56 @@
+# Inndata
+
+Inndata omfatter alle kildedata samt SSB-identifikatorer for
+inntektsmottakere, virksomheter (underenheter), foretaksnivå over
+virksomhet, og opplysningspliktige. Data er konvertert til
+databaseformat. Inndata omfatter kun siste versjon av datagrunnlaget for
+en periode, dvs. at tidligere versjon overskrives ved mottak av nye
+oppsummeringer fra Skatteetaten som følge av erstatningsmeldinger eller
+forsinkede meldinger.
+
+Inndata gjenspeiler organiseringen som dataene har i a-meldingen, men
+der dataene har gjennomgått noen prosesser som beskrevet i kapittel 5.
+Dataene er oppdelt i mange tabeller som må kobles sammen. Inndata består
+av mange tabeller i en database. Data er såkalt «normaliserte data», som
+enkelt fortalt betyr at man ikke gjentar informasjonen. Det er egne
+koblingsnøkler mellom tabellene.
+
+## Informasjon om ytelser, trygd og pensjoner
+
+Hovedregelen er at alle ytelser som er *skattepliktige* inngår i
+a-meldingen, mens alle *skattefrie* ytelser fra offentlige myndigheter
+ikke skal rapporteres.
+
+Også ytelser som rapporteres fra private opplysningspliktige inngår i
+a-meldingen. I tillegg til ytelser skal det rapporteres pensjoner/trygd,
+både fra det offentlige og private.
+
+## Lagring av inndata
+
+Inndata lagres.
+
+## Uttrekk av data fra inndata
+
+I inndata ligger alle dataene som vi mottar fra Skatteetaten. Kun
+informasjonen i inndata som er relevante for sysselsettings- og
+lønnsstatistikk trekkes ut fra inndata og går gjennom alle
+produksjonsprosessene frem til endelig fil for arbeidsmarked og lønn.
+
+Det meste av informasjonen om arbeidsforhold og lønn tas med videre fra
+inndata. Følgende informasjon er kun tilgjengelig i inndata:
+
+-   Personer *uten* fødselsnummer (fnr) eller D-nummer (dnr)
+
+-   Næringsinntekter
+
+-   Fradrag, f.eks. fagforeningskontingent
+
+-   Det meste av tilleggsinformasjonen. Tilleggsinformasjon benyttes der
+    det er nødvending med ytterligere informasjon knyttet til inntekt,
+    f.eks. om man er norsk eller utenlandsk pendler, detaljer om
+    firmabil, dagmamma detaljer (antall barn, antall måneder), type
+    innkvartering på reise, utlending med opphold i Norge, etc. Noe
+    tilleggsinformasjon blir med videre, f.eks. om sokkelarbeidere.
+
+-   Opplysninger som gjelder for en fremtidig periode (måned t+1 eller
+    t+2)

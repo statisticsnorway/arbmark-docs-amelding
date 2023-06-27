@@ -1,0 +1,53 @@
+# Del 2 og 3. Samle inn og klargjøre {.unnumbered} 
+
+I del 2 og 3 gjennomgås alle prosessene som inngår i produksjonssystemet
+som lager den klargjorte filen for arbeidsmarked og lønn som danner
+utgangspunkt for statistikkproduksjonen. Disse filene omfatter
+informasjon om arbeidsforhold (jobber) og lønn som kommer inn via
+a-meldingen samt informasjon fra de øvrige administrative registrene
+omtalt i kapittel 3.
+
+Produksjonssystemet kjøres hver måned og det lages to filer per måned --
+en med foreløpige tall (for måned t-1) og en med endelige tall (for
+måned t-2). For eksempel når vi mottok data 10. november 2022 kjørte vi
+versjon 1 (foreløpige tall) for oktober og versjon 2 (endelige tall) for
+september. Produksjonssystemet er i hovedsak det samme for begge
+versjonene, men det er noen prosesser som kun kan gjøres for de endelige
+tallene fordi prosessene krever at måneden etter statistikkmåneden
+finnes. Det er derfor kun den endelige filen som lånes ut til forskere.
+Forskjellen mellom foreløpige og endelige tall er nærmere beskrevet i
+kapittel 23.1 og 26.2.
+
+A-meldingen samt en rekke andre registerkilder omtalt i kapittel 3
+benyttes som tidligere nevnt for konsistensbehandling mellom ulike
+datakilder, valg av viktigste arbeidsforhold, klassifisering som
+sysselsatt, beregning av lønn samt for å kvalitetssikre dataene. En
+sentral del av produksjonsopplegget er å korrigere for ulike typer
+feil/mangler i datagrunnlaget.
+
+Overordnet består produksjonssystemet av følgende datatilstander:
+
+-          *Kildedata*:
+
+Omfatter data slik vi mottar dem fra Skatteetaten, men dekryptert og
+pakket ut. Data har XML-format.
+
+-          *Inndata*:
+
+Omfatter alle kildedata samt SSB-identifikatorer for
+inntektsmottakere, virksomheter, foretaksnivå over virksomhet, og
+opplysningspliktige. Data er konvertert fra XML-format til
+databaseformat. Inndata omfatter kun siste versjon av datagrunnlaget
+for en periode, det vil si at tidligere versjon overskrives ved mottak
+av nye oppsummeringer fra Skatteetaten som følge av
+erstatningsmeldinger eller forsinkede meldinger.
+
+  
+
+-          *Klargjorte data (klargjort fil for arbeidsmarked og lønn)*:
+
+Omfatter data hvor variable fra relevante datakilder (omtalt i
+kapittel 3) er koblet på, data er konsistensbehandlet mellom ulike
+kilder, nye variable er utledet samt kvalitetssikring av data. Filen
+danner utgangspunkt for en rekke ulike statistikker.
+

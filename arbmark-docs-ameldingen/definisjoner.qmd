@@ -1,0 +1,312 @@
+# Definisjoner
+
+I dette kapittelet defineres noen helt sentrale begreper som er relevant
+for statistikkene.
+
+## Lønn
+
+Lønnsbegrepet i lønnsstatistikken er begrenset til å omfatte kontante
+godtgjørelser fra arbeidsgiver til arbeidstaker for utført arbeid.
+Statistikken omfatter følgelig ikke naturalytelser, forsikringer og
+heller ikke trekkfrie utgiftsgodtgjørelser og lignende. Det er brutto
+lønn før skatt som er lønnsbegrepet.
+
+Månedslønn er hovedbegrepet i Statistisk sentralbyrås lønnsstatistikk.
+Månedslønn omfatter avtalt lønn, uregelmessige tillegg og bonuser.
+Overtidsgodtgjørelser er ikke medregnet i månedslønn.
+
+Måling av lønn er bestemt av internasjonale forordninger:
+[Rådsforordning (EU) nr. 0530/1999 av 9. mars 1999 om strukturstatistikk
+for lønn og
+arbeidskraftkostnader (eur-lex.europa.eu)](http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:31999R0530:EN:HTML).
+
+## ILO-definisjon sysselsetting
+
+Betegnelsen *arbeid* gir uttrykk for alt inntektsgivende arbeide av
+*minst én times varighet*. Alle midlertidig fraværende grunnet sykdom,
+skade, ferie, streik, lockout, utdanningspermisjon, foreldrepermisjon,
+permitteringer grunnet dårlig vær, mekanisk eller elektrisk sammenbrudd,
+mangel på råmaterialer eller drivstoff, eller annet fravær med eller
+uten tillatelse, blir å betrakte som sysselsatte gitt at de har en
+formell tilknytning til et arbeide. Arbeidsgivere og medlemmer av
+Næringslivets hovedorganisasjon er å betrakte som selvstendige. Ubetalte
+familiearbeidere i arbeide betraktes som selvstendige uansett reell
+arbeidstid. Lærlinger er å betrakte som lønnstakere. En *sysselsatt*
+person er en person over en spesifisert alder som i løpet av en kort
+periode, enten en uke eller en dag, finnes blant kategorier lønnstaker
+eller selvstendig.
+
+I statistikker som *AKU*, *lønnsstatistikken*, *antall arbeidsforhold og
+lønn* og *den registerbasert sysselsettingsstatistikken* benyttet en uke
+som referansetidspunkt.
+
+Personer med ulønnet permisjon/permitteringer på under 90 dager regnes
+som sysselsatte.
+
+Når man bruker begrepet sysselsatt er det vanlig å ta utgangspunkt i
+personen hovedarbeidsforhold. Fordeling etter kjennemerker som f.eks.
+næring blir da etter dette arbeidsforholdet. I den klargjorte filen for
+arbeidsmarked og lønn er det arbeidsforhold (jobb) som er enheten. Flere
+jobber i samme virksomhet for samme person blir slått sammen til én
+jobb.
+
+**Internasjonale forpliktelser vedrørende måling av sysselsetting**
+
+Forpliktelsene om måling av sysselsetting bestemmes dels av konferanser
+i regi av FN og dels av Norges EØS medlemskap. Nedenfor er det en
+nærmere omtale av dette.  
+
+Norge (Stortinget) har undertegnet en ILO-konvensjon (The International
+Labour Organisation som er et FN organ) om at Norge skal lage statistikk
+og sende data om sysselsetting, arbeidsledighet m.m. i befolkningen til
+ILO. Hvordan sysselsettingen mer konkret skal måles, bestemmes av ILO
+resolusjoner.
+
+Resolusjonene drøftes og vedtas på konferanser hvor alle medlemsland i
+FN er invitert til å delta. Fra Norge og de fleste andre medlemsland er
+det representanter fra de nasjonale statistikkbyråer som deltar.
+Konferansen avholdes omtrent hvert femte år. Mens ILOs konvensjon
+gjelder måling og rapportering av sysselsettingen i befolkningen,
+utarbeider FN statistiske kontor standard for utarbeidelse av
+Nasjonalregnskap. Sysselsetting målt ved antall personer og timeverk
+inngår også her. Man har valgt å anvende samme definisjon av hva som er
+sysselsetting i de to FN-organene. Forskjellen er at mens ILOs fokus er
+måling av sysselsetting blant de som er bosatt i landet, skal man i
+nasjonalregnskap måling sysselsetting i såkalt hjemmehørende
+virksomheter i landet (uansett om personene er bosatt i landet eller
+ikke), se nærmere omtale av dette i kapittel 2.9.
+
+ILO-konvensjonen er bindende for Norge, mens resolusjonen om den
+konkrete definisjonen og målingen av denne, er mer å anse som veiledende
+fra ILOs side. Det skyldes blant annet at den skal kunne anvendes i land
+med svært ulike arbeidsmarkeder og er derfor åpen for en del nasjonale
+tilpasninger.
+
+EU har valgt å ta utgangspunktet i ILOs resolusjon om måling av
+sysselsetting og konkretisert denne ytterligere i sine lovforordninger
+om utarbeidelse av arbeidsmarkedsstatistikk, nasjonalregnskap og
+næringsstatistikker. Gjennom EØS-avtalen er disse også gjort gjeldene
+for Norge etter vedtak i Stortinget. Ved dette har dermed også ILOs
+resolusjon om måling av sysselsetting indirekte blitt juridisk bindende
+for Norge.     
+
+Formelt gjelder Norges forpliktelser det vi skal levere av data til EU
+og ulike FN organ som ILO. Vi kan i teorien avvike fra dette i det vi
+selv publiserer på våre hjemmesider. Det er to hovedgrunner til at vi
+ikke ønsker å gjøre dette. Det ene er at vi finner at de internasjonalt
+avtalte anbefalinger er faglig godt begrunnet ut fra formålet med
+statistikkene, og for det andre ønsker brukerne i Norge at våre data
+skal være sammenlignbare med det som andre land publiserer.
+
+I henhold til ILO-definisjonen skal man regnes som sysselsatt selv om
+man bare har en avtalt/vanlig arbeidstid på 1 time i referanseuka som
+man kartlegger. En viktig grunn til at man i praksis ikke har noen nedre
+grense for sysselsetting, er at man i næringsstatistikker og
+nasjonalregnskap vil ha med alle arbeidstimer/lønnsutgifter som er
+medgått til produksjon av varer og tjenester. En annen grunn er at det
+ikke er noen opplagt grense for hva som skal være en annen nedre grense
+for arbeidstid. Man har derfor for å kompensere for dette ved å bl.a.
+anbefale at de sysselsatte fordeles etter arbeidstid. Brukere av
+statistikken kan dermed ut fra sitt formål eventuelt velge om man bare
+vil forholde seg til de som arbeider heltid eller mer enn halvtid. I
+[Arbeidskraftundersøkelsen
+(AKU)](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/arbeidskraftundersokelsen)
+er det i tillegg følgende anbefalinger:
+
+-   De sysselsatte skal spørres i AKU om hva de oppfatter som sin
+    hovedsakelige status (sysselsatt, under utdanning, ufør,
+    alderspensjonist osv.)
+
+-   Sysselsatte på deltid skal spørres i AKU om de ønsker å arbeide
+    flere timer
+
+Mer informasjon på nettsidene til ILO:
+
+[ILO-konvensjonen (ilo.org)](https://www.ilo.org/dyn/normlex/en/f?p=NORMLEXPUB:12100:::NO:12100:P12100_ILO_CODE:C160:NO) 
+
+og
+
+[ILO-resolusjonen (ilo.ch - PDF)](http://www.ilo.ch/wcmsp5/groups/public/---dgreports/---stat/documents/normativeinstrument/wcms_230304.pdf) 
+
+og
+
+[Arbeidstid (ilo.org - PDF)](https://www.ilo.org/wcmsp5/groups/public/---dgreports/---stat/documents/publication/wcms_099576.pdf) 
+
+
+## Lønnstaker
+
+Som lønnstakere defineres personer som i løpet av referanseperioden
+utførte arbeid for lønn eller betaling i form av kontanter eller varer,
+eller personer som har arbeidet i sin nåværende jobb, men som var
+midlertidig fraværende fra arbeidet i løpet av referanseperioden og har
+en formell tilknytning til arbeidet som tilfredsstiller en eller flere
+av følgende kriterier:
+
+-   kontinuerlig mottak av lønn eller betaling,
+
+-   forsikring om at vedkommende vil kunne vende tilbake til arbeidet
+    etter fraværsperioden, eller en avtale om gjeninntredelsestidspunkt,
+
+-   fraværsperioden er mindre enn eller lik den varigheten som en person
+    kan motta offentlig støtte uten å være tvunget til å akseptere annet
+    arbeide.
+
+Bortsett fra vernepliktige og personer på siviltjeneste, er det et
+hovedkriterium at personene har mottatt lønn i arbeidsforholdet.
+
+Lønnstakere omfatter [arbeidsforhold av
+typen ordinære (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/ordinart-arbeidsforhold/) og [maritime (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/maritimt-arbeidsforhold/) samt
+[arbeidsforhold som frilanser, oppdragstaker og personer som mottar
+honorar (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/frilanser-oppdragstaker-og-personer-som-mottar-honorarer/).
+
+For lønnstakere med flere arbeidsforhold er ett av arbeidsforholdene
+fastsatt som det viktigste (hovedarbeidsforholdet).
+
+Samme definisjon benyttes i AKU, med unntak av at AKU ikke omfatter
+vernepliktige og personer på siviltjeneste.
+
+## Ansatt
+
+Ansatte omfatter alle som mottar kompensasjon for arbeid i form av lønn
+o.l. Ansatte omfatter det samme som lønnstakere, men ikke [frilansere,
+oppdragstakere og personer som mottar
+honorar (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/frilanser-oppdragstaker-og-personer-som-mottar-honorarer/),
+siden de ikke har et tjenesteforhold/ansettelsesforhold (ikke ansatte).
+
+For ansatte med flere arbeidsforhold er ett av arbeidsforholdene
+fastsatt som det viktigste (hovedarbeidsforholdet).
+
+## Arbeidsforhold (jobb)
+
+Arbeidsforhold brukes synonymet med jobb som kompenseres i form av lønn
+e.l. Betegnelsen omfatter både hovedarbeidsforhold og biarbeidsforhold.
+En person (individ) kan ha flere arbeidsforhold (jobber) i ulike
+virksomheter. Flere arbeidsforhold i samme virksomhet summeres opp til
+ett arbeidsforhold.
+
+Forskjellen mellom antall ansatte/antall lønnstakere og antall
+arbeidsforhold vil dermed være at sistnevnte også inkluderer
+biarbeidsforhold.
+
+## Selvstendig næringsdrivende
+
+Som selvstendige næringsdrivende defineres personer som i løpet av
+referanseperioden utførte noe arbeid for profitt eller for familiens
+beste, i kontanter eller goder, eller personer med et foretak, som kan
+være et forretningsforetagende, et jordbruk eller et serviceforetakende,
+som var midlertidig fraværende av en eller annen årsak fra arbeidet i
+løpet av referanseperioden.
+
+I den registerbaserte statistikken identifiseres selvstendig
+næringsdrivende ved hjelp av informasjon om næringsinntekt fra
+Selvangivelsesregisteret (skattemeldingen).
+
+## Foretak og virksomhet
+
+**Virksomhet/bedrift**
+
+Virksomhet (bedrift/underenhet) brukes av SSB som betegnelse på en
+produksjonsenhet, det vil si en lokalt avgrenset enhet som hovedsakelig
+driver produksjon av varer eller tjenester innenfor en bestemt næring.
+Dette omtales som underenhet i Enhetsregisteret (ER).
+
+Virksomheter er konkrete arbeidssteder som for eksempel butikker,
+hoteller, skoler, bakerier, reklamebyråer og advokatkontorer.
+
+**Foretak**
+
+For privat sektor opererer Enhetsregisteret (ER) med foretak som navn på
+en juridisk selvstendig enhet. Foretak i privat sektor er videre
+splittet opp i virksomheter.
+
+I motsetning til privat sektor kan kommunal forvaltning og
+statsforvaltningen også ha registrert enheter mellom det øverste nivået
+(foretaket) og det laveste nivået (virksomheten). Disse mellomliggende
+nivåer omtales som organisasjonsledd.
+
+I den klargjorte filen for arbeidsmarked og lønn (og den klargjorte
+filen for registerbasert sysselsetting) er foretak nivået over
+virksomhet.
+
+## Bosatt/ikke-bosatt
+
+**Bosatte**
+
+*Bosatte* er definert som personer registrert i Folkeregisteret og
+inkluderer også midlertidige innflyttere med planlagt opphold i Norge på
+seks måneder eller mer.
+
+**Ikke-bosatte (utenlandske pendlere)**
+
+*Ikke-bosatte* er definert som personer registrert i Folkeregisteret med
+planlagt opphold i Norge på under seks måneder. Ikke-bosatte omfatter
+personer med et midlertidig ID-nummer (D-nummer) eller som er registrert
+som utvandret, men jobber i Norge.
+
+Ikke-bosatte, også kalt utenlandske pendlere, korttidsinnvandrere eller
+lønnstakere på korttidsopphold, omfatter personer som ikke er registrert
+som bosatt i folkeregisteret. Ikke-bosatte omfatter:
+
+-   Lønnstakere i norske og utenlandske virksomheter som har lengre
+    arbeidsperioder i Norge med påfølgende lengre friperioder.
+
+-   Personer som ikke bor i Norge i det hele tatt, men som pendler over
+    grensen hver dag eller ukentlig for å arbeide i Norge. Disse er
+    registrert som ikke-bosatte uansett hvor lenge pendlingen foregår,
+    forutsatt at de bor utenfor Norge. Dette gjelder for eksempel
+    nordmenn og svensker som bor i Sverige og jobber i Norge.
+
+-   Utenlandske bosatte som arbeider på kontinentalsokkelen eller som er
+    sjøfolk på norske skip i utenriksfart innenfor EØS-området.
+
+-   Asylsøkere med midlertidig arbeidstillatelse
+
+Dette er en svært heterogen gruppe som altså omfatter personer som
+pendler til arbeid i Norge for lengre eller kortere perioder av gangen.
+Det betyr at selv om en person er korttidsinnvandrer, kan man arbeide i
+Norge i flere år.
+
+## Avgrensning av sysselsettingsstatistikk
+
+Avgrensning av sysselsettingsstatistikk kan sees fra to synsvinkler.
+Definisjonen av sysselsetting er lik, men de har noe ulike anbefalinger
+om kriterier for hva som skal forståes som sysselsatt. Det ene
+perspektivet er å beskrive *befolkningens tilpasninger til
+arbeidsmarkedet* (inkludert ikke-sysselsatte). Da er det vanlig å
+avgrense populasjonen til personer 15-74 år bosatt i Norge
+*(hjemmehørende folkemengde i yrkesaktiv alder*).
+
+Det andre perspektivet er *foretakenes bruk av arbeidskraft i
+produksjonen* av varer og tjenester. Da er det vanlig å inkludere *alle
+sysselsatte som har sitt arbeidssted i virksomheter hjemmehørende i
+Norge*, uavhengig av alder og om den sysselsatte er registrert bosatt i
+Norge eller ikke. Ved denne tilnærmingen inkluderes også utenlandske
+ansatte på korttidsopphold (ikke-bosatte/utenlandske pendlere) som
+jobber i en virksomhet hjemmehørende i Norge, men ikke utenlandske
+ansatte som jobber i utlandet lønnet av norsk enhet.
+
+Noen statistikker publiserer etter den første avgrensningen til bosatte
+personer (befolkningens forhold til arbeidsmarkedet), som den
+[registerbaserte
+sysselsettingsstatistikken](https://www.ssb.no/arbeid-og-lonn/statistikker/regsys)
+og [arbeidskraftundersøkelsen
+(AKU)](https://www.ssb.no/arbeid-og-lonn/statistikker/aku). Personer som
+er bosatt i Norge, men arbeider i virksomheter hjemmehørende i utlandet
+skal i prinsippet klassifiseres som sysselsatte, men de fleste av disse
+mangler vi opplysninger om i a-meldingen. Arbeidskraftundersøkelsen (som
+er en utvalgsundersøkelse) derimot, fanger opp at de er sysselsatte
+gjennom intervju.
+
+[*Lønnsstatistikken*](https://www.ssb.no/arbeid-og-lonn/statistikker/lonnansatt), statistikken 
+[*antall arbeidsforhold og
+lønn*](https://www.ssb.no/arbeid-og-lonn/statistikker/arblonn) og
+*[Nasjonalregnskapet](https://www.ssb.no/nasjonalregnskap-og-konjunkturer/statistikker/knr)
+(NR/KNR)* er eksempler på statistikker som publiserer etter den andre
+avgrensningen (*foretakenes bruk av arbeidskraft i produksjonen* av
+varer og tjenester).
+
+De ulike avgrensinger av populasjonen som er omtalt over gjelder
+statistikkproduktene på [SSBs nettsider](http://www.ssb.no). Filen(e) for
+disse, som beskrives i dette dokumentasjonsnotatet, vil være unionen av
+alle populasjonene. Det er således først ved uttaket av data fra filen
+til tabellproduksjon at man gjør avgrensingene.

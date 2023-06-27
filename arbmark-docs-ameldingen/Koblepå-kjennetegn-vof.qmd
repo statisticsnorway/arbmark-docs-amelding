@@ -1,0 +1,49 @@
+# Koble på kjennetegn for forvirksomhet og foretak i VoF
+
+Etter imputering av enheter fra forrige måned (måned t-1) har vi fått
+etablert det totale antall arbeidsforhold for statistikkmåneden (måned
+t). I denne prosessen kobles det på opplysninger fra SSBs virksomhets-
+og foretaksregister (VoF). Dette skjer i to steg:
+
+**Steg 1:**
+
+Først kobles på kjennetegn som beskriver det laveste nivået i VoF som er
+enten virksomhet/underenhet eller AAFY (VIRK_ID_SSB med tilhørende navn,
+næring osv.), og kjennetegn som beskriver foretaksnivået rett over
+virksomhet (FRTK_ID_SSB med tilhørende navn, næring osv.).
+
+Hvilke variable som hentes fra VoF er opplistet i vedlegg A,
+variabelbeskrivelse. Variablene har prefiks VIRK\_ (for virksomheter) og
+FRTK\_ (for foretak). Kjennemerkene som kobles på gjenspeiler situasjon
+i VoF slik den var nærmest mulig utgangen av gjeldende statistikkmåned
+t.
+
+AAFY er en virksomhetstype som gis enheter under foretak som ikke driver
+næringsvirksomhet. Dette vil typisk gjelde idrettslag, musikkorps, ol.
+
+**Steg 2:**
+
+Deretter kobles på opplysninger fra VoF knyttet til arbeidsforhold i
+offentlig forvaltning (kommune og statsforvaltningen) som beskriver
+nivåer over foretak (FRTK_ID_SSB). Dette for å kunne identifisere
+foretak/virksomhet/arbeidsforhold som f.eks. hører inn under et bestemt
+departementsområde eller under en bestemt kommune. Eksempler på dette er
+toppnivået STAT Finansdepartementet eller toppnivået KOMM Oslo kommune.
+I tillegg identifiseres øverste organisasjonsledd nivå, f.eks. NAV.
+
+To nivåer etableres i steg to:
+
+-   Toppnivå i VoF: disse variablene har prefiks «topp»
+
+-   Nivå under topp i VoF: disse variablene har prefiks «nutopp»
+
+Fra disse to nivåene hentes informasjon om organisasjonsnummer, navn og
+organisasjonsform.
+
+Dersom toppnivå er identisk med nivået rett over virksomhet
+(FRTK_ID_SSB), vil verdien bli den samme på de to variabelsettene. Det
+vil typisk skje i store deler av privat sektor og også mange kommuner og
+offentlige virksomhet som ikke har flerleddet struktur. Toppnivå skal
+settes også i tilfeller hvor verdien er identisk med foretaksnivået rett
+over virksomhet. På den måten kan man lett finne toppnivå for alle
+arbeidsforhold.

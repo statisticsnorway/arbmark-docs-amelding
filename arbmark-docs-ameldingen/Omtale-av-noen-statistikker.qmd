@@ -1,0 +1,379 @@
+# Omtale av noen statistikker
+
+I dette kapittelet omtales noen sentrale statistikker som baserer seg på
+[den klargjorte filen for arbeidsmarked og lønn](Klargjortfil-arbm-og-lønnsstat.html)
+eller den [klargjorte filen for regsterbaserte sysselsettingsstatistikker](Del4-klargjoringavdata-regsys.html). Statistikken
+*antall arbeidsforhold og lønn* omtales i kapittel 26.
+
+## Lønnsstatistikken
+
+Lønnsstatistikken baserer seg fra og med 2015 på [den klargjorte filen
+for arbeidsmarked og lønn](Klargjortfil-arbm-og-lønnsstat.html).
+
+Formålet med statistikken er å gi oversikt over lønnsnivået og endring i
+lønn for alle lønnstakere uavhengig næringstilknytning og arbeidstid.
+
+Lønnsstatistikken omfatter:
+
+-   Arbeidsforhold (jobber) i virksomheter hjemmehørende i Norge
+
+-   Alle aktive arbeidsforhold med utbetalt lønn innenfor lønnsbegrepet
+
+-   Bosatte og ikke-bosatte
+
+-   Ingen aldersavgrensning
+
+-   Lærlinger
+
+Lønnsstatistikken omfatter ikke selvstendig næringsdrivende.
+
+Statistikken publiseres årlig med november som referansemåned.
+Publiseringstidspunkt er februar i påfølgende år.
+
+Informasjon om hvordan informasjon om lønn bearbeides og hvordan variabler i lønnsstatistikken beregnes og kontrolleres i kapittel 21.  
+
+Statistikken ble etablert i 1997. For perioden 1997-2014 var
+statistikken basert på utvalgsundersøkelser i privat sektor og
+registerinformasjon i offentlig sektor.
+
+[Se mer informasjon om lønnsstatistikken på nettsidene til SSB](https://www.ssb.no/arbeid-og-lonn/lonn-og-arbeidskraftkostnader/statistikk/lonn).
+
+## Sysselsetting, registerbasert
+
+Denne statistikken publiserer hovedtallene for den registerbaserte
+sysselsettingsstatistikken, og baserer seg på [filen for registerbasert
+sysselsettingsstatistikk](Del4-klargjoringavdata-regsys.html).
+
+Formålet med den registerbaserte sysselsettingsstatistikken er å
+beskrive sysselsetting på detaljert regionalt nivå ved å fordele på
+egenskaper ved de sysselsatte personene og deres arbeidsforhold.
+
+Statistikken omfatter bosatte personer mellom 15 og 74 år og inkluderer
+både lønnstakere og selvstendig næringsdrivende. For sysselsatte med
+flere arbeidsforhold fastsettes ett som det viktigste.
+
+Statistikken publiseres årlig med november som referansemåned.
+Publiseringstidspunkt er februar i påfølgende år.
+
+[Se mer informasjon om registerbasert sysselsettingsstatistikk (hovedtall) på nettsidene til SSB](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-registerbasert).
+
+## Sysselsetting blant innvandrere
+
+Statistikken sysselsetting blant innvandrere viser hvor stor andel
+innvandrere og norskfødte med innvandrerforeldre som er i arbeid.
+Innvandrere sammenlignes med sysselsettingstall for befolkningen ellers.
+
+Statistikken baserer seg på [filen for registerbasert
+sysselsettingsstatistikk](Del4-klargjoringavdata-regsys.html). Statistikken over innvandrere
+omfatter bosatte personer 15-74 år og inkluderer både lønnstakere og
+selvstendig næringsdrivende.
+
+I tillegg til bosatte innvandrere publiseres det også tall for
+lønnstakere på korttidsopphold (ikke-bosatte/utenlandske pendlere). For
+sysselsatte med flere arbeidsforhold fastsettes ett som det viktigste.
+
+Statistikken publiseres årlig med november som referansemåned.
+Publiseringstidspunkt er februar/mars i påfølgende år.
+
+[Se mer informasjon om sysselsetting blant innvandrere på nettsidene til SSB](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-blant-innvandrere-registerbasert).
+
+## Helse- og sosialpersonell
+
+Sysselsatte innen helse- og sosialpersonell viser hvor mange som har en
+helse- og sosialfaglig utdanning, og hvor mange sysselsatte som har en
+slik utdannelse i 4. kvartal. Statistikken omfatter også de som jobber i
+helse- og sosialtjenesten i 4. kvartal (november), men som ikke har en
+helse- og sosialfaglig utdanning. Statistikken omfatter både bosatte og
+ikke-bosatte personer samt bijobber og inkluderer både lønnstakere og
+selvstendig næringsdrivende.
+
+Den registerbaserte statistikken for helse- og sosialpersonell omfatter
+personer fra 15 år og oppover som oppfyller ett eller flere av følgende
+kriterier:
+
+-   Bosatt i Norge med en helse- og sosialfaglig utdanning
+
+-   Bosatte og ikke-bosatte som er sysselsatte i helse- og
+    sosialnæringene
+
+-   Ikke-bosatte som er sysselsatte i Norge og har helse- og
+    sosialfaglig utdanning
+
+-   Ikke-bosatte med en helse- og sosialfaglig utdanning som mottar
+    utvalgte ytelser fra NAV
+
+Statistikken baserer seg på [filen for registerbasert
+sysselsettingsstatistikk](Del4-klargjoringavdata-regsys.html).
+
+Statistikken publiseres årlig med november som referansemåned.
+Publiseringstidspunkt er februar/mars i påfølgende år.
+
+[Se mer informasjon om helse- og sosialpersonellstatistikken på nettsidene til SSB](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/helse-og-sosialpersonell)
+og i dokumentasjonsnotatet [registerbasert sysselsettingsstatistikk for helse- og sosialpersonell](https://www.ssb.no/a/publikasjoner/pdf/notat_200402/notat_200402.pdf).
+
+## System for persondata
+
+I system for persondata (SFP) er registerbasert sysselsettingsstatistikk
+utvidet til å omfatte også de ikke-sysselsatte, og for begge grupper gis
+det opplysninger om hvorvidt de er under utdanning eller mottar ytelser.
+Systemet ble etablert for å beskrive ulike gruppers forhold til
+arbeidsmarkedet, utdanning og ytelser. Populasjonen i SFP er personer i
+alderen 15 år og over, samt både bosatte og noen grupper ikke-bosatte. Informasjon om sysselsatte baserer seg på [filen for registerbasert sysselsettingsstatistikk](Del4-klargjoringavdata-regsys.html).
+
+SFP er dokumentert i notatet [System for persondata, dokumentasjon av årgangen fra og med 2008](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/system-for-persondata).
+
+Statistikken *tilknytning til arbeid, utdanning og velferdsordninger*
+baserer seg på SFP. Statistikken omfatter alle bosatte 15 og eldre. Det
+publiseres foreløpige tall og endelige tall med november som
+referansemåned. Foreløpige tall publiseres i august/september påfølgende
+år og endelige tall i desember påfølgende år.
+
+[Se mer informasjon om Statistikken *tilknytning til arbeid, utdanning og velferdsordninger* på nettsidene til SSB](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger).
+
+## Ansatte i staten
+
+Basert på [den klargjorte filen for arbeidsmarked og lønn](Klargjortfil-arbm-og-lønnsstat.html), lages det statistikk over ansatte i staten.
+
+Statistikken over ansatte i staten [dekker de samme enhetene som inngår i
+statsregnskapet.no (statsregnskapet.dfo.no)](https://statsregnskapet.dfo.no/virksomheter).
+Dermed dekker statistikken departementene, Stortinget, Sametinget,
+Riksrevisjonen, sivilombudet, Domstolene i Norge, statsministerens
+kontor, med underliggende virksomheter.
+
+Helseforetakene og offentlig kontrollerte enheter som statens
+forretningsdrift og statlig eide aksjeselskap (som Equinor, Telenor,
+Statskraft, mv.) inngår ikke i populasjonen.
+
+Statistikken omfatter alle ordinære og maritime arbeidsforhold, alle
+jobber (hoved- og biarbeidsforhold), både bosatte og ikke-bosatte
+(utenlandske pendlere) og alle uansett alder. Statistikken omfatter ikke
+selvstendig næringsdrivende, vernepliktige eller
+oppdragstakere/frilansere.
+
+Tallene er gjennomsnitt av alle månedene i året og skiller seg dermed
+fra den registerbaserte sysselsettingsstatistikken og de tidligere
+publiserte tallene over ansatte i staten, som er per 4. kvartal
+(november).
+
+Den største forskjellen mellom statistikken over ansatte i staten og
+andre statistikker som gir tall for statsforvaltningen (definert som
+alle enheter med sektorkode 6100), er at statsforvaltningen også
+inkluderer helseforetakene.
+
+Det er laget [flere statistikkbanktabeller](https://www.ssb.no/statbank/list/regsys) (se tabeller under
+overskriften «Ansatte i staten») som gir tall for ansatte i
+staten. 
+
+Tallene for ansatte i staten er gjennomsnitt av alle månedene i året, og
+hver måned teller 1/12.
+
+Avtalte årsverk beregnes fra avtalt stillingsprosent på følgende måte:
+avtalte årsverk = avtalt stillingsprosent/100.
+
+Når vi beregner gjennomsnitt over året og hver måned teller 1/12 betyr
+det at hvis man jobber fulltid i alle månedene i kalenderåret utgjør det
+1 årsverk. Hvis man f.eks. jobber 100 prosent i to av årets måneder
+utgjør det 1/6 dels årsverk.
+
+Tilsvarende gjennomsnitt beregnes for antall ansatte (personer) og
+antall arbeidsforhold (jobber).
+
+I tillegg til avtalte årsverk gir denne statistikken også tall for
+avtalte årsverk eksklusive foreldrepermisjon og legemeldt sykefravær.
+
+Ansatte i staten lages med utgangspunkt i [den klargjorte filen for
+arbeidsmarked og lønn](Klargjortfil-arbm-og-lønnsstat.html). I tillegg kobles det på
+informasjon om foreldrepermisjoner og legemeldt sykefravær, se
+informasjon om kilder i kapittel 3, for å beregne avtalte årsverk utenom
+foreldrepermisjon og legemeldt sykefravær.
+
+Statistikken publiseres årlig med hele året som referanseperiode.
+Publiseringstidspunkt er februar/mars i påfølgende år.
+
+Mer informasjon i notatet [Statistikk over ansatte i staten. Kartlegging
+av brukerbehov og muligheter](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/statistikk-over-ansatte-i-staten).
+
+## Maritime lønnstakere
+
+Basert på [den klargjorte filen for arbeidsmarked og lønn](Klargjortfil-arbm-og-lønnsstat.html) lages det
+statistikk over maritime lønnstakere. Maritime lønnstakere er definert
+ved at «[arbeidet utføres til sjøs, på fartøy eller flyttbar
+innretning (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/maritimt-arbeidsforhold/)».
+De maritime lønnstakerne omfatter dermed to grupper, de som jobber om
+bord i en båt og de som jobber på en flyttbar innretning eller
+boreplattform.
+
+I [a-meldingen skilles det mellom ulike typer arbeidsforhold (se
+kapittel 3.1.3](#a-meldingen-mer-om-innhold)): ordinære, maritim og
+oppdragstakere/frilansere. Det er arbeidsgivere som avgjør om et
+arbeidsforhold er maritimt.
+
+Maritime lønnstakere omfatter lønnstakere på fartøy som er registrert i
+norsk ordinært skipsregister (NOR), norsk internasjonalt skipsregister
+(NIS) eller utenlandsk skipsregister (UTL). Det er noen unntak fra
+rapporteringsplikten til a-ordningen. Arbeidsgivere som operer på et NIS
+fartøy er ikke pliktig til å rapportere lønnstakere som er bosatt
+utenfor EØS-området. Det gjelder uansett statsborgerskap. Der er heller
+ingen rapporteringsplikt for arbeidsgivere som operer på utenlandsk
+fartøy der de ikke skal svare arbeidsgiveravgift til norske
+ligningsmyndigheter.
+
+Maritime omfatter både de som jobber på båt eller på flyttbar innretning
+eller borerigg. Men sokkelarbeidere som jobber på en fast installasjon,
+f.eks. fastmontert boreplattform, skal rapportere som et ordinært
+arbeidsforhold og ikke et maritimt.
+
+Det er laget [flere statistikkbanktabeller](https://www.ssb.no/statbank/list/regsys) (se tabeller under
+overskriften «Maritime lønnstakere») som gir tall for maritime
+lønnstakere. Statistikken publiseres årlig med
+november som referansemåned. Publiseringstidspunkt er februar i
+påfølgende år.
+
+## Oppdragstakere
+
+Det lages en egen statistikk med oppdragstakere som har hele året som
+referanseperiode. Statistikken baserer seg på [den klargjorte filen for arbeidsmarked og
+lønn](Klargjortfil-arbm-og-lønnsstat.html).
+
+**Bakgrunn**
+I a-meldingen er arbeidsforhold delt inn i de to hovedgrupper: a)
+ordinære/maritime arbeidstakerforhold og b) frilansere, oppdragstakere,
+honorarpersoner mm. Det er sistnevnte gruppe som inngår i statistikken
+over oppdragstakere.
+
+Oppdragstakere inngår i populasjonen av sysselsatte, men med strengere
+krav enn ordinære/maritime arbeidsforhold. Det er kun oppdragstakere som
+har en fast- eller timelønn som inngår. Dette skyldes at det er større
+usikkerhet knyttet til disse arbeidsforholdene fordi det er mindre
+strenge krav til rapportering i a-meldingen. Det er kun krav om å
+rapportere denne typen arbeidsforhold hvis det har blitt foretatt en
+utbetaling. Se nærmere omtale av dette i kapittel 19.
+
+Det er altså krav om at det må rapporteres fast- eller timelønn for at
+jobber som oppdragstaker skal regnes som aktive arbeidsforhold på de
+klargjorte månedsfilene for arbeidsmarked og lønn og dermed i
+statistikkene som baserer seg på disse filene. Begrunnelsen er at dette
+er arbeidsforhold som ligner mer på ordinære arbeidsforhold samt hindre
+at administrative rutiner rundt når lønn utbetales skal påvirke
+endringstallene. Dette innebærer at f.eks. lønnsarter som kommunal
+omsorgslønn og styrehonorar ikke er med i dagens statistikker med
+referansetidspunkt år, kvartal eller måned. Det er også ofte slik at
+f.eks. styrehonorar bare utbetales et par ganger i året. Om lag 30 --
+50 000 arbeidsforhold som oppdragstakere er inkludert i dagens
+statistikker.
+
+På bakgrunn av kravene til innrapportering i a-meldingen, er mange av
+oppdragstakerne problematiske å ta inn i de ulike statistikkene siden
+disse krever presis informasjon (relatert til en konkret uke) om når en
+person har avtale om å arbeide. Tabeller om oppdragstakere er derfor
+bedre tilpasset at man bruker *kalenderåret* som referanseperiode.
+
+Det er noen utfordringer vedrørende kravene til rapportering i
+a-meldingen. Det går særlig på to forhold: a) Kravet til når et
+oppdragsforhold skal rapporteres. For oppdragstakere trenger man ikke å
+rapportere inn den måneden oppdragsforholdet starter, men kan i stedet
+vente til første måned man betaler en ytelse for oppdraget. Man skal da
+likevel rapportere den faktiske startdatoen for oppdraget. Om oppdraget
+er avtalt å vare videre, vil det i måneden etter betaling, måtte anses
+som aktivt om det ikke er meldt som opphørt. Man kan imidlertid ikke
+være sikker på om det er grunnen eller om opplysningspliktig lar det stå
+uten stoppdato i påvente av at personen får et nytt oppdrag. Det gjør at
+man ikke kan vite om et oppdragsforhold som det ikke er rapportert lønn
+på i etterfølgende måned fortsatt er aktivt eller om det er opphørt. b)
+Kravet til når det skal rapporteres opphør av et arbeidsforhold.
+Problemet oppstår der hvor personer ikke har plikt til å arbeide i
+sammenhengende perioder. Vi snakker da altså ikke om perioder hvor de
+normalt ville ha arbeidet. Men det er perioder hvor det ikke foreligger
+arbeidsplikt og hvor dette ikke skyldes avspasering som følge av
+arbeidstidsordningen.
+
+Definisjon av lønn som ligger til grunn for å definere et arbeidsforhold
+som aktivt i den registerbaserte sysselsettingsstatistikken tar
+utgangspunktet i hva som regnes som lønn for arbeid i henhold til ILO
+manualen. Dersom en person kun får utbetalt overtid eller ulike typer
+tillegg har vi valgt å ikke definere arbeidsforholdet som aktivt
+ettersom det ikke er vanlig at arbeidsgiver utbetaler dette i stedet for
+eksempelvis fast- eller timelønn. Det er heller sannsynlig at tilfeller
+der overtid eller ulike typer tillegg er eneste utbetaling, er knyttet
+til etterbetalinger, eventuelt i forbindelse med opphør av
+arbeidsforhold. Denne definisjon av lønn benyttes hovedsakelig for
+ordinære og maritime arbeidsforhold.
+
+Se notatet [kartlegging av arbeidsforhold som oppdragstaker i a-ordningen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/kartlegging-av-arbeidsforhold-som-oppdragstaker-i-a-ordningen) for
+mer informasjon om dette.
+
+**Mer om oppdragstakere**
+
+Oppdragstakere omfatter bosatte og ikke-bosatte personer med
+arbeidsforhold [rapportert i a-meldingen som frilanser, oppdragstaker og
+personer som mottar
+honorar (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/frilanser-oppdragstaker-og-personer-som-mottar-honorarer/).
+Man må være innrapportert minst én gang i løpet av *kalenderåret* og ha
+mottatt lønn for arbeidet. Det er ingen aldersavgrensning. Selvstendig
+næringsdrivende inngår ikke. Eksempler på arbeidsforhold som faller inn
+under gruppen oppdragstakere er:
+
+• **Frilansere:** yrkesgrupper som musikere, tekstforfatter,
+skuespillere, journalister og oversettere er ofte å regne som
+frilansere/oppdragstakere.
+
+• **Folkevalgte:** omfatter politikere i kommuner, fylkeskommuner og på
+Stortinget som får godtgjørelse for politisk arbeid.
+
+• **Fosterforeldre, og personer med omsorgslønn:** lønn og annen
+godtgjørelse for å hjelpe personer med spesielle behov eller personer
+med omsorgsbehov.
+
+• **Personer som har tillitsverv:** lønn og annen godtgjørelse for
+arbeid og dekning av utgifter i frivillige og veldedige organisasjoner
+eller i andre organisasjoner der man har tillitsverv. Eksempler på
+tillitsverv: deltakelse i bedriftsforsamlingen eller andre råd, utvalg
+og verv tilknyttet jobben. Unntak: Tillitsvalgte og medlemmer av
+frivillige og veldedige organisasjoner som kun er kursdeltakere, men får
+refusjon for tapt arbeidsfortjeneste. Disse skal rapporteres i
+a-meldingen med arbeidsforholdstype [pensjoner eller andre
+ytelser (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/pensjon-eller-andre-ytelser/).
+
+• **Styremedlemmer:** Personer som bare sitter i styret i selskapet, og
+ikke er ansatt.
+
+*Unntak:* Ansattes representant i styre. Her er den ansatte i et
+ordinært eller maritimt arbeidsforhold og styrehonorar skal rapporteres
+på det ordinære eller maritime arbeidsforholdet.
+
+Statistikken gir tall for både antall oppdragsforhold (jobber) og antall
+oppdragstakere (personer). *Oppdragsforhold (jobber)* omfatter alle
+jobbene en person har i ulike virksomheter (underenheter). Flere jobber
+i samme virksomhet (underenhet) for samme personer blir lagt sammen til
+én jobb. For *oppdragstakere (personer)* med flere jobber i ulike
+virksomheter (underenheter) er én av jobbene valgt som den viktigste.
+
+I statistikken over oppdragstakere benyttes begrepet «Årlig utbetalt
+kontantlønn». Kontantlønn omfatter alle kontante ytelser fra
+arbeidsgiver herunder avtalt månedslønn, faste og uregelmessige tillegg,
+honorar, bonus, overtidsgodtgjørelse, sluttvederlag og andre kontante
+ytelser ikke spesifisert her, før skatt. Årlig utbetalt kontantlønn er
+summen av kontantlønnen i alle jobbene i løpet av kalenderåret.
+
+Tallene for oppdragstakere har som nevnt hele året som referanseperiode,
+det vil si man må være innrapportert minst én gang i løpet av
+kalenderåret og ha mottatt lønn for arbeid. Dette i motsetning til
+f.eks. [*den registerbaserte
+sysselsettingsstatistikken*](https://www.ssb.no/regsys) (som har en uke
+i november som referanseperiode) og [*antall arbeidsforhold og
+lønn*](https://www.ssb.no/arbeid-og-lonn/statistikker/arblonn) (som har
+en uke i måneden eller en uke i midtmåneden i kvartalet som
+referanseperiode). Tallene over oppdragstakere sier dermed hvor mange
+oppdragstakere (personer) og oppdragsforhold (jobber) det er totalt i
+løpet av et kalenderår, men ikke noe om når arbeidet skjer i løpet av
+året.
+
+Hvis man er rapportert flere måneder i samme virksomhet i løpet av året
+er kjennemerker som næring og sektor knyttet til den siste
+innrapporterte jobben. Alder er beregnet ved utgangen av kalenderåret.
+
+Det er laget [flere statistikkbanktabeller](https://www.ssb.no/statbank/list/regsys) (se tabeller under
+overskriften «Oppdragstakere») som gir tall for
+oppdragstakere. Statistikken publiseres årlig med hele
+året som referanseperiode. Publiseringstidspunkt er mars i påfølgende
+år.

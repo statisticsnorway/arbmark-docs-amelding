@@ -1,0 +1,208 @@
+# Vedlegg D: Noen sentrale variable {.unnumbered}
+
+Dette vedlegget gir en nærmere beskrivelse av noen sentrale variable, se
+også dokumentasjonen [om datagrunnlaget for registerbasert
+sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk)
+til forskere. Utgangspunktet for beskrivelsen er data som lånes ut til
+forskere fra *den registerbaserte sysselsettingsstatistikken*, se mer
+informasjon om [utlån av data om personers tilknytning til arbeidsmarkedet](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/arbeidsmarked).
+
+**Næring**
+
+Næring for en person/jobb er bestemt av næring på virksomheten hvor man
+arbeider. Næring kan være feil av i hovedsak tre grunner:
+
+-   Virksomheten har feil næringskode. Det er relativt beskjedent med
+    slik feil. Noe vil oppstå fordi det er etterslep i kontroller av om
+    virksomheter skulle ha endret sin næringskode. Slik kontroller skjer
+    årlig for alle større virksomheter, samt for et utvalg av de små, av
+    de i SSB som produserer næringsstatistikk. For næringer uten
+    næringsstatistikk vil kvaliteten være dårligere. Det samme gjelder
+    for små virksomheter som ikke er med i utvalgene til
+    næringsstatistikkene.
+
+-   Den andre og mer vanlige feil er at personen ikke er knyttet til
+    riktig virksomhet i foretak med flere virksomheter. Arbeidsgiver kan
+    for eksempel ha meldt inn alle ansatte bare på hovedvirksomheten til
+    foretaket. Hvis alle virksomhetene har samme næring er likevel dette
+    ikke noe problem for næringskoden, men vil kunne være et problem i
+    forhold til personens geografiske arbeidssted. Generelt kontrolleres
+    næring bare løpende på tabellnivå og da ned til 2-siffer næring.
+    Kontrollen skjer også i hovedsak ved å se på større endringer på
+    kommune- og fylkesnivå. Små feil vil derfor ikke bli oppdaget. Det er
+    likevel slik at man også her bare kan forvente at SSB oppdager
+    relativt stor feil.
+
+-   Den tredje årsak til feil i næringskode kan oppstå der foretaket
+    ikke har skilt ut alle virksomheter med eget organisasjonsnummer. Om
+    næringskoden er ulik på virksomhetene får man feil næring på en del
+    av de ansatte. Slike feil blir kontrollert på mikronivå for de
+    foretak som er med i næringsstatistikker.
+
+**Yrke**
+
+Yrket for en person/jobb skal bestemmes av de arbeidsoppgaver personen
+har.
+
+*2003-2014:*
+
+-   Det er direkte informasjon om yrkestittel for sysselsettingsforhold
+    som er innmeldt i Aa-registeret, men med unntak for ansatte i
+    statlig forvaltning og for kommunalt ansatte fram til og med 2007.
+    Her ble det meldt inn stillingskoder for henholdsvis statlig og
+    kommunal forvaltning. Yrkeskoden bestemmes av arbeidsgiver via den
+    yrkestittel arbeidsgiver mener at de ansatte har. Noen arbeidsgivere
+    anvender yrkestitler på en avvikende måte i forhold til hva som er
+    vanlig, og man vil kunne få feil yrkeskoder på disse ansatte.
+
+-   For ansatte i statlig forvaltning og kommunal forvaltning med
+    stillingskoder har SSB laget en omkoding av disse til yrkeskode men
+    denne gir dårligere kvalitet blant fordi en del stillingskoder er
+    for generelle, for eksempel konsulent.
+
+-   For ansatte med sysselsettingskilde bare fra Lønns- og
+    trekkoppgaveregisteret eller for de som er selvstendige imputerer
+    SSB yrkeskoder basert på ulike variable. Disse vil ha brukbar
+    kvalitet på tabellnivå og grov yrkesgruppering, men ha store feil på
+    mikronivå og anbefales generelt ikke brukt. Til bruk i mikro
+    anbefales derfor bare å bruke imputert yrkeskode (variabelen
+    ARB_YRKE_IMP (ARB_YRKE_PUBL for STYRK08) for de med verdien A og B i
+    variabelen ARB_KILDE_YRKE_IMP (kilde imputert yrke). De andre vil da
+    få uoppgitt yrke. For en del av disse vil kombinasjon av utdanning
+    og næring kunne gi en viss indikasjon på yrke.
+
+*Fra og med 2015:*
+
+-   Yrke rapporteres for alle ordinære og maritime arbeidsforhold i
+    a-meldingen. For oppdragstakere/frilansere var det til og med mars
+    2019 frivillig å rapportere yrke og rundt 14 000 av de 39 000
+    oppdragsforholdene i 2016 sto uten yrkeskode. Fra og med april 2019
+    er det obligatorisk å rapportere yrkeskode også for
+    frilansere/oppdragstakere.
+
+-   Det rapporteres på 7-siffer, men det kontrolleres kun på de fire
+    første sifrene i a-meldingen. Kontrollen sikrer kun at det
+    rapporteres en gyldig verdi. Eventuell feil rapportering av yrke
+    fanges ikke opp.
+
+-   I a-meldingen rapporteres det også yrke for ansatte i statlig
+    forvaltning. Til og med 2014 ble det kun rapportert stillingskoder
+    for denne gruppen og som SSB omkodet til yrke, se over.
+
+-   Det er to yrkesvariable man kan benytte f.o.m. 2015: ARB_YRKE (som
+    er yrke rapportert i a-meldingen etter STYRK1998) og
+    ARB_YRKE_STYRK_08 (som er yrke rapportert i a-meldingen omkodet fra
+    STYRK1998 til STYRK2008).
+
+-   For selvstendige er det ikke rapportert eller imputert yrke. For en
+    del av disse vil kombinasjon av utdanning og næring kunne gi en viss
+    indikasjon på yrke.
+
+For mer informasjon om yrke, se notatet [Måling av langsiktige endringer
+i yrkesstrukturen (notater
+2016/36).](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/maling-av-langsiktige-endringer-i-yrkesstrukturen)
+
+Grunnen til at det finnes yrkeskoder helt ned på 7-siffernivå er for å
+gjøre det lettere for arbeidsgivere å rapportere yrker (søke dem opp),
+dette fordi arbeidsgivere ofte bruker forskjellige navn på samme yrker.
+Det som dermed fremstår som to forskjellige yrker fordi de har ulike
+koder på 7-siffernivå kan i realiteten være samme yrket. Siden formålet
+med 7-siffernivået er å lette rapporteringen for arbeidsgivere og ikke å
+lage statistikk, foretas det heller ingen kvalitetskontroller på det
+aktuelle nivået. Derfor lages det statistikk kun på 4 siffer.
+
+Ofte vil ulike 7- sifferkoder bare være noe ulike måter å formulere en
+yrkestittel på. Da må man aggregere. Vanskeligere blir det om noen
+7-siffer koder/titler er veldig spesifikke, men andre er mer generelle.
+Da er det fare for at noen arbeidsgivere bruke de mer generelle
+kodene/titlene og det er derfor usikkert om antallet med spesifikke
+titler dekker alle som har denne type jobb.
+
+«Bartender» kan brukes som eksempel. Yrkestittelen inngår i gruppen 5123
+Hovmestere, servitører og barkeepere. Arbeidsgiver kan velge mellom en
+rekke titler som man kan si passer til «bartender» -- det kan være
+spesifikke titler eller mer generelle titler som «servitør».
+
+**Arbeidsstedskommune**
+
+En persons arbeidssted bestemmes i utgangspunktet av
+beliggenhetsadressen til virksomheten hvor personen arbeider. Som for
+næring kan feil i arbeidssted skyldes gal adresse på virksomheten eller
+at den sysselsatte er registrert på feil virksomhet. Det er det siste
+som oftest er tilfelle ved feil. Det finnes noen unntak fra at
+virksomhetens adresse bestemmer arbeidsstedskommunen. I tillegg vil man
+for noen yrker ikke ha registrert faktisk arbeidssted.
+
+-   For selvstendig næringsdrivende som ikke er registrert med
+    organisasjonsnummer, anvender man bostedskommune som
+    arbeidsstedskommune. Det er også noen grupper lønnstakere som får
+    bostedskommune registrert i felt for arbeidsstedskommune. Det
+    gjelder sjøfolk og ansatte i Forsvaret. Se mer informasjon i
+    kapittel 22.2.
+
+-   En del faktiske arbeidssted er slik at det ikke kreves at det
+    opprettes egen virksomhet på stedet. Det gjelder for arbeidssteder
+    av kort varighet som for eksempel bygge- og anleggsplasser.
+
+-   En annen gruppe er arbeidssteder med bare en eller svært få ansatte.
+    De ansatte vil da i hovedsak være registrert på den virksomheten
+    hvor de administrativt hører hjemme i foretaket.
+
+-   Ansatte i byråer som driver utleie av arbeidskraft vil ha
+    arbeidsstedskommune til den administrative enheten de hører under og
+    ikke til den virksomheten de er utleid til.
+
+-   En del ansatte er i yrker der de er mobile som en del av arbeidet.
+    Det gjelder for eksempel mange innen transportvirksomhet. Disse vil
+    da som regel være knyttet til den administrative enheten de hører
+    til.
+
+-   Når det gjelder kontroll av opplysninger om arbeidssted så
+    kontrolleres dette dels via at man sjekker at foretakene har
+    opprettet eget organisasjonsnummer for hver virksomhet de har og
+    dels via at de ansatte er riktig fordelt på disse. Kontrollen skjer
+    likevel i hovedsak ikke lenger ned enn til kommunenivå. Kvaliteten
+    på data på bydelsnivå og grunnkrets vil derfor være dårligere. SSB
+    publiserer generelt ikke sysselsettingsdata ned på grunnkretsnivå.
+    Det kan likevel forsvares å utlevere slike til visse
+    forsknings/analyseprosjekt når grunnkretsene skal brukes som
+    byggesteiner i større grupperinger på tvers av kommunegrenser.
+
+-   Ved bruk av sysselsettingsdataene til
+    pendlingsanalyser/transportanalyser må man i tillegg til ovenstående
+    punkter også være klar over at man ikke vet noe om hvor ofte
+    sysselsatte reiser fra bosted til arbeidssted. Dette er særlig
+    aktuelt for deltidssysselsatte. Vi nevner også det kjente problemer
+    med bostedsregistrering for studenter. Mange vil være registrert
+    bosatt i foreldrenes kommune og ikke i den kommunen de faktisk bor.
+    Mange av de usannsynlige lange pendlingsstrømmene vil være
+    forårsaket av slike forhold.
+
+**Avtalt arbeidstid**
+
+*2000-2014:*
+
+Dette gjelder avtalt arbeidstid i referanseuken. Også her er det slik at
+vi bare har direkte informasjon for de sysselsettingsforhold som har
+Aa-registeret som kilde. For de andre er det gjort imputeringer.
+Hovedmodellen er at man fra AKU ser hvordan forholdet er mellom avtalt
+arbeidstid (for selvstendige gjennomsnittlig ukentlige arbeidstid) og
+årlig lønnsinntekt (næringsinntekt for selvstendige). Tilsvarende
+forhold mellom inntekt og arbeidstid antar man at det er for sysselsatte
+i register (for de uten arbeidstid fra Aa-registeret). Dette gir
+selvsagt en del feil på mikronivå. Særlig for selvstendige kan det bli
+en feil som følge av at næringsinntekt og arbeidstid ikke er like nært
+korrelert som lønnsinntekt og arbeidstid.
+
+*Fra og med 2015:*
+
+I a-meldingen er «forventet arbeidstid» erstattet av «avtalt
+stillingsprosent», «antall timer fulltid per uke» og «betalte timer» for
+timelønnede. Avtalt arbeidstid er utledet fra de to førstnevnte
+variablene.
+
+Det er noen kvalitetsutfordringer knyttet til rapportering av avtalt
+arbeidstid. Se omtale av dette og metode for å forbedre kvaliteten i
+kapittel 21. Se også informasjon om kvaltet i a-meldingen (kapittel 3.1.4) og sentrale endringer med a-ordningen (kapittel 3.1.5).
+
+Det er ekstra stort brudd i avtalt arbeidstid mellom 2014 og 2015. Tallene er ikke sammenlignbare og endringer må tolkes med stor forsiktighet.

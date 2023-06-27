@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen - 2&nbsp; Definisjoner</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Datakilder.html" rel="next">
+<link href="./avklare-planlegge.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Ingen resultater",
+    "search-matching-documents-text": "treff",
+    "search-copy-link-title": "Kopier link til søk",
+    "search-hide-matches-text": "Skjul flere treff",
+    "search-more-match-text": "flere treff i dokumentet",
+    "search-more-matches-text": "flere treff i dokumentet",
+    "search-clear-button-title": "Nullstill",
+    "search-detached-cancel-button-title": "Avbryt",
+    "search-submit-button-title": "Send"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="https://www.ssb.no/" class="navbar-brand navbar-brand-logo">
+    <img src="./media/SSB_logo_black.png" alt="SSB sin logo" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="https://www.ssb.no/">
+    <span class="navbar-title">Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/statisticsnorway/arbmark-docs-aordningen" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub-repo for boken">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./avklare-planlegge.html">Del 1. Avklare behov og planlegge</a></li><li class="breadcrumb-item"><a href="./definisjoner.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Definisjoner</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Forord</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Formål</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./avklare-planlegge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 1. Avklare behov og planlegge</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./definisjoner.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Definisjoner</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Datakilder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datakilder</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Del2og3-Samleinn-klargjore.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 2 og 3. Samle inn og klargjøre</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Del2-Samleinn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 2. Samle inn</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Kildedata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Kildedata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Prosessen-fra-kildedata-til-inndata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Prosessen fra kildedata til inndata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Inndata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Inndata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Datavarehus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Datavarehus</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Kontroller-og-tiltak.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Kontroller og tiltak</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Del3-Klargjøring-av-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 3. Klargjøring av data - fil for arbeidsmarked og lønn</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Knytning-mellom-lønns-og-arbeidsforhold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Knytning mellom lønns- og arbeidsforhold</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Påkobling-arbf-andre-kilder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Påkobling av arbeidsforhold fra andre kilder</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Tiltak-sluttdato.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Tiltak på sluttdato for arbeidsforhold</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Referanseuke.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Referanseuke</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Avgrensning-aggregering-arbf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Avgrensning og aggregering av arbeidsforhold</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Permisjoner-permitteringer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Permisjoner og permitteringer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Imputering-fra-perioden-før.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Imputering av arbeidsforhold fra perioden før</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Koblepå-kjennetegn-vof.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Koble på kjennetegn for forvirksomhet og foretak i VoF</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Kontrollogtiltak-fravær-virksomheter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Kontroll og tiltak på fravær mellom virksomheter</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Påkobling-ytelser-ameldingen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Påkobling av ytelser fra a-meldingen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Klassifisering-arbfogsyss.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Klassifisering av arbeidsforhold og sysselsatte</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Koblepå-heltarbl-utenfor-arbstyrken.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Koble på helt arbeidsledige og bosatte utenfor arbeidsstyrken</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Håndtering-lønn-avtaltarbtid.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Håndtering av lønn og avtalt arbeidstid</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Utledning-beregning-påkobling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Utledning, beregning og påkobling av kjennetegn</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Klargjortfil-arbm-og-lønnsstat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Klargjort fil for arbeidsmarkeds- og lønnsstatistikk</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Del4-klargjoringavdata-regsys.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 4. Klargjøring av data - fil for registerbaserte sysselsettingsstatistikker</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Selvstendige.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Selvstendig næringsdrivende</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Omtale-av-noen-statistikker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Omtale av noen statistikker</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Antall-arbeidsforhold-og-lønn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Antall arbeidsforhold og lønn</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Referanser.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referanser</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg A: Variabel- og kodeoversikt</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg B: Kodeliste kilde for avtalt stillingsprosent</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg C: Data til forskere</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg D: Noen sentrale variable</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg D: Noen sentrale variable</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Innhold</h2>
+   
+  <ul>
+  <li><a href="#lønn" id="toc-lønn" class="nav-link active" data-scroll-target="#lønn"><span class="header-section-number">2.1</span> Lønn</a></li>
+  <li><a href="#ilo-definisjon-sysselsetting" id="toc-ilo-definisjon-sysselsetting" class="nav-link" data-scroll-target="#ilo-definisjon-sysselsetting"><span class="header-section-number">2.2</span> ILO-definisjon sysselsetting</a></li>
+  <li><a href="#lønnstaker" id="toc-lønnstaker" class="nav-link" data-scroll-target="#lønnstaker"><span class="header-section-number">2.3</span> Lønnstaker</a></li>
+  <li><a href="#ansatt" id="toc-ansatt" class="nav-link" data-scroll-target="#ansatt"><span class="header-section-number">2.4</span> Ansatt</a></li>
+  <li><a href="#arbeidsforhold-jobb" id="toc-arbeidsforhold-jobb" class="nav-link" data-scroll-target="#arbeidsforhold-jobb"><span class="header-section-number">2.5</span> Arbeidsforhold (jobb)</a></li>
+  <li><a href="#selvstendig-næringsdrivende" id="toc-selvstendig-næringsdrivende" class="nav-link" data-scroll-target="#selvstendig-næringsdrivende"><span class="header-section-number">2.6</span> Selvstendig næringsdrivende</a></li>
+  <li><a href="#foretak-og-virksomhet" id="toc-foretak-og-virksomhet" class="nav-link" data-scroll-target="#foretak-og-virksomhet"><span class="header-section-number">2.7</span> Foretak og virksomhet</a></li>
+  <li><a href="#bosattikke-bosatt" id="toc-bosattikke-bosatt" class="nav-link" data-scroll-target="#bosattikke-bosatt"><span class="header-section-number">2.8</span> Bosatt/ikke-bosatt</a></li>
+  <li><a href="#avgrensning-av-sysselsettingsstatistikk" id="toc-avgrensning-av-sysselsettingsstatistikk" class="nav-link" data-scroll-target="#avgrensning-av-sysselsettingsstatistikk"><span class="header-section-number">2.9</span> Avgrensning av sysselsettingsstatistikk</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Definisjoner</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>I dette kapittelet defineres noen helt sentrale begreper som er relevant for statistikkene.</p>
+<section id="lønn" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="lønn"><span class="header-section-number">2.1</span> Lønn</h2>
+<p>Lønnsbegrepet i lønnsstatistikken er begrenset til å omfatte kontante godtgjørelser fra arbeidsgiver til arbeidstaker for utført arbeid. Statistikken omfatter følgelig ikke naturalytelser, forsikringer og heller ikke trekkfrie utgiftsgodtgjørelser og lignende. Det er brutto lønn før skatt som er lønnsbegrepet.</p>
+<p>Månedslønn er hovedbegrepet i Statistisk sentralbyrås lønnsstatistikk. Månedslønn omfatter avtalt lønn, uregelmessige tillegg og bonuser. Overtidsgodtgjørelser er ikke medregnet i månedslønn.</p>
+<p>Måling av lønn er bestemt av internasjonale forordninger: <a href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:31999R0530:EN:HTML">Rådsforordning (EU) nr. 0530/1999 av 9. mars 1999 om strukturstatistikk for lønn og arbeidskraftkostnader (eur-lex.europa.eu)</a>.</p>
+</section>
+<section id="ilo-definisjon-sysselsetting" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="ilo-definisjon-sysselsetting"><span class="header-section-number">2.2</span> ILO-definisjon sysselsetting</h2>
+<p>Betegnelsen <em>arbeid</em> gir uttrykk for alt inntektsgivende arbeide av <em>minst én times varighet</em>. Alle midlertidig fraværende grunnet sykdom, skade, ferie, streik, lockout, utdanningspermisjon, foreldrepermisjon, permitteringer grunnet dårlig vær, mekanisk eller elektrisk sammenbrudd, mangel på råmaterialer eller drivstoff, eller annet fravær med eller uten tillatelse, blir å betrakte som sysselsatte gitt at de har en formell tilknytning til et arbeide. Arbeidsgivere og medlemmer av Næringslivets hovedorganisasjon er å betrakte som selvstendige. Ubetalte familiearbeidere i arbeide betraktes som selvstendige uansett reell arbeidstid. Lærlinger er å betrakte som lønnstakere. En <em>sysselsatt</em> person er en person over en spesifisert alder som i løpet av en kort periode, enten en uke eller en dag, finnes blant kategorier lønnstaker eller selvstendig.</p>
+<p>I statistikker som <em>AKU</em>, <em>lønnsstatistikken</em>, <em>antall arbeidsforhold og lønn</em> og <em>den registerbasert sysselsettingsstatistikken</em> benyttet en uke som referansetidspunkt.</p>
+<p>Personer med ulønnet permisjon/permitteringer på under 90 dager regnes som sysselsatte.</p>
+<p>Når man bruker begrepet sysselsatt er det vanlig å ta utgangspunkt i personen hovedarbeidsforhold. Fordeling etter kjennemerker som f.eks. næring blir da etter dette arbeidsforholdet. I den klargjorte filen for arbeidsmarked og lønn er det arbeidsforhold (jobb) som er enheten. Flere jobber i samme virksomhet for samme person blir slått sammen til én jobb.</p>
+<p><strong>Internasjonale forpliktelser vedrørende måling av sysselsetting</strong></p>
+<p>Forpliktelsene om måling av sysselsetting bestemmes dels av konferanser i regi av FN og dels av Norges EØS medlemskap. Nedenfor er det en nærmere omtale av dette. &nbsp;</p>
+<p>Norge (Stortinget) har undertegnet en ILO-konvensjon (The International Labour Organisation som er et FN organ) om at Norge skal lage statistikk og sende data om sysselsetting, arbeidsledighet m.m. i befolkningen til ILO. Hvordan sysselsettingen mer konkret skal måles, bestemmes av ILO resolusjoner.</p>
+<p>Resolusjonene drøftes og vedtas på konferanser hvor alle medlemsland i FN er invitert til å delta. Fra Norge og de fleste andre medlemsland er det representanter fra de nasjonale statistikkbyråer som deltar. Konferansen avholdes omtrent hvert femte år. Mens ILOs konvensjon gjelder måling og rapportering av sysselsettingen i befolkningen, utarbeider FN statistiske kontor standard for utarbeidelse av Nasjonalregnskap. Sysselsetting målt ved antall personer og timeverk inngår også her. Man har valgt å anvende samme definisjon av&nbsp;hva som er sysselsetting i de to FN-organene. Forskjellen er at mens ILOs fokus er måling av sysselsetting blant de som er bosatt i landet, skal man i nasjonalregnskap måling sysselsetting i såkalt hjemmehørende virksomheter i landet (uansett om personene er bosatt i landet eller ikke), se nærmere omtale av dette i kapittel 2.9.</p>
+<p>ILO-konvensjonen er bindende for Norge, mens resolusjonen om den konkrete definisjonen og målingen av denne, er mer å anse som veiledende fra ILOs side. Det skyldes blant annet at den skal kunne anvendes i land med svært ulike arbeidsmarkeder og er derfor åpen for en del nasjonale tilpasninger.</p>
+<p>EU har valgt å ta utgangspunktet i ILOs resolusjon om måling av sysselsetting og konkretisert denne ytterligere i sine lovforordninger om utarbeidelse av arbeidsmarkedsstatistikk, nasjonalregnskap og næringsstatistikker. Gjennom EØS-avtalen er disse også gjort gjeldene for Norge etter vedtak i Stortinget. Ved dette har dermed også ILOs resolusjon om måling av sysselsetting indirekte blitt juridisk bindende for Norge. &nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>Formelt gjelder Norges forpliktelser det vi skal levere av data til EU og ulike FN organ som ILO. Vi kan i teorien avvike fra dette i det vi selv publiserer på våre hjemmesider. Det er to hovedgrunner til at vi ikke ønsker å gjøre dette. Det ene er at vi finner at de internasjonalt avtalte anbefalinger er faglig godt begrunnet ut fra formålet med statistikkene, og for det andre ønsker brukerne i Norge at våre data skal være sammenlignbare med det som andre land publiserer.</p>
+<p>I henhold til ILO-definisjonen skal man regnes som sysselsatt selv om man bare har en avtalt/vanlig arbeidstid på 1 time i referanseuka som man kartlegger. En viktig grunn til at man i praksis ikke har noen nedre grense for sysselsetting, er at man i næringsstatistikker og nasjonalregnskap vil ha med alle arbeidstimer/lønnsutgifter som er medgått til produksjon av varer og tjenester. En annen grunn er at det ikke er noen opplagt grense for hva som skal være en annen nedre grense for arbeidstid. Man har derfor for å kompensere for dette ved å bl.a. anbefale at de sysselsatte fordeles etter arbeidstid. Brukere av statistikken kan dermed ut fra sitt formål eventuelt velge om man bare vil forholde seg til de som arbeider heltid eller mer enn halvtid. I <a href="https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/arbeidskraftundersokelsen">Arbeidskraftundersøkelsen (AKU)</a> er det i tillegg følgende anbefalinger:</p>
+<ul>
+<li><p>De sysselsatte skal spørres i AKU om hva de oppfatter som sin hovedsakelige status (sysselsatt, under utdanning, ufør, alderspensjonist osv.)</p></li>
+<li><p>Sysselsatte på deltid skal spørres i AKU om de ønsker å arbeide flere timer</p></li>
+</ul>
+<p>Mer informasjon på nettsidene til ILO:</p>
+<p><a href="https://www.ilo.org/dyn/normlex/en/f?p=NORMLEXPUB:12100:::NO:12100:P12100_ILO_CODE:C160:NO">ILO-konvensjonen (ilo.org)</a></p>
+<p>og</p>
+<p><a href="http://www.ilo.ch/wcmsp5/groups/public/---dgreports/---stat/documents/normativeinstrument/wcms_230304.pdf">ILO-resolusjonen (ilo.ch - PDF)</a></p>
+<p>og</p>
+<p><a href="https://www.ilo.org/wcmsp5/groups/public/---dgreports/---stat/documents/publication/wcms_099576.pdf">Arbeidstid (ilo.org - PDF)</a></p>
+</section>
+<section id="lønnstaker" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="lønnstaker"><span class="header-section-number">2.3</span> Lønnstaker</h2>
+<p>Som lønnstakere defineres personer som i løpet av referanseperioden utførte arbeid for lønn eller betaling i form av kontanter eller varer, eller personer som har arbeidet i sin nåværende jobb, men som var midlertidig fraværende fra arbeidet i løpet av referanseperioden og har en formell tilknytning til arbeidet som tilfredsstiller en eller flere av følgende kriterier:</p>
+<ul>
+<li><p>kontinuerlig mottak av lønn eller betaling,</p></li>
+<li><p>forsikring om at vedkommende vil kunne vende tilbake til arbeidet etter fraværsperioden, eller en avtale om gjeninntredelsestidspunkt,</p></li>
+<li><p>fraværsperioden er mindre enn eller lik den varigheten som en person kan motta offentlig støtte uten å være tvunget til å akseptere annet arbeide.</p></li>
+</ul>
+<p>Bortsett fra vernepliktige og personer på siviltjeneste, er det et hovedkriterium at personene har mottatt lønn i arbeidsforholdet.</p>
+<p>Lønnstakere omfatter <a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/ordinart-arbeidsforhold/">arbeidsforhold av typen&nbsp;ordinære (skatteetaten.no)</a> og&nbsp;<a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/maritimt-arbeidsforhold/">maritime (skatteetaten.no)</a> samt <a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/frilanser-oppdragstaker-og-personer-som-mottar-honorarer/">arbeidsforhold som&nbsp;frilanser, oppdragstaker og personer som mottar honorar (skatteetaten.no)</a>.</p>
+<p>For lønnstakere med flere arbeidsforhold er ett av arbeidsforholdene fastsatt som det viktigste (hovedarbeidsforholdet).</p>
+<p>Samme definisjon benyttes i AKU, med unntak av at AKU ikke omfatter vernepliktige og personer på siviltjeneste.</p>
+</section>
+<section id="ansatt" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="ansatt"><span class="header-section-number">2.4</span> Ansatt</h2>
+<p>Ansatte&nbsp;omfatter alle som mottar kompensasjon for arbeid i form av lønn o.l. Ansatte omfatter det samme som lønnstakere, men ikke&nbsp;<a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/frilanser-oppdragstaker-og-personer-som-mottar-honorarer/">frilansere, oppdragstakere og personer som mottar honorar (skatteetaten.no)</a>, siden de ikke har et tjenesteforhold/ansettelsesforhold (ikke ansatte).</p>
+<p>For ansatte med flere arbeidsforhold er ett av arbeidsforholdene fastsatt som det viktigste (hovedarbeidsforholdet).</p>
+</section>
+<section id="arbeidsforhold-jobb" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="arbeidsforhold-jobb"><span class="header-section-number">2.5</span> Arbeidsforhold (jobb)</h2>
+<p>Arbeidsforhold brukes synonymet med jobb som kompenseres i form av lønn e.l. Betegnelsen omfatter både hovedarbeidsforhold og biarbeidsforhold. En person (individ) kan ha flere arbeidsforhold (jobber) i ulike virksomheter. Flere arbeidsforhold i samme virksomhet summeres opp til ett arbeidsforhold.</p>
+<p>Forskjellen mellom antall ansatte/antall lønnstakere og antall arbeidsforhold vil dermed være at sistnevnte også inkluderer biarbeidsforhold.</p>
+</section>
+<section id="selvstendig-næringsdrivende" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="selvstendig-næringsdrivende"><span class="header-section-number">2.6</span> Selvstendig næringsdrivende</h2>
+<p>Som selvstendige næringsdrivende defineres personer som i løpet av referanseperioden utførte noe arbeid for profitt eller for familiens beste, i kontanter eller goder, eller personer med et foretak, som kan være et forretningsforetagende, et jordbruk eller et serviceforetakende, som var midlertidig fraværende av en eller annen årsak fra arbeidet i løpet av referanseperioden.</p>
+<p>I den registerbaserte statistikken identifiseres selvstendig næringsdrivende ved hjelp av informasjon om næringsinntekt fra Selvangivelsesregisteret (skattemeldingen).</p>
+</section>
+<section id="foretak-og-virksomhet" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="foretak-og-virksomhet"><span class="header-section-number">2.7</span> Foretak og virksomhet</h2>
+<p><strong>Virksomhet/bedrift</strong></p>
+<p>Virksomhet (bedrift/underenhet) brukes av SSB som betegnelse på en produksjonsenhet, det vil si en lokalt avgrenset enhet som hovedsakelig driver produksjon av varer eller tjenester innenfor en bestemt næring. Dette omtales som underenhet i Enhetsregisteret (ER).</p>
+<p>Virksomheter er konkrete arbeidssteder som for eksempel butikker, hoteller, skoler, bakerier, reklamebyråer og advokatkontorer.</p>
+<p><strong>Foretak</strong></p>
+<p>For privat sektor opererer Enhetsregisteret (ER) med foretak som navn på en juridisk selvstendig enhet. Foretak i privat sektor er videre splittet opp i virksomheter.</p>
+<p>I motsetning til privat sektor kan kommunal forvaltning og statsforvaltningen også ha registrert enheter mellom det øverste nivået (foretaket) og det laveste nivået (virksomheten). Disse mellomliggende nivåer omtales som organisasjonsledd.</p>
+<p>I den klargjorte filen for arbeidsmarked og lønn (og den klargjorte filen for registerbasert sysselsetting) er foretak nivået over virksomhet.</p>
+</section>
+<section id="bosattikke-bosatt" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="bosattikke-bosatt"><span class="header-section-number">2.8</span> Bosatt/ikke-bosatt</h2>
+<p><strong>Bosatte</strong></p>
+<p><em>Bosatte</em>&nbsp;er definert som personer registrert i Folkeregisteret og inkluderer også midlertidige innflyttere med planlagt opphold i Norge på seks måneder eller mer.</p>
+<p><strong>Ikke-bosatte (utenlandske pendlere)</strong></p>
+<p><em>Ikke-bosatte</em>&nbsp;er definert som personer registrert i Folkeregisteret med planlagt opphold i Norge på under seks måneder. Ikke-bosatte omfatter personer med et midlertidig ID-nummer (D-nummer) eller som er registrert som utvandret, men jobber i Norge.</p>
+<p>Ikke-bosatte, også kalt utenlandske pendlere, korttidsinnvandrere eller lønnstakere på korttidsopphold, omfatter personer som ikke er registrert som bosatt i folkeregisteret. Ikke-bosatte omfatter:</p>
+<ul>
+<li><p>Lønnstakere i norske og utenlandske virksomheter som har lengre arbeidsperioder i Norge med påfølgende lengre friperioder.</p></li>
+<li><p>Personer som ikke bor i Norge i det hele tatt, men som pendler over grensen hver dag eller ukentlig for å arbeide i Norge. Disse er registrert som ikke-bosatte uansett hvor lenge pendlingen foregår, forutsatt at de bor utenfor Norge. Dette gjelder for eksempel nordmenn og svensker som bor i Sverige og jobber i Norge.</p></li>
+<li><p>Utenlandske bosatte som arbeider på kontinentalsokkelen eller som er sjøfolk på norske skip i utenriksfart innenfor EØS-området.</p></li>
+<li><p>Asylsøkere med midlertidig arbeidstillatelse</p></li>
+</ul>
+<p>Dette er en svært heterogen gruppe som altså omfatter personer som pendler til arbeid i Norge for lengre eller kortere perioder av gangen. Det betyr at selv om en person er korttidsinnvandrer, kan man arbeide i Norge i flere år.</p>
+</section>
+<section id="avgrensning-av-sysselsettingsstatistikk" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="avgrensning-av-sysselsettingsstatistikk"><span class="header-section-number">2.9</span> Avgrensning av sysselsettingsstatistikk</h2>
+<p>Avgrensning av sysselsettingsstatistikk kan sees fra to synsvinkler. Definisjonen av sysselsetting er lik, men de har noe ulike anbefalinger om kriterier for hva som skal forståes som sysselsatt. Det ene perspektivet er å beskrive <em>befolkningens tilpasninger til arbeidsmarkedet</em> (inkludert ikke-sysselsatte). Da er det vanlig å avgrense populasjonen til personer 15-74 år bosatt i Norge <em>(hjemmehørende folkemengde i yrkesaktiv alder</em>).</p>
+<p>Det andre perspektivet er <em>foretakenes bruk av arbeidskraft i produksjonen</em> av varer og tjenester. Da er det vanlig å inkludere <em>alle sysselsatte som har sitt arbeidssted i virksomheter hjemmehørende i Norge</em>, uavhengig av alder og om den sysselsatte er registrert bosatt i Norge eller ikke. Ved denne tilnærmingen inkluderes også utenlandske ansatte på korttidsopphold (ikke-bosatte/utenlandske pendlere) som jobber i en virksomhet hjemmehørende i Norge, men ikke utenlandske ansatte som jobber i utlandet lønnet av norsk enhet.</p>
+<p>Noen statistikker publiserer etter den første avgrensningen til bosatte personer (befolkningens forhold til arbeidsmarkedet), som den <a href="https://www.ssb.no/arbeid-og-lonn/statistikker/regsys">registerbaserte sysselsettingsstatistikken</a> og <a href="https://www.ssb.no/arbeid-og-lonn/statistikker/aku">arbeidskraftundersøkelsen (AKU)</a>. Personer som er bosatt i Norge, men arbeider i virksomheter hjemmehørende i utlandet skal i prinsippet klassifiseres som sysselsatte, men de fleste av disse mangler vi opplysninger om i a-meldingen. Arbeidskraftundersøkelsen (som er en utvalgsundersøkelse) derimot, fanger opp at de er sysselsatte gjennom intervju.</p>
+<p><a href="https://www.ssb.no/arbeid-og-lonn/statistikker/lonnansatt"><em>Lønnsstatistikken</em></a>, statistikken <a href="https://www.ssb.no/arbeid-og-lonn/statistikker/arblonn"><em>antall arbeidsforhold og lønn</em></a> og <em><a href="https://www.ssb.no/nasjonalregnskap-og-konjunkturer/statistikker/knr">Nasjonalregnskapet</a> (NR/KNR)</em> er eksempler på statistikker som publiserer etter den andre avgrensningen (<em>foretakenes bruk av arbeidskraft i produksjonen</em> av varer og tjenester).</p>
+<p>De ulike avgrensinger av populasjonen som er omtalt over gjelder statistikkproduktene på <a href="http://www.ssb.no">SSBs nettsider</a>. Filen(e) for disse, som beskrives i dette dokumentasjonsnotatet, vil være unionen av alle populasjonene. Det er således først ved uttaket av data fra filen til tabellproduksjon at man gjør avgrensingene.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./avklare-planlegge.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Del 1. Avklare behov og planlegge</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Datakilder.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datakilder</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ NOTATER 2023/32
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

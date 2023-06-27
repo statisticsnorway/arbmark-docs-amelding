@@ -1,0 +1,2522 @@
+---
+title: Håndtering av lønn og avtalt arbeidstid
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.14.5
+  kernelspec:
+    display_name: arbmark-docs-ameldingen
+    language: python
+    name: arbmark-docs-ameldingen
+---
+
+Dette kapittelet beskriver hvordan informasjon om lønn bearbeides og
+hvordan variabler i lønnsstatistikken beregnes og kontrolleres. I
+tillegg beskrives metoden for forbedring av informasjon om avtalt
+arbeidstid.
+
+## Aggregering av lønnsforhold
+
+Lønnsforhold aggregeres før kobling mot arbeidsforhold til nivå
+person\*virksomhet ([se informasjon om aggregering i kapittel 9](Knytning-mellom-lønns-og-arbeidsforhold.html)).
+
+Det kan være rapportert flere typer godtgjørelser og lønnsarter
+(fastlønn, timelønn, mv) på samme person i virksomheten. For samme
+lønnsart kan det være flere lønnsforhold den aktuelle måneden dersom det
+f.eks. rapporteres lønn per dag, uke, osv. Dette aggregeres slik at det
+på nivå person\*virksomhet er én fastlønn, én timelønn, osv.
+
+[Aggregering av arbeidsforhold (jobber) er også omtalt i kapittel 13.2](#aggregering-hvis-flere-jobber-per-person-i-samme-virksomhet).
+
+Basert på den aggregerte informasjonen om lønn og godtgjørelser
+etableres det lønnsvariabler med prefiks «LONN» som benyttes videre i
+produksjonsløpet. Disse er vist i tabell 21.1 nedenfor. Kontante
+lønnsarter som inngår i lønnsstatistikkens lønnsbegrep, eller som er
+nyttige til kontrollformål, fordeles på separate variabler. For
+overtidsgodtgjørelse (lonn_overtid) og timelønn (lonn_time) lages også
+numeriske variabler som inneholder summen av/antall timer knyttet til
+det innrapporterte beløpet.
+
+**Tabell 21.1. Aggregerte lønnsvariable med prefiks «LONN»**
+
+  ---------------------------------------------------------------------------
+  **Variabelnavn**                **Beskrivelse**           **Inngår i
+                                                            lønnsstatistikk
+                                                            (lønnsnivå)**
+  ------------------------------- ------------------------- -----------------
+  LONN_FAST                       Fastlønn samt honorar-,   JA
+                                  provisjon- og akkordlønn  
+
+  LONN_FAST_TILLEGG               Faste tillegg             JA
+
+  LONN_TIME                       Timelønn                  JA
+
+  LONN_BONUS                      Bonus                     JA
+
+  LONN_UREGTIL_ARBEIDET           Uregelmessige tillegg for JA
+                                  arbeidet tid              
+
+  LONN_UREGTIL_UARBEIDET          Uregelmessige tillegg for JA
+                                  ikke-arbeidet tid         
+
+  LONN_HELLIGDAGSTILLEGG          Helligdagstillegg         JA
+
+  LONN_UREGTIL                    Sum av uregelmessige      JA
+                                  tillegg og                
+                                  helligdagstillegg         
+
+  LONN_OVERTID                    Overtidsbetaling          NEI
+
+  LONN_FERIE                      Feriepenger               NEI
+
+  LONN_FERIE_TREKK                Trekk i lønn for ferie    NEI
+
+  LONN_SLUTTVEDERLAG              Sluttvederlag             NEI
+
+  LONN_ANNEN_BET                  Andre kontante            NEI
+                                  lønnsytelser              
+
+
+
+  LONN_KONTANT                    Kontantlønn               NEI
+
+  LONN_NATURAL                    Naturalytelse             NEI
+                                  (Naturallønn)             
+
+  LONN_GODTGJØRELSE               Utgiftsgodtgjørelse       NEI
+  ---------------------------------------------------------------------------
+
+I a-meldingen skal man rapportere beløp og type ytelse (kontantytelse,
+naturalytelse eller utgiftsgodtgjørelse). For noen beløp må man gi
+ytterligere informasjon. Dette gjelder blant annet [hva slags type
+kontantytelse det er snakk om (kapittel 3.1.3](#a-meldingen-mer-om-innhold)), f.eks. fastlønn, timelønn, osv. Variabelen LONN_FORDEL angir type ytelse,
+mens variabelen LONN_BESKRIVELSE angir type kontantytelse som for
+eksempel fastlønn, timelønn, bonus, sluttvederlag osv.
+
+Variablene i tabell 21.1 er videre beskrevet i vedlegg A. For flere av
+variablene etableres det også variabler med suffiks «HIA» som viser
+samlet beløp på variablene hittil i år. Ikke alle disse er med på de
+endelige klargjorte filene.
+
+For kvalitetsformål lages variabelen lonn_anneN_BET, som inneholder
+innrapportert annen lønn og kontante ytelser som ikke hører hjemme under
+de øvrige lønnsartene (LONN_FORDEL=kontant og
+LONN_BESKRIVELSE=lonn_annet). Dette gjelder for eksempel dekning av
+kostnader til utdanning og i forbindelse med flytting der vilkårene for
+skattefritak ikke er tilstede, se mer informasjon i
+[veiledningen for a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/andre-lonnsytelser/). Størrelsen på disse beløpene kontrolleres over tid
+siden det er fare for at «annet» blir brukt som en sekkepost for andre
+lønnsarter.
+
+Variablene i tabell 21.1 er ikke nødvendigvis gjensidig utelukkende,
+fordi en lønnsart kan inngå i flere lønnsdefinisjoner. F.eks. inneholder
+variabelen kontantlønn (lonn_kontant) summen av de beløpene hvor
+LONN_FORDEL er lik \'kontant\'. Slik som fastlønn, timelønn osv. I
+statistikken *antall arbeidsforhold og lønn* publiseres hver måned
+gjennomsnittsverdier på LONN_KONTANT (gjennomsnittlig kontantlønn).
+
+Naturallønn (LONN_NATURAL) og utgiftsgodtgjørelse (LONN_GODTGJØRELSE)
+viser på samme måte summen av lønnsarter med LONN_FORDEL lik hhv.
+\'natural\' og \'godtgjørelse\'. Disse er ikke videre fordelt på andre
+variabler siden slike overføringer ikke inngår i lønnsstatistikken.
+
+Det gjøres korrigering på noen variable:
+
+*Fastlønn:*
+
+Bonus (LONN_BONUS) flyttes til fastlønn (LONN_FAST) i tilfeller der man
+antar at beløpet ført på bonus er provisjon som egentlig skal inngå i
+variabelen for fastlønn. I de fellene nullstilles bonusvariablene og
+verdien legges til i fastlønna. Dette gjøres i følgende tilfelle: Hvis
+timelønn \<= 0 og fastlønn \<= 0 og heltidsekvivalent lønn (inkludert
+bonus og faste tillegg) er større enn eller lik 18 000, gitt ved
+formelen:
+
+(100/ARB_STILLINGSPST_INNRAPP)\*(LONN_BONUS+LONN_FASTE_TILLEGG)\>= 18
+000
+
+*Timelønn:*
+
+Timelønn flyttes til fastlønn dersom lavt timeantall gir høy timesats i
+følgende tilfelle: Hvis antall timer større enn null og mindre enn 10 og
+timelønn er større enn 10 000 og fastlønn \<= 0 så flyttes timelønnen
+til fastlønn og antall timer og timelønnen settes til null.
+
+*Faste tillegg:*
+
+Nullstiller det som trolig er feilføring av faste tillegg: hvis faste
+tillegg er mindre enn null og større enn 100 000 settes faste tillegg
+til null.
+
+## Korreksjoner av arbeidstidsopplysninger i a-meldingen
+
+I a-meldingen rapporteres det tre variable om arbeidstid:
+
+-   Avtalt stillingsprosent
+
+-   Antall timer som utgjør fulltid per uke
+
+-   Antall betalte timer for timelønnede
+
+Variablene rapporteres i hovedsak med god kvalitet, men det er noen
+utfordringer.
+
+Utfordringene går dels i at det ikke rapporteres avtalt stillingsprosent
+for mange timelønnede og dels i at det for noen timelønnede rapporteres
+standardverdier på enten 0 eller 100. Sistnevnte gjør at det er
+vanskelig å skille en reell avtalt stillingsprosent på 100 fra en
+feilaktig verdi på 100.
+
+På bakgrunn av dette er det utviklet to metoder som gir bedre
+datagrunnlag for arbeidstid til statistikkproduksjon:
+
+1.  Metode som imputerer avtalt arbeidstid/avtalt stillingsprosent for
+    jobber med positiv fast- og/eller timelønn
+
+2.  Metode som imputerer avtalt arbeidstid/avtalt stillingsprosent for
+    jobber uten positiv fast eller timelønn (nærmeste nabo metode)
+
+Metoden som imputerer avtalt arbeidstid/stillingsprosent for jobber med
+positiv fast- og/eller timelønn
+
+består av flere steg. Først avgjøres det om det er en fornuftig
+sammenheng mellom innrapportert avtalt stillingsprosent og lønn. Der det
+er god sammenheng, som vi har for om lag 80-85 prosent av alle
+arbeidsforhold, benyttes den innrapporterte avtalte stillingsprosenten.
+Der det er en dårlig sammenheng mellom den innrapporterte avtalte
+stillingsprosenten og lønn, beregnes det en avtalt stillingsprosent
+basert på enten betalte timer og antall timer som utgjør fulltid per uke
+eller basert på lønn. I noen tilfeller skyldes den dårlige sammenhengen
+at det er rapportert null i avtalt stillingsprosent, at den ikke er
+rapportert i det hele tatt eller at den avtalte stillingsprosenten er
+rapportert feil. Erfaringen etter mange år med a-meldingen tilsier at
+der det er avvik er rapporteringen av lønn som regel korrekt.
+
+[Denne metoden er nærmere beskrevet i kapittel 21.3](#metode-for-forbedring-av-avtalt-arbeidstid-for-jobber-med-positiv-fast--eller-timelønn).
+
+Metoden som [imputerer avtalt arbeidstid for jobber uten positiv fast
+eller timelønn og der avtalt stillingsprosent mangler er beskrevet i
+kapittel 21.6](#imputering-av-avtalt-stillingsprosent-med-nærmeste-nabo-metode). Dette vil typisk kunne gjelde arbeidsforhold der det ikke
+er rapportert noe lønn. [En del slike arbeidsforhold skal regnes som
+sysselsetting, jf. kapittel 19](Klassifisering-arbfogsyss.html), og inngår derfor i ulike statistikker
+over sysselsatte, lønnstakere og jobber. Det benyttes derfor en nærmeste
+nabo-metode for å beregne en avtalt stillingsprosent i tilfeller der
+denne mangler.
+
+Hvilken av disse metodene som benyttes, avhenger av hva slags
+informasjon som er rapportert inn.
+
+Før vi går videre i produksjonsløpet gjøres det en korrigering av
+variabelen som inneholder antall timer per uke som utgjør fulltid
+(ARB_TIMEANT_FULLTID). Arbeidsforhold med ulogisk lavt eller høyt
+timeantall blir korrigert, som vil si antall timer fulltid høyere enn 45
+eller mindre enn 25 timer. Disse får en ny verdi basert på innrapportert
+arbeidstidsordning ([skift- og turnusordninger, se kapittel 8.2](#kontroller-og-automatiske-tiltak)). De aller
+fleste får 37,5 timer (som er normal fulltid i Norge).
+
+## Metode for forbedring av avtalt arbeidstid for jobber med positiv fast- eller timelønn
+
+I dette kapittelet beskrives metoden for å forbedre avtalt arbeidstid
+for jobber med positiv fast- og/eller timelønn. Flytskjema for prosessen
+i kapittel 21.3:
+
+![](./media/image5.png){width="6.298611111111111in"
+height="3.5235159667541556in" alt="Flytskjema for prosessene i kapittel 21.3"}
+
+Metoden består i hovedsak av tre steg:
+
+1)  prebehandling/klargjøring av dataene
+
+2)  identifisere gjennom ulike ekstremkontroller hvilke arbeidsforhold
+    som skal
+
+    i.  beholde innrapportert avtalt stillingsprosent, eller
+
+    ii. få stillingsprosenten utledet fra betalte timer, eller
+
+    iii. få predikert en avtalt stillingsprosent,
+
+3)  predikere avtalt stillingsprosent for arbeidsforholdene som vi
+    plukker ut i steg 2 ved å bruke maskinlæringsalgoritmen XGBoost
+
+**Steg 1. Prebehandling av data**
+
+I steg 1 gjøres det en del prebehandling av dataene for å klargjøre
+disse til ekstremkontrollene som følger i steg 2:
+
+a.  **Uttrekk av arbeidsforhold.** Først trekkes riktig populasjon ut
+    til denne delen av produksjonsløpet. Her er kravet at
+    arbeidsforholdet er aktivt i referanseuken (ARB_ARBMARK_STATUS = 1),
+    og arbeidsforholdet må ha positiv fast- og/eller timelønn (LONN_FAST
+    \> 0 og/eller LONN_TIME \> 0). Vernepliktige holdes utenfor.
+
+b.  **Korrigering av innrapportert verdi.** Hvis en person har flere
+    arbeidsforhold i samme virksomhet summeres disse til ett
+    arbeidsforhold. Dersom det er rapportert 100 i avtalt
+    stillingsprosent i alle arbeidsforholdene (i samme virksomhet),
+    antar vi at den avtalte stillingsprosenten bare er gjentatt, og
+    avtalt stillingsprosent settes til 100.
+
+c.  **Øvre grense for avtalt stillingsprosent.** Øvre grense for avtalt
+    stillingsprosent for en person i en virksomhet settes til 120
+    prosent. Alle innrapporterte avtalte stillingsprosenter som
+    overstiger denne grensen blir nedjustert til 120.
+
+d.  **Korrigering av lønn.** Lønn rapportert for en periode kan
+    inneholde korreksjoner for tidligere rapporteringer eller lønn fra
+    andre perioder, f.eks. etterbetalinger i forbindelse med
+    lønnsoppgjør. Lønn sjekkes derfor mot forrige periode (måned t-1) og
+    neste periode (måned t+1), og korrigeringen innebærer at man bruker
+    timesatsen fra neste måned istedenfor inneværende måned.
+
+    Det undersøkes om det finnes et trappemønster for lønnen ved å
+    sammenligne lønnen i statistikkmåneden/inneværende måned (måned t) med
+    foregående periode (måned t-1) og neste periode (måned t+1). For å
+    kunne sammenligne disse lager vi en timesats for både fast- og 
+    timelønnede slik: <br> <br>
+    $\small{TIMESATS\_ FAST\  =  \ \frac{LONN\_ FAST}{ARB\_ TIMEANT\_ FULLTID*\frac{ARB\_ STILLINGSPST\_ INNRAPP}{100}*4,33}}$ <br> <br>
+    $\small{TIMESATS\_ TIME\  = \ \frac{LONN\_ TIME}{LONN\_ TIME\_ ANTALL}}$
+
+    Mønsteret er tilstede hvis timesatsen for fastlønn (timelønn) i
+    inneværende periode er høyere enn timesatsen i både forrige og neste
+    måned og timesatsen i neste måned også er høyere enn (eller lik)
+    timesatsen i forrige måned. Det samme gjelder dersom timesatsen for
+    fastlønn (timelønn) i inneværende måned er lavere enn timesatsen i
+    både forrige og neste måned og timesatsen i neste måned også er lavere
+    enn (eller lik) timesatsen i forrige måned. Noen eksempler:
+    ![](./media/image6.png){width="6.298611111111111in"
+    height="4.238194444444445in" alt="Eksempler på korrigeringer av lønn"}
+
+    Hvis dette mønsteret finnes betyr det ikke nødvendigvis at timesatsen
+    korrigeres. Først må vi sjekke at det ikke finnes ekstremverdier i
+    arbeidstiden i inneværende eller neste periode som bidrar til å lage
+    mønsteret. Ekstrem arbeidstid er definert som avtalt stillingsprosent
+    over 120 for fastlønnede, og over 195 betalte timer for timelønnede
+    (som tilsvarer et arbeidsforhold med avtalt stillingsprosent lik 120
+    og 37.5 timer per uke for en fulltidsstilling, der man antar 4.33 uker
+    per måned):
+
+1.  Dersom arbeidstiden *ikke* er ekstrem i inneværende eller neste
+    periode korrigeres timesatsen for fast-/timelønn, og lønnen beregnes
+    på nytt. Ny fastlønn beregnes ved å bruke timesatsen fra neste
+    måned, samt antall timer svarende til en fulltidsstilling og
+    innrapportert avtalt stillingsprosent fra inneværende måned.
+    Tilsvarende beregner man ny timelønn ved å bruke timesatsen fra
+    neste måned samt antall betalte timer fra inneværende måned.
+
+2.  Dersom arbeidstiden i inneværende måned anses som ekstrem, henter
+    man beløpet direkte fra neste måned istedenfor å beregne et nytt
+    beløp. For å hente fastlønn direkte fra neste måned, kreves det at
+    timelønn mangler. Tilsvarende kreves det at fastlønn mangler for å
+    hente timelønn direkte fra neste måned. Dette betyr at dersom
+    timesatsen for fastlønn (timelønn) skal korrigeres og den tilhørende
+    arbeidstiden er ekstrem samtidig som timelønn (fastlønn) i
+    inneværende måned *ikke* mangler, bruker man allikevel det
+    opprinnelige beløpet for fastlønn (timelønn) uten verken å beregne
+    et nytt beløp eller hente beløpet direkte fra neste måned.
+
+```{=html}
+<!-- -->
+```
+e.  **Avlønningsgruppe.** Etter at fast- og timelønn er korrigert lages
+    det en variabel for avlønningsgruppe (ARB_GRUPPE). Beløpene for
+    fast- og timelønn avgjør hvilken avlønningsgruppe et arbeidsforhold
+    tilhører. Hvis fastlønnen er positiv og timelønnen mangler,
+    klassifiseres arbeidsforholdet som «fast». Motsatt klassifiseres
+    arbeidsforholdet som «time» hvis timelønnen er positiv og fastlønnen
+    mangler. I tilfeller der både fastlønnen og timelønnen er positive
+    bestemmes avlønningsgruppen ut fra det største beløpet ([se også
+    kapittel 21.11 om lønnsberegninger](#lønnsberegninger)).
+
+f.  **Foreløpig avtalt stillingsprosent.** Først settes avtalt
+    stillingsprosent for alle lik den innrapporterte verdien. Hvis
+    personen er fastlønnet og den avtalte stillingsprosenten er mindre
+    enn eller lik 0 settes avtalt stillingsprosent til 100. For de
+    timelønnede får alle som mangler en innrapportert avtalt
+    stillingsprosent beregnet en stillingsprosent utledet fra betalte
+    timer og antall timer som utgjør fulltid per uke:<br>
+    $\small{ARB\_ STILLINGSPST\_ TIME = \frac{LONN\_ TIME\_ ANTALL}{(ARB\_ TIMEANT\_ FULLTID*\frac{antall\_ dager}{5})}*100}$
+
+g.  **Avtalt månedslønn.** Avtalt månedslønn angir typisk lønn i en
+    standard måned (4.33 uker), inkludert faste tillegg. Bonus og
+    uregelmessige tillegg inngår *ikke* i den avtalte månedslønnen. Alle
+    rapporterte negative beløp for faste tillegg settes til 0 for å
+    unngå at avtalt månedslønn reduseres pga. justeringer i
+    rapporteringen som følge av rapportering av for høy lønn i tidligere
+    måneder. Avtalt månedslønn beregnes ulikt for fast- og timelønnede.
+
+    For fastlønnede beregnes avtalt månedslønn som summen av fastlønn og
+    faste tillegg:
+
+    $\small{LONN\_ FMLONN = \ \ LONN\_ FAST\  + LONN\_ FAST\_ TILLEGG}$
+
+    For timelønnede beregnes månedslønn via timesatsen, slik at vi ikke
+    bruker faktisk utbetalt månedslønn direkte. I denne utregningen justeres
+    månedslønna basert på antall arbeidsdager i måneden vi er inne i.
+    Timesatsen ganges med avtalt arbeidstid i måneden, justert for hvor
+    mange arbeidsdager måneden inneholder, og summeres med faste tillegg.
+    Dette medfører at jo flere arbeidsdager i måneden, desto høyere blir den
+    avtalte månedslønna:
+
+    $\small{LONN\_ FMLONN = \ \frac{LONN\_ TIME}{LONN\_ TIME\_ ANTALL}*(ARB\_ AVTALTARBEIDSTID\_ TMP\ * \frac{antall\_ dager}{5}\ )}\;\;\;\;$ 
+    $\qquad\qquad\qquad\qquad\quad\small{+\quad LONN\_ FAST\_ TILLEGG}$
+
+    Denne måten å regne ut månedslønn på for timelønnede fungerer så lenge
+    vi bruker den innrapporterte avtalte stillingsprosenten (og ikke
+    stillingsprosent basert på betalte timer) og timeantallet for timelønnen
+    er større enn 0. Med en gang vi enten tar i bruk betalt stillingsprosent
+    eller timeantallet ≤ 0 benyttes en redusert variant av formelen over:
+
+    $\small{LONN\_ FMLONN\  = LONN\_ TIME + LONN\_ FAST\_ TILLEGG}$
+
+    Dette medfører at beregningen av avtalt månedslønn for timelønnede
+    oppdateres gjennom produksjonsløpet når stillingsprosenten endres, og
+    hvis stillingsprosenten skal predikeres.
+
+h.  **Ekskludering av arbeidsforhold**. Før vi starter med vurderingene
+    av hvilke arbeidsforhold som har en godkjent og ikke-godkjent
+    sammenheng mellom avtalt stillingsprosent og månedslønn fjerner vi
+    en siste del av arbeidsforholdene:
+
+    a.  Arbeidsforhold med en ikke-representativ høy lønn fjernes fra
+        datasettet slik at de ikke påvirker hva som anses som ekstremt
+        eller hva som skal til for å få en avtalt stillingsprosent
+        på 100. Grensene er:
+
+        a.  Timelønnede: Timesats for timelønnede på mer enn 1 000 kr og
+            en månedslønn på over 162 500 kr
+
+        b.  Fastlønnede: Månedslønn på over 162 500 kr
+
+    b.  Lærlinger -- fordi lønnen skiller seg veldig fra resten av
+        populasjonen innen ulike strataer blir disse fjernet for å ikke
+        påvirke predikeringen. Det er rundt 40.000 lærlinger som blir
+        fjernet hver måned.
+
+**Steg 2. Ekstremkontroller\
+**For å kunne avgjøre hvorvidt den avtalte stillingsprosenten til et
+arbeidsforhold kan betraktes som troverdig eller ikke, kjøres dataene
+gjennom ulike ekstremkontroller der man ser den avtalte
+stillingsprosenten i lys av annen informasjon, som f.eks. avtalt
+månedslønn. Dette steget brukes både til å vurdere om timelønnede bør få
+den innrapporterte avtalte stillingsprosenten erstattet med
+stillingsprosent basert på betalte timer, og til å vurdere hvilke
+arbeidsforhold som har en «godkjent»/«ikke-godkjent» sammenheng mellom
+lønn og arbeidstid. Alle «ikke-godkjente» observasjoner vil til slutt få
+predikert en avtalt stillingsprosent. Det er tre typer
+ekstremkontroller:
+
+1)  sammenheng mellom innrapportert avtalt stillingsprosent og
+    stillingsprosent utledet fra betalte timer
+    (kun *timelønnete* arbeidsforhold), og
+
+2)  lønn per heltidsekvivalent (alle arbeidsforhold) og høy/lav timesats
+    (kun *timelønnete* arbeidsforhold), og
+
+3)  sammenheng mellom lønn og lønn per heltidsekvivalent
+
+Før ekstremkontrollene starter sjekker vi at det ikke er noen
+arbeidsforhold som mangler avtalt stillingsprosent. Dette kan være
+tilfellet for timelønnede som mangler både innrapportert avtalt
+stillingsprosent og antall betalte timer. Disse settes til «ikke
+godkjent» og får predikert en avtalt stillingsprosent ved hjelp av
+XGBoost (se steg 3 nedenfor).
+
+**I første ekstremkontroll** ser vi om det er en fornuftig sammenheng
+mellom innrapportert avtalt stillingsprosent og stillingsprosent utledet
+fra betalte timer for timelønnete arbeidsforhold.
+
+Alle arbeidsforholdene deles først inn i ulike strata definert av
+hovednæring kombinert med lønnskvartiler, der lønnskvartilene er basert
+på kontantlønn (LONN_KONTANT). Deretter tilpasses en såkalt
+«ratiomodell» for hvert enkelt stratum. Dette er en lineær
+regresjonsmodell med innrapportert avtalt stillingsprosent som
+utfallsvariabel, betalt stillingsprosent som eneste forklaringsvariabel
+og intet konstantledd, dvs. skjæringspunktet går gjennom origo.
+Tilpassingen av modellen skjer iterativt, som betyr at modellen
+tilpasses over flere runder. For hver iterasjon (runde) identifiseres
+uteliggere basert på det studentiserte residual. Disse fjernes så fra
+modellen før denne tilpasses på nytt.
+
+Alle observasjoner som identifiseres som uteliggere, får erstattet sin
+innrapporterte avtalt stillingsprosent med betalt stillingsprosent og
+fortsetter videre til neste ekstremkontroll sammen med resten. Og som
+nevnt tidligere får de beregnet avtalt månedslønn på nytt uten at
+timeantall eller stillingsprosent påvirker lønna. Det er ingen
+arbeidsforhold som ryker ut i denne ekstremkontrollen og blir
+klassifisert som *ikke-godkjent*.
+
+**I andre ekstremkontroll** sjekkes det om lønnssatsen er på et
+akseptabelt nivå eller så ekstrem at vi velger å predikere den avtalte
+stillingsprosenten. Lønn per heltidsekvivalent må være større eller lik
+18 000 kr (12 000 kr for personer under 18 år) for fastlønnede. For
+timelønnede er disse nedre grensene bevegelige og baserer seg på antall
+arbeidsdager i den aktuelle måneden. Grensene er stort sett i tilnærmet
+lik 18 000 kr (og tilnærmet lik 12 000 kr for personer under 18 år).
+Hvis *timelønnede* med innrapportert avtalt stillingsprosent blir
+definert som ekstreme i dette steget sjekkes det om samme er tilfelle
+også med betalt stillingsprosent. Hvis man da oppfyller kravene over
+blir man ikke lenger merket som ekstrem i dette steget.
+
+I tillegg må timesatsen for timelønnete arbeidsforhold ligge mellom 100
+og 1 000 kroner. Hvis disse kravene ikke tilfredsstilles, merkes
+arbeidsforholdet som ekstremt (for personer under 18 år gjelder kun den
+øvre grensa).
+
+Alle arbeidsforhold identifisert som ekstreme i denne kontrollen
+klassifiseres som *ikke-godkjent* og blir predikert ved hjelp av
+maskinlæringsalgoritmen XGBoost. Øvrige arbeidsforhold blir med videre
+til neste kontroll.
+
+**I tredje ekstremkontroll** undersøkes sammenhengen mellom avtalt
+månedslønn per heltidsekvivalent og øvrig informasjon knyttet til
+personen og virksomheten som anses å kunne påvirke den avtalte
+stillingsprosenten og dermed gi utslag i heltidsekvivalent avtalt
+månedslønn.
+
+Det er to grupper som ikke er med i den siste ekstremkonrollen. Det er
+en nedre og en øvre «cut-off»/avgrensning. I den nedre cut-offen fjernes
+alle med en avtalt stillingsprosent som er lavere enn 1 %. Disse settes
+til «*ikke-godkjent»* og sendes til predikering. På grunn av en lang
+hale i fordelingen for det øverste lønnskvartilet settes det en øvre
+cut-off for arbeidsforhold som har de 2,5 % høyeste lønningene innen
+hvert stratum (hovednæring) *og* en avtalt stillingsprosent på minst
+100.
+
+Denne ekstremkontrollen omfatter kun arbeidsforhold som har blitt
+klassifisert som godkjent i alle de foregående ekstremkontrollene. Det
+skjer en iterativ tilpasning av en lineær regresjonsmodell med
+logaritmen til avtalt månedslønn per heltidsekvivalent som
+utfallsvariabel. Til sammen seks kategoriske forklaringsvariabler
+inkluderes i modellen: kjønn, utdanning, yrkeskode som består av en
+kombinasjon av 2-, 3- og 4-siffer yrke, avlønningsgruppe, antall
+lønnstakere i virksomheten og virksomhetens hovednæring. I tillegg
+inkluderer man alder, alder kvadrert og logaritmen av avtalt månedslønn
+som kontinuerlige forklaringsvariabler i modellen. I likhet med
+modelltilpasningen i ekstremkontroll 1 identifiseres uteliggere for hver
+iterasjon basert på det studentiserte residual, og disse
+arbeidsforholdene blir så klassifisert som *ikke-godkjente*.
+
+Modellen ser slik ut:
+
+\begin{aligned}
+\small{LOG\_ LONN\_ EKV\_ FMLONN} {}\small{\sim{}} & \small{VIRK\_ ANT\_ INNTMOT\_ KAT  + NAERING + }\\
+                                    & \small{PERS\_ KJOENN\ + PERS\_ ALDER + UTDANNING + }\\
+                                    & \small{YRKE\_ 2\_ 4SIFFER\ + AVLOENNING  + }\\
+                                    & \small{LOG\_ LONN\_ FMLONN}
+\end{aligned}
+ 
+ 
+ 
+**Alle** arbeidsforhold som har blitt blir vurdert som ikke-godkjent
+blir tilslutt samlet i et datasett og får predikert en avtalt
+stillingsprosent ved hjelp av maskinlæringsalgoritmen XGBoost, der alle
+arbeidsforhold med godkjent avtalt stillingsprosent inngår i
+lærlingsgrunnlaget til modellen.
+
+
+**Steg 3. Maskinlæringsalgoritmen XGBoost**
+
+For å predikere stillingsprosenten for arbeidsforhold som er
+klassifisert som ikke-godkjent, bruker vi [XGBoost, «eXtreme Gradient
+Boosting» (xgboost.readthedocs.io)](https://xgboost.readthedocs.io/en/latest/) som kjøres i
+RStudio. Dette er en maskinlæringsalgoritme som bygger på
+beslutningstrær, med to fremtredende egenskaper: modellytelse og
+hurtighet. Arbeidsforholdene som passerer gjennom ekstremkontrollene
+uten å bli identifisert som ekstreme/ikke-godkjent, deles først
+tilfeldig opp i to ulike grupper -- ett treningsdatasett (80 prosent av
+de godkjente arbeidsforholdene) og ett testdatasett (20 prosent av de
+godkjente arbeidsforholdene).
+
+Med utgangspunkt i treningsdatasettet tilpasses en lineær
+regresjonsmodell med avtalt stillingsprosent som utfallsvariabel og med
+samme forklaringsvariabler som i ekstremkontroll 3:
+
+-   kjønn (kategorisk)
+
+-   utdanning (kategorisk)
+
+-   kombinasjon av 2, 3, og 4-sifret yrkeskode (kategorisk)
+
+-   avlønningstype (kategorisk)
+
+-   antall lønnstakere i virksomheten (kategorisk)
+
+-   virksomhetens hovednæring (kategorisk)
+
+-   alder (kontinuerlig)
+
+-   alder kvadrert (kontinuerlig)
+
+-   logaritmen av avtalt månedslønn (kontinuerlig)
+
+Den prediktive evnen til XGBoost-modellen evalueres deretter av modellen
+selv med utgangspunkt i testdatasettet. Til slutt predikeres avtalt
+stillingsprosent til alle ikke-godkjente arbeidsforhold. Etter at
+XGBoost er kjørt og alle observasjoner har fått en verdi for avtalt
+stillingsprosent gjør vi noen korrigeringer:
+
+-   Det er noen som får predikert en negativ avtalt stillingsprosent --
+    disse settes til 0.
+
+-   De med predikert avtalt stillingsprosent som tilsvarer arbeidstid på
+    under 1 time får arbeidstid satt til 1, og justert avtalt
+    stillingsprosenten tilsvarende. Dette gjøres selv om den teoretiske
+    definisjonen av sysselsatte sier at man må jobbe 1 time eller mer.
+    Årsaken er at metoden ikke er så presis og at vi vil fjerne for
+    mange arbeidsforhold om vi setter en grense på 1 time.
+
+-   Predikerte verdier rundes av til nærmeste hele tall.
+
+-   Predikerte verdier får et øvre tak på 100.
+
+-   Timelønnede med betalt stillingsprosent får også stillingsprosenten
+    nedjustert til 100 prosent hvis den er høyere, samtidig som
+    timelønnen justeres med samme faktor.
+
+-   Det lages en variabel som sier hva kilden til den avtalte
+    stillingsprosenten er ([ARB_STILLINGSPST_KILDE, se kodeliste i
+    vedlegg C](VedleggC.html)).
+
+-   Vi tar i bruk lønnsberegningen som ser på en standardisert måned for
+    alle timelønnede: <br> 
+          
+    $\small {LONN\_ FMLONN = \frac{LONN\_ TIME}{LONN\_ TIME\_ ANTALL}*(ARB\_ AVTALTARBEIDSTID\ *4,33)}\;\;\;\;\;$ <br>
+    $\qquad\qquad\qquad\qquad\small{+\quad LONN\_ FAST\_ TILLEGG}$
+    
+    
+   
+**Videre behandling av personer utenfor XGBoost**. Som nevnt tidligere i
+dette kapittelet er det flere som ble holdt utenfor modellen, selv om de
+hadde positiv verdi på fast- eller timelønn. For disse gjøres det også
+noen korrigeringer av avtalt stillingsprosent:
+
+-   Personer som ble ekskludert på grunn av høy lønn beholder
+    innrapportert avtalt stillingsprosent så lenge den er større eller
+    lik 100. Hvis innrapportert avtalt stillingsprosent er lavere enn
+    100 får de en avtalt stillingsprosent = 100
+
+-   Arbeidstid = antall timer fulltid per uke \* avtalt
+    stillingsprosent/100
+
+-   Kildevariabelen for avtalt stillingsprosent (ARB_STILLINGSPST_KILDE)
+    lages for disse også
+
+## Arbeidstidsjustering for arbeidsforhold uten fast- eller timelønn
+
+Metoden beskrevet i kapittel 21.3 gjennomføres som nevnt kun for
+arbeidsforhold der det er rapportert en fast- eller timelønn. For de
+resterende arbeidsforholdene gjøres også det en rekke bearbeidinger av
+arbeidstids-variablene ([alle variabelnavn det henvises til nedenfor er
+beskrevet i vedlegg A](VedleggA.html)):
+
+a)  Alle med arbeidstid (ARB_ARBEIDSTID) mindre enn 1 rundes opp til 1
+    og med ny tilhørende avtalt stillingsprosent. Dette gjøres selv om
+    den teoretiske definisjonen av sysselsatte sier at man må jobbe 1
+    time eller mer. Årsaken er at metoden ikke er så presis og at vi vil
+    fjerne for mange arbeidsforhold om vi setter en grense på 1 time.
+
+b)  Vernepliktige får ([se mer informasjon om vernepliktige i kapittel 10.2](#påkobling-av-arbeidsforhold-for-vernepliktige)):
+
+    i.  Avtalt stillingsprosent (ARB_STILLINGSPST) = 100
+
+    ii. Avtalt arbeidstid (ARB_ARBEIDSTID) = 37,5
+
+c)  Oppdragstakere fra Oppdrags- arbeidsforholdsregisteret (OAR) uten
+    lønn i a-meldingen ([se mer informasjon om OAR i kapittel 10.1](#oppdrags--og-arbeidsforholdsregisteret-oar)):
+
+    i.  Avtalt stillingsprosent (ARB_STILLINGSPST) = 100
+
+    ii. Avtalt arbeidstid (ARB_ARBEIDSTID) =
+        ARB_TIMER_FULLTID\*ARB_STILLINGSPST/100
+
+d)  Resten av arbeidsforholdene vi sitter igjen med er lønnstakere i
+    referanseuka (ARB_ARBMARK_STATUS = 1) som mangler fast- og timelønn,
+    og som ikke er vernepliktige eller fra OAR. Disse behandles på
+    følgende måte:
+
+    i.  Hvis det kun er ett arbeidsforhold for samme person i
+        virksomheten (ARB_ANT_AGGR = 1):
+
+        -   Avtalt stillingsprosent (ARB_STILLINGSPST) = innrapportert
+            avtalt stillingsprosent (ARB_STILLINGSPST \_INNRAPP)
+
+        -   Avtalt arbeidstid (ARB_ARBEIDSTID) = antall timer fulltid
+            per uke \*avtalt stillingsprosent/100 (ARB_TIMER_FULLTID\*
+            ARB_STILLINGSPST /100)
+
+    ii. Hvis det er flere arbeidsforhold for samme person i samme
+        virksomhet (ARB_ANT_AGGR \> 1) og summen av innrapportert avtalt
+        stillingsprosent/delt på antall jobber = 100 (ARB_STILLINGSPST
+        \_INNRAPP/ARB_ANT_AGGR = 100):
+
+        -   Avtalt stillingsprosent = 100
+
+        -   Avtalt arbeidstid = antall timer fulltid per uke \* avtalt
+            stillingsprosent/100
+
+    iii. Hvis det er flere arbeidsforhold for samme person i samme
+         virksomhet (ARB_ANT_AGGR \> 1) og summen av innrapportert
+         avtalt stillingsprosent/delt på antall jobber ulik 100:
+
+         -   Avtalt stillingsprosent = innrapportert avtalt
+             stillingsprosent
+
+         -   Avtalt arbeidstid = antall timer fulltid per uke \* avtalt
+             stillingsprosent/100
+
+    iv. Deretter sjekkes det om ARB_ARBEIDSTID \< 1:
+
+        -   ARB_ARBEIDSTID_UNDER_1\_TIME = \'1\'
+
+        -   Disse skal sendes til [nærmeste-nabo-predikering (se kapittel
+            21.6](#imputering-av-avtalt-stillingsprosent-med-nærmeste-nabo-metode))
+
+    v.  Til slutt justerer vi ned alle med avtalt stillingsprosent \>
+        120:
+
+        -   Avtalt stillingsprosent = 120
+
+        -   Avtalt arbeidstid = antall timer fulltid per uke \* avtalt
+            stillingsprosent/100
+
+## Utledning av hoved- og biarbeidsforhold
+
+Arbeidsforhold som fortsatt mangler avtalt stillingsprosent får imputert
+en avtalt stillingsprosent ved hjelp av en nærmeste nabo metode. Denne
+metoden benytter informasjon om arbeidsforholdet regnes som hovedjobben
+eller bijobben til en person. Derfor utledes dette før
+imputeringsmetoden som beskrives i neste kapittel.
+
+Dersom en person har flere arbeidsforhold i referanseuken, velges
+hovedarbeidsforhold ut i fra prioriteringen nedenfor (den første regelen
+som slår til, definerer hovedarbeidsforholdet, ARB_HOVEDARBEID=\'1\', og
+de resterende arbeidsforholdene til en person settes til
+biarbeidsforhold, ARB_HOVEDARBEID = \'2\').
+
+I beregningen av hovedarbeidsforhold (variabel ARB_HOVEDARBEID) er det
+kun arbeidsforhold der personen regnes som lønnstaker (har
+ARB_ARBMARK_STATUS = 1) som inngår.
+
+Prioriteringen er som følger:
+
+**1. Vernepliktsregisteret (ARB_KILDE=\'Verneplikt\')**\
+Enheter fra vernepliktsregisteret prioriteres høyest. Det anses som lite
+sannsynlig at en person i førstegangstjeneste har en annen hovedjobb.
+Disse er tildelt avtalt stillingsprosent lik 100 prosent, avtalt
+arbeidstid per uke lik 37,5 og antall timer per uke som en full stilling
+tilsvarer lik 37,5, [jf. omtale av vernepliktige i kapittel 10.2](#påkobling-av-arbeidsforhold-for-vernepliktige).
+
+**2. Ordinært og maritime arbeidsforhold**
+
+Dersom det er flere ordinære/maritime arbeidsforhold for en person
+brukes følgende prioritering:
+
+1)  Arbeidsforhold med lønn prioriteres først (ARB_SYSS = 1a)
+
+2)  Høyeste avtalt stillingsprosent
+
+3)  Høyeste lønn som indikerer sysselsetting (LONN_SYSS)
+
+4)  Dersom vi fremdeles står igjen med flere alternativer velges
+    hovedarbeid tilfeldig
+
+**3. Arbeidsforhold fra Oppdrags- og arbeidsforholdsregisteret (OAR) med
+lønnsforhold fra a-meldingen**
+
+Følgende prioritering brukes hvis det er flere arbeidsforhold:
+
+1)  Høyest lønn som indikerer sysselsetting (LONN_SYSS)
+
+2)  Ferskeste startdato (ARB_START). Bruker ferskeste dato siden det
+    erfaringsmessig er det mangelfull utmelding i OAR
+
+3)  Dersom vi fremdeles står igjen med flere alternativer velges
+    hovedarbeid tilfeldig
+
+**4. Frilanser/oppdragstakere/honorarpersoner og forenklet
+oppgjørsordning**
+
+Følgende prioritering brukes hvis det er flere arbeidsforhold:
+
+1)  Høyeste avtalte stillingsprosent
+
+2)  Eldste startdato
+
+3)  Høyest lønn som indikerer sysselsetting (LONN_SYSS)
+
+4)  Dersom vi fremdeles står igjen med flere alternativer velges
+    hovedarbeid tilfeldig
+
+**5. Arbeidsforhold fra Oppdrags- og arbeidsforholdsregisteret (OAR)
+uten lønn fra a-meldingen**
+
+Følgende prioritering brukes hvis det er flere arbeidsforhold:
+
+1)  Ferskeste startdato (ARB_START) -- fordi det erfaringsmessig er
+    mangelfull utmelding i OAR
+
+2)  Dersom vi fremdeles står igjen med flere alternativer velges
+    hovedarbeid tilfeldig
+
+Avtalt stillingsprosent vil være imputert for alle arbeidsforhold som vi
+kun finner i OAR, og det tas derfor ikke hensyn til avtalt
+stillingsprosent her.
+
+**6. Fiktive arbeidsforhold** **og annet**
+
+Følgende prioritering brukes hvis det er flere arbeidsforhold:
+
+1)  Høyest lønn (LONN_SYSS)
+
+2)  Dersom vi fremdeles står igjen med flere alternativer velges
+    hovedarbeid tilfeldig
+
+**Biarbeidsforhold**\
+Arbeidsforholdene som ikke ble klassifisert som hovedarbeidsforhold i
+henhold til reglene beskrevet over, blir satt til biarbeidsforhold.
+
+**Variabel og kodeliste**
+
+Variabel: ARB_HOVEDARBEID
+
+Kodeliste:
+
+0=Ingen arbeidsforhold\
+1=Hovedarbeidsforhold\
+2=Biarbeidsforhold
+
+Dersom arbeidsforholdet ikke er klassifisert som sysselsetting (ref.
+prosess 11) settes ARB_HOVEDARBEID=0 (dvs. ingen arbeidsforhold).
+
+## Imputering av avtalt stillingsprosent med nærmeste nabo metode
+
+Fordi vi krever at arbeidsforholdene som inngår i [metoden beskrevet i
+kapittel 21.3](#metode-for-forbedring-av-avtalt-arbeidstid-for-jobber-med-positiv-fast--eller-timelønn) må ha en positiv fast- og/eller timelønn, er det fremdeles
+noen som mangler avtalt stillingsprosent. Disse får imputert en avtalt
+stillingsprosent fra en metode som kalles for nærmeste nabo metode
+(«nearest neighbour hot-deck-imputation»). Metoden gir komplette
+mikrodata, realistiske verdier på mikronivå og realistiske variasjoner i
+verdiene. Metoden går ut på at vi fyller inn en manglende verdi ved å
+bruke en faktisk verdi fra en annen observasjon som ligner mest mulig på
+observasjonen som mangler verdi.
+
+Nedenfor er det gitt en nærmere beskrivelse av metoden. [Variablene er
+beskrevet i vedlegg A](VedleggA.html).
+
+**Prosessbeskrivelse**
+
+1.  Først splittes datasettet bestående av aktive arbeidsforhold
+    (ARB_ARBMARK_STATUS=1) i to; arbeidsforhold av typen *givere* og
+    *mottakere*. Givere er definert som arbeidsforhold
+    (PERS_ID\*VIRK_ID_SSB) med PERS_STILLINGSPST\>1, resten er
+    mottakere. Alle observasjoner som er definert som mottakere skal
+    imputeres.
+
+2.  Valg av detaljeringsgrad skjer i hovedsak i 4 trinn. Måten dette
+    gjøres på er at det lages en tekststreng bestående av følgende
+    variabler (der hver kombinasjon av variablene i et gitt trinn utgjør
+    et stratum):
+
+    a.  1=Hoved/Biarbeid (ARB_HOVEDARBEID), kjønn (PERS_KJOENN), yrke
+        detaljert (ARB_YRKE, 4 første sifre), næring detaljert
+        (VIRK_NACE1_SN07, 5-sifret)
+
+    b.  2=Hoved/Biarbeid, kjønn, 2-siffer yrke, 2-siffer næring
+
+    c.  3=Hoved/Biarbeid, kjønn, 4-siffer yrke
+
+    d.  4=Hoved/Biarbeid, kjønn, 2-siffer yrke
+
+    e.  5=Hoved/Biarbeid kjønn
+
+Vedrørende punkt a-d: dersom VIRK_NACE1_SN07\<'01' eller
+ARB_YRKE\<'01' benyttes de to første sifrene av variabelen for høyeste
+fullførte utdanning (PERS_BU_NUS2000) i stedet.
+
+3.  Det er ønskelig å bruke så detaljert informasjon som mulig. Valg av
+    trinn er satt etter følgende kriterier:
+
+    -   Det skal være flere givere enn mottagere
+
+    -   Det skal være minst 10 givere og mottagere
+
+Det må gjøres en opptelling av antall arbeidsforhold i de ulike
+strataene. Dersom kriteriene over er oppfylt prioriteres alltid
+trinn 1. Dersom minst ett av kriteriene ikke er oppfulgt går man
+videre til trinn 2, osv.
+
+4.  Videre trekkes antall giverobservasjoner som skal brukes for å
+    imputere verdier for mottakerne. Størrelsen på utvalget som skal
+    trekkes settes lik det antallet observasjoner som trengs å
+    imputeres. I tilfeller med mange aktuelle givere velges det
+    tilfeldig. Her benyttes enkel, tilfeldig trekking (simple random
+    sampling). Trekking skjer uten tilbakelegging, det vil si at hver
+    observasjon bare kan bli trukket ut som giver en gang innen samme
+    gruppe (derfor betingelsen om at det skal være flere givere enn
+    mottagere). En observasjon som har vært giver på ett gruppenivå vil
+    imidlertid kunne bli trukket ut til å være giver også på et høyere
+    gruppenivå. Derimot skal ikke mottakerne kunne gå over fra å være
+    mottaker til å bli giver på et høyere gruppenivå selv om de har
+    blitt imputert.
+
+5.  Deretter sorteres giver- og mottakerdatasettene hver for seg etter
+    strata og alder. Datasettene kobles så sammen i et 1-til-1 forhold
+    basert på strata (dvs. den unike kombinasjonen av variablene gitt i
+    punkt 2a-e). Dermed er det et absolutt kriterium at innholdet i
+    variablene i punkt 2 er identiske på giver- og mottakerdatasettene,
+    mens når det gjelder alder velges den nærmeste verdien ettersom
+    begge datasettene er sortert etter alder.
+
+Man finner altså ikke alltid en giver som er helt lik mottageren, men de
+blir alltid trukket fra samme gruppe. Innenfor en ideell gruppe har alle
+samme stillingsandel, og det spiller ingen rolle hvem som blir trukket.
+Graden av likhet vil bestemmes av den faktiske variasjonen i gruppa. I
+tilfeller med mange aktuelle givere velges det tilfeldig. Dette kan gi
+en viss usikkerhet, men forebygger at systematiske feil øker.
+
+De aller fleste blir imputert ved hjelp av de to første trinnene, det
+første utgjør over 76 prosent. Det er relativt få på mellomtrinnene,
+fjerde trinn utgjør om lag 13 prosent, mens en håndfull (og ofte ingen)
+havner på det siste trinnet.
+
+## Nedjustering hvis samlet avtalt arbeidstid er for høy (over 160 prosent)
+
+Med utgangspunkt i den bearbeida avtalte stillingsprosenten ser man på
+personer som har jobber i *flere virksomheter*. Når vi summerer de
+avtalte stillingsprosentene vil vi i noen tilfeller få urimelig høye
+verdier. Dersom summen av avtalte stillingsprosenter for en person blir
+høyere enn 160 blir den avtalte stillingsprosenten i hvert
+arbeidsforhold nedjustert i henhold til kontantlønnen (LONN_KONTANT) i
+arbeidsforholdet med det høyeste beløpet. Denne nedjusteringen gjøres
+ved at hvert arbeidsforhold får beregnet en faktor, som er lik
+kontantlønnen i arbeidsforholdet dividert med kontantlønnen i
+arbeidsforholdet med det høyeste beløpet. Vernepliktige med flere
+arbeidsforhold blir holdt utenfor denne delen av produksjonen.
+
+Hvis ingen av arbeidsforholdene har lønn og man er klassifisert som
+sysselsatt, beholdes arbeidsforholdet som er definert som hovedarbeidet,
+mens de resterende får 0 i avtalt stillingsprosent. Dette vil blant
+annet bidra til å redusere effekten av feilrapportering, herunder
+dobbeltrapportering i forbindelse med virksomhetsoverdragelse og
+feilaktig videreføring av arbeidsforhold fra forrige måned.
+
+I november 2020 var det om lag 65 000 arbeidsforhold og nesten 28 000
+personer som hadde avtalt stillingsprosent over 160 prosent før
+nedjustering. Etter nedjusteringen er dette redusert til om lag 17 000
+jobber og 6 300 personer. Årsaken til at noen etter nedjusteringen har
+over 160 i avtalt stillingsprosent er at vi [bevarer sammenhengen mellom
+arbeidstid og lønn utarbeidet i kapittel 21.3](#metode-for-forbedring-av-avtalt-arbeidstid-for-jobber-med-positiv-fast--eller-timelønn).
+
+Siden nedjusteringen tar utgangspunkt i lønn vil de som ikke har lønn i
+jobb nummer 2, 3, osv. få den avtalte stillingsprosenten nedjustert til
+null. Dette vil f.eks. kunne gjelde hvis man har én jobb med lønn og en
+annen jobb man har permisjon fra uten lønn.
+
+Noen arbeidsforhold blir i denne prosessen nedjustert til null, og
+endrer dermed status fra «aktiv» til «ikke-aktiv». Fra januar 2017 til
+oktober 2021 utgjorde dette i gjennomsnitt drøyt 6 000 arbeidsforhold
+hver måned.
+
+## Kvalitet avtalt arbeidstid
+
+For januar 2015 har vi kun informasjon om den innrapporterte avtalte
+stillingsprosenten. Det vil si at metoden for å forbedre arbeidstid er
+kjørt fra og med februar 2015.
+
+Fra oppstarten av a-meldingen i 2015 har innrapporteringen stadig blitt
+bedre. Dette reflekteres i at andelen med uoppgitt eller null i avtalt
+stillingsprosent har gått ned, og at det relativt sett gradvis har blitt
+færre arbeidsforhold som får beregnet en avtalt stillingsprosent, se
+tabell 21.2, 21.3 og tabell 21.4.
+
+Fra 2015 og et stykke ut i 2016 var det en endring i
+rapporteringsmønsteret for avtalt arbeidstid. For alle timelønnede ble
+det rapportert null som standardverdi istedenfor reell avtalt
+stillingsprosent i begynnelsen av 2015. Dette var ikke korrekt og det
+ble gjennomført tiltak for å få forbedre rapporteringen. Endret
+rapportering medfører at endringer i avtalt stillingsprosent fra 2015
+til 2016, samt fra begynnelsen av 2016 til begynnelsen av 2017, må
+tolkes med forsiktighet. Metoden har ikke fullt ut klart å justere for
+denne endringen i rapporteringsmønsteret.
+
+Tabell 21.2 og 21.3 viser innrapportert avtalt stillingsprosent, mens tabell
+21.4 og 21.5 viser avtalt stillingsprosent etter forbedringene beskrevet i dette
+kapittelet.
+
+**Tabell 21.2. Arbeidsforhold, etter innrapportert avtalt
+stillingsprosent. November 2015 - 2022. Antall**
+
+```{python}
+#| echo: false
+#  #| label: Fig-test
+#  #| fig-cap: "Arbeidsforhold, etter innrapportert avtalt stillingsprosent. November 2015 - 2022. Antall" 
+
+#Importerer pakker og funksjoner
+import pandas as pd
+import numpy as np
+from functions.formater import stillingspst, stillingspst_grp, naring, kildepst 
+
+from IPython.display import Markdown, display
+from tabulate import tabulate
+
+from itables import show
+from babel.numbers import format_number
+from itables import init_notebook_mode, show
+
+init_notebook_mode(all_interactive=False)
+
+# define a custom class for the "Klass syss" column
+columnDefs = [{"className": "dt-left", "targets": 0}]
+
+# define a function to format integers with space as thousand separator
+def format_int(value):
+    return format_number(value, locale='nb_NO')
+
+#Henter inn filer
+agg_alle_nov22 = pd.read_csv("../Data/agg_alle_nov22.csv", delimiter=";")
+agg_alleaar_nov = pd.read_csv("../Data/agg_alleaar_nov.csv", delimiter=";")
+agg_allemnd = pd.read_csv("../Data/agg_allemnd.csv", delimiter=";")
+
+#Definerer labels
+labels = {
+            'arbsyss':
+                    {'1a': '1a. Med lønn, ikke fiktiv',
+                     '1b': '1b. Med lønn, fiktiv',
+                     '2a': '2a. Uten lønn. NAV-ytelser',
+                     '2b': '2b. Uten lønn, permittert < 90 dager',
+                     '2c': '2c. Uten lønn, permisjon < 90 dager',
+                     '3a': '3a. Uten lønn. Startdato i t-1, lønn i t+1',
+                     '3b': '3b. Kun lønn i t-1 og t+1',
+                     '4a': '4a. Uten lønn og fravær (ordinært)',
+                     '4b': '4b. Uten lønn og fravær (frilanser',
+                     '5' : '5. Annet',
+                     '5b': '5b. Annet, ikke sysselsetting'},
+            'arbmstatus':
+                    {1: 'Aktive jobber',
+                     9: 'Ikke-aktive jobber'},
+            'stillingspst_i':
+                    {0: '0 prosent',
+                     1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent',
+                     4: 'Uoppgitt'},
+            'stillingspst_f':
+                    {1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent'},
+            'kilde_stpst':
+                    {'01': '01. Innrapportert verdi for nåværende periode',
+                     '02': '02. Innrapportert verdi for nåværende periode, nedjustert til 120',
+                     '03': '03. Innrapportert verdi for nåværende periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '04': '04. Innrapportert verdi for neste periode',
+                     '05': '05. Innrapportert verdi for neste periode, nedjustert til 120',
+                     '06': '06. Innrapportert verdi for neste periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '07': '07. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '08': '08. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '09': '09. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '10': '10. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '11': '11. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '12': '12. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '13': '13. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '14': '14. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '15': '15. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold)',
+                     '16': '16. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '17': '17. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '18': '18. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold)',
+                     '19': '19. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '20': '20. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '21': '21. Predikert verdi fra XGBoost-modell',
+                     '22': '22. Predikert verdi fra XGBoost-modell, nedjustert til 100',
+                     '23': '23. Predikert verdi fra XGBoost-modell, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '24': '24. Imputert verdi fra nærmeste-nabo-metode',
+                     '25': '25. Imputert verdi fra nærmeste-nabo-metode, nedjustert til 120',
+                     '26': '26. Imputert verdi fra nærmeste-nabo-metode, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '30': '30. Verdi satt til 100 (vernepliktig)',
+                     '31': '31. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (beholder innrapportert verdi)',
+                     '32': '32. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (verdi satt til 100, innrapp er lik 100 × n i samme virksomhet)',
+                     '33': '33. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert til 120',
+                     '34': '34. Ekskludert pga. høy lønn (beholder innrapportert verdi)',
+                     '35': '35. Ekskludert pga. høy lønn (stillingsprosent satt til 100)',
+                     '36': '36. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '37': '37. Ekskludert pga. høy lønn, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '38': '38. Verdi satt til 100 (kilde: SFU UTEN LONN)',
+                     '39': '39. Verdi satt til 100 (kilde: SFU UTEN LONN), nedjustert fordi samlet stillingsprosent overstiger 160'
+                     },
+            'kilde_stpst_gr':
+                    {0: '01. Innrapportert stillingsprosent',
+                     1: '15-20. Utledet fra betalte timer',
+                     2: '21-23. Predikert fra XGBOOST',
+                     3: '24-26. Imputert fra nærmeste nabo metode',
+                     4: '02-14,30-39. Annen justering'} 
+    }
+
+#Grupperer variabler
+agg_alleaar_nov['stillingspst_grp_i'] = agg_alleaar_nov['ARB_STILLINGSPST_INNRAPP'].apply(stillingspst_grp)
+agg_alleaar_nov['stillingspst_kilde'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].fillna(0).astype(int).astype(str).str.zfill(2)
+agg_alleaar_nov['stillingspst_grp'] = agg_alleaar_nov['ARB_STILLINGSPST'].apply(stillingspst)
+agg_alle_nov22['naring5_grp'] = agg_alle_nov22['naring5'].apply(naring)
+agg_alleaar_nov['stillingspst_kilde_grp'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].apply(kildepst)
+
+#Tabell 21.2
+# Filtrerer datasettet
+filter_condition = agg_alleaar_nov['ARB_ARBMARK_STATUS'].isin([1])
+filtered_data = agg_alleaar_nov[filter_condition]
+
+# Aggregerer på innrapportert stillingsprosent
+tabell_21_2 = pd.crosstab(filtered_data['stillingspst_grp_i'], columns=filtered_data['periode'],
+                          values=filtered_data['sum_anta'], aggfunc='sum',
+                          margins=True, margins_name='I alt',
+                          rownames=[' '], colnames=[' '])
+
+# Fjerner kolonne-totalen
+tabell_21_2 = tabell_21_2.drop('I alt', axis = 'columns')
+
+# Setter på label
+tabell_21_2.index = tabell_21_2.index.map(labels['stillingspst_i']).fillna('I alt')
+
+# Legger på tusen skilletegn:
+#tabell_21_2a = tabell_21_2.style.format(thousands=" ")
+# format the "Antall Arbeidsforhold" column using the format_int function
+tabell_21_2['2015m11'] = tabell_21_2['2015m11'].apply(format_int)
+tabell_21_2['2016m11'] = tabell_21_2['2016m11'].apply(format_int)
+tabell_21_2['2017m11'] = tabell_21_2['2017m11'].apply(format_int)
+tabell_21_2['2018m11'] = tabell_21_2['2018m11'].apply(format_int)
+tabell_21_2['2019m11'] = tabell_21_2['2019m11'].apply(format_int)
+tabell_21_2['2020m11'] = tabell_21_2['2020m11'].apply(format_int)
+tabell_21_2['2021m11'] = tabell_21_2['2021m11'].apply(format_int)
+tabell_21_2['2022m11'] = tabell_21_2['2022m11'].apply(format_int)
+
+# Tittel til tabell
+#print("Arbeidsforhold etter innrapportert stillingsprosent")
+tabell_21_2
+# display the formatted table
+#show(tabell_21_2, paging=False, searching=False, columnDefs=columnDefs)
+```
+Kilde: Statistisk sentralbyrå
+
+<br>
+
+**Tabell 21.3. Arbeidsforhold, etter innrapportert avtalt
+stillingsprosent. November 2015 - 2022. Prosent**
+
+```{python}
+#| echo: false
+#| label: Figur
+# #| fig-cap: 'Arbeidsforhold, etter innrapportert avtalt stillingsprosent. November 2015 - 2022. Prosent'
+
+#Importerer pakker og funksjoner
+import pandas as pd
+import numpy as np
+from functions.formater import stillingspst, stillingspst_grp, naring, kildepst 
+
+from IPython.display import Markdown, display
+from tabulate import tabulate
+
+from itables import show
+from babel.numbers import format_number
+from itables import init_notebook_mode, show
+
+init_notebook_mode(all_interactive=False)
+
+# define a custom class for the "Klass syss" column
+columnDefs = [{"className": "dt-left", "targets": 0}]
+
+# define a function to format integers with space as thousand separator
+def format_int(value):
+    return format_number(value, locale='nb_NO')
+
+#Henter inn filer
+agg_alle_nov22 = pd.read_csv("../Data/agg_alle_nov22.csv", delimiter=";")
+agg_alleaar_nov = pd.read_csv("../Data/agg_alleaar_nov.csv", delimiter=";")
+agg_allemnd = pd.read_csv("../Data/agg_allemnd.csv", delimiter=";")
+
+#Definerer labels
+labels = {
+            'arbsyss':
+                    {'1a': '1a. Med lønn, ikke fiktiv',
+                     '1b': '1b. Med lønn, fiktiv',
+                     '2a': '2a. Uten lønn. NAV-ytelser',
+                     '2b': '2b. Uten lønn, permittert < 90 dager',
+                     '2c': '2c. Uten lønn, permisjon < 90 dager',
+                     '3a': '3a. Uten lønn. Startdato i t-1, lønn i t+1',
+                     '3b': '3b. Kun lønn i t-1 og t+1',
+                     '4a': '4a. Uten lønn og fravær (ordinært)',
+                     '4b': '4b. Uten lønn og fravær (frilanser',
+                     '5' : '5. Annet',
+                     '5b': '5b. Annet, ikke sysselsetting'},
+            'arbmstatus':
+                    {1: 'Aktive jobber',
+                     9: 'Ikke-aktive jobber'},
+            'stillingspst_i':
+                    {0: '0 prosent',
+                     1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent',
+                     4: 'Uoppgitt'},
+            'stillingspst_f':
+                    {1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent'},
+            'kilde_stpst':
+                    {'01': '01. Innrapportert verdi for nåværende periode',
+                     '02': '02. Innrapportert verdi for nåværende periode, nedjustert til 120',
+                     '03': '03. Innrapportert verdi for nåværende periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '04': '04. Innrapportert verdi for neste periode',
+                     '05': '05. Innrapportert verdi for neste periode, nedjustert til 120',
+                     '06': '06. Innrapportert verdi for neste periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '07': '07. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '08': '08. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '09': '09. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '10': '10. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '11': '11. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '12': '12. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '13': '13. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '14': '14. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '15': '15. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold)',
+                     '16': '16. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '17': '17. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '18': '18. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold)',
+                     '19': '19. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '20': '20. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '21': '21. Predikert verdi fra XGBoost-modell',
+                     '22': '22. Predikert verdi fra XGBoost-modell, nedjustert til 100',
+                     '23': '23. Predikert verdi fra XGBoost-modell, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '24': '24. Imputert verdi fra nærmeste-nabo-metode',
+                     '25': '25. Imputert verdi fra nærmeste-nabo-metode, nedjustert til 120',
+                     '26': '26. Imputert verdi fra nærmeste-nabo-metode, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '30': '30. Verdi satt til 100 (vernepliktig)',
+                     '31': '31. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (beholder innrapportert verdi)',
+                     '32': '32. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (verdi satt til 100, innrapp er lik 100 × n i samme virksomhet)',
+                     '33': '33. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert til 120',
+                     '34': '34. Ekskludert pga. høy lønn (beholder innrapportert verdi)',
+                     '35': '35. Ekskludert pga. høy lønn (stillingsprosent satt til 100)',
+                     '36': '36. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '37': '37. Ekskludert pga. høy lønn, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '38': '38. Verdi satt til 100 (kilde: SFU UTEN LONN)',
+                     '39': '39. Verdi satt til 100 (kilde: SFU UTEN LONN), nedjustert fordi samlet stillingsprosent overstiger 160'
+                     },
+            'kilde_stpst_gr':
+                    {0: '01. Innrapportert stillingsprosent',
+                     1: '15-20. Utledet fra betalte timer',
+                     2: '21-23. Predikert fra XGBOOST',
+                     3: '24-26. Imputert fra nærmeste nabo metode',
+                     4: '02-14,30-39. Annen justering'} 
+    }
+
+#Grupperer variabler
+agg_alleaar_nov['stillingspst_grp_i'] = agg_alleaar_nov['ARB_STILLINGSPST_INNRAPP'].apply(stillingspst_grp)
+agg_alleaar_nov['stillingspst_kilde'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].fillna(0).astype(int).astype(str).str.zfill(2)
+agg_alleaar_nov['stillingspst_grp'] = agg_alleaar_nov['ARB_STILLINGSPST'].apply(stillingspst)
+agg_alle_nov22['naring5_grp'] = agg_alle_nov22['naring5'].apply(naring)
+agg_alleaar_nov['stillingspst_kilde_grp'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].apply(kildepst)
+
+#Tabell 21.3
+# Filtrerer datasettet
+filter_condition = agg_alleaar_nov['ARB_ARBMARK_STATUS'].isin([1])
+filtered_data = agg_alleaar_nov[filter_condition]
+
+# Aggregerer på stillingsprosent
+tabell_21_3 = pd.crosstab(filtered_data['stillingspst_grp_i'], columns=filtered_data['periode'],
+                          values=agg_alleaar_nov['sum_anta'], aggfunc='sum',
+                          margins=True, margins_name='I alt', normalize='columns',
+                          rownames=[' '], colnames=[' ']).round(3)*100
+
+# Fjerner kolonne-totalen
+tabell_21_3 = tabell_21_3.drop('I alt', axis = 'columns')
+
+# Setter på label
+tabell_21_3.index = tabell_21_3.index.map(labels['stillingspst_i'])
+
+# Legger til rad med Totaler
+tabell_21_3.loc['I alt'] = [100.0] * len(tabell_21_3.columns)
+#tabell_21_3['I alt'] = tabell_21_3['I alt'].apply(lambda x: '{:.1f}'.format(x))
+
+# Tittel til tabell
+#print("Arbeidsforhold etter innrapportert stillingsprosent")
+tabell_21_3
+#show(tabell_21_3, paging=False, searching=False, columnDefs=columnDefs)
+```
+Kilde: Statistisk sentralbyrå
+
+<br>
+
+**Tabell 21.4. Arbeidsforhold, etter forbedret avtalt stillingsprosent.
+November 2015 - 2022. Antall**
+
+```{python}
+#| echo: false
+# #| fig-cap: 'Arbeidsforhold, etter forbedret avtalt stillingsprosent. November 2015 - 2022. Antall'
+
+#Importerer pakker og funksjoner
+import pandas as pd
+import numpy as np
+from functions.formater import stillingspst, stillingspst_grp, naring, kildepst 
+
+from IPython.display import Markdown, display
+from tabulate import tabulate
+
+from itables import show
+from babel.numbers import format_number
+from itables import init_notebook_mode, show
+
+init_notebook_mode(all_interactive=False)
+
+# define a custom class for the "Klass syss" column
+columnDefs = [{"className": "dt-left", "targets": 0}]
+
+# define a function to format integers with space as thousand separator
+def format_int(value):
+    return format_number(value, locale='nb_NO')
+
+#Henter inn filer
+agg_alle_nov22 = pd.read_csv("../Data/agg_alle_nov22.csv", delimiter=";")
+agg_alleaar_nov = pd.read_csv("../Data/agg_alleaar_nov.csv", delimiter=";")
+agg_allemnd = pd.read_csv("../Data/agg_allemnd.csv", delimiter=";")
+
+#Definerer labels
+labels = {
+            'arbsyss':
+                    {'1a': '1a. Med lønn, ikke fiktiv',
+                     '1b': '1b. Med lønn, fiktiv',
+                     '2a': '2a. Uten lønn. NAV-ytelser',
+                     '2b': '2b. Uten lønn, permittert < 90 dager',
+                     '2c': '2c. Uten lønn, permisjon < 90 dager',
+                     '3a': '3a. Uten lønn. Startdato i t-1, lønn i t+1',
+                     '3b': '3b. Kun lønn i t-1 og t+1',
+                     '4a': '4a. Uten lønn og fravær (ordinært)',
+                     '4b': '4b. Uten lønn og fravær (frilanser',
+                     '5' : '5. Annet',
+                     '5b': '5b. Annet, ikke sysselsetting'},
+            'arbmstatus':
+                    {1: 'Aktive jobber',
+                     9: 'Ikke-aktive jobber'},
+            'stillingspst_i':
+                    {0: '0 prosent',
+                     1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent',
+                     4: 'Uoppgitt'},
+            'stillingspst_f':
+                    {1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent'},
+            'kilde_stpst':
+                    {'01': '01. Innrapportert verdi for nåværende periode',
+                     '02': '02. Innrapportert verdi for nåværende periode, nedjustert til 120',
+                     '03': '03. Innrapportert verdi for nåværende periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '04': '04. Innrapportert verdi for neste periode',
+                     '05': '05. Innrapportert verdi for neste periode, nedjustert til 120',
+                     '06': '06. Innrapportert verdi for neste periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '07': '07. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '08': '08. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '09': '09. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '10': '10. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '11': '11. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '12': '12. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '13': '13. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '14': '14. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '15': '15. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold)',
+                     '16': '16. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '17': '17. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '18': '18. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold)',
+                     '19': '19. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '20': '20. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '21': '21. Predikert verdi fra XGBoost-modell',
+                     '22': '22. Predikert verdi fra XGBoost-modell, nedjustert til 100',
+                     '23': '23. Predikert verdi fra XGBoost-modell, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '24': '24. Imputert verdi fra nærmeste-nabo-metode',
+                     '25': '25. Imputert verdi fra nærmeste-nabo-metode, nedjustert til 120',
+                     '26': '26. Imputert verdi fra nærmeste-nabo-metode, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '30': '30. Verdi satt til 100 (vernepliktig)',
+                     '31': '31. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (beholder innrapportert verdi)',
+                     '32': '32. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (verdi satt til 100, innrapp er lik 100 × n i samme virksomhet)',
+                     '33': '33. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert til 120',
+                     '34': '34. Ekskludert pga. høy lønn (beholder innrapportert verdi)',
+                     '35': '35. Ekskludert pga. høy lønn (stillingsprosent satt til 100)',
+                     '36': '36. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '37': '37. Ekskludert pga. høy lønn, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '38': '38. Verdi satt til 100 (kilde: SFU UTEN LONN)',
+                     '39': '39. Verdi satt til 100 (kilde: SFU UTEN LONN), nedjustert fordi samlet stillingsprosent overstiger 160'
+                     },
+            'kilde_stpst_gr':
+                    {0: '01. Innrapportert stillingsprosent',
+                     1: '15-20. Utledet fra betalte timer',
+                     2: '21-23. Predikert fra XGBOOST',
+                     3: '24-26. Imputert fra nærmeste nabo metode',
+                     4: '02-14,30-39. Annen justering'} 
+    }
+
+#Grupperer variabler
+agg_alleaar_nov['stillingspst_grp_i'] = agg_alleaar_nov['ARB_STILLINGSPST_INNRAPP'].apply(stillingspst_grp)
+agg_alleaar_nov['stillingspst_kilde'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].fillna(0).astype(int).astype(str).str.zfill(2)
+agg_alleaar_nov['stillingspst_grp'] = agg_alleaar_nov['ARB_STILLINGSPST'].apply(stillingspst)
+agg_alle_nov22['naring5_grp'] = agg_alle_nov22['naring5'].apply(naring)
+agg_alleaar_nov['stillingspst_kilde_grp'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].apply(kildepst)
+
+#Tabell 21.4
+# Filtrerer datasettet
+filter_condition = agg_alleaar_nov['ARB_ARBMARK_STATUS'].isin([1])
+filtered_data = agg_alleaar_nov[filter_condition]
+
+# Aggregerer på stillingsprosent
+tabell_21_4 = pd.crosstab(filtered_data['stillingspst_grp'], columns=filtered_data['periode'],
+                          values=agg_alleaar_nov['sum_anta'], aggfunc='sum',
+                          margins=True, margins_name='I alt',
+                          rownames=[' '], colnames=[' '])
+
+# Fjerner kolonne-totalen
+tabell_21_4 = tabell_21_4.drop('I alt', axis = 'columns')
+
+# Setter på label
+tabell_21_4.index = tabell_21_4.index.map(labels['stillingspst_f']).fillna('I alt')
+
+# Legger på tusen skilletegn:
+#tabell_21_4a = tabell_21_4.style.format(thousands=" ")
+
+# format the "Antall Arbeidsforhold" column using the format_int function
+tabell_21_4['2015m11'] = tabell_21_4['2015m11'].apply(format_int)
+tabell_21_4['2016m11'] = tabell_21_4['2016m11'].apply(format_int)
+tabell_21_4['2017m11'] = tabell_21_4['2017m11'].apply(format_int)
+tabell_21_4['2018m11'] = tabell_21_4['2018m11'].apply(format_int)
+tabell_21_4['2019m11'] = tabell_21_4['2019m11'].apply(format_int)
+tabell_21_4['2020m11'] = tabell_21_4['2020m11'].apply(format_int)
+tabell_21_4['2021m11'] = tabell_21_4['2021m11'].apply(format_int)
+tabell_21_4['2022m11'] = tabell_21_4['2022m11'].apply(format_int)
+
+# Tittel til tabell
+#print("Arbeidsforhold etter forbedret stillingsprosent")
+tabell_21_4
+
+#show(tabell_21_4, paging=False, searching=False, columnDefs=columnDefs)
+```
+Kilde: Statistisk sentralbyrå
+
+<br>
+**Tabell 21.5. Arbeidsforhold, etter forbedret avtalt stillingsprosent.
+November 2015 - 2022. Prosent**
+
+```{python}
+#| echo: false
+#| fig-cap: 'Arbeidsforhold, etter forbedret avtalt stillingsprosent. November 2015 - 2022. Prosent'
+
+#Importerer pakker og funksjoner
+import pandas as pd
+import numpy as np
+from functions.formater import stillingspst, stillingspst_grp, naring, kildepst 
+
+from IPython.display import Markdown, display
+from tabulate import tabulate
+
+from itables import show
+from babel.numbers import format_number
+from itables import init_notebook_mode, show
+
+init_notebook_mode(all_interactive=False)
+
+# define a custom class for the "Klass syss" column
+columnDefs = [{"className": "dt-left", "targets": 0}]
+
+# define a function to format integers with space as thousand separator
+def format_int(value):
+    return format_number(value, locale='nb_NO')
+
+#Henter inn filer
+agg_alle_nov22 = pd.read_csv("../Data/agg_alle_nov22.csv", delimiter=";")
+agg_alleaar_nov = pd.read_csv("../Data/agg_alleaar_nov.csv", delimiter=";")
+agg_allemnd = pd.read_csv("../Data/agg_allemnd.csv", delimiter=";")
+
+#Definerer labels
+labels = {
+            'arbsyss':
+                    {'1a': '1a. Med lønn, ikke fiktiv',
+                     '1b': '1b. Med lønn, fiktiv',
+                     '2a': '2a. Uten lønn. NAV-ytelser',
+                     '2b': '2b. Uten lønn, permittert < 90 dager',
+                     '2c': '2c. Uten lønn, permisjon < 90 dager',
+                     '3a': '3a. Uten lønn. Startdato i t-1, lønn i t+1',
+                     '3b': '3b. Kun lønn i t-1 og t+1',
+                     '4a': '4a. Uten lønn og fravær (ordinært)',
+                     '4b': '4b. Uten lønn og fravær (frilanser',
+                     '5' : '5. Annet',
+                     '5b': '5b. Annet, ikke sysselsetting'},
+            'arbmstatus':
+                    {1: 'Aktive jobber',
+                     9: 'Ikke-aktive jobber'},
+            'stillingspst_i':
+                    {0: '0 prosent',
+                     1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent',
+                     4: 'Uoppgitt'},
+            'stillingspst_f':
+                    {1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent'},
+            'kilde_stpst':
+                    {'01': '01. Innrapportert verdi for nåværende periode',
+                     '02': '02. Innrapportert verdi for nåværende periode, nedjustert til 120',
+                     '03': '03. Innrapportert verdi for nåværende periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '04': '04. Innrapportert verdi for neste periode',
+                     '05': '05. Innrapportert verdi for neste periode, nedjustert til 120',
+                     '06': '06. Innrapportert verdi for neste periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '07': '07. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '08': '08. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '09': '09. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '10': '10. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '11': '11. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '12': '12. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '13': '13. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '14': '14. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '15': '15. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold)',
+                     '16': '16. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '17': '17. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '18': '18. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold)',
+                     '19': '19. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '20': '20. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '21': '21. Predikert verdi fra XGBoost-modell',
+                     '22': '22. Predikert verdi fra XGBoost-modell, nedjustert til 100',
+                     '23': '23. Predikert verdi fra XGBoost-modell, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '24': '24. Imputert verdi fra nærmeste-nabo-metode',
+                     '25': '25. Imputert verdi fra nærmeste-nabo-metode, nedjustert til 120',
+                     '26': '26. Imputert verdi fra nærmeste-nabo-metode, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '30': '30. Verdi satt til 100 (vernepliktig)',
+                     '31': '31. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (beholder innrapportert verdi)',
+                     '32': '32. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (verdi satt til 100, innrapp er lik 100 × n i samme virksomhet)',
+                     '33': '33. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert til 120',
+                     '34': '34. Ekskludert pga. høy lønn (beholder innrapportert verdi)',
+                     '35': '35. Ekskludert pga. høy lønn (stillingsprosent satt til 100)',
+                     '36': '36. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '37': '37. Ekskludert pga. høy lønn, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '38': '38. Verdi satt til 100 (kilde: SFU UTEN LONN)',
+                     '39': '39. Verdi satt til 100 (kilde: SFU UTEN LONN), nedjustert fordi samlet stillingsprosent overstiger 160'
+                     },
+            'kilde_stpst_gr':
+                    {0: '01. Innrapportert stillingsprosent',
+                     1: '15-20. Utledet fra betalte timer',
+                     2: '21-23. Predikert fra XGBOOST',
+                     3: '24-26. Imputert fra nærmeste nabo metode',
+                     4: '02-14,30-39. Annen justering'} 
+    }
+
+#Grupperer variabler
+agg_alleaar_nov['stillingspst_grp_i'] = agg_alleaar_nov['ARB_STILLINGSPST_INNRAPP'].apply(stillingspst_grp)
+agg_alleaar_nov['stillingspst_kilde'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].fillna(0).astype(int).astype(str).str.zfill(2)
+agg_alleaar_nov['stillingspst_grp'] = agg_alleaar_nov['ARB_STILLINGSPST'].apply(stillingspst)
+agg_alle_nov22['naring5_grp'] = agg_alle_nov22['naring5'].apply(naring)
+agg_alleaar_nov['stillingspst_kilde_grp'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].apply(kildepst)
+
+#Tabell 21.5
+# Filtrerer datasettet
+filter_condition = agg_alleaar_nov['ARB_ARBMARK_STATUS'].isin([1])
+filtered_data = agg_alleaar_nov[filter_condition]
+
+# Aggregerer på stillingsprosent
+tabell_21_5 = pd.crosstab(filtered_data['stillingspst_grp'], columns=filtered_data['periode'],
+                           values=agg_alleaar_nov['sum_anta'], aggfunc='sum',
+                           margins=True, margins_name='I alt', normalize='columns',
+                           rownames=[' '], colnames=[' ']).round(3)*100
+
+# Fjerner kolonne-totalen
+tabell_21_5 = tabell_21_5.drop('I alt', axis = 'columns')
+
+# Setter på label
+tabell_21_5.index = tabell_21_5.index.map(labels['stillingspst_f'])
+
+# Legger til rad med Totaler
+tabell_21_5.loc['I alt'] = [100] * len(tabell_21_5.columns)
+
+# Tittel til tabell
+#print("Arbeidsforhold i prosent etter forbedret stillingsprosent")
+tabell_21_5
+#show(tabell_21_5, paging=False, searching=False, columnDefs=columnDefs)
+```
+Kilde: Statistisk sentralbyrå
+
+<br>
+**Tabell 21.6. Arbeidsforhold, etter kilde for avtalt stillingsprosent.
+Alle koder. November 2022. Antall og prosent**
+
+```{python}
+#| echo: false
+# #| fig-cap: 'Arbeidsforhold, etter kilde for avtalt stillingsprosent. Alle koder. November 2022. Antall og prosent'
+
+#Importerer pakker og funksjoner
+import pandas as pd
+import numpy as np
+from functions.formater import stillingspst, stillingspst_grp, naring, kildepst 
+
+from IPython.display import Markdown, display
+from tabulate import tabulate
+
+from itables import show
+from babel.numbers import format_number
+from itables import init_notebook_mode, show
+
+init_notebook_mode(all_interactive=False)
+
+# define a custom class for the "Klass syss" column
+columnDefs = [{"className": "dt-left", "targets": 0}]
+
+# define a function to format integers with space as thousand separator
+def format_int(value):
+    return format_number(value, locale='nb_NO')
+
+#Henter inn filer
+agg_alle_nov22 = pd.read_csv("../Data/agg_alle_nov22.csv", delimiter=";")
+agg_alleaar_nov = pd.read_csv("../Data/agg_alleaar_nov.csv", delimiter=";")
+agg_allemnd = pd.read_csv("../Data/agg_allemnd.csv", delimiter=";")
+
+#Definerer labels
+labels = {
+            'arbsyss':
+                    {'1a': '1a. Med lønn, ikke fiktiv',
+                     '1b': '1b. Med lønn, fiktiv',
+                     '2a': '2a. Uten lønn. NAV-ytelser',
+                     '2b': '2b. Uten lønn, permittert < 90 dager',
+                     '2c': '2c. Uten lønn, permisjon < 90 dager',
+                     '3a': '3a. Uten lønn. Startdato i t-1, lønn i t+1',
+                     '3b': '3b. Kun lønn i t-1 og t+1',
+                     '4a': '4a. Uten lønn og fravær (ordinært)',
+                     '4b': '4b. Uten lønn og fravær (frilanser',
+                     '5' : '5. Annet',
+                     '5b': '5b. Annet, ikke sysselsetting'},
+            'arbmstatus':
+                    {1: 'Aktive jobber',
+                     9: 'Ikke-aktive jobber'},
+            'stillingspst_i':
+                    {0: '0 prosent',
+                     1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent',
+                     4: 'Uoppgitt'},
+            'stillingspst_f':
+                    {1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent'},
+            'kilde_stpst':
+                    {'01': '01. Innrapportert verdi for nåværende periode',
+                     '02': '02. Innrapportert verdi for nåværende periode, nedjustert til 120',
+                     '03': '03. Innrapportert verdi for nåværende periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '04': '04. Innrapportert verdi for neste periode',
+                     '05': '05. Innrapportert verdi for neste periode, nedjustert til 120',
+                     '06': '06. Innrapportert verdi for neste periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '07': '07. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '08': '08. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '09': '09. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '10': '10. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '11': '11. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '12': '12. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '13': '13. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '14': '14. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '15': '15. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold)',
+                     '16': '16. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '17': '17. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '18': '18. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold)',
+                     '19': '19. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '20': '20. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '21': '21. Predikert verdi fra XGBoost-modell',
+                     '22': '22. Predikert verdi fra XGBoost-modell, nedjustert til 100',
+                     '23': '23. Predikert verdi fra XGBoost-modell, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '24': '24. Imputert verdi fra nærmeste-nabo-metode',
+                     '25': '25. Imputert verdi fra nærmeste-nabo-metode, nedjustert til 120',
+                     '26': '26. Imputert verdi fra nærmeste-nabo-metode, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '30': '30. Verdi satt til 100 (vernepliktig)',
+                     '31': '31. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (beholder innrapportert verdi)',
+                     '32': '32. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (verdi satt til 100, innrapp er lik 100 × n i samme virksomhet)',
+                     '33': '33. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert til 120',
+                     '34': '34. Ekskludert pga. høy lønn (beholder innrapportert verdi)',
+                     '35': '35. Ekskludert pga. høy lønn (stillingsprosent satt til 100)',
+                     '36': '36. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '37': '37. Ekskludert pga. høy lønn, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '38': '38. Verdi satt til 100 (kilde: SFU UTEN LONN)',
+                     '39': '39. Verdi satt til 100 (kilde: SFU UTEN LONN), nedjustert fordi samlet stillingsprosent overstiger 160'
+                     },
+            'kilde_stpst_gr':
+                    {0: '01. Innrapportert stillingsprosent',
+                     1: '15-20. Utledet fra betalte timer',
+                     2: '21-23. Predikert fra XGBOOST',
+                     3: '24-26. Imputert fra nærmeste nabo metode',
+                     4: '02-14,30-39. Annen justering'} 
+    }
+
+#Grupperer variabler
+agg_alleaar_nov['stillingspst_grp_i'] = agg_alleaar_nov['ARB_STILLINGSPST_INNRAPP'].apply(stillingspst_grp)
+agg_alleaar_nov['stillingspst_kilde'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].fillna(0).astype(int).astype(str).str.zfill(2)
+agg_alleaar_nov['stillingspst_grp'] = agg_alleaar_nov['ARB_STILLINGSPST'].apply(stillingspst)
+agg_alle_nov22['naring5_grp'] = agg_alle_nov22['naring5'].apply(naring)
+agg_alleaar_nov['stillingspst_kilde_grp'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].apply(kildepst)
+
+#Tabell 21_6
+# Filtrerer datasettet
+filter_1 = agg_alleaar_nov['ARB_ARBMARK_STATUS'].isin([1])
+filter_2 = agg_alleaar_nov['periode'] == '2022m11'
+filtered_data = agg_alleaar_nov[filter_1 & filter_2]
+
+# Aggregerer på stillingsprosent
+tabell_21_6 = filtered_data.groupby('stillingspst_kilde').agg({'sum_anta': ['sum', lambda x: (x.sum() / filtered_data['sum_anta'].sum()) * 100]})
+tabell_21_6.columns = ['sum', 'pctsum']
+#tabell_21_6['sum'] = tabell_21_6['sum'].style.format(thousands=" ")
+tabell_21_6['pctsum'] = round(tabell_21_6['pctsum'].astype(np.float64), 1)
+tabell_21_6.reset_index(inplace=True)
+
+# Legger på labels
+tabell_21_6['stillingspst_kilde'] = tabell_21_6['stillingspst_kilde'].map(labels['kilde_stpst'])
+
+# Legger på sum rad
+tabell_21_6_sum = pd.DataFrame({'stillingspst_kilde': ['I alt'], 'sum': [tabell_21_6['sum'].sum()], 'pctsum': [100]})
+tabell_21_6 = pd.concat([tabell_21_6_sum, tabell_21_6])
+
+# Mangler rader med null observsjoner - legger dette til
+tabell_21_6_mangler = pd.DataFrame()
+mangler = list(set(labels['kilde_stpst'].values()) - set(tabell_21_6['stillingspst_kilde']))
+for kategori in mangler:
+    ny_kat = pd.DataFrame({'stillingspst_kilde': [kategori], 'sum': [0], 'pctsum': [0]})
+    tabell_21_6_mangler = pd.concat([tabell_21_6_mangler, ny_kat])
+tabell_21_6 = pd.concat([tabell_21_6, tabell_21_6_mangler])
+
+# Setter kolonnenavn
+tabell_21_6.columns = ['Stillingsprosent kilde', 'Antall arbeidsforhold', 'Arbeidsforhold i prosent']
+tabell_21_6 = tabell_21_6.set_index('Stillingsprosent kilde')
+
+# Legger på tusen skilletegn:
+#tabell_21_6 = tabell_21_6.style.format(thousands=" ", subset=['Antall arbeidsforhold'])
+#tabell_21_6 = tabell_21_6.style.format(precision=3, subset=['Arbeidsforhold i prosent'])
+
+# Tittel til tabell
+#print("Arbeidsforhold etter kilde for stillingsprosent. November 2022")
+tabell_21_6=tabell_21_6.sort_values('Stillingsprosent kilde') 
+#tabell_21_6
+#show(tabell_21_6, paging=False, searching=False, columnDefs=columnDefs)
+
+# format the "Antall Arbeidsforhold" column using the format_int function
+tabell_21_6['Antall arbeidsforhold'] = tabell_21_6['Antall arbeidsforhold'].apply(format_int)
+
+# format the "Prosent" column with one decimal
+tabell_21_6['Arbeidsforhold i prosent'] = tabell_21_6['Arbeidsforhold i prosent'].apply(lambda x: '{:.1f}'.format(x))
+
+# display the formatted table
+#show(tabell_21_6, paging=False, searching=False, columnDefs=columnDefs)
+tabell_21_6
+```
+Kilde: Statistisk sentralbyrå
+
+<br>
+**Tabell 21.7. Arbeidsforhold, etter kilde for avtalt stillingsprosent.
+November 2015 - 2022. Antall**
+
+```{python}
+#| echo: false
+# #| fig-cap: 'Arbeidsforhold, etter kilde for avtalt stillingsprosent. November 2015 - 2022. Antall'
+
+#Importerer pakker og funksjoner
+import pandas as pd
+import numpy as np
+from functions.formater import stillingspst, stillingspst_grp, naring, kildepst 
+
+from IPython.display import Markdown, display
+from tabulate import tabulate
+
+from itables import show
+from babel.numbers import format_number
+from itables import init_notebook_mode, show
+
+init_notebook_mode(all_interactive=False)
+
+# define a custom class for the "Klass syss" column
+columnDefs = [{"className": "dt-left", "targets": 0}]
+
+# define a function to format integers with space as thousand separator
+def format_int(value):
+    return format_number(value, locale='nb_NO')
+
+#Henter inn filer
+agg_alle_nov22 = pd.read_csv("../Data/agg_alle_nov22.csv", delimiter=";")
+agg_alleaar_nov = pd.read_csv("../Data/agg_alleaar_nov.csv", delimiter=";")
+agg_allemnd = pd.read_csv("../Data/agg_allemnd.csv", delimiter=";")
+
+#Definerer labels
+labels = {
+            'arbsyss':
+                    {'1a': '1a. Med lønn, ikke fiktiv',
+                     '1b': '1b. Med lønn, fiktiv',
+                     '2a': '2a. Uten lønn. NAV-ytelser',
+                     '2b': '2b. Uten lønn, permittert < 90 dager',
+                     '2c': '2c. Uten lønn, permisjon < 90 dager',
+                     '3a': '3a. Uten lønn. Startdato i t-1, lønn i t+1',
+                     '3b': '3b. Kun lønn i t-1 og t+1',
+                     '4a': '4a. Uten lønn og fravær (ordinært)',
+                     '4b': '4b. Uten lønn og fravær (frilanser',
+                     '5' : '5. Annet',
+                     '5b': '5b. Annet, ikke sysselsetting'},
+            'arbmstatus':
+                    {1: 'Aktive jobber',
+                     9: 'Ikke-aktive jobber'},
+            'stillingspst_i':
+                    {0: '0 prosent',
+                     1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent',
+                     4: 'Uoppgitt'},
+            'stillingspst_f':
+                    {1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent'},
+            'kilde_stpst':
+                    {'01': '01. Innrapportert verdi for nåværende periode',
+                     '02': '02. Innrapportert verdi for nåværende periode, nedjustert til 120',
+                     '03': '03. Innrapportert verdi for nåværende periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '04': '04. Innrapportert verdi for neste periode',
+                     '05': '05. Innrapportert verdi for neste periode, nedjustert til 120',
+                     '06': '06. Innrapportert verdi for neste periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '07': '07. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '08': '08. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '09': '09. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '10': '10. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '11': '11. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '12': '12. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '13': '13. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '14': '14. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '15': '15. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold)',
+                     '16': '16. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '17': '17. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '18': '18. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold)',
+                     '19': '19. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '20': '20. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '21': '21. Predikert verdi fra XGBoost-modell',
+                     '22': '22. Predikert verdi fra XGBoost-modell, nedjustert til 100',
+                     '23': '23. Predikert verdi fra XGBoost-modell, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '24': '24. Imputert verdi fra nærmeste-nabo-metode',
+                     '25': '25. Imputert verdi fra nærmeste-nabo-metode, nedjustert til 120',
+                     '26': '26. Imputert verdi fra nærmeste-nabo-metode, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '30': '30. Verdi satt til 100 (vernepliktig)',
+                     '31': '31. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (beholder innrapportert verdi)',
+                     '32': '32. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (verdi satt til 100, innrapp er lik 100 × n i samme virksomhet)',
+                     '33': '33. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert til 120',
+                     '34': '34. Ekskludert pga. høy lønn (beholder innrapportert verdi)',
+                     '35': '35. Ekskludert pga. høy lønn (stillingsprosent satt til 100)',
+                     '36': '36. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '37': '37. Ekskludert pga. høy lønn, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '38': '38. Verdi satt til 100 (kilde: SFU UTEN LONN)',
+                     '39': '39. Verdi satt til 100 (kilde: SFU UTEN LONN), nedjustert fordi samlet stillingsprosent overstiger 160'
+                     },
+            'kilde_stpst_gr':
+                    {0: '01. Innrapportert stillingsprosent',
+                     1: '15-20. Utledet fra betalte timer',
+                     2: '21-23. Predikert fra XGBOOST',
+                     3: '24-26. Imputert fra nærmeste nabo metode',
+                     4: '02-14,30-39. Annen justering'} 
+    }
+
+#Grupperer variabler
+agg_alleaar_nov['stillingspst_grp_i'] = agg_alleaar_nov['ARB_STILLINGSPST_INNRAPP'].apply(stillingspst_grp)
+agg_alleaar_nov['stillingspst_kilde'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].fillna(0).astype(int).astype(str).str.zfill(2)
+agg_alleaar_nov['stillingspst_grp'] = agg_alleaar_nov['ARB_STILLINGSPST'].apply(stillingspst)
+agg_alle_nov22['naring5_grp'] = agg_alle_nov22['naring5'].apply(naring)
+agg_alleaar_nov['stillingspst_kilde_grp'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].apply(kildepst)
+
+#Tabell 21.7
+# Filtrerer datasettet
+filter_condition = agg_alleaar_nov['ARB_ARBMARK_STATUS'].isin([1])
+filtered_data = agg_alleaar_nov[filter_condition]
+
+# Aggregerer på innrapportert stillingsprosent
+tabell_21_7 = pd.crosstab(filtered_data['stillingspst_kilde_grp'], columns=filtered_data['periode'],
+                          values=filtered_data['sum_anta'], aggfunc='sum',
+                          margins=True, margins_name='I alt',
+                          rownames=[' '], colnames=[' '])
+
+# Fjerner kolonne-totalen
+tabell_21_7 = tabell_21_7.drop('I alt', axis = 'columns')
+
+# Setter på label
+tabell_21_7.index = tabell_21_7.index.map(labels['kilde_stpst_gr']).fillna('I alt')
+
+# Legger på tusen skilletegn:
+#tabell_21_7a = tabell_21_7.style.format(thousands=" ")
+# format the "Antall Arbeidsforhold" column using the format_int function
+# format the "Antall Arbeidsforhold" column using the format_int function
+tabell_21_7['2015m11'] = tabell_21_7['2015m11'].apply(format_int)
+tabell_21_7['2016m11'] = tabell_21_7['2016m11'].apply(format_int)
+tabell_21_7['2017m11'] = tabell_21_7['2017m11'].apply(format_int)
+tabell_21_7['2018m11'] = tabell_21_7['2018m11'].apply(format_int)
+tabell_21_7['2019m11'] = tabell_21_7['2019m11'].apply(format_int)
+tabell_21_7['2020m11'] = tabell_21_7['2020m11'].apply(format_int)
+tabell_21_7['2021m11'] = tabell_21_7['2021m11'].apply(format_int)
+tabell_21_7['2022m11'] = tabell_21_7['2022m11'].apply(format_int)
+
+# Tittel til tabell
+#print("Arbeidsforhold etter kilde for stillingsprosent")
+tabell_21_7
+#show(tabell_21_7, paging=False, searching=False, columnDefs=columnDefs)
+```
+Kilde: Statistisk sentralbyrå
+
+<br>
+Metoden medfører at vel 15 prosent av alle arbeidsforholdene får
+beregnet en avtalt stillingsprosent i 4. kvartal 2022, enten utledet fra
+betalte timer (8,8 prosent), predikert fra XGBoost (5,4 prosent) eller
+imputert fra nærmeste nabo metode (1 prosent), se tabell 21.8. «Utledet
+fra betalte timer» betyr at avtalt stillingsprosent er utledet fra annen
+informasjon som rapporteres i a-meldingen: antall timer fulltid per uke
+og antall betalte timer (gjelder kun timelønnede), mens «predikert fra
+XGBoost» betyr at avtalt stillingsprosent er bestemt av en
+maskinlæringsalgoritme. Snaut 4 prosent av arbeidsforholdene får noen
+justeringer av den avtalte stillingsprosenten. Det omfatter f.eks. at
+man har fått nedjustert den avtalte stillingsprosenten fordi den samlet
+for alle arbeidsforholdene personen har er over 160 prosent, eller man
+har mange jobber i samme virksomhet med 100 i avtalt stillingsprosent og
+da antar vi at 100 er korrekt (se fullstendig oversikt i tabell 21.6).
+Det betyr at innrapportert avtalt stillingsprosent blir brukt for om lag
+81 prosent av alle arbeidsforhold fordi det er en god sammenheng mellom
+den innrapporterte avtalte stillingsprosenten og lønn.
+
+
+**Tabell 21.8. Arbeidsforhold, etter kilde for avtalt stillingsprosent.
+November 2015 - 2022. Prosent**
+
+```{python}
+#| echo: false
+# #| fig-cap: 'Arbeidsforhold, etter kilde for avtalt stillingsprosent. November 2015 - 2022. Prosent'
+
+#Importerer pakker og funksjoner
+import pandas as pd
+import numpy as np
+from functions.formater import stillingspst, stillingspst_grp, naring, kildepst 
+
+from IPython.display import Markdown, display
+from tabulate import tabulate
+
+from itables import show
+from babel.numbers import format_number
+from itables import init_notebook_mode, show
+
+init_notebook_mode(all_interactive=False)
+
+# define a custom class for the "Klass syss" column
+columnDefs = [{"className": "dt-left", "targets": 0}]
+
+# define a function to format integers with space as thousand separator
+def format_int(value):
+    return format_number(value, locale='nb_NO')
+
+#Henter inn filer
+agg_alle_nov22 = pd.read_csv("../Data/agg_alle_nov22.csv", delimiter=";")
+agg_alleaar_nov = pd.read_csv("../Data/agg_alleaar_nov.csv", delimiter=";")
+agg_allemnd = pd.read_csv("../Data/agg_allemnd.csv", delimiter=";")
+
+#Definerer labels
+labels = {
+            'arbsyss':
+                    {'1a': '1a. Med lønn, ikke fiktiv',
+                     '1b': '1b. Med lønn, fiktiv',
+                     '2a': '2a. Uten lønn. NAV-ytelser',
+                     '2b': '2b. Uten lønn, permittert < 90 dager',
+                     '2c': '2c. Uten lønn, permisjon < 90 dager',
+                     '3a': '3a. Uten lønn. Startdato i t-1, lønn i t+1',
+                     '3b': '3b. Kun lønn i t-1 og t+1',
+                     '4a': '4a. Uten lønn og fravær (ordinært)',
+                     '4b': '4b. Uten lønn og fravær (frilanser',
+                     '5' : '5. Annet',
+                     '5b': '5b. Annet, ikke sysselsetting'},
+            'arbmstatus':
+                    {1: 'Aktive jobber',
+                     9: 'Ikke-aktive jobber'},
+            'stillingspst_i':
+                    {0: '0 prosent',
+                     1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent',
+                     4: 'Uoppgitt'},
+            'stillingspst_f':
+                    {1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent'},
+            'kilde_stpst':
+                    {'01': '01. Innrapportert verdi for nåværende periode',
+                     '02': '02. Innrapportert verdi for nåværende periode, nedjustert til 120',
+                     '03': '03. Innrapportert verdi for nåværende periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '04': '04. Innrapportert verdi for neste periode',
+                     '05': '05. Innrapportert verdi for neste periode, nedjustert til 120',
+                     '06': '06. Innrapportert verdi for neste periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '07': '07. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '08': '08. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '09': '09. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '10': '10. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '11': '11. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '12': '12. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '13': '13. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '14': '14. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '15': '15. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold)',
+                     '16': '16. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '17': '17. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '18': '18. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold)',
+                     '19': '19. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '20': '20. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '21': '21. Predikert verdi fra XGBoost-modell',
+                     '22': '22. Predikert verdi fra XGBoost-modell, nedjustert til 100',
+                     '23': '23. Predikert verdi fra XGBoost-modell, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '24': '24. Imputert verdi fra nærmeste-nabo-metode',
+                     '25': '25. Imputert verdi fra nærmeste-nabo-metode, nedjustert til 120',
+                     '26': '26. Imputert verdi fra nærmeste-nabo-metode, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '30': '30. Verdi satt til 100 (vernepliktig)',
+                     '31': '31. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (beholder innrapportert verdi)',
+                     '32': '32. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (verdi satt til 100, innrapp er lik 100 × n i samme virksomhet)',
+                     '33': '33. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert til 120',
+                     '34': '34. Ekskludert pga. høy lønn (beholder innrapportert verdi)',
+                     '35': '35. Ekskludert pga. høy lønn (stillingsprosent satt til 100)',
+                     '36': '36. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '37': '37. Ekskludert pga. høy lønn, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '38': '38. Verdi satt til 100 (kilde: SFU UTEN LONN)',
+                     '39': '39. Verdi satt til 100 (kilde: SFU UTEN LONN), nedjustert fordi samlet stillingsprosent overstiger 160'
+                     },
+            'kilde_stpst_gr':
+                    {0: '01. Innrapportert stillingsprosent',
+                     1: '15-20. Utledet fra betalte timer',
+                     2: '21-23. Predikert fra XGBOOST',
+                     3: '24-26. Imputert fra nærmeste nabo metode',
+                     4: '02-14,30-39. Annen justering'} 
+    }
+
+#Grupperer variabler
+agg_alleaar_nov['stillingspst_grp_i'] = agg_alleaar_nov['ARB_STILLINGSPST_INNRAPP'].apply(stillingspst_grp)
+agg_alleaar_nov['stillingspst_kilde'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].fillna(0).astype(int).astype(str).str.zfill(2)
+agg_alleaar_nov['stillingspst_grp'] = agg_alleaar_nov['ARB_STILLINGSPST'].apply(stillingspst)
+agg_alle_nov22['naring5_grp'] = agg_alle_nov22['naring5'].apply(naring)
+agg_alleaar_nov['stillingspst_kilde_grp'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].apply(kildepst)
+
+#Tabell 21.8
+# Filtrerer datasettet
+filter_condition = agg_alleaar_nov['ARB_ARBMARK_STATUS'].isin([1])
+filtered_data = agg_alleaar_nov[filter_condition]
+
+# Aggregerer på stillingsprosent
+tabell_21_8= pd.crosstab(filtered_data['stillingspst_kilde_grp'], columns=filtered_data['periode'],
+                           values=agg_alleaar_nov['sum_anta'], aggfunc='sum',
+                           margins=True, margins_name='I alt', normalize='columns',
+                           rownames=[' '], colnames=[' ']).round(3)*100
+
+# Fjerner kolonne-totalen
+tabell_21_8 = tabell_21_8.drop('I alt', axis = 'columns')
+
+# Setter på label
+tabell_21_8.index = tabell_21_8.index.map(labels['kilde_stpst_gr'])
+
+# Legger til rad med Totaler
+tabell_21_8.loc['I alt'] = [100] * len(tabell_21_8.columns)
+
+# Tittel til tabell
+#print("Arbeidsforhold etter kilde for stillingsprosent. Prosent")
+tabell_21_8
+
+#show(tabell_21_8, paging=False, searching=False, columnDefs=columnDefs)
+```
+Kilde: Statistisk sentralbyrå
+
+<br>
+
+**Arbeidstid i a-meldingen vs. Arbeidskraftundersøkelsen (AKU)**
+
+I tillegg til a-meldingen finnes det også informasjon om arbeidstid i
+Arbeidskraftundersøkelsen (AKU). Dette er en intervjuundersøkelse hvor
+vi spør et utvalg av befolkningen i Norge mellom 15--89 år om deres
+forhold til arbeidsmarkedet. De sysselsatte blir spurt om deres vanlige
+arbeidstid per uke (for de som ikke har samme arbeidstid fra uke til
+uke, f.eks. de som jobber turnus, spør vi om gjennomsnittlig avtalt
+arbeidstid). De som oppgir et timetall mellom 32 og 36 timer blir videre
+spurt om dette er heltid eller deltid. For personer som jobber skift
+eller turnus, er heltid vanligvis mindre enn 37,5 timer. I AKU-tabellene
+definerer vi heltid som alle med minst 37 timer per uke, samt de som
+oppgir å ha heltid selv om timetallet er mellom 32 og 36 timer.
+
+I tillegg til vanlig arbeidstid har AKU også informasjon om avtalt
+arbeidstid og om faktisk utført arbeidstid i referanseuka. Dette
+omfatter timer som blir arbeidet, inklusive overtid eller ekstraarbeid
+og eksklusive fravær pga. ferie, sykdom, permisjon, arbeidskonflikt
+mv. I beregningen av utførte ukesverk holdes de som var midlertidig
+fraværende fra arbeid utenfor.
+
+I tabell 21.9 har vi sammenlignet avtalt arbeidstid i AKU og den
+klargjorte filen for arbeidsmarked og lønn. AKU er basert på avtalte
+timer og er inndelt i deltid (1-36 timer) og heltid (37 timer og mer).
+De som oppgir å ha heltid selv om timetallet er mellom 32 og 36 timer
+blir telt som «heltid». I den klargjorte filen har vi beregnet samme
+inndeling ved å bruke avtalt stillingsprosent (etter forbedringene
+omtalt i dette kapittelet). Arbeidstiden gjelder for
+hovedarbeidsforholdet. AKU er gjennomsnitt av alle ukene i kvartalet,
+mens tallene for den klartgjorte filen er per november.
+
+Vi ser av tabellen at heltidsandelen er noe høyere i AKU enn den
+klargjorte filen for arbeidsmarked og lønn. Det kan være flere årsaker
+til forskjellen. For det første er AKU er utvalgsundersøkelse, og det
+vil dermed være utvalgsusikkerhet knyttet til tallene. For det andre er
+avtalt stillingsprosenten for om lag 20 prosent av arbeidsforholdene i
+den klargjorte filen beregnet. På denne måten kan arbeidsforhold til
+personer som svarer at de jobber fulltid i AKU, bli registrert som
+deltid i den klargjorte filen.
+
+**Tabell 21.9. Avtalt arbeidstid i AKU og klargjort fil for arbeidsmarked
+og lønn. Lønnstakere. 4. kvartal 2021. Prosent**
+
+  -----------------------------------------------------------------------
+  ** **                     **AKU**               **A-ordningen**
+  ------------------------- --------------------- -----------------------
+  **I alt**                 **100,0**             **100,0**
+
+
+
+  Deltid                    26,2                  28,4
+
+  Heltid                    73,8                  71,6
+  -----------------------------------------------------------------------
+Kilde: Statistisk sentralbyrå
+
+## Produksjonsløp for lønnsstatistikk
+
+Formålet med lønnsstatistikken er å vise lønnsnivået og utviklingen i
+lønnen over tid. I henhold til Eurostat-forordningene er det kontant
+godtgjørelse for avtalt arbeid som skal måles. I a-ordningen rapporteres
+det utbetalt lønn som må omregnes til avtalt lønn for å lage den
+endelige statistikken. Omregningen gjøres via timesatsen slik at
+forholdet mellom utbetalt lønn og arbeidstid er sentralt i
+produksjonsløpet.
+
+I lønnsstatistikken som er basert på den klargjorte filen for
+arbeidsmarked og lønn publiseres det tall på følgende variabler:
+
+-   Avtalt månedslønn
+
+-   Månedslønn (samlet) (summen av avtalt månedslønn, bonus og
+    uregelmessige tillegg)
+
+-   Bonus
+
+-   Uregelmessige tillegg
+
+-   Overtidsgodtgjørelse
+
+-   Utbetalt kontantlønn
+
+**Avtalt månedslønn** omfatter den faste lønnen (omregnet til
+månedslønn) i statistikkmåneden enten den er definert som time-, uke-,
+månedslønn etc. Avtalt månedslønn er lønnen ved tellingstidspunktet, og
+den blir ofte betegnet som regulativlønn eller fast grunnlønn.
+
+Kvalifikasjonstillegg/kompetansetillegg og andre faste personlige
+tillegg er også inkludert i denne lønnsarten.
+
+**Månedslønn** (samlet) er hovedbegrepet i Statistisk sentralbyrås
+lønnsstatistikk. Samlet månedslønn omfatter avtalt månedslønn,
+uregelmessige tillegg og bonuser. Overtidsgodtgjørelser er ikke
+medregnet i månedslønn.
+
+I produksjonsløpet bearbeides og kontrolleres den rapporterte
+lønnsinformasjonen for å beregne statistikkvariablene som skal
+publiseres. Som nevnt må den rapporterte utbetalte lønnen omregnes til
+avtalt lønn, men det gjøres også grep der det er kvalitetsutfordringer
+ved forholdet mellom den rapporterte lønnen og arbeidstiden.
+
+Som beskrevet i kapittel 21.3 starter kontroll og behandling av den
+rapporterte lønnen ved fastsettelsen av avtalt arbeidstid. Det gjøres
+blant annet tiltak på timesatsen (for fastlønn og timelønn) inneværende
+måned dersom den midlertidig øker eller avtar sammenlignet med
+foregående- (t-1) og påfølgende måned (t+1), se kapittel 21.3, steg 1d.
+Timesatsen inneværende måned kan da bli erstattet av timesatsen
+påfølgende måned. Det gjøres blant annet gjøres for å fjerne
+etterbetalinger inneværende måned, siden det ikke inngår i lønnsbegrepet
+til lønnsstatistikken.
+
+## Populasjon til lønnsstatistikk
+
+Etter at alle aktive arbeidsforhold (jobber) har fått fastsatt en avtalt
+arbeidstid og avtalt stillingsprosent fortsetter behandlingen av
+lønnsopplysningene for arbeidsforholdene som inngår i populasjonen til
+lønnsstatistikken.
+
+Populasjonen omfatter alle aktive arbeidsforhold (ARB_ARBMARK_STATUS=1)
+med utbetalt lønn innenfor statistikkens lønnsbegrep i inneværende
+måned. [Lønnsbegrepet er bestemt av internasjonale forordninger (se
+kapittel 2.1](#lønn)).
+
+Populasjonen avgrenses til arbeidsforholdene med positivt beløp på minst
+en av lønnsartene:
+
+-   Fastlønn (LONN_FAST\>0)
+
+-   Timelønn (LONN_TIME\>0)
+
+-   Faste tillegg (LONN_FAST_TILLEGG\>0)
+
+-   Bonus (LONN_BONUS\>0)
+
+-   Uregelmessige tillegg (omfatter også helligdagstillegg)
+    (LONN_UREGTIL\>0)
+
+Jobbene som inngår i populasjonen får ARB_DELPOPULASJON=1. De aktive
+jobbene utenfor lønnspopulasjonen får ARB_DELPOPULASJON=0. Dette er
+aktive jobber der det ikke er utbetalt lønn inneværende måned, som kan
+skyldes ferie, permisjon, etc. Disse utgjør i 2021 vanligvis i underkant
+av 3 prosent av de aktive jobbene i de klargjorte månedlige filene. Noen
+av disse kan imidlertid bli regnet som [sysselsatt, se mer informasjon i
+kapittel 19](Klassifisering-arbfogsyss.html).
+
+Deretter settes negative lønnsverdier til 0. Negative verdier kan f.eks.
+oppstå dersom det i inneværende måned er gjort korrigering av
+innrapporteringen for en tidligere måned. Videre i produksjonsløpet for
+lønn inngår kun jobbene i lønnspopulasjonen.
+
+## Lønnsberegninger
+
+Beregningen for avtalt månedslønn og samlet månedslønn avhenger av
+hvilke lønnsarter som er rapportert på hver enkelt jobb. Basert på
+sammensetningen av lønnsartene etableres variabelen ARB_GRUPPE som får
+verdi etter kriteriene i tabell 21.7 ([se også kapittel 21.3](#metode-for-forbedring-av-avtalt-arbeidstid-for-jobber-med-positiv-fast--eller-timelønn)).
+
+Tabell 21.7. Kriterier og verdier for variabelen ARB_GRUPPE
+
++-----------------------+-------------------------------+-------------+
+| **Beskrivelse**       | **Regel**                     | **Verdi**   |
++=======================+===============================+=============+
+| **Fastlønn**          |                               | 1           |
++-----------------------+-------------------------------+-------------+
+| Kun fastlønn          | LONN_FAST\>0 og LONN_TIME\<=0 | 1.1         |
++-----------------------+-------------------------------+-------------+
+| Fast- og timelønn der | LONN_FAST\>0 og LONN_TIME\>0  | 1.2         |
+| fastlønn er størst    | og ARB_ANT_AGGR=1 og          |             |
+|                       | LONN_FAST\>=LONN_TIME         |             |
++-----------------------+-------------------------------+-------------+
+| **Timelønn**          |                               | 2           |
++-----------------------+-------------------------------+-------------+
+| Kun timelønn          | LONN_TIME\>0 og LONN_Fast\<=0 | 2.1         |
++-----------------------+-------------------------------+-------------+
+| Fast- og timelønn der | LONN_FAST\>0 og LONN_TIME\>0  | 2.2         |
+| timelønn er størst    | og ARB_ANT_AGGR=1 og          |             |
+|                       | LONN_TIME\>LONN_FAST          |             |
++-----------------------+-------------------------------+-------------+
+| **Bonus**             |                               | 3           |
++-----------------------+-------------------------------+-------------+
+| Kun bonus             | LONN_FAST\<=0 og              | 3.1         |
+|                       | LONN_TIME\<=0 og              |             |
+|                       | LONN_BONUS\>0                 |             |
++-----------------------+-------------------------------+-------------+
+| **Flere               |                               | 9           |
+| arbeidsforhold**      |                               |             |
++-----------------------+-------------------------------+-------------+
+| Fast- og timelønn der | LONN_FAST\>0 og LONN_TIME\>0  | 9.1         |
+| fastlønn er størst    | og ARB_ANT_AGGR\>1 og         |             |
+|                       | LONN_FAST\>=LONN_TIME         |             |
++-----------------------+-------------------------------+-------------+
+| Fast- og timelønn der | LONN_FAST\>0 og LONN_TIME\>0  | 9.2         |
+| timelønn er størst    | og ARB_ANT_AGGR\>1 og         |             |
+|                       | LONN_FAST\<LONN_TIME          |             |
++-----------------------+-------------------------------+-------------+
+| **Øvrige**            |                               |             |
++-----------------------+-------------------------------+-------------+
+| Kun faste tillegg     | LONN_FAST_TILLEGG\>0 og/eller |             |
+| og/eller              | LONN_UREGTIL\>0 og            |             |
+| uregelmessige tillegg |                               |             |
+|                       | LONN_FAST=0 og LONN_TIME=0    |             |
++-----------------------+-------------------------------+-------------+
+
+ARB_ANT_AGGR viser antall arbeidsforhold i samme virksomhet for samme
+person som er aggregert. Hvis 1 er det kun rapportert ett
+arbeidsforhold. Hvis f.eks. 2 er det rapportert to arbeidsforhold og
+dette blir da summert til ett ([se mer informasjon om aggregering i kapittel 13](Avgrensning-aggregering-arbf.html)).
+
+**Bonus og uregelmessige tillegg**
+
+I lønnsberegningene benyttes gjennomsnittlig bonus og uregelmessige
+tillegg per måned fra starten av året og frem til inneværende måned.
+Beløpene på disse lønnsartene kan variere mye fra måned til måned. Det
+gjelder spesielt bonus som vanligvis utbetales i én eller et fåtall
+måneder i løpet av året. Beløpene for inneværende måned vil derfor ikke
+være beskrivende for et «vanlig» månedlig beløp.
+
+Gjennomsnittsverdiene beregnes ved å dele samlet utbetalt beløp frem til
+og med inneværende måned med antall måneder jobben har vært aktiv
+(LONN_ANT_MND_HIA):
+
+$\small{\text{LONN\_BONUS\_GLATTET=}\frac{\text{LONN\_BONUS\_HIA}}{\text{LONN\_ANT\_MND\_HIA}}}$
+
+$\small{\text{LONN\_UREGTIL\_GLATTET=}\frac{\text{LONN\_UREGTIL\_HIA}}{\text{LONN\_ANT\_MND\_HIA}}}$
+
+For å unngå ekstremverdier i beregning av månedslønn settes den høyeste
+gjennomsnittsverdien i lønnspopulasjonen for henholdsvis bonus og
+uregelmessige tillegg til null hver måned. Det samme gjøres for den
+høyeste verdien av gjennomsnittlig overtidsbetaling. Det gjøres også
+senere en manuell kontroll av disse variablene for å unngå ekstreme
+verdier.
+
+**Beregner avtalt månedslønn**
+
+For arbeidsforhold med fastlønn og/eller timelønn er det lønnsarten med
+størst beløp som avgjør lønnsberegningen. For jobber med fastlønn som
+eneste eller dominerende lønnsart (ARB_GRUPPE=1.1, 1.2, 9.1) gjelder
+følgende beregning av avtalt månedslønn:
+
+$\small{\text{LONN\_FMLONN=LONN\_FAST+LONN\_FAST\_TILLEGG}}$
+
+For jobber der timelønnen er størst (ARB_GRUPPE=2.1, 2.2, 9.2):
+
+$\small{\text{LONN\_FMLONN=}\frac{\text{LONN\_TIME}}{\text{LONN\_TIME\_ANTALL}} \times \left( \text{ARB\_AVTALTARBEIDSTID} \times 4,33 \right)\;\;}$ 
+$\qquad\qquad\qquad\quad\small{+ LONN\_ FAST\_ TILLEGG}$
+
+[Beregningen av avtalt månedslønn for arbeidsforhold med fast og timelønn
+er også vist i kapittel 21.3](#metode-for-forbedring-av-avtalt-arbeidstid-for-jobber-med-positiv-fast--eller-timelønn) der den benyttes for å kontrollere
+arbeidstiden. Beregningene viser at for arbeidsforholdene med både fast-
+og timelønn utelates det minste beløpet fra den avtalte månedslønnen.
+Det henger sammen med at arbeidstiden fastsettes fra det største
+beløpet. Å inkludere begge beløpene vil dermed gi et misvisende forhold
+mellom arbeidstid og den tilhørende lønnen.
+
+For arbeidsforhold der det er rapportert bonus, men ikke fast- eller
+timelønn inneværende måned (ARB_GRUPPE=3.1) beregnes avtalt månedslønn
+fra samlet bonus og faste tillegg så langt i året:
+
+$\small{\text{LONN\_FMLONN=LONN\_BONUS\_GLATTET+(}\frac{\text{LONN\_FAST\_TILLEGG\_HIA}}{\text{LONN}\text{\_ANT\_MND\_HIA}}}$)
+
+I tillegg er det et fåtall arbeidsforhold der det kun er utbetalt faste-
+og/eller uregelmessige tillegg inneværende måned. For disse settes
+LONN_FMLONN=0, og de får imputert en avtalt månedslønn [senere i
+produksjonen (se kapittel 21.13](#imputering-av-lønn)).
+
+**Beregner månedslønn**
+
+Månedslønn (LONN_IALT_GLATTET) beregnes likt for jobbene med fast- eller
+timelønn som summen av avtalt månedslønn, gjennomsnittlig bonus og
+gjennomsnittlig uregelmessige tillegg.
+
+$\small{\text{LONN\_IALT\_GLATTET=LONN\_FMLONN\ + LONN\_BONUS\_GLATTET}}$ <br>
+$\qquad\qquad\qquad\qquad\qquad\small{\ + LONN\_UREGTIL\_GLATTET}$
+
+For jobbene som har fått rapportert bonus, men ikke fast- eller timelønn
+(ARB_GRUPPE=3.1), er det kun gjennomsnittlig uregelmessige tillegg som
+summeres med avtalt månedslønn, da bonus allerede inngår i den avtalte
+månedslønnen.
+
+$\small{\text{LONN\_IALT\_GLATTET=LONN\_FMLONN\ + LONN\_UREGTIL\_GLATTET}}$
+
+**Beregner heltidsekvivalent lønn**
+
+For å sammenligne lønn for hel- og deltidsansatte omregnes lønnen for
+deltider til hva de ville tjent hvis de jobbet heltid. Dette kalles
+heltidsekvivalent lønn som beregnes ved å multiplisere lønnsvariablene
+med den inverse av den avtalte stillingsprosenten (LONN_EKV)
+
+$\small{\text{LONN\_EKV=}\frac{100}{ARB\_ STILLINGSPST}}$
+
+Heltidsekvivalent månedslønn beregnes som
+
+$\small{\text{LONN\_EKV\_IALT\_GLATTET=LONN\_IALT\_GLATTET*LONN\_EKV}}$
+
+Samme ekvivalent-beregning utføres på variablene for avtalt månedslønn
+(LONN_EKV_FMLONN_GLATTET), gjennomsnittlig bonus
+(LONN_EKV_BONUS_GLATTET) og gjennomsnittlig uregelmessige tillegg
+(LONN_EKV_UREGTIL_GLATTET).
+
+**Overtidsgodtgjørelse**
+
+Overtidsgodtgjørelse (LONN_OVERTID) er ikke inkludert i månedslønn
+(LONN_EKV_IALT_GLATTET), men publiseres som egen statistikkvariabel i
+den [årlige
+lønnsstatistikken](https://www.ssb.no/arbeid-og-lonn/lonn-og-arbeidskraftkostnader/statistikk/lonn).
+Publisert verdi viser gjennomsnittet per måned for innrapportert
+overtidsgodtgjørelse fra starten av året og frem til inneværende måned,
+der kun de månedene arbeidsforholdet er aktivt inngår.
+
+$\small{\text{LONN\_OVERTID\_GLATTET=}\frac{LONN\_ OVERTID\_ HIA}{LONN\_ ANT\_ MND\_ HIA}}$
+
+Den høyeste gjennomsnittsverdien settes til 0 for å unngå
+ekstremverdier. Etter dette er det ingen videre behandling av variabelen
+som til slutt får navnet LONN_OVERTID_PUB til publisering.
+
+## Ekstremkontroll
+
+Det gjøres en ekstremkontroll av heltidsekvivalent avtalt månedslønn
+(LONN_EKV_FMLONN_GLATTET). Det kontrolleres både for lave og høye beløp.
+[Arbeidsforhold der lønnen blir merket som ekstrem får i neste steg
+imputert ny lønnsverdi (se kapittel 21.13](#imputering-av-lønn)).
+
+**Nedre grense**
+
+Lav heltidsekvivalent avtalt månedslønn defineres av faste nedre
+grenser. Lærlinger har en lavere grense for å akseptere lønnen siden de
+vanligvis tjener lite sammenlignet med ikke-lærlinger. Lærlinger merkes
+i produksjonen basert på innrapportert yrkeskode og kobling mot
+lærlingregisteret. Også ikke-lærlinger under 18 år har en lavere grense
+for å definere lav lønn. Grensene er satt med utgangspunkt i nedre
+nivåer i ulike tariffavtaler.
+
+  -----------------------------------------------------------------------
+  Gruppe:                                Nedre grenseverdi:
+  -------------------------------------- --------------------------------
+  Lærlinger                              6 000
+
+  Ikke-lærlinger under 18 år             12 000
+
+  Ikke-lærlinger over 18 år              18 000
+  -----------------------------------------------------------------------
+
+**Øvre grense**
+
+Øvre grense for godkjent lønn beregnes hver måned og er ulik mellom
+grupper av arbeidsforhold.
+
+Arbeidsforholdene som ikke er merket for lav lønn (LONN_IMP_STATUS=0)
+grupperes først i strata, hovedsakelig etter
+næringshovedområde\*1-siffer yrke ([se informasjon om næringshovedområder
+i SSBs kodeverkssystem, KLASS)](https://www.ssb.no/klass/klassifikasjoner/6).
+Det er unntak for hovednæringsområdene H - Transport og lagring, K -
+Finansierings- og forsikringsvirksomhet, og Q - Helse og
+sosialtjenester. Innad i disse varierer lønnsnivået betydelig, slik at
+de deles opp etter mer detaljert næringsnivå før de kombineres med yrke
+for å danne strata. Øvre grense i hvert stratum beregnes med en
+kvartilmetode:
+
+LONN_MAX_STRATA = Q3 + 4\*(Q3-Q1)
+
+Som betyr at øvre grense defineres av lønnsfordelingen i
+arbeidsforholdets strata. Arbeidsforhold med avtalt månedslønn større
+enn grenseverdien i sine strata gitt ved 3. kvartil + fire ganger
+avstanden mellom 1. og 3. kvartil vil få imputert ny lønnsverdi. For
+enkelte yrker og næringer på mer detaljert nivå med høyere lønnsnivå enn
+tilhørende strata tillates høyere lønn enn de øvre grensene fra
+kvartilsmetoden.
+
+Arbeidsforhold med for lav lønn merkes med LONN_IMP_STATUS=20 mens de
+med for høy lønn får LONN_IMP_STATUS=1.
+
+Det er relativt få arbeidsforhold som blir merket for høy eller lav lønn
+i dette steget. Vanligvis er det 20 000-30 000 arbeidsforhold som merkes
+hver måned, tilsvarende omkring 1 prosent av populasjonen i
+lønnsstatistikken. Merkede arbeidsforhold er som oftest nokså jevnt
+fordelt mellom for høy og lav lønn. Omfanget er vanligvis noe høyere i
+mai og juni der utbetaling av feriepenger og ferieavvikling bidrar til
+støy i materialet. Omfanget er også noe høyere i desember enn
+omkringliggende måneder.
+
+Den lave andelen som merkes henger sammen med at det allerede i
+fastsettingen av arbeidstid kontrolleres for ekstrem lønn for
+arbeidsforhold med utbetalt fast- eller timelønn. De som merkes der får
+justert arbeidstiden sin slik at den heltidsekvivalente lønnen får en
+mer normal verdi ([se mer informasjon i kapittel 21.3](#metode-for-forbedring-av-avtalt-arbeidstid-for-jobber-med-positiv-fast--eller-timelønn)).
+
+## Imputering av lønn
+
+For arbeidsforhold som [merkes for ekstrem lønn i kapittel 21.12](#ekstremkontroll)
+erstattes verdien på heltidsekvivalent avtalt månedslønn
+(LONN_EKV_FMLONN_GLATTET) og utbetalt kontantlønn (LONN_KONTANT) med
+imputerte verdier. Imputeringsmetoden henter disse verdiene fra et
+arbeidsforhold uten ekstrem lønn i datagrunnlaget, som vurdert etter
+noen sentrale kjennetegn ligner mest på det aktuelle arbeidsforholdet.
+
+Det benyttes altså en nærmeste nabo metode som finner en lignende donor
+ved bruk av lineær regresjon, der følgende variabler inngår (her bruker
+vi kun observerte og ikke predikerte verdier):
+
+-   Avtalt månedslønn forrige måned
+
+-   Lønnsberegning (fastlønnet, timelønnet osv.)
+
+-   Utdanning
+
+-   Kjønn
+
+-   Alder
+
+-   Yrke
+
+-   Antall ansatte i virksomheten
+
+Arbeidsforholdene i donorgruppen kan kun benyttes en gang.
+Imputeringsrutinen behandler lærlinger og ikke-lærlinger separat for å
+unngå at ikke-lærlinger får imputert en for deres del unormalt lav
+lærlingelønn, og motsatt for lærlinger.
+
+Etter imputeringen er foretatt beregnes samlet månedslønn på nytt siden
+arbeidsforholdene med imputert avtalt månedslønn også vil få endret
+verdien på samlet månedslønn. Lønnsvariablene som skal benyttes til
+publisering merkes med postfiks «\_pub» i variabelnavnet:
+
+  -----------------------------------------------------------------------
+  Lønnsbegrep                            Variabelnavn
+  -------------------------------------- --------------------------------
+  Avtalt månedslønn (heltidsekvivalent)  LONN_EKV_FMLONN_PUB
+
+  Månedslønn (heltidsekvivalent)         LONN_EKV_IALT_PUB
+
+  Gjennomsnittlig bonus                  LONN_EKV_BONUS_PUB
+  (heltidsekvivalent)                    
+
+  Gjennomsnittlig uregelmessige tillegg  LONN_EKV_UREGTIL_PUB
+  (heltidsekvivalent)                    
+
+  Gjennomsnittlig utbetalt overtidslønn  LONN_OVERTID_PUB
+
+  Utbetalt kontantlønn                   LONN_KONTANT_PUB
+  -----------------------------------------------------------------------
+
+## Manuelle kontroller og korrigeringer av lønn
+
+I tillegg til maskinelle og automatiske kontroller gjennomføres det også
+manuelle kontroller. Formålet med kontrollene er hovedsakelig å avdekke
+større og betydningsfulle feil og mangler i datagrunnlaget som ikke har
+blitt fanget opp av de automatiske kontrollene tidligere i produksjonen.
+Kontrollarbeidet gir samtidig kunnskap om datagrunnlaget og bedre evne
+til å tolke tallene.
+
+Kontrollene gjøres månedlig og består hovedsakelig av å sammenligne
+datagrunnlaget for lønnspopulasjonen inneværende og foregående måned.
+Enkelte måneder sammenlignes det også med perioder lengre tilbake i tid
+dersom det er hensiktsmessig.
+
+Ved å kontrollere månedlig har vi mulighet til å kontinuerlig følge med
+på datakvaliteten, i tillegg til at det gjør det mulig å kontakte
+opplysningspliktige og få rettet opp raskt dersom det er feil ved
+rapporteringen. Det kontrolleres mot foregående måned fordi det over
+kortere tidsrom vanligvis er mindre endringer i lønnen. Det er dermed
+lettere å avdekke større og unormale endringer i datagrunnlaget enn ved
+sammenligning med måneder lengre tilbake i tid.
+
+I kontrollarbeidet fokuseres det på lønnsutviklingen for nærings- og
+yrkesgrupper. Formålet er å avdekke foretak eller virksomheter med feil
+eller endringer i rapporteringen som vesentlig påvirker utviklingen i
+fokusgruppene.
+
+Lønnsnivået kan endre seg både fordi lønnen i vedvarende arbeidsforhold
+endrer seg (lønnseffekt), og fordi det skjer endringer i gruppen med
+arbeidsforhold det måles lønn for (sammensetningseffekt). Det skilles i
+kontrollene derfor mellom arbeidsforholdene som er med begge måneder og
+arbeidsforhold som opprettes eller avsluttes. Lønnsendringer som skyldes
+sammensetningseffekter skal vises i statistikken og er vanligvis
+uproblematiske. Unormalt store endringer i lønn på kort tid for
+vedvarende arbeidsforhold i et foretak eller virksomhet er derimot tegn
+på endringer eller feil i rapporteringen som det bør ses nærmere på.
+
+**Korrigeringer**
+
+Det gjøres korrigeringer av dataene i tilfeller der foretak eller
+virksomheter påvirker statistikkene i så stor grad at det gir et
+misvisende lønnsnivå og feilaktig utvikling over tid for sentrale
+grupper, deriblant nærings- og yrkesgrupper. Det trenger ikke skyldes at
+rapporteringen er feil, men at det er forhold ved rapporteringen som gir
+uønsket påvirkning på statistikkproduksjonen.
+
+For eksempel har noen virksomheter utbetaling av fastlønn den 1. hver
+måned. Hvis den 1. faller i en helg skjer utbetalingen første virkedag
+før, og dermed kan det bli to utbetalinger av fastlønn samme måned.
+Dette er altså korrekt rapportering, men det blir feil i statistikken
+hvor vi skal måle én månedslønn.
+
+Korrigeringene gjøres vanligvis på utvalgte foretak/virksomheter, og kan
+omfatte alle eller deler av de tilhørende arbeidsforholdene. Oftest
+består korrigeringene av å benytte mer korrekt rapportering for
+arbeidsforholdene fra en tidligere måned, eller å overstyre
+lønnsberegningen. Korrigeringene skal kun påvirke lønnen, og ikke antall
+aktive jobber.
+
+Slike korrigeringer skal bare forekomme i helt nødvendige tilfeller. I
+et flertall av månedene gjøres det ingen manuelle korrigeringer.

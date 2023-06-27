@@ -1,0 +1,21 @@
+# Forord {.unnumbered}
+
+Dette er en dokumentasjon av produksjonsprosessen for data til
+arbeidsmarkeds- og lønnsstatistikk. Hovedkilden er *a-ordningen* som Statistisk sentralbyrå (SSB)
+mottar fra Skatteetaten hver måned, og det blir gjort en rekke
+statistiske bearbeidinger og påkoblinger av andre kjennemerker i SSB.
+Den klargjorte filen for arbeidsmarkeds og lønnsstatistikk benyttes av
+svært mange statistikker, analyser og til forskning i SSB samt til
+deling av data på microdata.no.
+
+Statistisk sentralbyrå, Juni 2023  
+Tonje Køber
+
+---
+
+©️Statistisk sentralbyrå  
+Ved bruk av materiale fra denne publikasjonen
+skal Statistisk sentralbyrå oppgis som kilde.
+
+ISBN 978-82-587-1769-7
+

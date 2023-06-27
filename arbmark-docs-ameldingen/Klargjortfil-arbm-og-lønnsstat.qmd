@@ -1,0 +1,134 @@
+# Klargjort fil for arbeidsmarkeds- og lønnsstatistikk
+
+Prosessene beskrevet i del 2 (samle inn) og del 3 (klargjøring) leder
+som tidligere nevnt frem til den klargjorte filen for arbeidsmarkeds- og
+lønnsstatistikk. Filen består av lønnstakere (antall personer) og
+arbeidsforhold (antall jobber) og ulike kjennemerker knyttet til
+personer, jobber og virksomhetene/foretakene de jobber i.
+
+Det er flere statistikker som baserer seg på denne klargjorte filen:
+
+-   [Lønnsstatistikken](https://www.ssb.no/arbeid-og-lonn/lonn-og-arbeidskraftkostnader/statistikk/lonn)
+    (årlig, per november)
+
+-   [Antall arbeidsforhold og
+    lønn](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/antall-arbeidsforhold-og-lonn)
+
+```{=html}
+<!-- -->
+```
+-   [Sykefravær](https://www.ssb.no/arbeid-og-lonn/statistikker/sykefratot)
+    (for å beregne nevneren)
+
+-   [Ledige
+    stillinger](https://www.ssb.no/arbeid-og-lonn/statistikker/ledstill)
+    (for å beregne nevneren)
+
+-   [Arbeidskraftundersøkelsen,
+    AKU](https://www.ssb.no/arbeid-og-lonn/statistikker/aku) (til bl.a.
+    estimering og støtteinformasjon ved intervju)
+
+```{=html}
+<!-- -->
+```
+-   [Lønnsummer, måned](https://www.ssb.no/agrl)
+
+-   [Arbeidskraftkostnader](https://www.ssb.no/arbeid-og-lonn/statistikker/arbkost)
+
+-   [Arbeidskraftskostnadsindeks
+    (AKI)](https://www.ssb.no/arbeid-og-lonn/statistikker/aki)
+
+-   [Ansatte i barnehage og
+    skole](https://www.ssb.no/utdanning/statistikker/utdansatte)
+
+-   [Nasjonalregnskapet](https://www.ssb.no/nasjonalregnskap-og-konjunkturer/statistikker/knr)
+
+-   Strukturstatistikkene
+
+-   Statistikk om uføretrygd og alderspensjonister
+
+-   Antall ansatte i SSBs Virksomhets- og foretaksregister (VoF)
+
+Denne listen utvides, fordi flere ser muligheter ved å bruke
+opplysningene fra denne filen.
+
+I kapittel 25 er det gitt en kort omtale av *lønnsstatistikken*.
+Statistikken *antall arbeidsforhold og lønn* omtales i kapittel 26.
+
+I tillegg benyttes den klargjorte filen for arbeidsmarkeds- og
+lønnsstatistikk for november til å etablere [filen for registerbasert
+sysselsettingsstatistikk, omtalet i del 4](Del4-klargjoringavdata-regsys.html).
+
+## Ulike versjoner av filene
+
+Som omtalt tidligere kjører vi alltid produksjonsopplegget to ganger;
+først for måned t-1 og så for måned t. Dermed får vi alltid to versjoner
+av den klargjorte filen for arbeidsmarked og lønn hver måned -- versjon
+1 (foreløpig versjon) og versjon 2 (endelig versjon). Når vi mottar
+dataene fra Skatteetaten 10. juni (a-meldinger) kjører vi for eksempel
+versjon 2 av april og versjon 1 av mai. Når vi mottar data 10. juli
+kjører vi versjon 2 av mai og versjon 1 av juni.
+
+Versjon 2 inneholder også forsinka meldinger og erstatningsmeldinger. I
+tillegg har vi opplysninger om versjon 1 måneden etter (måned t+1) når
+vi kjører versjon 2 av en måned (måned t). For versjon 2 sjekker vi mot
+versjon 1 av måneden etter i flere prosesser, som [ved imputering fra t-1
+(kapittel 15](Imputering-fra-perioden-før.html)), klassifisering av arbeidsforhold som
+[aktive/ikke-aktive (kapittel 19](Klassifisering-arbfogsyss.html)) og i metoden som [forbedrer
+arbeidstid (kapittel 21](Håndtering-lønn-avtaltarbtid.html)). I de to første tilfellene sjekker vi mot
+måneden etter for å unngå at vi feilaktige forlenger arbeidsforhold som
+det skulle vært meldt stoppdato på eller der foretaket har gått konkurs
+uten av det fanges opp pga. etterslep i registreringen. Sjekken mot
+periode t+1 fjerner fra 50 000 til 100 000 arbeidsforhold som vi
+feilaktig har forlenget i versjon 1.
+
+Det er versjon 2 som i hovedsak benyttes i statistikkproduksjon. Det er
+noen unntak der den klargjorte filen inngår i andre produksjonssystem og
+versjon 2 ikke er tilgjengelig på publiseringstidspunktet. I tillegg har
+vi én statistikk som gir noen månedlige tall som baserer seg på versjon
+1 -- *antall arbeidsforhold og lønn* -- der formålet er å si noe om
+konjunkturutviklingen. Vi bruker da versjon 1 (foreløpige tall) som
+muliggjør tidligere publisering (én måned tidligere enn hvis vi må vente
+på versjon 2). Denne statistikken benytter ikke alle jobber/lønnstakere
+ved publisering av foreløpige tall basert på versjon 1 på grunn av at vi
+som omtalt over feilaktig forlenger noen arbeidsforhold i versjon 1. [Se
+nærmere beskrivelse av statistikken *antall arbeidsforhold og lønn* i
+kapittel 26](Antall-arbeidsforhold-og-lønn.html).
+
+## Beskrivelse av klargjorte data/statistikkdata
+
+Dataene i filen for arbeidsmarkeds- og lønnsstatistikk kaller vi for
+klargjorte data.
+
+I klargjorte data vil en sysselsatt person kunne ha flere arbeidsforhold
+(dvs. flere statistikkenheter) i referanseperioden. I noen sammenhenger
+ønskes statistikkdata på personnivå også om sysselsetting, og det kan
+løses ved en seleksjon av personens hovedarbeidsforhold, eller gjennom
+utledning av aggregerte kjennetegn som f.eks. sum avtalt arbeidstid per
+uke i alle arbeidsforhold personen har (PERS_SUM_AVTALTARBTID), og sum
+avtalt stillingsprosent i alle arbeidsforhold (PERS_SUM_STILLINGSPST).
+
+Klargjorte data er en felles fil for arbeidsmarked og lønn. Hoveddelen
+vil være felles populasjon (arbeidsforhold med tilknyttet lønn) for de
+to statistikkområdene (sysselsetting og lønn), men det vil også være en
+del arbeidsforhold/personer som inngår i kun én av statistikkområdene.
+
+En månedsfil vil totalt inneholde alle bosatte personer som er 15 år
+eller eldre, uavhengig av om de er i arbeid eller mottar lønn. Det vil
+også inngå en del bosatte under 15 år forutsatt at de har et
+arbeidsforhold eller mottar lønn, men disse vil ikke nødvendigvis merkes
+som aktuelle for alle typer statistikker, fordi statistikkene følger
+ulike forordninger og krav til innhold i statistikk. Personer under 15
+år skal ikke regnes som sysselsatte, men tas med når ressursinnsats
+sysselsetting/lønnstakere skal beskrives i f.eks. *nasjonalregnskapet*,
+*antall arbeidsforhold og lønn* (arblonn) og *lønnsstatistikken*. Se
+også [avgrensning av sysselsettingsstatistikk i kapittel 2.9](#avgrensning-av-sysselsettingsstatistikk).
+
+Populasjonen av ikke-bosatte avgrenses til personer som har
+arbeidsforhold eller mottar lønn samt helt arbeidsledige, fordi vi i
+stor grad mangler informasjon om ikke-bosatte utenfor arbeidsstyrken. I
+SFP inngår noen typer ikke-bosatte utenfor arbeidsstyrken, se
+[dokumentasjonsnotatet for SFP, notater
+2020/28](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/system-for-persondata).
+
+

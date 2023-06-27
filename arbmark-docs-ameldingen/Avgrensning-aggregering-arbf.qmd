@@ -1,0 +1,124 @@
+# Avgrensning og aggregering av arbeidsforhold
+
+## Spesiell avgrensning ved semioverlappende arbeidsforhold i samme virksomhet
+
+Et særtilfelle oppstår når en person slutter i ett arbeidsforhold og
+begynner i et annet arbeidsforhold innad i samme virksomhet i løpet av
+referanseuken. Arbeidsforhold med startdato i referanseuken utelates
+dersom personen har minst ett annet arbeidsforhold i samme virksomhet
+med sluttdato i referanseuken.
+
+Årsaken til at vi tar med arbeidsforhold som slutter i stedet for
+arbeidsforhold som begynner, ligger i at lønn ofte blir utbetalt
+etterskuddsvis, og at vi velger arbeidsforhold som gir best sammenheng
+mellom utbetalt lønn og avtalt arbeid.
+
+## Aggregering hvis flere jobber per person i samme virksomhet
+
+I a-meldingen kan det være rapportert flere arbeidsforhold (jobber) for
+samme person i samme virksomhet/underenhet. I de tilfellene velges den
+ene verdien, eller det aggregeres til ett arbeidsforhold, slik at person
+\* virksomhet er unikt indentifiserende for hver observasjon. Tabell
+13.1 beskriver hvordan variablene blir påvirket av aggregeringen og
+hvordan prioriteringen skjer. [Variablene er beskrevet i vedlegg A](VedleggA.html).
+
+Tabell 13.1. **Aggregering av variabler**
+
+  -----------------------------------------------------------------------
+  **Variabel**                  **Aggregeringsmetode**
+  ----------------------------- -----------------------------------------
+  ARB_TYPE                      Pri1: Arbeidsforholdstype (ARB_TYPE) =
+                                normale/maritime arbeidsforhold. Pri2:
+                                Høyest avtalt arbeidstid
+
+  ARB_KILDE                     Pri1: ARB_TYPE = normale/maritime
+                                arbeidsforhold. Pri2: Høyest avtalt
+                                arbeidstid
+
+  ARB_TIMEANT_FULLTID           Pri1: ARB_TYPE = normale/maritime
+                                arbeidsforhold. Pri2: MAX verdi
+
+  ARB_ARBEIDSTID                Sum
+
+  ARB_STILLINGSPST              Sum
+
+  ARB_TID_ORDNING               Pri1: ARB_TYPE = normale/maritime
+                                arbeidsforhold. Pri2: Høyest avtalt
+                                arbeidstid
+
+  ARB_START                     Pri1: ARB_TYPE = normale/maritime
+                                arbeidsforhold. Pri2: MIN verdi
+
+  ARB_SLUTT                     Pri1: ARB_TYPE = normale/maritime
+                                arbeidsforhold. Pri2: MAX verdi
+
+  ARB_YRKE                      Pri1: ARB_TYPE = normale/maritime
+                                arbeidsforhold. Pri2: Høyest avtalt
+                                arbeidstid
+
+  ARB_LONNSTRINN                Pri1: ARB_TYPE = normale/maritime
+                                arbeidsforhold. Pri2: Høyest avtalt
+                                arbeidstid
+
+  ARB_LONNSENDRINGSDATO         Pri1: ARB_TYPE = normale/maritime
+                                arbeidsforhold. Pri2: Høyest avtalt
+                                arbeidstid
+
+  ARB_LONNSANSIENITET           Pri1: ARB_TYPE = normale/maritime
+                                arbeidsforhold. Pri2: Høyest avtalt
+                                arbeidstid
+
+  LONN\_\*                      Sum
+
+  PERM_ANT_DAGER                Pri1: ARB_TYPE = normale/maritime
+                                arbeidsforhold. Pri2: MAX verdi
+
+  PERM_PERMITT_ANT_DAGER        Pri1: ARB_TYPE = normale/maritime
+                                arbeidsforhold. Pri2: MAX verdi
+
+  ARB_ANT_AGGR                  Opptelling av antall jobber i
+                                virksomheten
+
+  VIRK_ID_TYPE_SSB              MAX(VIRK_ID_TYPE_SSB)
+
+  ARB_STILLINGSPST_INNRAPP      Sum
+
+  ARB_TIMEANT_FULLTID_INNRAPP   Sum
+
+  ARB_ANSETTELSESFORM           Pri1: ARB_ANSETTELSESFORM = 'fast'
+
+  ARB_SLUTTAARSAK               Sluttårsak hentes fra samme
+                                arbeidsforhold som sluttdato for
+                                arbeidsforhold (ARB_SLUTT) hentes fra
+
+  ARB_DATO_STILLINGSPST         Pri1: ARB_TYPE = normale/maritime
+                                arbeidsforhold. Pri2: Høyest avtalt
+                                arbeidstid
+  -----------------------------------------------------------------------
+
+Min/Max betyr at den laveste/høyeste tilgjengelige verdien skal velges
+(for datovariabler er dette brukt synonymt med henholdsvis tidligst og
+senest).
+
+PRI1 betyr første prioritet, mens PRI2 betyr andre prioritet.
+Prioriteringen av ARB_TYPE=normal som pri1 og arb_avtaltarbeidstid som
+pri2 innebærer at informasjon knyttet til normale arbeidsforhold med den
+høyeste avtalte arbeidstiden selekteres. Dersom det ikke finnes
+«normale» arbeidsforhold, selekteres informasjon knyttet til
+arbeidsforholdet med den høyeste avtalte arbeidstiden.
+
+Dersom det er flere rader med lik arb_type og lik avtalt arbeidstid,
+slik at prioriteringen som er oppgitt ikke returnerer en unik rad, er
+det tilstrekkelig å velge et tilfeldig arbeidsforhold blant disse.
+
+LONN\_\* betyr at alle lønnsvariablene summeres.
+
+ARB_ANT_AGGR = antall arbeidsforhold i samme virksomhet for samme person
+som er aggregert. Hvis 1 betyr at det kun er rapportert ett
+arbeidsforhold, hvis 2 er det rapportert to arbeidsforhold, osv.
+
+SUM betyr at det summeres for alle arbeidsforholdene personen har i
+samme virksomhet. F.eks. summeres de ulike arbeidstidsvariablene.
+
+Etter denne aggregeringen vil det i hver virksomhet være kun én
+observasjon (jobb) per person (lønnstaker) per virksomhet (underenhet).

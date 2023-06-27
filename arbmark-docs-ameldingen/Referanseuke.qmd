@@ -1,0 +1,65 @@
+# Referanseuke
+
+I dette kapittelet beskriver hvordan datagrunnlaget avgrenses til å
+gjelde en referanseuke. Dette skjer etter justering av dateringer
+beskrevet over fordi justeringen kan ha betydning for om
+arbeidsforholdet er aktivt, målt ved start- og stoppdato på
+arbeidsforholdet, i referanseuken.
+
+## Definisjon av referanseuke
+
+Referanseuken (vanligvis den 3. uken i måneden) er operasjonalisert som
+alltid å være den uken hvor datoen den 16. faller i. Med uken menes her
+f.o.m. mandag t.o.m. søndag. Arbeidsforhold betraktes som aktive i
+referanseuken dersom følgende to kriterier er oppfylt:
+
+1.  *Startdato for arbeidsforhold er før eller på siste dag i
+    referanseuken*
+
+2.  *Sluttdato for arbeidsforholdet er på eller etter første dag i
+    referanseuken, eller blank*
+
+Det betyr at et arbeidsforhold som har sluttdato før referanseuken eller
+startdato etter referanseuken ikke regnes som aktive i referanseuken.
+Dette er arbeidsforhold som kastes ut i denne prosessen og ikke er med
+på den klargjorte filen for arbeidsmarked og lønn.
+
+## Begrunnelse for referanseuke
+
+Det er flere grunner til at det er valgt en referanseuke istedenfor å
+måle f.eks. hele måneden:
+
+-   Internasjonal anbefaling for sysselsetting å måle en uke
+    (anbefalingen gjelder Arbeidskraftundersøkelsen (AKU), men det er en
+    fordel å måle på samme måte også i register)
+
+-   Det er flere praktiske grunner for å velge uken med datoen den 16.:
+
+    -   Mange jobbskifter rundt månedsskifter, ofte unøyaktig datert.
+
+    -   Månedsskifte skjer på varierende ukedager. Ved å velge
+        referanseuke slipper man problemer med variasjoner som oppstår
+        om første og siste uke i måneden faller helt innenfor måneden
+        eller deles på to måneder. Mange slutter og begynner ved
+        månedsskifter. Det betyr at en god del personer blir registrert
+        med to (etterfølgende) jobber om start/sluttuken dekker dager i
+        to måneder. Når dette skifter over tid, vil dette i seg selv
+        påvirke endringstall i antall jobber.
+
+    -   En hel måned ville gi mer å ta stilling til enn i en uke, f.eks.
+        vedrørende virksomhetsoverdragelser, aggregering innen
+        virksomhet, osv.
+
+    -   Dagen 16. vil alltid være i referanseuka
+
+        -   Egnet til måling av alder m.m.
+
+        -   Denne uken kan identifiseres maskinelt
+
+    -   Unngår jul og 1. mai. Pinsen nesten alltid utenfor. 17. mai
+        nesten alltid med
+
+        -   Påske og Kristi Himmelfart mer variabelt
+
+    -   I registerstatistikker før 2015 var også «tredje uke»
+        referanseuken

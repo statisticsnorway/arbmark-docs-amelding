@@ -1,0 +1,198 @@
+# Kontroller og tiltak
+
+I produksjonsopplegget for lønn og sysselsetting gjennomføres det en
+rekke kontroller og automatiske tiltak, der formålet er å sikre
+datakvaliteten for statistikkformål. Vi skiller på tre typer kontroller:
+
+a)      Automatiske kontroller og tiltak
+
+b)      Rapporter (overvåking)
+
+c)      Manuelle kontroller
+
+Det blir i liten grad gjennomført manuelle kontroller.
+
+Det vil også være kontroller hos lønns- og personalsystemleverandørene
+samt at det ligger en rekke forretningsregler (kontroller) i mottaket
+hos Skatteetaten.
+
+## Forretningsregler (kontroller) hos Skatteetaten
+
+**Om forretningsreglene i Skatteetaten** 
+
+Etter at a-meldingen er mottatt av Skatteetaten kjøres den en rekke
+forretningsregler (kontroller) for å avdekke feil/mangler i de
+innleverte opplysningene. Små og mellomstore opplysningspliktige får
+tilbakemelding i løpet av kort tid, mens store opplysningspliktige må
+vente litt lenger. Tilbakemeldingen fra Skatteetaten inneholder:
+
+-   Sum forskuddstrekk og arbeidsgiveravgift for måneden med
+    betalingsinformasjon (kontonummer og KID).
+
+-   Alle avvik som er avdekket er dokumentert med
+
+    -   Hvor i meldingen/månedens informasjon avviket er
+
+    -   Hvilken forretningsregel som er brutt
+
+    -   Beskrivelse av avviket
+
+Hvis den opplysningspliktige har sendt inn flere a-meldinger for samme
+måned, vil de automatiske kontrollene sjekke alle de hittil
+innrapporterte opplysningene for måneden. Tilbakemeldingen vil inneholde
+resultatet for alle innsendingene for en måned samlet.
+
+Tilbakemeldingene fra Skatteetaten er kategorisert etter
+alvorlighetsgrad:
+
+-   *Avvisning:* Meldingen inneholder feil som gjør at den avvises
+
+-   *Øyeblikkelig:* Meldingen inneholder feil som *må* rettes innen
+    fristen for denne perioden
+
+-   *Retningslinje:* Meldingen inneholder kanskje feil. Den
+    opplysningspliktige må kontrollere innsendt informasjon og rette
+    eventuelle feil/mangler
+
+Avvisning betyr at meldingen anses som ikke levert til Skatteetaten. SSB
+får en oversikt over hvilke opplysningspliktige dette er.
+
+Avvik av typen «øyeblikkelig» og «retningslinje» innebærer at meldingen
+blir levert til Skatteetaten. Det betyr at SSB vil få overført meldinger
+som inneholder denne typen avvik.
+
+Avvik av typen «avvisning» og «øyeblikkelig» kan bli sanksjonert hvis
+det ikke leveres ny melding og feil/mangler rettes innen fristen.
+
+Forretningsregler og feilmeldinger er dokumentert i
+[veiledningen for a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/feilmeldinger-magnetedag-og-tilbakemelding/oversikt-over-feilmeldinger-magnetedag/).
+
+**Bruk av avviksmeldinger fra Skatteetaten** 
+
+De aller fleste avviksmeldinger skyldes myke kontroller i den forstand
+at de ikke stopper innsendingen. Dermed vil vi få data som vi vet
+inneholder feil. Denne type avvik blir sendt til SSB i form av
+avviksmeldinger.
+
+## Kontroller og automatiske tiltak
+
+I SSB kjøres det en rekke kontroller av dataene for å gi oversikt over
+mulige feil, mangler og svakheter i dataene. Et viktig formål med
+kontrollene er å finne ut om det er mulig å etablere automatiske tiltak
+(se neste kapittel), men kontrollene gir også mulighet for å følge med
+på kvalitetsutvikling på innrapporterte data.
+
+**Kontroller**
+
+Kontrollene er etablert på bakgrunn av behov for kvalitetssikring av
+data, men er også et resultat av erfaringer som er gjort med
+innrapporterte data.
+
+Typen kontroller kan inndeles i tre hovedtyper
+
+-   Kontroller som viser mulige feil og mangler med liten eller ingen
+    betydning for lønn og sysselsetting
+
+-   Kontroller som viser feil og mangler vi ikke har mulighet til å
+    korrigere
+
+-   Kontroller som bør resultere i automatisk tiltak
+
+Av kontroller som kun har som formål å avdekke mindre alvorlige mangler
+eller feil og mangler vi ikke har mulighet til å korrigere, kan nevnes:
+
+-   Opplysningspliktig eller virksomhet mangler opplysninger påkoblet
+    fra Vof
+
+-   Antall innrapporterte inntektsmottakere avviker mye fra antall
+    ansatte i Vof
+
+-   Mange eller alle kjennemerker ved arbeidsforholdet er rapportert
+    blank
+
+-   Høy fastlønn eller timelønnssats
+
+-   Opptjeningsperiode lønn mangler
+
+-   Dato eller prosent mangler for permisjoner
+
+-   Dato, beskrivelse eller beløp mangler for ytelser
+
+Selv om vi ikke kan korrigere disse opplysningene kan vi ved alvorlige
+feil ta direkte kontakt med opplysningspliktig eller følge opp med de to
+andre eieretatene av a-ordningen (Skatteetaten og NAV).
+
+Kontroller som har som formål å avdekke feil og mangler som bør
+korrigeres, er stort sett rettet mot arbeidsforhold. Det er laget mange
+kontroller som viser feil og mangler ved timeantall fulltidsstilling og
+avtalt stillingsprosent, kombinert med andre kjennemerker som type
+arbeidsforhold og arbeidstidsordning, blant annet:
+
+-   Timeantall fulltid mangler
+
+-   Timeantall fulltid sannsynlig feilrapportert
+
+-   Timeantall fulltid avviker fra rapportert arbeidstidsordning
+
+-   Timeantall fulltid ekstremt høyt eller lavt
+
+-   Avtalt stillingsprosent mangler
+
+-   Avtalt stillingsprosent \> 120
+
+**Automatiske tiltak**
+
+Dette kapittelet gir en beskrivelse av hvilke tiltak (kontroller med
+tilordninger) som er etablert. Tiltak består av kontroll som avdekker
+feilen og en tilordning som gjør automatisk retting av data.
+
+Automatiske tiltak gjennomføres etter følgende hovedprinsipper:
+
+-   Det korrigeres for manglende verdier der det er mulig
+
+-   Det korrigeres for ekstremverdier der det er mulig
+
+Nedenfor gis det noen eksempler på tiltak.
+
+-   Korrigeringer ved manglende innrapportering (0 eller blank der det
+    forventes verdi)
+
+```{=html}
+<!-- -->
+```
+-   Hvis dødsdato er registrert i FREG, settes sluttdato arbeidsforhold
+    lik dødsdato.
+
+-   Hvis startdato arbeidsforhold er uoppgitt, settes startdato lik
+    start opptjeningsperiode lønn.
+
+-   Hvis timeantall fulltidsstilling mangler gjennomføres det flere
+    automatiske tiltak basert på variabelen arbeidstidsordning, f.eks.
+    hvis arbeidstidsordning = offshore336 settes timeantall fulltid til
+    33.6 timer.
+
+Korrigeringer ved ekstremverdier:
+
+-   Hvis timeantall fulltid tilsvarer vanlig deltidsstilling korrigeres
+    timeantall fulltid basert på arbeidstidsordning.
+
+-   Hvis høyt timeantall fulltid og dette sammen med innrapportert
+    avtalt stillingsprosent gir 37.5, korrigeres avtalt stillingsprosent
+    til 100 og timeantall fulltid til 37.5.
+
+-   Andre høye verdier (\>45) på timeantall fulltid korrigeres basert på
+    variabelen arbeidstidsordning.
+
+Det er flere automatiske tiltak som beskrives nærmere i dette notatet,
+bl.a. [tiltak på sluttdato arbeidsforhold (kapittel 11)](Tiltak-sluttdato.html), [imputering
+av arbeidsforhold (kapittel 15)](Imputering-fra-perioden-før.html), vurdering om [arbeidsforholdet skal
+regnes som aktivt eller ikke (kapittel 19)](Klassifisering-arbfogsyss.html) og tiltak for å [forbedre
+opplysninger om avtalt arbeidstid og lønn (kapittel 21)](Håndtering-lønn-avtaltarbtid.html).
+
+## Løpende kontroller
+
+Det gjennomføres løpende kontroller med datagrunnlaget og vi tar kontakt
+med opplysningspliktig ved behov. Det gjelder både overordnede
+kontroller samt mer detaljerte kommune-, yrkes- og næringskontroller.
+[Manuelle kontroller for lønn er beskrevet kort i kapittel 21.14](#manuelle-kontroller-og-korrigeringer-av-lønn). I noen
+svært få tilfeller gjøres det manuelle rettinger.

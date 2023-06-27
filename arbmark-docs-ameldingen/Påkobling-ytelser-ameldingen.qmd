@@ -1,0 +1,74 @@
+# Påkobling av ytelser fra a-meldingen
+
+Vi bruker informasjon om ytelser fra det offentlige for å vurdere hvilke
+arbeidsforhold uten lønn som skal [klassifiseres som sysselsetting
+(beskrives i kapittel 19](Klassifisering-arbfogsyss.html)). Vi får kun opplysninger om ytelser som
+utbetales direkte til personen. Tilfeller der arbeidsgiver betaler og
+mottar kompensasjon fra NAV rapporteres som ordinær lønn fra
+arbeidsgiver i a-meldingen.
+
+Vi skiller mellom følgende ytelser som rapporteres i a-meldingen:
+svangerskapspenger, foreldrepenger, sykepenger og sykepenger til fisker
+som bare har hyre.
+
+Vi har ikke behov for å vite lengde på fraværet basert på ytelsene,
+siden det ikke er relevant for klassifisering av sysselsetting.
+
+Vi tar høyde for at det kan forekomme flere utbetalinger av samme
+NAV-ytelse innen referanseperioden. Dersom sluttdato for
+opptjeningsperiode er før referanseuka tas ikke ytelsen med, heller ikke
+hvis startdato opptjeningsperiode er etter referanseuka eller hvis beløp
+er 0 eller negativt.
+
+Følgende informasjon om ytelser inkluderes:
+
+-   Ytelsene svangerskapspenger, foreldrepenger, sykepenger og
+    sykepenger til fisker som bare har hyre
+
+```{=html}
+<!-- -->
+```
+-   Ytelser med startdato opptjeningsperiode senest fredagen i
+    referanseuka eller tidligere, og sluttdato for opptjeningsperiode i
+    referanseuka eller senere
+
+-   Ytelser med beløp\>0
+
+Ytelsene rapporteres på person i a-meldingen og ikke på arbeidsforhold.
+Følgende regelsett kobler ytelsene til arbeidsforhold:
+
+-   Hvis ytelsen foreldrepenger:
+
+    -   Ved ett arbeidsforhold knyttes ytelsen til dette
+
+    ```{=html}
+    <!-- -->
+    ```
+    -   Ved flere arbeidsforhold gjøres følgende:
+
+        -   Dersom kun ett arbeidsforhold med permisjonsopplysninger
+            knyttes ytelsen til dette
+
+        -   Dersom flere arbeidsforhold med permisjonsopplysninger,
+            knyttes ytelsen til alle
+
+        -   Dersom det ikke er permisjonsopplysninger knyttet til noen
+            av arbeidsforholdene, knyttes ytelsen til alle
+            arbeidsforholdene
+
+```{=html}
+<!-- -->
+```
+-   Hvis ytelsene svangerskapspenger, sykepenger eller sykepenger til
+    fiskere:
+
+    -   Ved ett arbeidsforhold knyttes ytelsen til dette
+
+    -   Ved flere arbeidsforhold kobles informasjonen på alle
+        arbeidsforholdene
+
+-   For andre typer enheter enn arbeidsforhold kobles ytelsene på per
+    person.
+
+I a-meldingen har vi kun opplysninger om opptjeningsperiode for ytelser,
+og ikke om personen faktisk er fraværende.

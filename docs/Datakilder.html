@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen - 3&nbsp; Datakilder</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Del2og3-Samleinn-klargjore.html" rel="next">
+<link href="./definisjoner.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Ingen resultater",
+    "search-matching-documents-text": "treff",
+    "search-copy-link-title": "Kopier link til søk",
+    "search-hide-matches-text": "Skjul flere treff",
+    "search-more-match-text": "flere treff i dokumentet",
+    "search-more-matches-text": "flere treff i dokumentet",
+    "search-clear-button-title": "Nullstill",
+    "search-detached-cancel-button-title": "Avbryt",
+    "search-submit-button-title": "Send"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="https://www.ssb.no/" class="navbar-brand navbar-brand-logo">
+    <img src="./media/SSB_logo_black.png" alt="SSB sin logo" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="https://www.ssb.no/">
+    <span class="navbar-title">Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/statisticsnorway/arbmark-docs-aordningen" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub-repo for boken">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./avklare-planlegge.html">Del 1. Avklare behov og planlegge</a></li><li class="breadcrumb-item"><a href="./Datakilder.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datakilder</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Forord</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Formål</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./avklare-planlegge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 1. Avklare behov og planlegge</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./definisjoner.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Definisjoner</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Datakilder.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datakilder</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Del2og3-Samleinn-klargjore.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 2 og 3. Samle inn og klargjøre</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Del2-Samleinn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 2. Samle inn</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Kildedata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Kildedata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Prosessen-fra-kildedata-til-inndata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Prosessen fra kildedata til inndata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Inndata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Inndata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Datavarehus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Datavarehus</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Kontroller-og-tiltak.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Kontroller og tiltak</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Del3-Klargjøring-av-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 3. Klargjøring av data - fil for arbeidsmarked og lønn</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Knytning-mellom-lønns-og-arbeidsforhold.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Knytning mellom lønns- og arbeidsforhold</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Påkobling-arbf-andre-kilder.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Påkobling av arbeidsforhold fra andre kilder</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Tiltak-sluttdato.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Tiltak på sluttdato for arbeidsforhold</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Referanseuke.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Referanseuke</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Avgrensning-aggregering-arbf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Avgrensning og aggregering av arbeidsforhold</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Permisjoner-permitteringer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Permisjoner og permitteringer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Imputering-fra-perioden-før.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Imputering av arbeidsforhold fra perioden før</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Koblepå-kjennetegn-vof.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Koble på kjennetegn for forvirksomhet og foretak i VoF</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Kontrollogtiltak-fravær-virksomheter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Kontroll og tiltak på fravær mellom virksomheter</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Påkobling-ytelser-ameldingen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Påkobling av ytelser fra a-meldingen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Klassifisering-arbfogsyss.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Klassifisering av arbeidsforhold og sysselsatte</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Koblepå-heltarbl-utenfor-arbstyrken.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Koble på helt arbeidsledige og bosatte utenfor arbeidsstyrken</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Håndtering-lønn-avtaltarbtid.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Håndtering av lønn og avtalt arbeidstid</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Utledning-beregning-påkobling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Utledning, beregning og påkobling av kjennetegn</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Klargjortfil-arbm-og-lønnsstat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Klargjort fil for arbeidsmarkeds- og lønnsstatistikk</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Del4-klargjoringavdata-regsys.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Del 4. Klargjøring av data - fil for registerbaserte sysselsettingsstatistikker</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Selvstendige.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Selvstendig næringsdrivende</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Omtale-av-noen-statistikker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Omtale av noen statistikker</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Antall-arbeidsforhold-og-lønn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Antall arbeidsforhold og lønn</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Referanser.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referanser</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg A: Variabel- og kodeoversikt</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggB.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg B: Kodeliste kilde for avtalt stillingsprosent</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg C: Data til forskere</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg D: Noen sentrale variable</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./VedleggD.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vedlegg D: Noen sentrale variable</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Innhold</h2>
+   
+  <ul>
+  <li><a href="#a-meldingen" id="toc-a-meldingen" class="nav-link active" data-scroll-target="#a-meldingen"><span class="header-section-number">3.1</span> A-meldingen</a>
+  <ul class="collapse">
+  <li><a href="#dataleveransen-fra-skatteetaten" id="toc-dataleveransen-fra-skatteetaten" class="nav-link" data-scroll-target="#dataleveransen-fra-skatteetaten"><span class="header-section-number">3.1.1</span> Dataleveransen fra Skatteetaten</a></li>
+  <li><a href="#a-meldingen-struktur-og-innhold" id="toc-a-meldingen-struktur-og-innhold" class="nav-link" data-scroll-target="#a-meldingen-struktur-og-innhold"><span class="header-section-number">3.1.2</span> A-meldingen – struktur og innhold</a></li>
+  <li><a href="#a-meldingen-mer-om-innhold" id="toc-a-meldingen-mer-om-innhold" class="nav-link" data-scroll-target="#a-meldingen-mer-om-innhold"><span class="header-section-number">3.1.3</span> A-meldingen – mer om innhold</a></li>
+  <li><a href="#a-meldingen-kvalitet" id="toc-a-meldingen-kvalitet" class="nav-link" data-scroll-target="#a-meldingen-kvalitet"><span class="header-section-number">3.1.4</span> A-meldingen – kvalitet</a></li>
+  <li><a href="#noen-sentrale-endringer-med-a-ordningen" id="toc-noen-sentrale-endringer-med-a-ordningen" class="nav-link" data-scroll-target="#noen-sentrale-endringer-med-a-ordningen"><span class="header-section-number">3.1.5</span> Noen sentrale endringer med a-ordningen</a></li>
+  </ul></li>
+  <li><a href="#selvangivelsesregisteretskattemeldingen" id="toc-selvangivelsesregisteretskattemeldingen" class="nav-link" data-scroll-target="#selvangivelsesregisteretskattemeldingen"><span class="header-section-number">3.2</span> Selvangivelsesregisteret/Skattemeldingen</a></li>
+  <li><a href="#virksomhets--og-foretaksregisteret-vof" id="toc-virksomhets--og-foretaksregisteret-vof" class="nav-link" data-scroll-target="#virksomhets--og-foretaksregisteret-vof"><span class="header-section-number">3.3</span> Virksomhets- og foretaksregisteret (VoF)</a></li>
+  <li><a href="#fokeregisteret-freg" id="toc-fokeregisteret-freg" class="nav-link" data-scroll-target="#fokeregisteret-freg"><span class="header-section-number">3.4</span> Fokeregisteret (FREG)</a></li>
+  <li><a href="#matrikkelen" id="toc-matrikkelen" class="nav-link" data-scroll-target="#matrikkelen"><span class="header-section-number">3.5</span> Matrikkelen</a></li>
+  <li><a href="#innvandrere-og-norskfødte-med-innvandrer-foreldre" id="toc-innvandrere-og-norskfødte-med-innvandrer-foreldre" class="nav-link" data-scroll-target="#innvandrere-og-norskfødte-med-innvandrer-foreldre"><span class="header-section-number">3.6</span> Innvandrere og norskfødte med innvandrer foreldre</a></li>
+  <li><a href="#innvandrere-etter-innvandringsgrunn" id="toc-innvandrere-etter-innvandringsgrunn" class="nav-link" data-scroll-target="#innvandrere-etter-innvandringsgrunn"><span class="header-section-number">3.7</span> Innvandrere etter innvandringsgrunn</a></li>
+  <li><a href="#høyeste-fullførte-utdanning-nudb" id="toc-høyeste-fullførte-utdanning-nudb" class="nav-link" data-scroll-target="#høyeste-fullførte-utdanning-nudb"><span class="header-section-number">3.8</span> Høyeste fullførte utdanning (NUDB)</a></li>
+  <li><a href="#igangværende-utdanning" id="toc-igangværende-utdanning" class="nav-link" data-scroll-target="#igangværende-utdanning"><span class="header-section-number">3.9</span> Igangværende utdanning</a></li>
+  <li><a href="#arena-registeret" id="toc-arena-registeret" class="nav-link" data-scroll-target="#arena-registeret"><span class="header-section-number">3.10</span> ARENA-registeret</a></li>
+  <li><a href="#oppdrags--og-arbeidsforholdregisteret-oar" id="toc-oppdrags--og-arbeidsforholdregisteret-oar" class="nav-link" data-scroll-target="#oppdrags--og-arbeidsforholdregisteret-oar"><span class="header-section-number">3.11</span> Oppdrags- og arbeidsforholdregisteret (OAR)</a></li>
+  <li><a href="#vernepliktregisteret" id="toc-vernepliktregisteret" class="nav-link" data-scroll-target="#vernepliktregisteret"><span class="header-section-number">3.12</span> Vernepliktregisteret</a></li>
+  <li><a href="#lærlinger" id="toc-lærlinger" class="nav-link" data-scroll-target="#lærlinger"><span class="header-section-number">3.13</span> Lærlinger</a></li>
+  <li><a href="#navs-register-over-foreldrepenger" id="toc-navs-register-over-foreldrepenger" class="nav-link" data-scroll-target="#navs-register-over-foreldrepenger"><span class="header-section-number">3.14</span> NAVs register over foreldrepenger</a></li>
+  <li><a href="#fastlegeregisteret" id="toc-fastlegeregisteret" class="nav-link" data-scroll-target="#fastlegeregisteret"><span class="header-section-number">3.15</span> Fastlegeregisteret</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datakilder</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Dette kapittelet beskriver de ulike datakildene som benyttes. Først gir det en beskrivelse av a-meldingen, som er hovedkilden. Deretter gis den en beskrivelse av de andre datakildene som benyttes. De fleste <a href="Datavarehus.html">datakildene kobles på i Datavarehuset (DVH), beskrevet kapittel 7</a>, mens andre registre kobles på senere i produksjonsprosessen.</p>
+<section id="a-meldingen" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="a-meldingen"><span class="header-section-number">3.1</span> A-meldingen</h2>
+<p>Hovedkilden til informasjon om arbeidsforhold og lønn er a-meldingen. Opplysningene samles inn via en månedlig melding fra arbeidsgivere. Opplysningene samles inn og sammenstilles av Skatteetaten (SKE).</p>
+<section id="dataleveransen-fra-skatteetaten" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="dataleveransen-fra-skatteetaten"><span class="header-section-number">3.1.1</span> Dataleveransen fra Skatteetaten</h3>
+<p>SSB skal ha all informasjon i alle innsendte a-meldinger som ikke er avviste. Imidlertid er dette begrenset til siste versjon av informasjonen fra en gitt opplysningspliktig for en gitt måned, inklusive informasjon fra alle virksomheter, og tilhørende inntektsmottakere som er nye eller endrete. SSB skal ha alle nye meldinger siden forrige forsendelse, det vil si:</p>
+<ol type="1">
+<li><p>Ordinære meldinger for nyeste periode</p></li>
+<li><p>Erstatningsmeldinger for tidligere perioder</p></li>
+<li><p>Forsinkede meldinger for tidligere perioder</p></li>
+</ol>
+<p>Dette betyr at SSB vil motta all ny informasjon som har kommet inn siden forrige leveranse til SSB. Dette omfatter ordinære a-meldinger og informasjon om (skattepliktige) ytelser fra NAV.</p>
+<p>I tillegg til selve meldingen overføres informasjon om brudd på forretningsregler i form av avvik.</p>
+<p>Informasjon oversendes månedlig fra Skatteetaten til SSB. Alle godkjente a-meldinger siden forrige rapportering skal overføres. Overføring skjer ved at Skatteetaten lager flere filer som inneholder all informasjon. Filene krypteres og hentes av SSB over en kryptert SFPT-linje.</p>
+<p>Fristen for å levere a-melding til Skatteetaten er satt til den 5. i den påfølgende måneden. Hvis den 5. faller på en helg eller helligdag er fristen første virkedag etter den 5. For å ta hensyn til erstatningsmeldinger og forsinkede meldinger, overføres data til SSB den 10. hver måned (data ble overført den 15. til og med januar 2018).</p>
+<p>SSB mottar siste tilgjengelige oppsummering fra Skatteetaten. Eksempelvis hvis en opplysningspliktig i starten av februar sender inn to a-meldinger om periode januar, vil SSB motta disse oppsummert fra Skatteetaten.</p>
+<p>Det er utarbeidet en egen utleveringsavtale mellom Skatteetaten og SSB, der bilag 2 beskriver tjenestens innhold.</p>
+</section>
+<section id="a-meldingen-struktur-og-innhold" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="a-meldingen-struktur-og-innhold"><span class="header-section-number">3.1.2</span> A-meldingen – struktur og innhold</h3>
+<p><a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/">A-meldingen inneholder informasjon om arbeidsforhold, inntekt/lønn og skatt (skatteetaten.no)</a>, og består av tre nivåer som vist i figuren nedenfor. Merk at det ikke rapporteres hierarkisk slik figuren antyder. Figuren illustrerer informasjonsinnholdet og ikke en reell fremstilling av organiseringen rent fysisk.</p>
+<p><img src="./media/image2.tmp" style="width:5.36087in;height:3.90324in"></p>
+<p>Virksomhet (bedrift) brukes som betegnelse på en produksjonsenhet, det vil si en lokalt avgrenset enhet som hovedsakelig driver produksjon av varer eller tjenester innenfor en bestemt næring. Virksomheter er konkrete arbeidssteder som for eksempel butikker, hoteller, skoler, bakerier, reklamebyråer og advokatkontorer. Dette omtales som underenhet i Enhetsregisteret (ER).</p>
+<p>Foretak (og opplysningspliktig) benyttes som navn på den juridiske selvstendige enheten (hovedenheten). &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p><em>Nivå 1.</em> <a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/hvem-ma-levere-a-melding/">Opplysningspliktig (juridisk enhet) (skatteetaten.no)</a></p>
+<p>På dette nivået skal det leveres opplysninger om foretaket meldingen leveres for (kan være et foretak eller en fysisk person), for eksempel organisasjonsnummer/ fødselsnummer/D-nummer, måned opplysningene gjelder for, meldings ID, forskuddstrekk som skal betales, arbeidsgiveravgift som skal betales samt kildesystem (navn på lønnsprogram + versjon).</p>
+<p><em>Nivå 2.</em> <a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/organisasjonsnummer/juridisk-organisasjonsnummer-opplysningspliktig-og-organisasjonsnummer-for-virksomheter/">Virksomhet (skatteetaten.no)</a> (bedrift/underenhet)</p>
+<p>Et foretak kan ha en eller flere virksomheter (underenheter). Dette nivået inneholder opplysninger om virksomhetens organisasjonsnummer samt opplysninger for å beregne arbeidsgiveravgift: grunnlag (ulike typer), sone, sats og beregningskode.</p>
+<p>Det er krav om virksomhetsnummer hvis foretaket (den juridiske enheten) har flere virksomheter (krav siden oppstarten i januar 2015). Fra januar 2020 er det også krav om å oppgi virksomhetens organisasjonsnummer dersom man bare har én virksomhet.</p>
+<p><em>Nivå 3.</em> <a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/fodselsnummer-d-nummer-eller-internasjonal-id-inntektsmottaker/">Inntektsmottaker (skatteetaten.no)</a></p>
+<p>For hver inntektsmottaker skal det oppgis fødselsnummer (fnr) eller D-nummer (midlertidig ID-nummer). For personer man venter på skal få tildelt fnr/d-nummer skal følgende fylles ut: internasjonal identifikator (f.eks. passnummer), navn, fødselsdato og ansattnummer.</p>
+<p>For hver inntektsmottaker skal flere faste variable fylles ut: inntekts- og ytelsesdetaljer (f.eks. lønn), forskuddstrekk, informasjon om arbeidsforhold (f.eks. start- og stoppdato på arbeidsforholdet, arbeidstidsopplysninger, yrke, permisjoner, permitteringer, m.m.) og antall dager for sjøfolk.</p>
+<p>I tillegg til informasjon på de tre nivåene nevnt over inneholder a-meldingen opplysninger om selve innleveringen – hvem har levert inn (foretaket selv, lønnssentral, regnskapsbyrå, etc.), om det er en erstatningsmelding, hvilken periode er det levert for, m.m.</p>
+<p>Gjennom a-meldingen får man dermed informasjon om:</p>
+<ul>
+<li><p>Arbeidsforhold</p></li>
+<li><p>Lønnsinntekt</p></li>
+<li><p>Pensjon/trygd</p></li>
+<li><p>Ytelser fra det offentlige</p></li>
+<li><p>Næringsinntekt</p></li>
+<li><p>Arbeidsgiveravgift og forskuddstrekk</p></li>
+</ul>
+<p>Skattefrie ytelser av typen sosialstønad og kontantstøtte rapporteres ikke via a-meldingen.</p>
+<p><a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/ordinart-arbeidsforhold/">A-meldingen inneholder informasjon om ordinære arbeidsforhold (skatteetaten.no)</a>, <a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/maritimt-arbeidsforhold/">maritime arbeidsforhold (skatteetaten.no)</a> samt <a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/frilanser-oppdragstaker-og-personer-som-mottar-honorarer/">arbeidsforhold som&nbsp;frilanser, oppdragstaker og personer som mottar honorar (skatteetaten.no)</a>. A-meldingen inneholder ikke informasjon om selvstendig næringsdrivende.</p>
+<section id="arbeidstakere-i-a-meldingen" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="arbeidstakere-i-a-meldingen"><strong>Arbeidstakere i a-meldingen</strong></h4>
+<p>Til det «gamle» Aa-registeret, som var hovedkilden til sysselsettingsstatistikken til og med 2014, var det en nedre grense for hvilke arbeidsforhold som skulle rapporteres: arbeidsforholdet måtte vare mer enn seks dager og arbeidstiden skulle være mer enn fire timer per uke. I a-meldingen er det en felles grense for innrapportering av inntekt og av arbeidsforhold-opplysninger. Det betyr at i hovedsak skal arbeidsforhold/lønnsinntekt rapporteres i a-meldingen dersom grensen på kr 1&nbsp;000 pr år overskrides. Det finnes noen unntak, disse er omtalt i proposisjonen <a href="http://www.regjeringen.no/nb/dep/asd/dok/regpubl/prop/2013-2014/Prop-48-L-20132014.html?id=752548">Endringer i folketrygdloven og i skattelovgivningen mv. (tilpasning til a-ordningen), prop 48 L 2013-2014 (regjeringen.no)</a>. Meldeplikten inntrer den måneden beløpsgrensen eventuelt overskrides.</p>
+<p>I tillegg dekker a-meldingen også frilansere, oppdragstakere, m.m. Dette er en gruppe som tidligere kun var i LTO-registeret, men uten at det var mulig å identifisere om det var frilansere eller ordinære arbeidsforhold.</p>
+</section>
+<section id="hvis-rapporteringsperioden-er-frem-i-tid" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="hvis-rapporteringsperioden-er-frem-i-tid"><strong>Hvis rapporteringsperioden er frem i tid</strong></h4>
+<p>Den opplysningspliktige kan rapportere inntil to måneder frem i tid. Hvis a-meldingen gjelder en kalendermåned mer enn to måneder blir meldingen avvist av Skatteetaten, det vil si a-meldingen anses ikke som levert.</p>
+<p>Mer informasjon om a-meldingen generelt, korrigeringer, identifisering av inntektsmottakere, arbeidsforhold, beskrivelser av ytelser (herunder lønn og NAV-ytelser) m.m. i <a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/opplysninger-om-arbeidsforholdet/siste-dato-for-endring-av-stillingsprosent/">veiledningen til a-meldingen (skatteetaten.no)</a>.</p>
+</section>
+</section>
+<section id="a-meldingen-mer-om-innhold" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="a-meldingen-mer-om-innhold"><span class="header-section-number">3.1.3</span> A-meldingen – mer om innhold</h3>
+<p>Nedenfor er arbeidsforhold og inntektstyper nærmere beskrevet.</p>
+<section id="arbeidsforhold" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="arbeidsforhold"><em>Arbeidsforhold</em></h4>
+<p>Følgende opplysninger vil komme på arbeidsforholdsnivå i a-meldingen:</p>
+<ul>
+<li><p>arbeidsforholdID (for de med flere arbeidsforhold i samme virksomhet),</p></li>
+<li><p>type arbeidsforhold (4 typer: ordinært arbeidsforhold, maritimt arbeidsforhold, frilansere/oppdragstakere m.m. og pensjon/ytelser uten ansettelsesforhold),</p></li>
+<li><p>start- og sluttdato på arbeidsforholdet,</p></li>
+<li><p>antall timer per uke som utgjør fulltid,</p></li>
+<li><p>avlønningstype (Kodeliste: akkordlønnet, fastlønnet, honorar, Provisjonslønnet /prosentlønn og timelønnet) - <em>UTGIKK fra og med 2019</em>,</p></li>
+<li><p>yrke (7 siffer),</p></li>
+<li><p>arbeidstidsordning (Kodeliste: Arbeid offshore - 33,6 t/u, Døgnkontinuerlig skiftarbeid og turnusarbeid - 35,5 t/u, Helkontinuerlig skiftarbeid og andre ordninger med 33,6 t/u, Skiftarbeid - 36,5 t/u, Andre skiftordninger og Ikke-skift),</p></li>
+<li><p>(avtalt) stillingsprosent,</p></li>
+<li><p>siste dato for endring av (avtalt) stillingsprosent,</p></li>
+<li><p>dato for siste lønnsendring,</p></li>
+<li><p>lønnsansiennitet,</p></li>
+<li><p>lønnstrinn,</p></li>
+<li><p>start- og sluttdato permisjoner og permittering,</p></li>
+<li><p>permisjon- og permitteringsprosent og</p></li>
+<li><p>permisjons- og permitteringsID (hvis flere permisjoner eller permitteringer samtidig).</p></li>
+<li><p>Årsak til sluttdato (Kodeliste: Arbeidstaker har sagt opp selv, Arbeidsgiver har sagt opp arbeidstaker, Kontrakt, engasjement eller vikariat er utløpt, Arbeidsforholdet skulle aldri vært rapportert, Endring i organisasjonsstruktur eller byttet jobb internt, Byttet lønnssystem eller regnskapsfører) <em>– ny fra 1.1.2021</em></p></li>
+<li><p>Ansettelsesform (Kodeliste: midlertidig, fast) – <em>ny fra 1.1.2021</em></p></li>
+</ul>
+<p>Informasjon om avlønningstype samles ikke lenger inn i a-meldingen. Det var obligatorisk å rapportere avlønningstype til og med desember 2017 og frivillig i 2018. Fra og med 1.1.2019 er det ikke mulig å rapportere avlønningstype. Det ble fra og med 1.1.2018 opprettet en ny inntektsbeskrivelse: «honorar, akkord, prosent og provisjon». Denne inntektsbeskrivelsen vil sammen med inntektsbeskrivelsene «fastlønn» og «timelønn» erstatte informasjonen i avlønningstype.</p>
+<p>Kodelisten for arbeidstidsordningen ble fra og med januar 2019 endret. Ikke-skift, som før 2019 omfattet både «andre skiftordninger enn nevnt i kodelisten» og «ikke-skift», ble splittet i to: «Andre skiftordninger» (enn angitt i kodelisten) og «ikke-skift».</p>
+<p>I a-meldingen skilles det mellom a) ordinære arbeidsforhold, b) maritime arbeidsforhold, c) arbeidsforhold som frilanser, oppdragstaker, honorar personer m.m. og d) pensjoner eller andre ytelser:</p>
+<ol type="a">
+<li><p><a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/ordinart-arbeidsforhold/"><em>Ordinære arbeidsforhold (skatteetaten.no)</em></a></p>
+<p>Ansatte som arbeider for lønn eller annen godtgjørelse og arbeidet ikke er maritimt, skal rapporteres et ordinært arbeidsforhold i a-meldingen.</p></li>
+<li><p><a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/maritimt-arbeidsforhold/"><em>Maritime arbeidsforhold (skatteetaten.no)</em></a></p>
+<p>Ansatte som arbeider for lønn eller annen godtgjørelse for arbeid som er av maritim karakter (dvs. at arbeidet utføres til sjøs, enten på et fartøy eller en flyttbar innretning) skal rapporteres som et maritimt arbeidsforhold.</p></li>
+<li><p><a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/frilanser-oppdragstaker-og-personer-som-mottar-honorarer/"><em>Frilansere, oppdragstakere og personer som mottar honorarer (skatteetaten.no)</em></a></p>
+<p>Hvis en person utfører arbeid eller oppdrag for lønn eller annen godtgjørelse uten tjenesteforhold/ansettelsesforhold (ikke ansatt), uten å være selvstendig næringsdrivende, skal arbeidsforholdet rapporteres som frilanser, oppdragstaker og personer som mottar honorar.</p>
+<p>Denne gruppen omfatter frilansere/oppdragstakere, folkevalgte (politikere i kommuner, fylker og på Stortinget), fosterforeldre, og personer med omsorgslønn, personer som har tillitsverv og styremedlemmer.</p>
+<p>Typiske eksempler på yrkesgrupper som ofte regnes som frilansere/oppdragstakere er musikere, tekstforfattere, skuespillere, journalister og oversettere.</p>
+<p>Det er kun krav om å rapportere opplysninger om arbeidsforholdet hver gang arbeidsgiver gjør utbetalinger til en person som utfører arbeid eller oppdrag for lønn eller annen godtgjørelse uten tjenesteforhold/ ansettelsesforhold.</p></li>
+<li><p><a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/arbeidsforholdet/type-arbeidsforhold/pensjon-eller-andre-ytelser/"><em>Pensjoner eller andre ytelser uten arbeidsforhold (skatteetaten.no)</em></a></p>
+<p>Omfatter personer som mottar pensjon eller andre ytelser og som ikke er i et arbeidsforhold eller oppdrag. Gjelder også enkelte utbetalinger til næringsdrivende.</p>
+<p>Denne arbeidsforholdstypen skal for eksempel benyttes til pensjonister som ikke har et arbeidsforhold, for ansatte på andre tiltak enn midlertidig eller varig lønnstilskudd fra NAV (som arbeidspraksis i ordinær eller skjermet virksomhet), lønn til ansatte som har sluttet (feriepenger, etterbetalinger, mv.), lottakere og reder i stilling om bord på fiske- og fangstfartøy, kursdeltakere som mottar refusjon for tapt arbeidsfortjeneste, oppmuntringspenger, personer som bare mottar utgiftsgodtgjørelse, personer som er på introduksjonsordningen for flyktninger og oppdrag til utenlandske oppdragstakere. Oppdrag til <a href="https://www.skatteetaten.no/skjema/opplysninger-om-kontrakt-oppdragstaker-og-arbeidstakere/">utenlandske oppdragstakere skal rapporteres i Oppdrags- og arbeidsforholdsregisteret (skatteetaten.no)</a>. Utenlandske oppdragstakere er unntatt å rapportere arbeidsforhold i a-meldingen for å unngå dobbeltrapportering. Lønn må imidlertid rapporteres i a-meldingen.</p>
+<p>Her vil det bli rapportert enkelte arbeidsforhold hvor man skal bli definert som sysselsatt i sysselsettingsstatistikken. Det gjelder blant annet ansatte på andre tiltak enn lønnstilskudd fra NAV, lottaker og reder i stilling om bord på fiske- og fangstfartøy samt oppdrag til utenlandsk oppdragstaker. Arbeidsforhold som rapporteres til Oppdrags- og arbeidsforholdsregisteret kobles på i produksjonsprosessen og er omtalt i kapittel 10.1.</p></li>
+</ol>
+<p>I veiledningen til a-meldingen er det gitt noen eksempler på når man skal velge de ulike arbeidsforholdstypene.</p>
+<p>For visse opplysningspliktige finnes det forenklede rapporteringsordninger til Skatteetaten hvor man ikke angir noen arbeidsforholdstyper. Det gjelder:</p>
+</section>
+<section id="forenklet-a-melding-for-veldedig-eller-allmennyttig-organisasjon-a05-skatteetaten.no" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="forenklet-a-melding-for-veldedig-eller-allmennyttig-organisasjon-a05-skatteetaten.no"><a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/lonn-fra-veldedig-eller-allmennyttig-organisasjon/">Forenklet a-melding for veldedig eller allmennyttig organisasjon (A05) (skatteetaten.no)</a></h4>
+<p>Skjemaet er for veldedige organisasjoner som engasjerer en privatperson til arbeidsoppdrag og lønnsutgiften ikke inngår i næringsvirksomhet. I 2021 var dette begrenset til samlet lønnsutbetaling fra arbeidsgiver på inntil 800 000 kroner per år eller 80 000 kroner per ansatt per år.</p>
+</section>
+<section id="melding-om-lønnet-arbeid-i-hjemmet-a04-skatteataten.no" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="melding-om-lønnet-arbeid-i-hjemmet-a04-skatteataten.no"><a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/lonn-til-privatpersoner-for-arbeid-i-oppdragsgivers-hjem/">Melding om lønnet arbeid i hjemmet (A04) (skatteataten.no)</a></h4>
+<p>Denne er for privatpersoner som betaler lønn til pass av barn i eget hjem eller annet arbeid som for eksempel vedlikehold. Er utbetalt beløp over en øvre årlig grense må man for sistnevnte type arbeid rapportere på en av de ordinære måtene. Lønn under 6 000 kroner per ansatt per år medfører ingen rapporteringsplikt. Hvis utbetalingene overstiger 60&nbsp;000 kroner i året må det rapporteres på ordinær måte.</p>
+<p>For disse arbeidsforholdene rapporteres ikke arbeidsforholdstype, avtalt stillingsprosent, antall timer eller yrke. Det lages imidlertid en todeling av «yrke» ut fra de to typene av lønnet arbeid i hjemmet. I produksjonssystemet som beskrives i dette notatet behandles disse på samme måte som arbeidstakere.</p>
+<p>Opplysningene som rapporteres er tilgjengelig i alle datatilstandene, men arbeidsforholdene for én person i samme virksomhet blir aggregert til ett arbeidsforhold senere i produksjonsprosessen (aggregeringsnøkkel er virksomhet*statistikknummer(snr)), se kapittel 13.2.</p>
+</section>
+<section id="inntektstyper" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="inntektstyper"><em>Inntektstyper</em></h4>
+<p>I a-meldingen skal den opplysningspliktige gi opplysninger om de beløp som ytes til inntektsmottakeren:</p>
+<ul>
+<li><p>Opplysninger om inntekter, som kan deles i fire typer: lønn (arbeidsforhold), ytelse fra det offentlige, pensjon/trygd, næringsinntekt</p></li>
+<li><p>Opplysninger om type inntekt: kontantytelser, naturalytelser eller utgiftsgodtgjørelse</p></li>
+<li><p>Noen beløp vil kreve en ytterligere presisering, f.eks. må lønn deles opp i kontantlønn, timelønn, faste tillegg, etc.</p></li>
+</ul>
+<p>I tillegg til inntektstype og fordel har alle inntektstypene også en beskrivelse. Beskrivelsen identifiserer inntektstypen. F.eks. for kontantytelse kan beskrivelsen være fastlønn, ventelønn, svangerskapspenger, pensjon eller trygd.</p>
+<p>I veiledningen til a-meldingen benyttes ofte begrepet «ytelse» og ikke «inntektstype». I dette notatet benyttes imidlertid inntektstype for å unngå at begrepet «ytelse» i veiledningen til a-meldingen sammenblandes med begrepet «ytelsesforhold», som er begrepet som benyttes i SSBs produksjonssystem. Begrepet «ytelse» brukes om ytelser fra det offentlige og ytelser fra næringsdrivende, f.eks. sykepenger, foreldrepenger, pensjoner, m.m. Se kapitlene om Pensjon/trygd, Ytelser fra det offentlige og Ytelser til næringsdrivende nedenfor.</p>
+</section>
+<section id="kontantytelser" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="kontantytelser">Kontantytelser</h4>
+<p>Det finnes mange lønnsinntekter (kontantytelser) i a-meldingen, som f.eks.:</p>
+<ul>
+<li><p>Fastlønn</p></li>
+<li><p>Timelønn</p></li>
+<li><p>Honorar, akkord, prosent og provisjon – <em>ny fra og med januar 2018</em></p></li>
+<li><p>Tips – <em>ny fra og med januar 2019</em></p></li>
+<li><p>Fast tillegg</p></li>
+<li><p>Uregelmessige tillegg knyttet til arbeidet tid</p></li>
+<li><p>Helligdagstillegg</p></li>
+<li><p>Uregelmessige tillegg knyttet til ikke-arbeidet tid</p></li>
+<li><p>Bonus</p></li>
+<li><p>Overtidsgodtgjørelse</p></li>
+<li><p>Styrehonorar og godtgjørelse i forbindelse med verv</p></li>
+<li><p>Kommunal omsorgslønn og fosterhjemsgodtgjørelse</p></li>
+<li><p>Sluttvederlag</p></li>
+<li><p>Feriepenger</p></li>
+<li><p>Annet («annet» er det som ikke naturlig hører hjemme i noen av de andre lønnsytelsene).</p></li>
+</ul>
+<p>Se <a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/">veiledningen for a-meldingen (skatteetaten.no)</a> for full oversikt over lønn og andre ytelser.</p>
+<p>I tillegg kommer informasjon om naturalytelser og utgiftsgodtgjørelser, se omtale lenger ned.</p>
+<p>For noen typer lønnsinntekter skal det oppgis antall. Det gjelder f.eks. antall timer (gjelder timelønnede), antall km (gjelder bilgodtgjørelse), antall dager, antall døgn, etc. I noen tilfeller vil det være krav om ytterligere spesifisering (for eksempel om ytelsen er opptjent i utlandet) og/eller tilleggsinformasjon (for eksempel tidsrom for når ytelses ble opptjent).</p>
+<p>Disse opplysningene er tilgjengelig i alle datatilstandene. Men <a href="Avgrensning-aggregering-arbf.html#aggregering-hvis-flere-jobber-per-person-i-samme-virksomhet">lønnsforholdene blir aggregert senere i produksjonssystemet, se kapittel 13.2</a>.</p>
+</section>
+<section id="naturalytelser" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="naturalytelser">Naturalytelser</h4>
+<p>Med naturalytelser menes enhver økonomisk fordel som ytes i annet enn kontanter, sjekker og lignende betalingsmidler, for eksempel fri bil, rentefordel rimelige lån i arbeidsforhold, elektronisk kommunikasjon (mobiltelefon, bredbånd), ansattes kjøp av aksjer/grunnfondsbevis til underkurs, opsjoner, fri reise til og fra arbeidet (fri transport), skattefri barnehageplass, helt eller delvis fri bolig, kost og losji, m.m.</p>
+<p>Detaljert informasjon om naturalytelser er tilgjengelig i inndata og i datavarehuset. I prosessen mellom datavarehuset og klargjort fil summeres naturalytelser og vi har kun summen per arbeidsforhold uten ytterligere detaljer.</p>
+</section>
+<section id="utgiftsgodtgjørelse" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="utgiftsgodtgjørelse">Utgiftsgodtgjørelse</h4>
+<p>Med utgiftsgodtgjørelse menes ytelser som en arbeidstaker mottar til dekning av kostnader i forbindelse med utførelse av arbeid. Godtgjørelse kan gi arbeidstaker et overskudd eller inneholde et element av lønn. Eksempler er elektronisk kommunikasjon, smusstillegg, flyttegodtgjørelse, matpenger i forbindelse med overtid, trekkpliktig bilgodtgjørelse, m.m.</p>
+<p>Elektronisk kommunikasjon (som for eksempel mobiltelefon) er et eksempel på både en naturalytelse og en utgiftsgodtgjørelse som må innrapporteres hver for seg, etter type ytelse.</p>
+<p>Detaljert informasjon om utgiftsgodtgjørelser er tilgjengelig i inndata og i datavarehuset. I prosessen mellom datavarehuset og klargjort fil summeres utgiftsgodtgjørelser og vi har kun summen per arbeidsforhold uten ytterligere detaljer.</p>
+</section>
+<section id="pensjontrygd" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="pensjontrygd">Pensjon/trygd</h4>
+<p>Følgende skal rapporteres:</p>
+<ul>
+<li><p>Pensjon i og utenfor arbeidsforhold og livrenter i arbeidsforhold mv. (gjelder pensjonsytelser fra andre enn folketrygden)</p></li>
+<li><p>Etterlønn og etterpensjon etter dødsfall</p></li>
+<li><p>Pensjon i dødsmåneden</p></li>
+<li><p>Alderspensjon fra folketrygden (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Uførepensjon fra folketrygden (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Ektefelletillegg</p></li>
+<li><p>Barnepensjon fra folketrygden (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Overgangsstønad til enslig mor eller far som begynte å løpe 31. mars 2014 eller tidligere (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Overgangsstønad til gjenlevende ektefelle mv. (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Avtalefestet pensjon</p></li>
+<li><p>Barnepensjon fra andre enn folketrygden</p></li>
+<li><p>Introduksjonsstønad (til nyankomne innvandrere)</p></li>
+<li><p>Supplerende stønad til pensjoner med kort botid i Norge (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Kvalifiseringsstønad</p></li>
+<li><p>Nye livrenter i arbeidsforhold (kollektive livrenter) og livrenter tegnet som fortsettelsesforsikringer</p></li>
+<li><p>Krigspensjon (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Etterlattepensjon fra folketrygden (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Uførepensjon fra andre enn folketrygden</p></li>
+<li><p>Underholdningsbidrag tidligere ektefelle</p></li>
+<li><p>Pensjon – diverse (gjelder pensjonsytelser som ikke passer inn under overnevnte spesifiserte pensjonsytelsene)</p></li>
+</ul>
+</section>
+<section id="ytelser-fra-det-offentlige-unntatt-pensjoner-og-trygd" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="ytelser-fra-det-offentlige-unntatt-pensjoner-og-trygd">Ytelser fra det offentlige (unntatt pensjoner og trygd)</h4>
+<p>Følgende ytelser innrapporteres fra det offentlige:</p>
+<ul>
+<li><p>Foreldrepenger fra folketrygden (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Ventelønn</p></li>
+<li><p>Dagpenger ved arbeidsløshet (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Sykepenger fra folketrygden (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Overgangsstønad til enslig mor eller far som begynte å løpe 1. april 2014 eller senere (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Underholdningsbidrag til barn -skattefritt (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Skattefrie tilleggsstønader - gjelder utbetalinger til medlemmer av folketrygden som gjennomfører arbeidsrettede tiltak (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Arbeidsavklaringspenger (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Svangerskapspenger (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Skattefrie stønad til barnetilsyn fra folketrygden (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Dagpenger til fiskere som bare har hyre (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Sykepenger til fiskere som bare har hyre (brukes kun for ytelser fra NAV)</p></li>
+</ul>
+</section>
+<section id="ytelser-til-næringsdrivende" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="ytelser-til-næringsdrivende">Ytelser til næringsdrivende</h4>
+<p>Enkelte ytelser til næringsdrivende skal rapporteres via a-meldingen:</p>
+<ul>
+<li><p>Betalinger til næringsdrivende</p></li>
+<li><p>Dagpenger ved arbeidsløshet utbetalt til selvstendig næringsdrivende (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Godtgjørelse til dagmamma som passer barnet i dagmammas hjem</p></li>
+<li><p>Sykepenger til selvstendig næringsdrivende (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Sykepenger mv til dagmamma (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Sykepenger utbetalt til jord- og skogbrukere (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Lott eller part (herunder minstelott) til fiskere</p></li>
+<li><p>Dagpenger til fiskere (brukes kun for ytelser fra NAV)</p></li>
+<li><p>Sykepenger til fiskere (brukes kun for ytelser fra NAV)</p></li>
+</ul>
+</section>
+<section id="mer-informasjon-i-veiledningen-for-a-meldingen" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="mer-informasjon-i-veiledningen-for-a-meldingen"><strong>Mer informasjon i veiledningen for a-meldingen</strong></h4>
+<p>Mer informasjon om arbeids- og lønnsforhold, trekkplikt, arbeidsgiveravgift, kontantytelser (fastlønn, timelønn, etc.), utgiftsgodtgjørelse, etc. finnes i <a href="https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/">veiledningen til a-meldingen (skatteetaten.no)</a>.</p>
+</section>
+</section>
+<section id="a-meldingen-kvalitet" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="a-meldingen-kvalitet"><span class="header-section-number">3.1.4</span> A-meldingen – kvalitet</h3>
+<p>Kvaliteten i a-meldingen regnes som god og bedre enn tidligere kilder brukt til arbeidsmarkeds- og lønnsstatistikk. A-meldingen gir generelt et bedre datagrunnlag ved at det er mer korrekt på individnivå samt at det dekker flere lønnstakerforhold enn det som var hovedkilden til og med 2014 (NAVs Arbeidstakerregister). Det er flere grunner til at kvaliteten har blitt bedre. Med a-meldingen har vi et sammenhengende regelverk som fremtvinger mer korrekt rapportering. Informasjon om arbeidsforhold og lønn kommer nå fra den samme kilden, og ikke fra ulike kilder som tidligere. I tillegg får vi hyppigere rapportering av lønnsinformasjon. Sammenheng i rapporteringen gir også bedre muligheter for kontroll og oppfølging med flere variabler.</p>
+<p>Det er særlig to forhold vedrørende arbeidsforhold (jobber) som har blitt bedre med a-meldingen: a) mer korrekte data om hvilke arbeidsforhold som er aktive i referanseuken, og b) bedre informasjon om egenskapene ved arbeidsforholdene, som f.eks. næringstilknytning og arbeidssted.</p>
+<p>Opplysninger om arbeidsforhold (jobber) og lønn rapporteres sammen i a-meldingen, mens det ble rapportert i ulike kilder til og med 2014. Jobber ble rapportert til NAVs Arbeidstakerregister (Aa-registeret), mens lønn ble rapportert til Skatteetatens Lønns- og trekkoppgaveregisteret (LTO-registeret).</p>
+<p>I a-meldingen får vi rettet opp en del feil som var i det gamle Aa-registeret, spesielt med hensyn til hvilke personer som faktisk er sysselsatt i referanseuken for statistikken. Det var to typer viktige mangler ved rapporteringen til det tidligere Aa-registeret:</p>
+<ol type="1">
+<li><p>en god del arbeidstakerforhold som skulle vært meldt opphørt</p></li>
+<li><p>forsinkelser i innmelding av nye arbeidsforhold.</p></li>
+</ol>
+<p>Disse feilene motvirket hverandre i noen grad, men ga samlet sett noe for mange arbeidstakere. For noen undergrupper var manglene relativt store. For eksempel var det for mange arbeidstakere i næringen <em>utleie av arbeidskraft</em> (næring 78.2) fordi mange ikke ble utmeldt i perioder de ikke hadde vikaroppdrag. Arbeidstakere som gikk over på alderspensjon ble dessuten for sent meldt ut og tallet på sysselsatte over 67 år var derfor for høyt. Med data fra a-meldingen, der vi henter inn arbeidstids- og lønnsdata samtidig, kan vi kontrollere faktisk aktivitet ved at personer har hatt utbetalt lønn i referansemåneden.</p>
+<p>A-meldingen gir også bedre tall for ulike kjennemerker for yrke, arbeidstid, næring og arbeidssted. Alle opplysningene om yrke og arbeidstid hentes nå fra a-meldingen. I det gamle opplegget (til og med 2014) måtte en del av variablene for yrke og arbeidstid beregnes fordi arbeidsforholdene var hentet fra kilder som manglet disse opplysningene (blant annet LTO-registeret). LTO-registeret hadde dessuten bare knytning til foretak og ikke til virksomhet (underenhet) under foretaket. I a-meldingen har vi knytning til virksomhet for alle jobber. Det gir mer presise tall for næring og arbeidsstedskommune.</p>
+<p>Kvaliteten på opplysningene om lønn har også blitt bedre i a-meldingen sammenlignet med tidligere kilder. Før a-ordningen, det vil si før 2015, var lønnsstatistikken basert på fulltelling fra registerdata og en utvalgsundersøkelse for privat sektor. Det er flere grunner til at opplysninger om lønn har blitt bedre med a-meldingen:</p>
+<ol type="a">
+<li><p>vi får hyppigere opplysninger om lønn – hver måned istedenfor én gang per år (tellingstidspunkt var 1. september eller 1. oktober avhengig av næring)</p></li>
+<li><p>fulltelling for lønnstakere i privat sektor (istedenfor utvalg)</p></li>
+<li><p>Mindre usikkerhet i tallene på grunn av utvalg gir større usikkerhet enn fulltelling</p></li>
+</ol>
+<p>Selv om kvalitet generelt anses som god er det noen utfordringer ved bruk av informasjonen til statistikkproduksjon. Det er dels knyttet til at det særlig rapporteres mange arbeidsforhold som SSB ikke regner som aktive og dels knyttet til rapportering av arbeidstid. Den første utfordringen har vi gode muligheter for å justere for ved å benytte opplysninger om lønn. Dette er omtalt i kapittel 19. Den andre utfordringen er omtalt i kapittel 21 og i artikkelen <a href="https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/ny-metode-gir-bedre-informasjon-om-arbeidstid">Metode for forbedring av informasjon om rapportert arbeidstid fra a-meldingen</a>.</p>
+<p>Lønn blir rapportert på en annen måte i a-meldingen enn i tidligere lønnsstatistikk (før a-ordningen kom i 2015). I a-meldingen får vi summen som er utbetalt fremfor hvor mye som er lønn for en bestemt avtalt arbeidstid. Dette medfører at vi er mer avhengig av arbeidstid og at vi har opplysninger fortløpende for alle måneder (for eksempel korreksjoner ved «glatting» på grunn av for eksempel etterbetalinger). Det kan i a-meldingene også forekomme at lønnsarter oftere rapporteres feil fordi det nå i motsetning til før er flere lønnsbeskrivelser som kan benyttes (samt at det er mulig å rapportere lønn på «annet»). Skifte av lønns- og personalsystem har også hatt noe betydning da opplysningene endres både på arbeidsforhold og lønn.</p>
+<p>I tillegg er det et skille mellom kvalitet til statistikkproduksjons kontra saksbehandling. Informasjon kan være korrekt rapportert og blir riktig til saksbehandling, men kan likevel bli feil til statistikkproduksjon. For eksempel er det noen virksomheter som helt korrekt rapporterer dobbelt fastlønn for en måned. Virksomheter som har lønnsutbetaling den 1. i måneden vil betale ut og rapportere beløpet på måneden før når lønningsdagen faller på en helg eller helligdag. Dette er altså korrekt rapportering, men kan gi feil i statistikkene.</p>
+<p>A-meldingen samt en rekke andre registerkilder som omtales i dette kapittelet benyttes for konsistensbehandling mellom ulike datakilder, valg av viktigste arbeidsforhold (jobb) og klassifisering som sysselsatt, beregning av lønn samt for å kvalitetssikre dataene.</p>
+<p>Det gjennomføres flere typer kontroller av data, både ved mottak hos Skatteetaten og i SBB som skal bidra til å forbedre datakvaliteten, jf. omtale i kapittel 8. I tillegg har flere av prosessene beskrevet i del 3, klargjøring av data, som formål å sikre kvaliteten til statistikkformål.</p>
+</section>
+<section id="noen-sentrale-endringer-med-a-ordningen" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="noen-sentrale-endringer-med-a-ordningen"><span class="header-section-number">3.1.5</span> Noen sentrale endringer med a-ordningen</h3>
+<p>Innføringen av a-meldingen har medført noen sentrale endringer sammenlignet med de tidligere kildene til lønns- og sysselsettingsstatistikkene (Aa-registeret, LTO-registeret og oppgave til lønnsstatistikk) som ble benyttet til og med 2014:</p>
+<ul>
+<li><p>Det rapporteres <em>status</em> for arbeidsforholdsopplysningene hver måned i a-meldingen. Det betyr at de samme opplysningene om arbeidsforhold må gjentas hver måned selv om det ikke er noen endringer. Til det gamle Aa-registeret (til og med 2014) skulle arbeidsgivere kun rapportere endringer.</p></li>
+<li><p>Flere små arbeidsforhold rapporteres ved at nedre grense for å rapportere er samordnet med grensen for å rapportere lønn til Skatteetaten (1000 kroner per år)</p></li>
+<li><p>Det kan rapporteres flere arbeidsforhold per person i samme virksomhet. Til det gamle Aa-registeret (til og med 2014) ble det kun rapportert ett arbeidsforhold for samme person per virksomhet.</p></li>
+<li><p>Det rapporteres lønn, delt opp på flere typer lønn, hver måned for alle arbeidsforhold og ikke kun for et utvalg (til lønnsstatistikken). LTO-registeret ga informasjon om lønn for hele året uten skille mellom typer kontantytelser og kun på foretaksnivå.</p></li>
+<li><p>Det rapporteres yrke også for ansatte i staten i a-meldingen.</p></li>
+</ul>
+</section>
+</section>
+<section id="selvangivelsesregisteretskattemeldingen" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="selvangivelsesregisteretskattemeldingen"><span class="header-section-number">3.2</span> Selvangivelsesregisteret/Skattemeldingen</h2>
+<p>Selvangivelsesregisteret/skattemeldingen eies av Skattedirektoratet. Registeret omfatter alle personer over 13 år, og består av utvalgte opplysninger fra selvangivelsene. De viktigste kjennemerkene som hentes herfra er næringsinntekt og -underskudd fra selvstendigvirksomhet i henholdsvis primærnæringen og andre næringer. Denne informasjonen ligger til grunn for definering av selvstendig næringsdrivende.</p>
+<p>Det er imidlertid en rekke egenskaper ved registeret som begrenser hva som er mulig å få ut av datamaterialet:</p>
+<ul>
+<li><p>Ingen dateringer. Selvangivelsesregisteret har kalenderåret som referansedato. Det er altså kun mulig å finne ut om en person hadde inntekt som selvstendig en eller annen gang i løpet av året. Ved konsistensbehandling med andre registre, kan vi i enkelte tilfeller forbedre dateringen noe.</p></li>
+<li><p>Kun data for personer. Ingen opplysninger om den enkeltes jobb. Det er for eksempel ikke mulig å knytte inntekt til arbeidsforhold.</p></li>
+<li><p>Svært lang produksjonstid. Registeret er klart i underkant av ett år etter utløpet av referanseåret.</p></li>
+</ul>
+<p>På grunn av produksjonstiden på registeret benyttes data for året før i den registerbaserte sysselsettingsstatistikken. Dette registeret kobles på etter at den klargjorte filen for arbeidsmarked og lønn er etablert. Se omtale i kapittel 24.</p>
+</section>
+<section id="virksomhets--og-foretaksregisteret-vof" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="virksomhets--og-foretaksregisteret-vof"><span class="header-section-number">3.3</span> Virksomhets- og foretaksregisteret (VoF)</h2>
+<p>SSBs Virksomhets- og foretaksregister (VoF) er et av flere registre som er knyttet til Enhetsregisteret (ER) i Brønnøysundregistrene og inneholder data om&nbsp;<a href="https://www.ssb.no/virksomheter-foretak-og-regnskap/statistikker/bedrifter">virksomheter</a>&nbsp;og&nbsp;<a href="https://www.ssb.no/virksomheter-foretak-og-regnskap/statistikker/foretak">foretak</a>&nbsp;i offentlig og privat sektor i Norge. VoF skal være et heldekkende og kvalitetssikret register, og utgjøre en felles populasjon for den økonomiske og næringsmessige statistikken samt personstatistikken.</p>
+<p>Virksomhet brukes av SSB som betegnelse på en produksjonsenhet, dvs. en lokalt avgrenset enhet som hovedsakelig driver produksjon av varer eller tjenester innenfor en bestemt næring. Virksomheter er konkrete arbeidssteder som for eksempel butikker, hoteller, skoler, bakerier, reklamebyråer og advokatkontorer. Dette omtales som underenhet i ER.</p>
+<p>VoF inneholder informasjon om virksomheten der de sysselsatte arbeider, som virksomhetens hovednæring, sektorkode, organisasjonsform, kommune, m.m.</p>
+<p>For privat sektor opererer ER/VoF med foretak som navn på en juridisk selvstendig enhet. Foretak i privat sektor er videre splittet opp i virksomheter (bedrifter/underenheter). I motsetning til privat sektor kan statlig (og kommunal) forvaltning også ha registrert enheter mellom det øverste nivået (foretaket) og det laveste nivået (virksomheten). Disse mellomliggende nivåer omtales som organisasjonsledd.</p>
+<p><em>Hyppighet:</em> 2 ganger per måned (siste dag i måneden og 10. i måneden etter).</p>
+<p><em>Referanseperiode:</em> Ingen. Uttaket gjenspeiler situasjonen i VoF-registeret på overføringstidspunktet. I produksjonssystemet bruker vi situasjonsuttaket per måneden etter statistikkmåneden, det vil si ved utgangen av statistikkmåneden.</p>
+</section>
+<section id="fokeregisteret-freg" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="fokeregisteret-freg"><span class="header-section-number">3.4</span> Fokeregisteret (FREG)</h2>
+<p>Skatteetaten har modernisert Folkeregisteret, og har gått over fra DSF (Det sentrale folkeregisteret) til FREG (folkeregisteret) 15. oktober 2020.</p>
+<p>Dataene i Befolkningsregisteret (BeReg), SSBs statistiske kopi av Folkeregisteret, inneholder både data fra DSF og FREG. Denne versjonen ble benyttet til og med september 2022. Fra og med oktober-kjøringen i 2022 benytter vi SSB sin statistiske versjon av Folkeregisteret (FREG).</p>
+<p>FREG består av alle personer med fødselsnummer (fnr) uavhengig om personen er bosatt, død, utvandret, m.m. og alle personer med et midlertidig ID-nummer, et såkalt D-nummer (Dnr). Dnr er et identifikasjonsnummer for personer som ikke har norsk fødselsnummer. Dnr er 11-sifret, og består av modifisert fødselsdato (det legges til 4 på det første tallet) og et femsifret nummer.</p>
+<p><em>Hyppighet:</em> én ganger per måned (siste dag i måneden).</p>
+<p><em>Referanseperiode:</em> Ingen. Uttrekket gjenspeiler situasjonen i FREG på overføringstidspunktet. Det er situasjonen etter statistikkmåneden som benyttes, det vil si situasjonen ved utgangen av statistikkmåneden.</p>
+</section>
+<section id="matrikkelen" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="matrikkelen"><span class="header-section-number">3.5</span> Matrikkelen</h2>
+<p>Matrikkelen inneholder bl.a. opplysninger om adresser for bosatte og boliger, som grunnkrets, kommune, osv.</p>
+<p><em>Hyppighet:</em> 2 ganger per måned (siste dag i måneden og 10. i måneden etter).</p>
+<p><em>Referanseperiode:</em> Ingen. Uttrekket gjenspeiler situasjonen i Matrikkel-registeret på overføringstidspunktet. Det er situasjonen etter statistikkmåneden som benyttes, det vil si situasjonen ved utgangen av statistikkmåneden.</p>
+</section>
+<section id="innvandrere-og-norskfødte-med-innvandrer-foreldre" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="innvandrere-og-norskfødte-med-innvandrer-foreldre"><span class="header-section-number">3.6</span> Innvandrere og norskfødte med innvandrer foreldre</h2>
+<p>Innvandrere og norskfødte med innvandrer foreldre er en fil som hentes fra SSBs statistiske kopi av folkeregisteret (FREG) og inneholder blant annet informasjon om landbakgrunn (flere generasjoner) og innvandrerkategori.</p>
+<p><em>Hyppighet:</em> årlig</p>
+<p><em>Referanseperiode:</em> 01.01.</p>
+<p>Ny årgang kobles på så fort den er tilgjengelig, vanligvis i løpet av februar året etter referanseperioden.</p>
+</section>
+<section id="innvandrere-etter-innvandringsgrunn" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="innvandrere-etter-innvandringsgrunn"><span class="header-section-number">3.7</span> Innvandrere etter innvandringsgrunn</h2>
+<p>Innvandrere etter innvandringsgrunn hentes fra SSBs statistiske kopi av folkeregisteret (FREG) og er en fil med oversikt over innvandrere og deres årsak til innvandring. For flyktninger finnes det egne variable med årsaker. Filen inneholder blant annet informasjon om landbakgrunn (flere generasjoner).</p>
+<p><em>Hyppighet:</em> årlig</p>
+<p><em>Referanseperiode:</em> 01.01.</p>
+<p>Ny årgang kobles på så fort den er tilgjengelig, vanligvis i løpet av mai/juni året etter referanseperioden.</p>
+</section>
+<section id="høyeste-fullførte-utdanning-nudb" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="høyeste-fullførte-utdanning-nudb"><span class="header-section-number">3.8</span> Høyeste fullførte utdanning (NUDB)</h2>
+<p>Utdanningsnivå er hentet fra Nasjonal Utdanningsdatabase (NUDB). Registeret over befolkningens utdanning omfatter personer registrert bosatt i Norge pr 1.10., og som er 16 år og over ved utgangen av rapporteringsåret. I tillegg registreres 15-åringer som har fullført grunnskolen eller som er i gang med en utdanning utover grunnskolenivå.</p>
+<p>Registeret omfatter bl.a. informasjon om høyeste fullførte utdanning og dato for fullført utdanning.</p>
+<p><em>Hyppighet:</em> årlig</p>
+<p><em>Referanseperiode:</em> 1.10.</p>
+<p>Ny årgang kobles på så fort den er tilgjengelig, vanligvis i juni året etter referanseperioden. Den nye årgangen kobles på i juli-kjøringen, og da kobles den nye informasjonen på tilbake til oktober.</p>
+</section>
+<section id="igangværende-utdanning" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="igangværende-utdanning"><span class="header-section-number">3.9</span> Igangværende utdanning</h2>
+<p>Registeret inneholder informasjon om igangværende utdanning, uansett om man er registrert som bosatt eller ikke i folkeregisteret.</p>
+<p><em>Hyppighet:</em> årlig</p>
+<p><em>Referanseperiode:</em> 1.10.</p>
+<p>Ny årgang kobles på så fort den er tilgjengelig, vanligvis i juni året etter referanseperioden. Den nye årgangen kobles på i juli-kjøringen, og da kobles den nye informasjonen på tilbake til oktober.</p>
+</section>
+<section id="arena-registeret" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="arena-registeret"><span class="header-section-number">3.10</span> ARENA-registeret</h2>
+<p>ARENA-registeret er NAVs register over arbeidssøkere registrert av saksbehandler ved NAV eller ved selvbetjening på <a href="http://www.nav.no">nettsidene til NAV</a>. Denne gruppen er inndelt i ordinære arbeidssøkere, som blant annet omfatter helt ledige, ordinære tiltaksdeltakere og delvis sysselsatte, samt yrkeshemmede.</p>
+<p>SSB mottar situasjonsuttak for slutten av hver måned. Disse mottas normalt ca. 7 dager etter referansemånedens utløp.</p>
+<p><em>Hyppighet:</em> Månedlig</p>
+<p><em>Referanseperiode:</em> Vanligvis siste tirsdag i måneden, men noen tilfeller tidligere, typisk i desember og påskemåneden.</p>
+</section>
+<section id="oppdrags--og-arbeidsforholdregisteret-oar" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="oppdrags--og-arbeidsforholdregisteret-oar"><span class="header-section-number">3.11</span> Oppdrags- og arbeidsforholdregisteret (OAR)</h2>
+<p>Alle oppdrag og underoppdrag gitt til et selskap som er hjemmehørende i utlandet, eller til person som er bosatt i utlandet, gitt at verdien overstiger 20&nbsp;000 kroner, rapporteres i Oppdrags- og arbeidsforholdsregisteret, OAR (tidligere Sentralskattekontoret for utenlandsaker, SFU).</p>
+<p>Det er oppdragsgivers plikt å rapportere oppdraget. Den utenlandske oppdragstakeren har plikt til å rapportere arbeidstakerne som jobber på oppdraget.</p>
+<p>Oppdragstaker skal gi opplysninger om alle arbeidstakere som jobber på oppdrag i Norge eller på kontinentalsokkelen. Skatteetaten vil utstede d-nummer og skattekort etter informasjon gitt på skjema RF-1198.</p>
+<p>Selskap som er hjemmehørende i utlandet, og som utfører oppdrag i Norge eller på kontinentalsokkelen, må levere blant annet lønn- og ytelser i a-meldingen. Oppdragstakere som leverer skjema RF-1198 har fritak for rapportering til NAVs Arbeidstaker- og arbeidsgiverregister (Aa-registeret). Det vil si at hvis arbeidstakere er rapportert til OAR er det ikke nødvendig å rapportere arbeidsforholdet i a-meldingen.</p>
+<p><a href="https://www.skatteetaten.no/skjema/opplysninger-om-kontrakt-oppdragstaker-og-arbeidstakere">Mer informasjon om rapportering til OAR på nettsidene til skatteetaten (skatteetaten.no)</a>.</p>
+<p>Filen SSB mottar fra Skatteetaten inneholder blant annet opplysninger om start-, og stoppdato for arbeidsforholdet, arbeidsstedskommune og juridisk organisasjonsnummer. Filen inneholder ikke organisasjonsnummer virksomhet. SSB mottar et totaluttak som inneholder arbeidsforhold for siste fem år.</p>
+<p>SSB mottar fil fra Skatteetaten i begynnelsen av hver måned, vanligvis den 5.</p>
+<p><em>Hyppighet:</em> Månedlig</p>
+<p><em>Referanseperiode:</em> Hele måneden.</p>
+</section>
+<section id="vernepliktregisteret" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="vernepliktregisteret"><span class="header-section-number">3.12</span> Vernepliktregisteret</h2>
+<p>Vernepliktregisteret administreres av Forsvarets personell og vernepliktssenter (FPVS). Registeret omfatter alle vernepliktig i Forsvaret og sivilarbeidere, og inneholder datoer for inntak og dimisjon.</p>
+<p><em>Hyppighet:</em> Månedlig</p>
+<p><em>Referanseperiode:</em> Hele måneden.</p>
+</section>
+<section id="lærlinger" class="level2" data-number="3.13">
+<h2 data-number="3.13" class="anchored" data-anchor-id="lærlinger"><span class="header-section-number">3.13</span> Lærlinger</h2>
+<p>Lærlinger hentes fra SSBs fil med igangværende elever i videregående opplæring. For å identifisere lærlingens lærebedrift benyttes fagopplæringsfil fra fylkeskommunenes datasystem for inntak til og forvaltning av videregående opplæring (VIGO).</p>
+<p><em>Hyppighet:</em> Årlig</p>
+<p><em>Referanseperiode:</em> 30.9 for begge filer</p>
+<p>Ny årgang kobles på så fort den er tilgjengelig. Begge filer må være klare før koblingen gjøres. Fagopplæringsfilen fra VIGO får SSB normalt i januar året etter, men filen med igangværende elever i videregående opplæring er vanligvis ikke klar før midten av februar året etter.&nbsp;</p>
+</section>
+<section id="navs-register-over-foreldrepenger" class="level2" data-number="3.14">
+<h2 data-number="3.14" class="anchored" data-anchor-id="navs-register-over-foreldrepenger"><span class="header-section-number">3.14</span> NAVs register over foreldrepenger</h2>
+<p>Vi mottar fil fra NAV om bl.a. foreldrepermisjoner. A-meldingen inneholder kun opplysninger om foreldrepenger som NAV har utbetalt. Foreldrepengeregisteret inneholder også foreldrepermisjoner der arbeidsgivere betaler ut lønn og får refundert senere.</p>
+<p><a href="Omtale-av-noen-statistikker.html#ansatte-i-staten">Opplysninger om foreldrepermisjon kobles på i forbindelse med utarbeidelse av tall for ansatte i staten, se kapittel 25.6</a>.</p>
+<p><em>Produksjonshyppighet:</em> Månedlig</p>
+<p><em>Referanseperiode:</em> Hele måneden</p>
+<p>Vi mottar alle 12 månedsfilene i januar/februar året etter.</p>
+</section>
+<section id="fastlegeregisteret" class="level2" data-number="3.15">
+<h2 data-number="3.15" class="anchored" data-anchor-id="fastlegeregisteret"><span class="header-section-number">3.15</span> Fastlegeregisteret</h2>
+<p>Fastlegeregisteret gir oversikt over fastlegene. Fastlegeregisteret hentes årlig fra Norsk helsenett. Se mer <a href="https://www.nhn.no/samhandlingsplattform/grunndata/fastlegeregisteret">informasjon om fastlegeregisteret på nettsidene til Norsk helsenett (nhn.no)</a></p>
+<p>HELFO er ansvarlig for å holde fastlegeregisteret oppdatert. Fila hentes inn én gang per år i januar og kobles på den <a href="Del4-klargjoringavdata-regsys.html">klargjorte filen for registerbasert sysselsettingsstatistikk (se <em>Del 4</em></a>). Vi benytter et uttrekk fra fastlegeregisteret per 16.11.</p>
+<p><em>Hyppighet</em>: Årlig</p>
+<p><em>Referanseperiode</em>: 16.11</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./definisjoner.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Definisjoner</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Del2og3-Samleinn-klargjore.html" class="pagination-link">
+        <span class="nav-page-text">Del 2 og 3. Samle inn og klargjøre</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ NOTATER 2023/32
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

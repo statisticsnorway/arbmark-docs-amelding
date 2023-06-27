@@ -1,0 +1,4 @@
+# Vedlegg B: Kodeliste kilde for avtalt stillingsprosent {.unnumbered}
+
+![](./media/image13.png){width="11.498611111111112in"
+height="6.0625in" alt="Kodeliste for kildevariabelen til avtalt stillingsprosent"}**Kildevariabel for avtalt stillingsprosent**

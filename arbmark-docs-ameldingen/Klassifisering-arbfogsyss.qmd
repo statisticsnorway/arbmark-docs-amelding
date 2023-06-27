@@ -1,0 +1,681 @@
+---
+title: Klassifisering av arbeidsforhold og sysselsatte
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.14.5
+  kernelspec:
+    display_name: arbmark-docs-ameldingen
+    language: python
+    name: arbmark-docs-ameldingen
+---
+
+I denne prosessen bestemmes det hvilke arbeidsforhold som skal regnes
+som aktive og dermed for å avgjøre om man skal regnes som sysselsatt
+eller ikke. Sysselsatte omfatter både lønnstakere og selvstendig
+næringsdrivende. [Påkobling av informasjon om selvstendig næringsdrivende
+omtales i kapittel 24](Selvstendige.html).
+
+Etter at det er bestemt hvilke arbeidsforhold som skal regnes som
+aktive/sysselsetting hentes det inn [informasjon om registrerte helt
+ledige og øvrige bosatte (omtalt i kapittel 20](Koblepå-heltarbl-utenfor-arbstyrken.html)).
+
+Det rapporteres inn mange arbeidsforhold i a-meldingen som etter SSBs
+vurdering ikke er aktive i statistikkperioden. Dette vil kunne gjelde
+sesongarbeidere som ikke har utført arbeid i referansemåneden (og derfor
+ikke har fått lønn), der det (feilaktig) ikke er meldt sluttdato på
+opphørte arbeidsforhold, og tilfeller der personer feilaktig har blitt
+rapportert med arbeidsforhold (f.eks. personer på vikarlister som ikke
+har utført arbeid i perioden).
+
+**Sysselsettingsstatistikkens lønnsbegrep**
+
+Sysselsettingens lønnsbegrep dekker utbetalinger som indikerer at det
+har blitt utført et arbeid. Begrepet er i stor grad sammenfallende med
+lønnsstatistikken, men dekker noe mer.
+
+Lønn som indikerer sysselsetting (representert ved variabelen LONN_SYSS)
+omfatter følgende lønnsbeskrivelser:
+
+-   timelønn
+
+-   fastlønn
+
+-   honorar, akkord, prosent og provisjon *(fra januar 2018)*
+
+-   lønn til privatpersoner for arbeid i hjemmet
+
+-   lønn for barnepass i barnets hjem
+
+-   bonus
+
+-   ikke-skattepliktig lønn fra utenlandsk diplomatisk el. konsulær
+    stasjon
+
+-   styrehonorar og godtgjørelse i forbindelse med verv
+
+-   kommunal omsorgslønn og fosterhjemsgodtgjørelse
+
+-   kontantlønn utbetalt av veldedig eller allmennyttig institusjon
+    eller organisasjon
+
+-   lønn til utenlandsk artist
+
+-   annet («annet» er det som ikke naturlig hører hjemme i noen av de
+    andre lønnsytelsene, se [veiledningen for
+    a-meldingen (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/) 
+    for full oversikt over lønn og andre ytelser)
+
+Ulike typer tillegg utbetales gjerne i kombinasjon med fastlønn eller
+timelønn. Men dersom dette er eneste utbetaling kan det tyde på at det
+er en form for etterbetaling. Det samme gjelder overtidsgodtgjørelse.
+
+Feriepenger kan også indikere sysselsetting ettersom mange mottar
+feriepenger i stedet for fast- eller timelønn i enkeltmåneder. Ettersom
+det er noen utfordringer knyttet til datering av arbeidsforhold kan
+feriepenger som eneste utbetaling for eksempel også skyldes arbeid som
+ble utført året før, uten at det er rapportert sluttdato for
+arbeidsforholdet. Dermed klassifiseres ikke alle arbeidsforhold der
+feriepenger er eneste utbetaling som sysselsetting. Derfor er det lagt
+til en betingelse om at personer som kun har fått utbetalt feriepenger
+må ha vært klassifisert som sysselsatt forrige måned.
+
+**Klassifisering av sysselsatte**
+
+Følgende kriterier avgjør om et arbeidsforhold skal regnes som aktivt
+(sysselsetting):
+
+-   Startdato og eventuell sluttdato for arbeidsforholdet tilsier at man
+    har jobb i referanseuka (uka med den 16.), og:
+
+-   Hvorvidt det er knyttet lønn til arbeidsforholdet er viktig for å
+    avgjøre om arbeidsforholdet skal regnes som sysselsetting, se omtale
+    over
+
+Det etableres en variabel som viser hvilken av reglene som har slått til
+(ARB_SYSS). Dersom en statistikkenhet oppfyller flere av kriteriene gitt
+nedenfor beholdes den første regelen som slår til.
+
+På grunn av rapporteringskrav i a-meldingen er det ulik behandling av
+arbeidsforhold av typen frilansere, oppdragstakere og honorarpersoner og
+andre arbeidsforholdstyper (som ordinære og maritime arbeidsforhold,
+imputerte arbeidsforhold fra måned t-1 og vernepliktige).
+
+**Arbeidsforhold som frilansere/oppdragstakere/honorarpersoner**
+
+Det er kun krav om å rapportere arbeidsforhold med arbeidsforholdstype
+frilansere, oppdragstakere og personer som mottar honorar (i kortform
+omtalt som oppdragstakere) hvis det er foretatt en utbetaling.
+
+Derfor er det for denne typen arbeidsforhold kun arbeidsforhold med
+fast- og eller timelønn som regnes som aktive, og som dermed regnes som
+sysselsatt:
+
+-   ARB_SYSS settes lik **1a** dersom det er positiv fast- eller
+    timelønn
+
+-   Hvis ikke settes ARB_SYSS = **4b** (dvs. ikke sysselsatt)
+
+Begrunnelsen for å bare inkludere arbeidsforhold med fast- eller
+timelønn for denne gruppen, er at dette er arbeidsforhold som ligner mer
+på ordinære arbeidsforhold samt hindre at administrative rutiner rundt
+når lønn utbetales skal påvirke endringstallene. Dette innebærer at
+arbeidsforhold med f.eks. kun styrehonorar ikke regnes som aktive og
+dermed ikke vil inngå i statistikker som *den registerbaserte
+sysselsettingsstatistikken* eller *antall arbeidsforhold og lønn*. Dette
+medfører at vi ikke fanger opp alle arbeidsforhold av typen
+oppdragstaker i de ordinære statistikkene. Vi har derfor etablert en
+statistikk der vi bruker *hele kalenderåret* som referanseperiode for
+denne gruppen. [Statistikken over oppdragstakere er omtalt i kapittel 25.8](#oppdragstakere).
+
+**Arbeidsforhold som IKKE er frilansere/oppdragstakere/honorarpersoner**
+
+For alle arbeidsforhold som *ikke* er av typen oppdragstakere, dvs.
+ordinære og maritime arbeidsforhold, vernepliktige eller arbeidsforhold
+rapportert gjennom forenklet oppgjørsordning ([se omtalte av arbeidsforhold i kapittel
+3.1.3](#a-meldingen-mer-om-innhold)), skjer klassifisering av arbeidsforhold som aktive (og dermed
+regnes som sysselsatt) eller ikke-aktive (og dermed ikke regnes som
+sysselsatt) i denne rekkefølgen:
+
+1)  Vernepliktige:
+
+    -   Klassifiseres som aktive
+
+    -   ARB_SYSS settes lik **1a**
+
+2)  Arbeidsforhold med **lønn** i statistikkperioden: Informasjon om
+    lønn og type lønnsutbetaling avgjør om arbeidsforholdet skal regnes
+    som sysselsetting og om det er aktivt i statistikkperioden (måned
+    t). Størrelsen på lønnen har ingen betydning. 
+    
+    Hvis mottatt lønn for arbeidet iht. lønnsbegrep for sysselsetting
+    (variabel: LONN_SYSS\>0):
+
+     -   Klassifiseres som aktiv
+
+     -   ARB_SYSS settes lik **1a**
+
+    Dersom man kun har utbetalt feriepenger er det, som tidligere nevnt,
+    et tilleggskriterie at man har blitt regnet som sysselsatt i måneden
+    før. Hvis man [ikke]{.underline} har mottatt lønn for arbeidet iht.
+    lønnsbegrep for sysselsetting, men har mottatt feriepenger
+    (lonn_ferie\>0) og man var sysselsatte forrige måned (har
+    arbeidsmarkedsstatus (arb_arbmark_status) forrige måned lik 1, dvs.
+    lønnstaker):
+
+     -   Klassifiseres som aktiv
+
+     -   ARB_SYSS settes lik **1a**
+
+     Se beskrivelse av [arbeidsmarkedsstatus i kapittel 22.1](#arbeidsmarkedsstatus) og [variabelbeskrivelse i vedlegg A](VedleggA.html).
+
+     Som omtalt i [kapittel 9 om knytning mellom lønns- og arbeidsforhold](Knytning-mellom-lønns-og-arbeidsforhold.html) etableres det et *fiktivt* *arbeidsforhold*
+     dersom det ikke er mulig å knytte et lønnsforhold til et
+     arbeidsforhold hverken for statistikkmåneden eller måned før. Alle som
+     har lønn og i tillegg et fiktivt arbeidsforhold:
+
+     -   Klassifiseres som aktiv
+
+     -   ARB_SYSS settes lik **1b**
+
+Dersom man er midlertidig fraværende på grunn av sykdom, ferie, lønnet
+permisjon, permittering e.l. skal også regnes som [sysselsatte i
+henhold til ILO-definisjon](#ilo-definisjon-sysselsetting). For å identifisere dette benyttes
+informasjon om NAV-ytelser som erstatter lønn (sykepenger,
+svangerskapspenger eller foreldrepenger) og
+permisjoner/permitteringer. Permisjoner/ permitteringer uten lønn med
+forventet varighet under 90 dager regnes også som sysselsetting
+(permisjon med lønn regnes som sysselsetting uansett lengde) etter
+ILO-definisjonen.
+
+3)  For arbeidsforhold hvor det **ikke** er rapportert lønn i
+    statistikkperioden (måned t) sjekkes det om:
+
+    -   Man har mottatt ytelse fra NAV som erstatter lønn (sykepenger,
+        svangerskapspenger eller foreldrepenger, se [kapittel 18 om påkobling av ytelser](Påkobling-ytelser-ameldingen.html))
+
+    -   Man er permittert med forventet lengde under 90 dager (se
+        [kapittel 14 om permitteringer](Permisjoner-permitteringer.html))
+
+    -   Man har permisjon med forventet lengde under 90 dager (se
+        [kapittel 14 om permisjoner](Permisjoner-permitteringer.html))
+
+     Hvis det ikke er rapportert lønn, men er rapportert en **NAV-ytelse**
+     som erstatter lønn:
+
+     -   Klassifiseres som aktiv
+
+     -   ARB_SYSS settes lik **2a**
+
+     I mai beholdes kun arbeidsforhold med ytelser som erstatter lønn
+     dersom arbeidsforholdet ble klassifisert som sysselsetting forrige
+     måned (ARB_ARBMARK_STATUS i t-1 lik \'1\'). Dette fordi NAV-ytelser
+     utbetalt i mai også inneholder feriepenger på ytelser mottatt året
+     før, noe som ville ført til et for høyt tall på antall sysselsatte i
+     mai.
+
+     Dersom det ikke finnes NAV-ytelse som erstatter lønn sjekkes det om
+     det er rapportert en permittering eller permisjon med forventet lengde
+     under 90 dager.
+
+     Hvis **permittert** under 90 dager:
+
+     -   Klassifiseres som aktiv
+
+     -   ARB_SYSS settes lik **2b**
+
+     Hvis **permisjon** under 90 dager:
+
+     -   Klassifiseres som aktiv
+
+     -   ARB_SYSS settes lik **2c**
+
+Hvis forventet lengde på permitteringen/permisjonen er over 90 dager
+settes ARB_SYSS=**4a** eller **4b** (ikke-sysselsatt).
+
+4)  Hvis arbeidsforholdet ikke blir definert som aktivt ut fra punkt 1-3
+    over, dvs. man er ikke vernepliktig og vi ikke har lønns- eller
+    fraværsopplysning om arbeidsforholdet i statistikkperioden (måned
+    t), sjekkes det for ulike tidsforsinkelser. Det kan f.eks. være en
+    tidsforsinkelse i utbetaling av lønn ved nyoppstartede
+    arbeidsforhold, eller manglede utbetaling av lønn for timelønnede
+    ved avvikling av ferie. Derfor inngår også arbeidsforhold med fersk
+    startdato (dvs. startdato i måned t eller t-1), og arbeidsforhold
+    med utbetalt lønn i måneden før og måneden etter statistikkperioden
+    (sjekker mot måned t-1 og t+1).
+
+    Når vi kjører versjon 1 (foreløpige tall) finnes det ikke noen måned
+    etter. Dermed blir mange arbeidsforhold feilaktig forlenget. Dette kan
+    være uheldig, særlig i forlengelse av sommeren ved at vi da
+    viderefører en del ferievikarer, etc. som det ikke er meldt sluttdato
+    på. Dette er først og fremst en utfordring på grunn av usikkerhet
+    knyttet til start- og stoppdato for arbeidsforholdet. På grunn av
+    denne usikkerheten utnytter vi altså informasjon fra måneden etter.
+
+    Ved kjøring av andre versjon (endelige tall) for statistikkmåneden er
+    versjon 1 (foreløpige tall) av etterfølgende måned tilgjengelig. Det
+    er derfor alltid de endelige tallene som ligger til grunn for
+    statistikkproduksjon. Unntaket er statistikken *antall arbeidsforhold
+    og lønn* som også publiserer foreløpige tall, der formålet er å belyse
+    konjunkturutviklingen i Norge. Disse tallene er uten arbeidsforhold
+    med tidsforsinkelser. Mer informasjon om dette i [kapittel 26 om antall arbeidsforhold og lønn](Antall-arbeidsforhold-og-lønn.html) og
+    artikkelen «[ny månedlig statistikk om
+    jobber](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/ny-manedlig-statistikk-om-jobber)».
+
+    Bruk av opplysninger for måneden etter (måned t+1) er aktuelt for
+    grupper det er knyttet usikkerhet til:
+
+     -   Foretak som videreføres (imputeres) fra forrige måned (måned t-1) i
+    tilfeller der vi mangler både arbeidsforhold og lønn i
+    statistikkmåneden (måned t), [se kapittel 15 om imputering fra perioden før](Imputering-fra-perioden-før.html) for mer informasjon
+
+     -   Arbeidsforhold innrapportert i statistikkmåneden (måned t), men som
+    kun har lønn fra t-1
+
+     -   Arbeidsforhold innrapportert i statistikkmåneden (måned t) med fersk
+    startdato
+
+    Hvis startdato arbeidsforhold er i måneden før eller i
+    statistikkmåneden og det ikke er rapportert lønn i statistikkmåneden
+    (måned t), men regnes som aktiv (har lønn) i måneden etter:
+
+     -   Klassifiseres som aktiv
+
+     -   ARB_SYSS settes lik **3a**
+
+    Hvis definert som aktiv/sysselsatt i forrige periode (måned t-1) samt
+    aktiv/sysselsatt i måneden etter (måned t+1):
+
+     -   Klassifiseres som aktiv
+
+     -   ARB_SYSS settes lik **3b**
+
+Man regnes som aktiv måneden etter hvis man har mottatt lønn i måneden
+etter (måned t+1) og startdato for arbeidsforholdet er før eller lik
+siste dag i referanseuka i statistikkmåneden (måned t) og sluttdato for
+arbeidsforholdet er etter eller lik første dag i referanseuka i
+statistikkmåneden (eller ingen sluttdato).
+
+5)  Hvis man ikke klassifiseres som aktiv/sysselsatt basert på punktene
+    1-4 over regnes arbeidsforholdet som ikke-aktivt:
+
+     -   Klassifiseres som ikke-aktiv
+
+     -   ARB_SYSS settes lik **4a**
+
+     Som nevnt over blir oppdragstakere uten fast- eller timelønn også regnet som aktive:
+ 
+    -   Klassifiseres som ikke-aktive
+
+    -   ARB_SYSS settes lik **4b**
+
+     
+6)  Arbeidsforhold som ikke faller inn i noen av de øvrige punktene:
+    ikke sysselsatt
+
+    -   ARB_SYSS settes lik **5**
+
+    -   ARB_SYSS settes lik **5b** hvis avtalt stillingsprosent blir
+        nedjustert til null fordi samlet avtalt arbeidstid er for høy
+        ([se kapittel 21.7 for mer informasjon om nedjustering av avtalt arbeidstid](#nedjustering-hvis-samlet-avtalt-arbeidstid-er-for-høy-over-160-prosent))
+
+Basert på punktene 1-6 over gis variabelen ARB_SYSS verdier som
+indikerer om arbeidsforholdet er aktivt eller ikke:
+
+Arb_syss = 1a -- 3b: arbeidsforhold klassifisert som sysselsetting
+(aktive)
+
+Arb_syss = 4a, 4b, 5 og 5b: arbeidsforhold klassifisert som
+ikke-sysselsetting (ikke-aktive)
+
+Tabell 19.1 viser arbeidsforhold (jobber), etter klassifisering av
+sysselsetting (ARB_SYSS). I november 2022 ble omtrent 3 102 000 jobber, eller 75,8 prosent, av 
+av alle jobbene klassifisert som sysselsetting (alle med kode 1a - 3b). Av
+disse igjen ble de fleste jobbene (97,5 prosent) definert som aktive
+basert på opplysninger om lønn (kode 1a).
+
+Om lag 993 000 jobber ble klassifisert som ikke-sysselsatte (alle med kode 4a - 5b). I overkant av 14 prosent av jobbene som ble vurdert som ikke-aktive var
+ordinære jobber, mens om lag 10 prosent var oppdragsforhold (frilansere). For sistnevnte
+gruppe er det som nevnt best å se på som årsstatistikk der hele
+kalenderåret benyttes som referanseperiode (og ikke bare en enkelt
+måned), [se omtale av statistikken over oppdragstakere i kapittel 25.8](#oppdragstakere).
+
+**Tabell 19.1. Arbeidsforhold, etter klassifisering av sysselsetting (ARB_SYSS). November 2022. Antall og prosent**
+
+```{python}
+#| echo: false
+# #| fig-cap: 'Arbeidsforhold, etter klassifisering av sysselsetting (ARB_SYSS). November 2022. Antall og prosent'
+# #| label: fig-test
+
+#Importerer pakker og funksjoner
+import pandas as pd
+import numpy as np
+from functions.formater import stillingspst, stillingspst_grp, naring, kildepst 
+
+from IPython.display import Markdown, display
+from tabulate import tabulate
+
+from itables import show
+from babel.numbers import format_number
+from itables import init_notebook_mode, show
+
+init_notebook_mode(all_interactive=False)
+
+# define a custom class for the "Klass syss" column
+columnDefs = [{"className": "dt-left", "targets": 0}]
+
+# define a function to format integers with space as thousand separator
+def format_int(value):
+    return format_number(value, locale='nb_NO')
+
+#Henter inn filer
+agg_alle_nov22 = pd.read_csv("../Data/agg_alle_nov22.csv", delimiter=";")
+agg_alleaar_nov = pd.read_csv("../Data/agg_alleaar_nov.csv", delimiter=";")
+agg_allemnd = pd.read_csv("../Data/agg_allemnd.csv", delimiter=";")
+
+#Definerer labels
+labels = {
+            'arbsyss':
+                    {'1a': '1a. Med lønn, ikke fiktiv',
+                     '1b': '1b. Med lønn, fiktiv',
+                     '2a': '2a. Uten lønn. NAV-ytelser',
+                     '2b': '2b. Uten lønn, permittert < 90 dager',
+                     '2c': '2c. Uten lønn, permisjon < 90 dager',
+                     '3a': '3a. Uten lønn. Startdato i t-1, lønn i t+1',
+                     '3b': '3b. Kun lønn i t-1 og t+1',
+                     '4a': '4a. Uten lønn og fravær (ordinært)',
+                     '4b': '4b. Uten lønn og fravær (frilanser',
+                     '5' : '5. Annet',
+                     '5b': '5b. Annet, ikke sysselsetting'},
+            'arbmstatus':
+                    {1: 'Aktive jobber',
+                     9: 'Ikke-aktive jobber'},
+            'stillingspst_i':
+                    {0: '0 prosent',
+                     1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent',
+                     4: 'Uoppgitt'},
+            'stillingspst_f':
+                    {1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent'},
+            'kilde_stpst':
+                    {'01': '01. Innrapportert verdi for nåværende periode',
+                     '02': '02. Innrapportert verdi for nåværende periode, nedjustert til 120',
+                     '03': '03. Innrapportert verdi for nåværende periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '04': '04. Innrapportert verdi for neste periode',
+                     '05': '05. Innrapportert verdi for neste periode, nedjustert til 120',
+                     '06': '06. Innrapportert verdi for neste periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '07': '07. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '08': '08. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '09': '09. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '10': '10. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '11': '11. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '12': '12. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '13': '13. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '14': '14. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '15': '15. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold)',
+                     '16': '16. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '17': '17. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '18': '18. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold)',
+                     '19': '19. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '20': '20. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '21': '21. Predikert verdi fra XGBoost-modell',
+                     '22': '22. Predikert verdi fra XGBoost-modell, nedjustert til 100',
+                     '23': '23. Predikert verdi fra XGBoost-modell, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '24': '24. Imputert verdi fra nærmeste-nabo-metode',
+                     '25': '25. Imputert verdi fra nærmeste-nabo-metode, nedjustert til 120',
+                     '26': '26. Imputert verdi fra nærmeste-nabo-metode, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '30': '30. Verdi satt til 100 (vernepliktig)',
+                     '31': '31. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (beholder innrapportert verdi)',
+                     '32': '32. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (verdi satt til 100, innrapp er lik 100 × n i samme virksomhet)',
+                     '33': '33. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert til 120',
+                     '34': '34. Ekskludert pga. høy lønn (beholder innrapportert verdi)',
+                     '35': '35. Ekskludert pga. høy lønn (stillingsprosent satt til 100)',
+                     '36': '36. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '37': '37. Ekskludert pga. høy lønn, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '38': '38. Verdi satt til 100 (kilde: SFU UTEN LONN)',
+                     '39': '39. Verdi satt til 100 (kilde: SFU UTEN LONN), nedjustert fordi samlet stillingsprosent overstiger 160'
+                     },
+            'kilde_stpst_gr':
+                    {0: '01. Innrapportert stillingsprosent',
+                     1: '15-20. Utledet fra betalte timer',
+                     2: '21-23. Predikert fra XGBOOST',
+                     3: '24-26. Imputert fra nærmeste nabo metode',
+                     4: '02-14,30-39. Annen justering'} 
+    }
+
+#Grupperer variabler
+agg_alleaar_nov['stillingspst_grp_i'] = agg_alleaar_nov['ARB_STILLINGSPST_INNRAPP'].apply(stillingspst_grp)
+agg_alleaar_nov['stillingspst_kilde'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].fillna(0).astype(int).astype(str).str.zfill(2)
+agg_alleaar_nov['stillingspst_grp'] = agg_alleaar_nov['ARB_STILLINGSPST'].apply(stillingspst)
+agg_alle_nov22['naring5_grp'] = agg_alle_nov22['naring5'].apply(naring)
+agg_alleaar_nov['stillingspst_kilde_grp'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].apply(kildepst)
+
+#Tabeller
+#Tabell 19.1
+# Filtrerer datasettet
+filter_condition = agg_alle_nov22['ARB_ARBMARK_STATUS'].isin([1, 9])
+filtered_data = agg_alle_nov22[filter_condition]
+
+# Aggregerer med sum og prosent
+result1 = filtered_data.groupby('ARB_SYSS').agg({'sum_anta': ['sum', lambda x: (x.sum() / filtered_data['sum_anta'].sum()) * 100]})
+result1.columns = ['sum', 'pctsum']
+
+# Avrunder prosent til 1 desimal
+result1.pctsum = round(result1['pctsum'].astype(np.float64), 1)
+result1.reset_index(inplace=True)
+
+# Setter på label
+result1['ARB_SYSS'] = result1['ARB_SYSS'].map(labels['arbsyss'])
+
+# Legger på en rad med totalen
+result2 = pd.DataFrame({'ARB_SYSS': ['I alt'], 'sum': [result1['sum'].sum()], 'pctsum': [100]})
+result = pd.concat([result2, result1])
+result.columns = [' ', 'Antall arbeidsforhold', 'Prosent']
+result = result.set_index(' ')
+tabell_19_1 = result
+
+# Tittel til tabell
+#print("Arbeidsforhold etter arb_syss. November 2022")
+
+# format the "Antall Arbeidsforhold" column using the format_int function
+tabell_19_1['Antall arbeidsforhold'] = tabell_19_1['Antall arbeidsforhold'].apply(format_int)
+
+# format the "Prosent" column with one decimal
+#tabell_19_1['Prosent'] = tabell_19_1['Prosent'].apply(lambda x: '{:.1f}'.format(x))
+
+# display the formatted table
+tabell_19_1
+#show(tabell_19_1, paging=False, searching=False, columnDefs=columnDefs)
+```
+
+Kilde: Statistisk sentralbyrå
+
+<br>
+
+
+**Tabell 19.2. Reelle og ikke-reelle arbeidsforhold, etter næring. Oppdragstakere holdes utenfor. November 2022. Antall og prosent**
+
+```{python}
+#| echo: false
+# #| fig-cap: 'Reelle og ikke-reelle arbeidsforhold, etter næring. Oppdragstakere holdes utenfor. November 2022. Antall og prosent'
+
+#Importerer pakker og funksjoner
+import pandas as pd
+import numpy as np
+from functions.formater import stillingspst, stillingspst_grp, naring, kildepst 
+
+from IPython.display import Markdown, display
+from tabulate import tabulate
+
+from itables import show
+from babel.numbers import format_number
+from itables import init_notebook_mode, show
+
+init_notebook_mode(all_interactive=False)
+
+# define a custom class for the "Klass syss" column
+columnDefs = [{"className": "dt-left", "targets": 0}]
+
+# define a function to format integers with space as thousand separator
+def format_int(value):
+    return format_number(value, locale='nb_NO')
+
+#Henter inn filer
+agg_alle_nov22 = pd.read_csv("../Data/agg_alle_nov22.csv", delimiter=";")
+agg_alleaar_nov = pd.read_csv("../Data/agg_alleaar_nov.csv", delimiter=";")
+agg_allemnd = pd.read_csv("../Data/agg_allemnd.csv", delimiter=";")
+
+#Definerer labels
+labels = {
+            'arbsyss':
+                    {'1a': '1a. Med lønn, ikke fiktiv',
+                     '1b': '1b. Med lønn, fiktiv',
+                     '2a': '2a. Uten lønn. NAV-ytelser',
+                     '2b': '2b. Uten lønn, permittert < 90 dager',
+                     '2c': '2c. Uten lønn, permisjon < 90 dager',
+                     '3a': '3a. Uten lønn. Startdato i t-1, lønn i t+1',
+                     '3b': '3b. Kun lønn i t-1 og t+1',
+                     '4a': '4a. Uten lønn og fravær (ordinært)',
+                     '4b': '4b. Uten lønn og fravær (frilanser',
+                     '5' : '5. Annet',
+                     '5b': '5b. Annet, ikke sysselsetting'},
+            'arbmstatus':
+                    {1: 'Aktive jobber',
+                     9: 'Ikke-aktive jobber'},
+            'stillingspst_i':
+                    {0: '0 prosent',
+                     1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent',
+                     4: 'Uoppgitt'},
+            'stillingspst_f':
+                    {1: 'Mellom 0 og 100 prosent',
+                     2: '100 prosent',
+                     3: 'Over 100 prosent'},
+            'kilde_stpst':
+                    {'01': '01. Innrapportert verdi for nåværende periode',
+                     '02': '02. Innrapportert verdi for nåværende periode, nedjustert til 120',
+                     '03': '03. Innrapportert verdi for nåværende periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '04': '04. Innrapportert verdi for neste periode',
+                     '05': '05. Innrapportert verdi for neste periode, nedjustert til 120',
+                     '06': '06. Innrapportert verdi for neste periode, nedjustert fordi samlet stillingprosent overstiger 160',
+                     '07': '07. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '08': '08. Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '09': '09. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)',
+                     '10': '10. Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '11': '11. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '12': '12. Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '13': '13. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold)',
+                     '14': '14. Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold - ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '15': '15. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold)',
+                     '16': '16. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '17': '17. Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '18': '18. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold)',
+                     '19': '19. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert til 100',
+                     '20': '20. Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '21': '21. Predikert verdi fra XGBoost-modell',
+                     '22': '22. Predikert verdi fra XGBoost-modell, nedjustert til 100',
+                     '23': '23. Predikert verdi fra XGBoost-modell, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '24': '24. Imputert verdi fra nærmeste-nabo-metode',
+                     '25': '25. Imputert verdi fra nærmeste-nabo-metode, nedjustert til 120',
+                     '26': '26. Imputert verdi fra nærmeste-nabo-metode, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '30': '30. Verdi satt til 100 (vernepliktig)',
+                     '31': '31. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (beholder innrapportert verdi)',
+                     '32': '32. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (verdi satt til 100, innrapp er lik 100 × n i samme virksomhet)',
+                     '33': '33. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert til 120',
+                     '34': '34. Ekskludert pga. høy lønn (beholder innrapportert verdi)',
+                     '35': '35. Ekskludert pga. høy lønn (stillingsprosent satt til 100)',
+                     '36': '36. Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '37': '37. Ekskludert pga. høy lønn, nedjustert fordi samlet stillingsprosent overstiger 160',
+                     '38': '38. Verdi satt til 100 (kilde: SFU UTEN LONN)',
+                     '39': '39. Verdi satt til 100 (kilde: SFU UTEN LONN), nedjustert fordi samlet stillingsprosent overstiger 160'
+                     },
+            'kilde_stpst_gr':
+                    {0: '01. Innrapportert stillingsprosent',
+                     1: '15-20. Utledet fra betalte timer',
+                     2: '21-23. Predikert fra XGBOOST',
+                     3: '24-26. Imputert fra nærmeste nabo metode',
+                     4: '02-14,30-39. Annen justering'} 
+    }
+
+#Grupperer variabler
+agg_alleaar_nov['stillingspst_grp_i'] = agg_alleaar_nov['ARB_STILLINGSPST_INNRAPP'].apply(stillingspst_grp)
+agg_alleaar_nov['stillingspst_kilde'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].fillna(0).astype(int).astype(str).str.zfill(2)
+agg_alleaar_nov['stillingspst_grp'] = agg_alleaar_nov['ARB_STILLINGSPST'].apply(stillingspst)
+agg_alle_nov22['naring5_grp'] = agg_alle_nov22['naring5'].apply(naring)
+agg_alleaar_nov['stillingspst_kilde_grp'] = agg_alleaar_nov['ARB_STILLINGSPST_KILDE'].apply(kildepst)
+
+#Tabeller
+#Tabell 19.2
+# Filtrerer datasettet
+filter_1 = agg_alle_nov22['ARB_ARBMARK_STATUS'].isin([1, 9])
+filter_2 = filtered_data['ARB_TYPE'] != 'oppdrag'
+filtered_data = agg_alle_nov22[filter_1 & filter_2]
+
+# Aggregerer på næring
+tabell=pd.crosstab(filtered_data['naring5_grp'], columns=filtered_data['ARB_ARBMARK_STATUS'],
+                   values=filtered_data['sum_anta'], aggfunc='sum',
+                   margins=True, margins_name='I alt',
+                   rownames=[' '], colnames=['Antall'])
+
+# Lager kolonner med andeler
+tabell['prosent_1'] = round(tabell[1] * 100 / tabell['I alt'], 1)
+tabell['prosent_9'] = round(tabell[9] * 100 / tabell['I alt'], 1)
+
+# Legger på summen av andeler
+tabell['sum_p'] = tabell['prosent_1'] + tabell['prosent_9']
+
+# Kolonnenavn
+tabell.columns = ['Aktive jobber', 'Ikke-aktive jobber', 'I alt', 'Andel aktive jobber', 'Andel ikke-aktive jobber', 'Andeler i alt']
+
+# Sorterer næringer
+tabell = tabell.rename(index={'I alt':'00. I alt'})
+tabell = tabell.sort_index()
+tabell_19_2 = tabell
+
+# Tittel til tabell
+#print("Arbeidsforhold etter næring. November 2022")
+#tabell_19_2
+
+# format the "Antall Arbeidsforhold" column using the format_int function
+tabell_19_2['Aktive jobber'] = tabell_19_2['Aktive jobber'].apply(format_int)
+tabell_19_2['Ikke-aktive jobber'] = tabell_19_2['Ikke-aktive jobber'].apply(format_int)
+tabell_19_2['I alt'] = tabell_19_2['I alt'].apply(format_int)
+
+# format the "Prosent" column with one decimal
+tabell_19_2['Andel aktive jobber'] = tabell_19_2['Andel aktive jobber'].apply(lambda x: '{:.1f}'.format(x))
+tabell_19_2['Andel ikke-aktive jobber'] = tabell_19_2['Andel ikke-aktive jobber'].apply(lambda x: '{:.1f}'.format(x))
+tabell_19_2['Andeler i alt'] = tabell_19_2['Andeler i alt'].apply(lambda x: '{:.1f}'.format(x))
+
+tabell_19_2
+# display the formatted table
+#show(tabell_19_2, paging=False, searching=False, columnDefs=columnDefs)
+```
+
+Kilde: Statistisk sentralbyrå
+
+<br>
+Tabell 19.2 viser antall og andelen arbeidsforhold (jobber) som er
+aktive og ikke-aktive fordelt etter næring. Oppdragstakere holdes
+utenfor siden vi har en strengere grense for å regne disse
+arbeidsforholdene som aktive. Tabellen viser at i noen næringer
+rapporteres det en stor andel jobber som SSB vurderer som ikke-aktive. I
+*personlig tjenesteyting*, som bl.a. omfatter kultur og underholdning,
+ble 26,1 prosent av jobbene vurdert som ikke-aktive i november 2022.
+Tilsvarende tall for *primærnæringene* og *overnattings- og
+serveringsvirksomhet* var henholdsvis 42,8 og 29,5 prosent.
+
+Det er mange arbeidsforhold (jobber) som SSB ikke anser som aktive og
+dermed ikke som reelle arbeidsforhold. Kvaliteten etter klassifiseringen
+omtalt i dette kapittelet anses derimot som god.
+
+Antallet arbeidsforhold som SSB anser som
+ikke-reelle har holdt seg stabilt høy i perioden februar 2015 - desember 2022, men med en nedgang
+fra slutten av 2018. Nedgangen skyldes at det i samarbeid med
+Skatteetaten og NAV har blitt satt i verk tiltak for å bedre kvaliteten.

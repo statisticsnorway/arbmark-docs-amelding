@@ -1,0 +1,3 @@
+# Del 2. Samle inn
+Del 2 omfatter mottak av a-meldingsdata samt etablering og lagring av
+inndata.

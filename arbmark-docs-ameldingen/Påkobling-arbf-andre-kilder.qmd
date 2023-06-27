@@ -1,0 +1,125 @@
+# Påkobling av arbeidsforhold fra andre kilder
+
+
+## Oppdrags- og arbeidsforholdsregisteret (OAR)
+
+Alle oppdrag gitt til utenlandsk oppdragstaker på land eller
+kontinentalsokkelen skal rapporteres i Oppdrags- og
+arbeidsforholdsregisteret, OAR (tidligere Sentralskattekontoret for
+utenlandsaker, SFU). I variabler/kodelister benyttes fremdeles
+betegnelsen «sfu».
+
+SSB mottar månedlig en fil fra Skatteetaten (SKE) med informasjon om
+arbeidsforhold for utenlandske oppdragstakere fra Oppdrags- og
+arbeidsforholdsregister (OAR).
+
+Arbeidsforhold som rapporteres til OAR skal ikke rapporteres i
+a-meldingen for å unngå dobbeltrapportering. Lønn må imidlertid
+rapporteres i a-meldingen og mange arbeidsgivere rapporterer også
+arbeidsforhold selv om det ikke er et krav. I tilfellene det ikke er
+mulig å knytte et lønnsforhold til et arbeidsforhold, hverken for
+statistikkmåneden (måned t) eller måneden før (måned t-1), etableres det
+et såkalt [*fiktivt* *arbeidsforhold*, se beskrivelse i kapittel 9](Knytning-mellom-lønns-og-arbeidsforhold.html).
+
+Dersom vi får kobling til arbeidsforhold i OAR henter vi opplysninger om
+arbeidsforholdet fra dette registeret og koden på kildevariabelen
+arb_kilde endres da fra \"fiktivt\' til \'sfu med lonn\'.
+
+Dersom arbeidsforholdet er rapportert i både a-meldingen og OAR blir
+arb_kilde kodet som \'a-melding t og sfu\', eller \'a-melding t-1 og
+sfu\'.
+
+Fra OAR henter vi bl.a. informasjon om start- og stoppdato på
+arbeidsforholdet. Øvrige kjennetegn som virksomhet, lønnsbeskrivelse
+o.l., hentes fra VoF og a-meldingen.
+
+I OAR finnes det også arbeidsforhold som er aktive i statistikkmåneden
+målt ved start- og stoppdatoer på arbeidsforholdet, men hvor det ikke er
+rapportert lønn (eller arbeidsforhold) i a-meldingen. Dette kan skyldes
+forsinkelse i rapportering av lønn eller at det feilaktig ikke er meldt
+stoppdato på arbeidsforholdet. I noen tilfeller, f.eks. hvis fersk
+startdato på arbeidsforholdet, blir noen av disse arbeidsforholdene
+klassifisert som aktive (se [kapittel 19 om klassifisering av
+sysselsetting)](Klassifisering-arbfogsyss.html). Disse får koden \'sfu uten lonn\' på kildevariabelen
+arb_kilde. Det er altså kun personer med fersk startdato i OAR vi godtar
+som aktive selv om det ikke er rapportert inn lønn.
+
+I OAR rapporteres arbeidsforholdene på foretaksnivå (juridisk nivå) og
+altså ikke på virksomhets-/underenhetsnivå, slik det gjøres i
+a-meldingen. Hverken informasjon om stillingsprosent (arb_stillingspst),
+avtalt arbeidstid (arb_avtaltarbeidstid) eller yrke rapporteres til OAR.
+
+Følgende gjøres:
+
+-   Arb_start (startdato arbeidsforhold) settes lik startdato fra OAR
+
+-   Arb_slutt (sluttdato arbeidsforhold) settes lik stoppdato fra OAR
+
+-   Arb_stillingspst (avtalt stillingsprosent) settes lik 100
+
+-   Arb_avtaltarbeidstid (avtalt arbeidstid) settes lik 37,5 (som er
+    normal arbeidsuke i Norge)
+
+-   Foretak: Frtk_id_ssb settes lik variabelen OPDRAGST (foretakets
+    organisasjonsnummer) fra OAR
+
+-   Virksomhet etableres ved å koble mot VoF. Virk_id_ssb
+    (organisasjonsnummer virksomhet) og virk_id_type_ssb (kildevariabel)
+    etableres for arbeidsforhold med OAR som eneste kilde (arb_kilde lik
+    \'sfu uten lønn):
+
+    -   Hvis variabelen oppdragst gjenkjennes som envirksomhetsforetak i
+        VoF tildeles det aktuelle organisasjonsnummer (orgnr) virksomhet
+        fra VoF som verdi på virk_id_ssb, og virk_id_type_ssb settes lik
+        \'2 Virksomhetsnr fra envirksomhetsforetak i VoF\'.
+
+    -   Hvis oppdragst gjenkjennes som flerbedriftsforetak i VoF,
+        tildeles den første aktive virksomheten man finner under
+        foretaket i VoF som verdi på virk_id_ssb (virksomhetene sortert
+        etter orgnr og begrenset til aktive, dvs. status i VoF = \'B\').
+        Virk_id_type_ssb settes lik \'4 Tilfeldig virknr fra
+        flervirksomhetsforetak i VoF\'.
+
+    -   Hvis oppdragst gjenkjennes som nullvirksomhetsforetak i VoF
+        (dvs. at organisasjonsnummer foretak er brukt som id for
+        virksomheten, og foretakskjennetegn brukt som kjennetegn for
+        virksomheten), tildeles det aktuelle organisasjonsnummeret for
+        foretak som verdi på virk_id_ssb, og virk_id_type_ssb settes lik
+        \'8 Foretaksnr fra nullvirksomhetsforetak i VoF\'.
+
+    -   Kun verdiene på oppdragst som får treff på de tre reglene
+        ovenfor er aktuelle for å bli med videre i produksjonssystemet
+        og til statistikkdata. Altså ikke hvis oppdragst er fnr/dnr,
+        organisasjonsnummer virksomhet eller annet nummer som ikke
+        finnes i VoF.
+
+-   [Bosteds- og arbeidsstedskommune for arb_kilde \'SFU uten lonn\' og
+    'SFU med lønn' er beskrevet i kapittel 22.2](#utledning-av-arbeidssteds--og-bostedskommune).
+
+## Påkobling av arbeidsforhold for vernepliktige 
+
+Vernepliktige kobles på hver måned. SSB mottar en månedlig fil med
+vernepliktige fra Forsvarets personell- og vernepliktssenter (FPVS).
+
+Imputeringer på arbeidsforhold fra månedlig kilde vernepliktige:
+
+-   Arb_kilde skal settes til «vernepliktig»
+
+-   Arb_yrke (yrke) skal settes til 0111101 (menig)
+
+-   Arb_stillingspst (avtalt stillingsprosent) skal settes til 100
+
+-   Arb_timant_fulltid settes til 37,5 (som er normal arbeidsuke i
+    Norge)
+
+-   Arb_type (arbeidsforholdstype) = blank
+
+-   Arb_heldeltid = 1 (dvs. fulltid)
+
+-   Personkjennetegn som alder, kjønn, utdanning, Arena-variabler m.m.
+    kobles på fra SSBs statistiske kopi av folkeregisteret (FREG).
+
+-   Kjennemerkene startdato og stoppdato fra vernepliktsfilen kodes om
+    til arb_start og arb_slutt.
+
+Se vedlegg A for oversikt over og beskrivelse av variablene.

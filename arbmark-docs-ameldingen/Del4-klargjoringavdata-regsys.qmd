@@ -1,0 +1,58 @@
+# Del 4. Klargjøring av data - fil for registerbaserte sysselsettingsstatistikker
+
+Basert på de klargjorte dataene for arbeidsmarked og lønn per november
+etableres det en fil for registerbasert sysselsettingsstatistikk. Denne
+filen har november som referanseperiode.
+
+Registerbasert sysselsettingsstatistikk baserer seg altså på den
+[klargjorte filen for arbeidsmarked og lønn](Klargjortfil-arbm-og-lønnsstat.html) per november (endelig
+versjon), hvor vi henter tall for lønnstakere (personer), arbeidsforhold
+(jobber), registrerte ledige og resten av den bosatte befolkningen over
+15 år. I tillegg kobler vi på selvangivelsesregisteret (skattemeldingen)
+som gir informasjon om selvstendig næringsdrivende.
+
+Dermed gir denne filen informasjon om både lønnstakere, arbeidsforhold
+(jobber) og sysselsatte. Sysselsatte består av lønnstakere og
+selvstendig næringsdrivende.
+
+På den registerbaserte sysselsettingsfilen kobles også på
+fastlegeregisteret (inneholder informasjon om alle landets fastleger),
+[se kort omtale av fastlegeregisteret i kapittel 3](Datakilder.html). Personer som har en
+fastlegeavtale får et kjennemerke om dette.
+
+A-meldingen er som nevnt hovedkilden fra og med 2015. Før 2015 var NAVs
+Arbeidstakerregister og Skatteetatens Lønns- og trekkoppgaveregister
+(LTO-registeret) hovedkildene. Se mer informasjon om dette i [om
+statistikken for den registerbaserte sysselsettingsstatistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-registerbasert) og i [dokumentasjonsnotatet for registerbasert sysselsettingsstatistikk før 2015](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/registerbasert-sysselsettingsstatistikk).
+
+Det er flere statistikker som baserer seg på denne klargjorte filen
+registerbasert sysselsettingsstatistikk:
+
+-   [Sysselsetting,
+    hovedtall](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-registerbasert)
+
+-   [Sysselsetting blant innvandrere (herunder lønnstakere på
+    korttidsopphold (ikke-bosatte/utenlandske
+    pendlere))](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-blant-innvandrere-registerbasert)
+
+-   [Helse- og
+    sosialpersonell](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/helse-og-sosialpersonell)
+
+I tillegg er [denne filen hovedkilden til system for persondata
+(SFP)](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/system-for-persondata)
+og statistikken [*tilknytning til arbeid, utdanning og
+velferdsordninger*](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger)
+samt informasjon om sysselsatte i kommunal sektor ([del av
+Kostra-publiseringen](https://www.ssb.no/offentlig-sektor/kostra)).
+
+Kapitel 24 beskriver påkoblingen av selvstendig næringsdrivende, valg av
+viktigste arbeidsforhold samt metode for imputering av arbeidstid for
+selvstendig næringsdrivende.
+
+I kapittel 25 omtales kort statistikker som baserer seg på den
+klargjorte filen for registerbaserte sysselsettingsstatistikker, samt
+noen statistikker som baserer seg på [den klargjorte filen for
+arbeidsmarked og lønn (jf. omtale i kapittel 23](Klargjortfil-arbm-og-lønnsstat.html)). I kapittel 26 omtales
+statistikken *antall arbeidsforhold og lønn*.
+
+

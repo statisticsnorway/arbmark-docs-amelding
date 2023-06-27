@@ -1,0 +1,83 @@
+project:
+  type: book
+  output-dir: ../docs
+
+format:
+  html:
+    theme:
+      - cosmo
+      - custom.scss
+    backgroundcolor: "#ffffff" # SSB white
+    linkcolor: "#00824D" # SSB green
+    fontcolor: "#274247" # SSB dark blue
+    mainfont: Open sans
+
+book:
+  title: "Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen"
+  author:
+    - Christoffer Berge
+    - Stine Bakke
+    - Knut Snellingen Bye
+  date: "06/28/2023"
+  isbn: "978-82-587-1769-7"
+  sidebar:
+    collapse-level: 1
+  navbar:
+    search: true
+    logo: media/SSB_logo_black.png
+    logo-href: https://www.ssb.no/
+    logo-alt: "SSB sin logo"
+    # Colour is "Dark 1" from https://design.ssb.no/#/components/color
+    background: "#F0F8F9"
+    # Colour is "Dark 5" from https://design.ssb.no/#/components/color
+    foreground: "#274247"
+    right:
+      - icon: github
+        url: https://github.com/statisticsnorway/arbmark-docs-aordningen
+        aria-label: GitHub-repo for boken
+  page-footer:
+    center:
+      - text: "NOTATER 2023/32"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - part: avklare-planlegge.qmd
+      chapters:
+      - definisjoner.qmd
+      - Datakilder.qmd
+    - Del2og3-Samleinn-klargjore.qmd
+    - part: Del2-Samleinn.qmd
+      chapters:
+      - Kildedata.qmd
+      - Prosessen-fra-kildedata-til-inndata.qmd
+      - Inndata.qmd
+      - Datavarehus.qmd
+      - Kontroller-og-tiltak.qmd
+    - part: Del3-Klargjøring-av-data.qmd
+      chapters:
+      - Knytning-mellom-lønns-og-arbeidsforhold.qmd
+      - Påkobling-arbf-andre-kilder.qmd
+      - Tiltak-sluttdato.qmd
+      - Referanseuke.qmd
+      - Avgrensning-aggregering-arbf.qmd
+      - Permisjoner-permitteringer.qmd
+      - Imputering-fra-perioden-før.qmd
+      - Koblepå-kjennetegn-vof.qmd
+      - Kontrollogtiltak-fravær-virksomheter.qmd
+      - Påkobling-ytelser-ameldingen.qmd
+      - Klassifisering-arbfogsyss.qmd
+      - Koblepå-heltarbl-utenfor-arbstyrken.qmd
+      - Håndtering-lønn-avtaltarbtid.qmd
+      - Utledning-beregning-påkobling.qmd
+      - Klargjortfil-arbm-og-lønnsstat.qmd
+    - part: Del4-klargjoringavdata-regsys.qmd  
+      chapters:
+      - Selvstendige.qmd
+      - Omtale-av-noen-statistikker.qmd
+      - Antall-arbeidsforhold-og-lønn.qmd
+    - Referanser.qmd
+    - VedleggA.qmd
+    - VedleggB.qmd
+    - VedleggC.qmd
+    - VedleggD.qmd
+    - VedleggD.qmd

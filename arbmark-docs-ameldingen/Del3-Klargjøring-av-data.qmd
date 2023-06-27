@@ -1,0 +1,6 @@
+# Del 3. Klargjøring av data - fil for arbeidsmarked og lønn
+
+Klargjøring av data omfatter bearbeiding, editering, beregningsmetoder,
+mv. Del 3 beskriver hvilke steg data går gjennom frem til en fil som
+danner utgangspunkt for all lønn- og sysselsettingsstatistikk og deling
+av data til andre statistikkområder eller forskning.
